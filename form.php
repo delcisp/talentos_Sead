@@ -36,8 +36,8 @@ if(isset($_POST['submit'])) {
     header('Location: ' . $redirectURL);
     exit;
 
-    header("Location: agradecimento.php");
-    exit();
+    // header("Location: agradecimento.php");
+  //  exit();
   }
   else {
     echo "<script>alert('$errorMsg');</script>";
