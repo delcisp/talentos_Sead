@@ -1,10 +1,11 @@
 <?php
+//conexao com o ldap
 $ldap_host = 'ldap://10.46.22.252';
 $ldap_port = 389;
-$ldap_user_domain = 'dcsead-am.local'; // O domínio do usuário no LDAP 
+$ldap_user_domain = 'dcsead-am.local'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  // Obtém as credenciais do formulário
+
   $username = $_POST['username'];
   $password = $_POST['password'];
 
@@ -12,18 +13,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $ldap_conn = ldap_connect($ldap_host, $ldap_port);
 
   if (!$ldap_conn) {
-    die("Não foi possível se conectar com o servidor AD");
+    die("Não foi possível se conectar com o servidor");
   }
 
   // Realiza a autenticação LDAP
   $ldap_bind = @ldap_bind($ldap_conn, $username . '@' . $ldap_user_domain, $password);
 
   if ($ldap_bind) {
+    $admin_users = ['delciane.pinheiro', 'outro.admin'];
+
     // Autenticação bem-sucedida
     // Redireciona para a página do documento LGPD após o login bem-sucedido
-    header('Location: lgpd.php');
-    exit();
-  } else {
+    if (in_array($username, $admin_users)) {
+        // Redireciona para a página do dashboard
+        header('Location: dashboard.html');
+
+
+        exit();
+      } else {
+        // Redireciona para a página dos usuários normais (termos LGPD)
+        header('Location: lgpd.php');
+        exit();
+      }
+    } else {
 	echo "
 <script>
   window.addEventListener('DOMContentLoaded', function() {
