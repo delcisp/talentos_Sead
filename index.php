@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Redireciona para a página do documento LGPD após o login bem-sucedido
     if (in_array($username, $admin_users)) {
         // Redireciona para a página do dashboard
-        header('Location: dashboard.html');
+        header('Location: dashboard.php');
 
 
         exit();

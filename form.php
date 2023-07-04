@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(isset($_POST['submit'])) {
 
   // Verifica se todas as perguntas foram respondidas
@@ -28,7 +27,7 @@ if(isset($_POST['submit'])) {
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
    
-    $_SESSION['competencias'] = $competenciaSelecionada;
+
 
     $query = "INSERT INTO usuarios(firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString')";
