@@ -864,7 +864,9 @@ pre {
   padding-right: 10px;
   padding-left: 10px;
   margin-right: auto;
-  margin-left: auto; }
+  margin-left: auto;
+
+ }
 
 .row {
   display: -webkit-box;

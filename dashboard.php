@@ -5,24 +5,43 @@ include_once('config.php');
 $sql = "SELECT * FROM usuarios ORDER BY id DESC";
 $result = $conn->query($sql);
 
-$sql = "SELECT competencia, COUNT(*) as count FROM usuarios GROUP BY competencia ORDER BY count DESC LIMIT 5";
+$sql = "SELECT competencia FROM usuarios";
 $resultCompetencia = $conn->query($sql);
 
-// Array para armazenar os dados das competências
-$data = array();
+// Array para armazenar as competências mais selecionadas
+$competencias = array();
 
 // Verifica se a consulta retornou resultados
 if ($resultCompetencia->num_rows > 0) {
     // Loop pelos resultados da consulta
     while ($row = $resultCompetencia->fetch_assoc()) {
-        $competencia = $row["competencia"];
-        $count = $row["count"];
-        
-        // Adiciona os dados da competência ao array
-        $data[] = array("value" => $count, "category" => $competencia);
+        $competenciasSelecionadas = explode(", ", $row["competencia"]);
+        foreach ($competenciasSelecionadas as $competencia) {
+            $competencias[] = $competencia;
+        }
     }
 }
+
+// Conta as ocorrências de cada competência
+$competenciasContagem = array_count_values($competencias);
+
+// Ordena as competências por contagem em ordem decrescente
+arsort($competenciasContagem);
+
+// Pega as 5 competências mais selecionadas
+$competenciasSelecionadas = array_keys(array_slice($competenciasContagem, 0, 5));
+
+$competenciasData = array();
+foreach ($competenciasSelecionadas as $competencia) {
+    $competenciasData[] = array(
+        "category" => $competencia,
+        "value" => $competenciasContagem[$competencia]
+    );
+}
+
+$competenciasPHP = json_encode($competenciasData);
 ?>
+
 
 
 <!DOCTYPE html>
@@ -75,7 +94,7 @@ if ($resultCompetencia->num_rows > 0) {
 }
 #chartdiv {
       width: 100%;
-      height: 500px;
+      height: 400px;
     }
     .custom-class {
     background-color: #f0f0f0;
@@ -89,9 +108,20 @@ if ($resultCompetencia->num_rows > 0) {
 
 #cardgrafico.card-body.text-center {
     margin-left: 50px;
+    
 }
 h1 {
     text-align: center;
+    text-size-adjust: 12px;
+}
+.card-container {
+    height: 600px;
+    width: 900px;
+    padding: 20px;
+    
+}
+.container-fluid {
+    background-color: #E1EBEE;;
 }
 </style>
 
@@ -188,62 +218,56 @@ h1 {
                     </ul>
 
                 </nav>
-                <!-- End Sidebar navigation -->
             </div>
-            <!-- End Sidebar scroll-->
         </aside>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+       
         <div class="page-wrapper">
           
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Sales chart -->
-                <!-- ============================================================== -->
                 <div class="row d-flex justify-content-center">
                     <div class="col-md-8">
+                    <div class="card-container">
                     <div class="card">
                     <h1>COMPETENCIAS MAIS SELECIONADAS</h1>
                          <div class="card-body text-center">
                                 <div class="d-md-flex align-items-center">
                                     
-                                    <div id="chartdiv"></div>
-                                    <script>
-                                        am5.ready(function() {
-                                        var root = am5.Root.new("chartdiv");
-                                        root.setThemes([
-                                          am5themes_Animated.new(root)
-                                        ])
-                                        var chart = root.container.children.push(am5percent.PieChart.new(root, {
-                                          layout: root.verticalLayout
-                                        }));
-                                        
-                                        var series = chart.series.push(am5percent.PieSeries.new(root, {
-                                          valueField: "value",
-                                          categoryField: "category"
-                                        }));
-                                        
-                                        
-                                        
-                                        series.data.setAll(<?php echo json_encode($data); ?>);
-                                        
-                                        var legend = chart.children.push(am5.Legend.new(root, {
-                                          centerX: am5.percent(50),
-                                          x: am5.percent(50),
-                                          marginTop: 15,
-                                          marginBottom: 15
-                                        }));
-                                        
-                                        legend.data.setAll(series.dataItems);
-                                        
-                                        series.appear(1000, 100);
-                                        
-                                        });
-                                        </script>
+                                <div id="chartdiv"></div>
+                                <script>
+    am5.ready(function() {
+        var root = am5.Root.new("chartdiv");
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        var chart = root.container.children.push(am5percent.PieChart.new(root, {
+            layout: root.verticalLayout
+        }));
+
+        var series = chart.series.push(am5percent.PieSeries.new(root, {
+            valueField: "value",
+            categoryField: "category"
+        }));
+
+        var competenciasData = <?php echo $competenciasPHP; ?>;
+        series.data.setAll(competenciasData);
+
+        var legend = chart.children.push(am5.Legend.new(root, {
+            centerX: am5.percent(50),
+            x: am5.percent(50),
+            marginTop: 15,
+            marginBottom: 15
+        }));
+
+        legend.data.setAll(series.dataItems);
+
+        series.appear(1000, 100);
+    });
+</script>
+
+
+
+
+
+                                </div>
                                 </div>
                             </div>
                         </div>
