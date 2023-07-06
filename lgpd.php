@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Termos de LGPD</title>
   <link rel="stylesheet" href="./Lgpd/lgpd.css">
+  <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
 </head>
 
 <body>

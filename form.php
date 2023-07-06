@@ -58,6 +58,7 @@ if(isset($_POST['submit'])) {
   <link type="text/css" rel="stylesheet" href="https://cdn02.jotfor.ms/css/styles/payment/payment_styles.css?3.3.42507" />
   <link type="text/css" rel="stylesheet" href="https://cdn03.jotfor.ms/css/styles/payment/payment_feature.css?3.3.42507" />
   <link rel="stylesheet" href="./Form/form.css">
+  <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
 </head>
 
 <body>

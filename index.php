@@ -60,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="./Login/login.css">
-
+    <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
     <script src="./Login/login.js"></script>
 </head>
 <body>
