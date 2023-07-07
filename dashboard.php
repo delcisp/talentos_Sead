@@ -117,8 +117,7 @@ h1 {
 }
 .card-container {
     height: 600px;
-    width: 900px;
-    padding: 20px;
+    width: 600px;
     
 }
 .container-fluid {
@@ -306,9 +305,9 @@ h1 {
                                             <th class="border-top-0">Departamento</th>
                                             <th class="border-top-0">Cargo</th>
                                             <th class="border-top-0">Formações</th>
-                                            <th class="border-top-0">Cursos extras</th>
+                                            <th class="border-top-0">Cursos livres</th>
                                             <th class="border-top-0">Departamento Opcional</th>
-                                            <th class="border-top-0">Competências</th>
+                                            <th class="border-top-0">Soft Skills</th>
                                         </tr>
                                     </thead>
                                     <tbody>

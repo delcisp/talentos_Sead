@@ -25,16 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Autenticação bem-sucedida
     // Redireciona para a página do documento LGPD após o login bem-sucedido
     if (in_array($username, $admin_users)) {
+        // Caminho relativo para a página do dashboard
+        $dashboard_path = "./admin_dashboard/examples/dashboard.html";
+        
         // Redireciona para a página do dashboard
-        header('Location: dashboard.php');
-
-
-        exit();
-      } else {
-        // Redireciona para a página dos usuários normais (termos LGPD)
-        header('Location: lgpd.php');
-        exit();
-      }
+        header("Location: " . $dashboard_path);
+        exit(); // Certifique-se de que o script não continua a ser executado após o redirecionamento
+    }
+    
     } else {
 	echo "
 <script>
@@ -58,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <link rel="stylesheet" href="./Login/login.css">
     <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
