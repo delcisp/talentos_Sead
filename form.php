@@ -86,21 +86,40 @@ if(isset($_POST['submit'])) {
           <div id="cid_7" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_7" name="departament" aria-label="Department">
               <option value="">Selecione</option>
-              <option value="Administração">Administração</option>
-              <option value="Finanças">Finanças</option>
+              <option value="APEAM">APEAM</option>
+              <option value="APOIO AO GAB">APOIO AO GABINETE</option>
+              <option value="ARQUIVO ADM">ARQUIVO ADM</option>
+              <option value="ASCOM">ASCOM</option>
+              <option value="ATA">ASSSSORIA TÉCNICA</option>
+              <option value="AUDIT-EXT">AUDITORIA EXTERNA</option>
+              <option value="CI">CONTROLADORIA INTERNA</option>
+              <option value="CPAT">CPAT</option>
+              <option value="CRD">CRD</option>
+              <option value="CRD-DEF">CRD-DEFENSORIA</option>
+              <option value="CRI-SEAD">CRI-SEAD</option>
               <option value="CTA">CTA</option>
+              <option value="DAFI">DAFI</option>
+              <option value="DETI">DETI</option>
+              <option value="DGFC">GESTÃO DE FROTA E COMBUSTÍVEL</option>
+              <option value="ESASP">ESASP</option>
+              <option value="GCP">GERÊNCIA DE CONTAS PÚBLICAS</option>
+              <option value="GDP">GERÊNCIA DE DIÁRIAS E PASSAGENS</option>
+              <option value="GELOG">GELOG</option>
+              <option value="GEOF">GEOF</option>
               <option value="GEPES">GEPES</option>
-              <option value="TI">Tecnologia da Informação</option>
-              <option value="Comunicação">Comunicação</option>
-              <option value="Marketing">Marketing</option>
-              <option value="Ouvidoria">Ouvidoria</option>
+              <option value="GIPIAP">GIPIAP</option>
+              <option value="GT-CTA">GT CTA</option>
+              <option value="GT-MD">GT MD</option>
+              <option value="JUNTA -MED">JUNTA MÉDICA</option>
             </select>
           </div>
         </li>
         <li class="form-line form-line-column" data-type="control_textbox" id="id_8">
           <label class="form-label form-label-top" id="cargo"  for="input_8"> Cargo atual </label>
           <div id="cid_8" class="form-input-wide" data-layout="half">
-            <input type="text" id="input_8" name="role" data-type="input-textbox" class="form-textbox" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_8" />
+          <select class="form-dropdown" id="input_7" name="role" aria-label="Department">
+          <option value="">Selecione</option>
+            <input type="text" id="input_8" name="role" data-type="" class="" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_8" />
           </div>
         </li>
       </div>
