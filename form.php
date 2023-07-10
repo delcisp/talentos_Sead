@@ -66,25 +66,25 @@ if(isset($_POST['submit'])) {
   <div class="form-container">
     <form id="competence-form">
       <div class="form-line-container">
-        <li class="form-line form-line-column form-col-1" data-type="control_fullname" id="id_6">
+        <li class="form-line form-line-column form-col-1" data-type="control_fullname" id="id_1">
           <label class="form-label form-label-top" id="name" name="name" for="firstname">Nome</label>
-          <div id="cid_6" class="form-input-wide" data-layout="full">
+          <div id="cid_1" class="form-input-wide" data-layout="full">
             <div data-wrapper-react="true">
               <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-                <input type="text" id="firstname" name="firstname" class="form-textbox" data-defaultvalue="" autoComplete="section-input_6 given-name" size="10" value="" data-component="first" aria-labelledby="label_6 sublabel_6_first" />
-                <label class="form-sub-label" for="first_6" id="sublabel_6_first" style="min-height:13px" aria-hidden="false">Primeiro nome</label>
+                <input type="text" id="firstname" name="firstname" class="form-textbox" data-defaultvalue=""  value="" data-component="first" aria-labelledby="label_1 sublabel_1_first">
+                <label class="form-sub-label" for="first_1" id="sublabel_1_first" style="min-height:13px" aria-hidden="false">Primeiro nome</label>
               </span>
               <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-                <input type="text" id="last_6" name="lastname" class="form-textbox" data-defaultvalue="" autoComplete="section-input_6 family-name" size="15" value="" data-component="last" aria-labelledby="label_6 sublabel_6_last" />
-                <label class="form-sub-label" for="last_6" id="sublabel_6_last" style="min-height:13px" aria-hidden="false">Último nome</label>
+                <input type="text" id="last_1" name="lastname" class="form-textbox" data-defaultvalue="" autoComplete="section-input_1 family-name" size="15" value="" data-component="last" aria-labelledby="label_1 sublabel_1_last" />
+                <label class="form-sub-label" for="last_1" id="sublabel_1_last" style="min-height:13px" aria-hidden="false">Último nome</label>
               </span>
             </div>
           </div>
         </li>
-        <li class="form-line form-line-column form-col-2 form-line-column-right" data-type="control_dropdown" id="id_7">
-          <label class="form-label form-label-top" id="departament" for="input_7">Departamento</label>
-          <div id="cid_7" class="form-input-wide" data-layout="half">
-            <select class="form-dropdown" id="input_7" name="departament" aria-label="Department">
+        <li class="form-line form-line-column form-col-1 form-line-column-right" data-type="control_dropdown" id="id_2">
+          <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
+          <div id="cid_2" class="form-input-wide" data-layout="half">
+            <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
               <option value="">Selecione</option>
               <option value="APEAM">APEAM</option>
               <option value="APOIO AO GAB">APOIO AO GABINETE</option>
@@ -114,16 +114,18 @@ if(isset($_POST['submit'])) {
             </select>
           </div>
         </li>
-        <li class="form-line form-line-column" data-type="control_textbox" id="id_8">
-          <label class="form-label form-label-top" id="cargo"  for="input_8"> Cargo atual </label>
-          <div id="cid_8" class="form-input-wide" data-layout="half">
-          <select class="form-dropdown" id="input_7" name="role" aria-label="Department">
-          <option value="">Selecione</option>
-            <input type="text" id="input_8" name="role" data-type="" class="" data-defaultvalue="" style="width:310px" size="310" value="" data-component="textbox" aria-labelledby="label_8" />
+        <li class="form-line form-line-column form-col-2 form-line-column-left" data-type="control_dropdown" id="id_3">
+          <label class="form-label form-label-top" id="cargo"  for="input_3"> Cargo atual </label>
+          <div id="cid_3" class="form-input-wide" data-layout="half">
+          <select class="form-dropdown" id="input_3" name="role" aria-label="Role">
+            <option value="Selecione">Selecione</option>
+            
+          </select>
           </div>
         </li>
       </div>
-      <li class="form-line" data-type="control_textarea" id="first_question"><label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem formação? Se sim, qual? </label>
+      <li class="form-line" data-type="control_textarea" id="first_question">
+        <label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem formação? Se sim, qual? </label>
       
     <div id="cid_5" class="form-input-wide" data-layout=""> <textarea id="input_5" class="form-textarea" name="firstquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_5" placeholder="Exemplo: Graduação, bacharelado, pós-graduação, mestrado, doutorado, especialização."></textarea>
   </div>
