@@ -26,23 +26,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Redireciona para a página do documento LGPD após o login bem-sucedido
     if (in_array($username, $admin_users)) {
         // Caminho relativo para a página do dashboard
-        $dashboard_path = "./admin_dashboard/examples/dashboard.html";
+        $dashboard_path = "./admin_dashboard/examples/dashboard.php";
         
         // Redireciona para a página do dashboard
         header("Location: " . $dashboard_path);
         exit(); // Certifique-se de que o script não continua a ser executado após o redirecionamento
-    }
-    
     } else {
-	echo "
-<script>
-  window.addEventListener('DOMContentLoaded', function() {
-    alert('Login ou senha inválidos!');
-  });
-</script>
-";
-    
-  }
+        // Redireciona para a página "lgpd.php" se o usuário não for administrador
+        $lgpd_path = "./lgpd.php";
+        header("Location: " . $lgpd_path);
+        exit();
+    }
+} else {
+    echo "
+    <script>
+      window.addEventListener('DOMContentLoaded', function() {
+        alert('Login ou senha inválidos!');
+      });
+    </script>
+    ";
+    // Outras ações a serem realizadas em caso de falha na autenticação
+}
 }
 ?>
 

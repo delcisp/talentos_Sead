@@ -1,17 +1,46 @@
-<!-- 
-=========================================================
- Light Bootstrap Dashboard - v2.0.1
-=========================================================
+<?php
+include_once('../../config.php');
 
- Product Page: https://www.creative-tim.com/product/light-bootstrap-dashboard
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/light-bootstrap-dashboard/blob/master/LICENSE)
+$sql = "SELECT * FROM usuarios ORDER BY id DESC";
+$result = $conn->query($sql);
+$sql = "SELECT competencia FROM usuarios";
+$resultCompetencia = $conn->query($sql);
 
- Coded by Creative Tim
+// Array para armazenar as competências mais selecionadas
+$competencias = array();
 
-=========================================================
+// Verifica se a consulta retornou resultados
+if ($resultCompetencia->num_rows > 0) {
+    // Loop pelos resultados da consulta
+    while ($row = $resultCompetencia->fetch_assoc()) {
+        $competenciasSelecionadas = explode(", ", $row["competencia"]);
+        foreach ($competenciasSelecionadas as $competencia) {
+            $competencias[] = $competencia;
+        }
+    }
+}
 
- The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  -->
+// Conta as ocorrências de cada competência
+$competenciasContagem = array_count_values($competencias);
+
+// Ordena as competências por contagem em ordem decrescente
+arsort($competenciasContagem);
+
+// Pega as 5 competências mais selecionadas
+$competenciasSelecionadas = array_keys(array_slice($competenciasContagem, 0, 5));
+
+$competenciasData = array();
+foreach ($competenciasSelecionadas as $competencia) {
+    $competenciasData[] = array(
+        "category" => $competencia,
+        "value" => $competenciasContagem[$competencia]
+    );
+}
+
+$competenciasPHP = json_encode($competenciasData);
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="pt-br">
@@ -61,33 +90,9 @@
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./table.html">
+                        <a class="nav-link" href="../../lgpd.php">
                             <i class="nc-icon nc-notes"></i>
                             <p>Formulário</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./typography.html">
-                            <i class="nc-icon nc-paper-2"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./icons.html">
-                            <i class="nc-icon nc-atom"></i>
-                            <p>Icons</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./maps.html">
-                            <i class="nc-icon nc-pin-3"></i>
-                            <p>Maps</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="./notifications.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Notifications</p>
                         </a>
                     </li>
                   
@@ -136,7 +141,6 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar -->
             <div class="content">
                 <div class="container-fluid">
                     <div class="row">
@@ -233,172 +237,39 @@
                                 <div class="card-body ">
                                     <div class="table-full-width">
                                         <table class="table">
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="" checked>
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="" checked>
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td>
-                                                    </td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" checked>
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="">
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>
-                                                        <div class="form-check">
-                                                            <label class="form-check-label">
-                                                                <input class="form-check-input" type="checkbox" value="" disabled>
-                                                                <span class="form-check-sign"></span>
-                                                            </label>
-                                                        </div>
-                                                    </td>
-                                                    <td></td>
-                                                    <td class="td-actions text-right">
-                                                        <button type="button" rel="tooltip" title="Edit Task" class="btn btn-info btn-simple btn-link">
-                                                            <i class="fa fa-edit"></i>
-                                                        </button>
-                                                        <button type="button" rel="tooltip" title="Remove" class="btn btn-danger btn-simple btn-link">
-                                                            <i class="fa fa-times"></i>
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                                <div class="card-footer ">
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="now-ui-icons loader_refresh spin"></i>
-                                    </div>
-                                </div>
+                                                <thead>
+                                                    <tr class="bg-light">
+                                                        <th class="border-top-0">Usuário</th>
+                                                        <th class="border-top-0">Departamento</th>
+                                                        <th class="border-top-0">Cargo</th>
+                                                        <th class="border-top-0">Formações</th>
+                                                        <th class="border-top-0">Cursos livres</th>
+                                                        <th class="border-top-0">Departamento Opcional</th>
+                                                        <th class="border-top-0">Soft Skills</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                    while($user_data = mysqli_fetch_assoc($result))
+                                                    {   
+                                                        echo "<tr>";
+                                                        echo "<td class='custom-class'>".$user_data['firstname']." ".$user_data['lastname']."</td>";
+                                                        echo "<td class='custom-class'>".$user_data['departament']. "</td>";
+                                                        echo "<td class='custom-class'>".$user_data['role']. "</td>";
+                                                        echo "<td class='custom-class'>".$user_data['firstquestion']. "</td>";
+                                                        echo "<td class='custom-class'>".$user_data['secondquestion']. "</td>";
+                                                        echo "<td class='custom-class'>".$user_data['thirdquestion']. "</td>";
+                                                        echo "<td class='custom-class'>".$user_data['competencia']. "</td>"; 
+                                                        echo "</tr>";
+                                                    } 
+                                                    ?>
+                                                </tbody>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="footer">
-                <div class="container-fluid">
-                    <nav>
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="#">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Company
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Portfolio
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    Blog
-                                </a>
-                            </li>
-                        </ul>
-                        <p class="copyright text-center">
-                            ©
-                            <script>
-                                document.write(new Date().getFullYear())
-                            </script>
-                            <a href="http://www.creative-tim.com">Creative Tim</a>, made with love for a better web
-                        </p>
-                    </nav>
-                </div>
-            </footer>
+          
         </div>
     </div>
     <!--   -->

@@ -11,22 +11,35 @@ body {
     color: #040406;
   }
   
-  
+   /* competencias */
   label {
     display: block;
     text-align: center;
   }
-
+ 
   .form-check {
     color: #040406;
     text-align: center;
     font-size: 14px;
   }
+  .competencias {
+    display: grid;
+    grid-template-columns: repeat(5, 2fr);
+    gap: 10px;
+  }
+  .competence-label {
+    color: #040406;
+    margin-bottom: 50px;
+    font-size: 30px;
+    text-align: justify;
+    font-weight: bold;
+    margin-left: 95px;
+  }
   
   .form-container {
     border: 5px solid #f5fefd;
     padding: 5px;
-    max-width: 900px;
+    max-width: 1000px;
     width: auto;
     height: auto;
     display: flex;
@@ -37,189 +50,37 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
     
   }
-  
-  .form-container select,
-  .form-container textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  #departament {
-    color: #040406;
-    margin-left: auto;
-  }
-  
-  
-  #input_2 {
-    width: 50%;
-    padding: 10px;
-    margin-left: auto;
-    font-size: 16px;
-    border: 1px solid #040406;
-    border-radius: 4px;
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 4px #040406;
-    }
-  }
-  
-  #input_2 option {
-    font-size: 16px;
-    color: #040406;
-  }
-  
-  #input_2 option:hover { 
-    background-color: #040406;
-  }
-  
-  #input_3 {
+  #input_2,
+  #input_3,
+  #input_4 {
     width: 100%;
     padding: 10px;
     font-size: 16px;
     border: 1px solid #040406;
     border-radius: 4px;
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 4px #040406;
-    }
   }
   
-  #input_3 option {
+  #input_2:focus,
+  #input_3:focus,
+  #input_4:focus {
+    outline: none;
+    box-shadow: 0 0 4px #040406;
+  }
+  
+  #input_2 option,
+  #input_3 option,
+  #input_4 option {
     font-size: 16px;
     color: #040406;
   }
   
-  #input_3 option:hover { 
+  #input_2 option:hover,
+  #input_3 option:hover,
+  #input_4 option:hover {
     background-color: #040406;
   }
   
-  .competencias {
-    display: grid;
-    grid-template-columns: repeat(5, 2fr);
-    gap: 10px;
-  }
-  
-  @media (min-width: 320px) and (max-width: 680px) {
-    body {
-      padding: 10px;
-    }
-  
-    .form-container {
-      padding: 10px;
-      max-width: 100%;
-      width: 100%;
-      height: auto;
-    }
-  
-    .competencias {
-      grid-template-columns: repeat(3, 2fr);
-      gap: 5px;
-    }
-  
-    .competence-label {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-  
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-    }
-  
-    .form-scale-table {
-      display: grid;
-      grid-template-columns: 1fr;
-    }
-  
-    .form-line-container {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .form-line-column-right {
-      position: static;
-      width: 100%;
-    }
-  
-    .form-check-label {
-      text-align: center;
-      margin: 5px 0;
-    }
-  
-    .rating-item-group {
-      margin-left: 0;
-    }
-  
-    .form-label {
-      font-size: 20px;
-      margin: 0;
-      text-align: left;
-    }
-  
-    .form-textbox {
-      width: 100%;
-      padding: 8px;
-      font-size: 16px;
-    }
-  
-    .form-input-wide {
-      width: 100%;
-    }
-  
-    .form-radio {
-      display: none;
-    }
-  
-    .rating-item input[type="radio"] + label {
-      background-color: #FFF;
-      color: #040406;
-    }
-  
-    .rating-item input[type="radio"]:checked + label {
-      background-color: #20c997;
-      color: #040406;
-      border-color: #040406;
-    }
-  
-    .competence-label {
-      font-weight: bold;
-      margin-left: 0;
-    }
-  
-    .submit {
-      width: 100%;
-      margin: 10px auto;
-    }
-  }
-  
-    
-  
-  
-  
-  
-  @media (min-width: 769px) and (max-width: 1200px) {
-    .container {
-      grid-template-columns: repeat(2, 1fr);
-      display: flex;
-      flex-wrap: wrap;
-    }
-  }
-  
-  .competence-label {
-    color: #040406;
-    margin-bottom: 50px;
-    font-size: 30px;
-    text-align: center;
-  
-    
-  }
-  
-  .form-scale-table {
-    display: flex;
-    flex-direction: column;
-  }
-  
+  /* rating questions */
   .rating-item-group {
     display: flex;
     align-items: flex-start;
@@ -249,23 +110,9 @@ body {
     margin: 0px 0px 14px 2px;
     text-align: center;
     color: #040406;
-  }
+  } 
   
-  #label_8 {
-    color: #040406;
-  }
-  
-  #label_5 {
-    color: #040406;
-  }
-  
-  #label_6 {
-    color: #040406;
-  }
-  
-  #label_7 {
-    color: #040406;
-  }
+ 
   
   .submit {
     position: relative;
@@ -293,25 +140,7 @@ body {
     font-size: 18px;
     font-weight: 300;
   }
-  
-  .spans:nth-child(1) {
-    display: block;
-    width: 10px;
-    height: 2px;
-    background-color: #040406;
-    transform: rotate(45deg);
-  }
-  
-  .spans:nth-child(2) {
-    display: block;
-    width: 20px;
-    height: 2px;
-    background-color: #040406;
-    transform: rotate(-45deg) translate3d(14px, -4px, 0);
-    transform-origin: 100%;
-  }
-  
-    
+      
   .check {
     width: 100%;
     height: 100%;
@@ -392,15 +221,16 @@ body {
     display: flex;
     flex-wrap: wrap;
     position: relative;
+    width: 100%;
   }
-  
   .form-line-column-right {
     position: absolute;
     top: 0;
     right: 0;
-    width: 310px;
+    width: 50%;
   }
   
+
   .form-label {
     display: block;
     font-weight: bold;
@@ -432,17 +262,7 @@ body {
   }
 
   
-  .form-sub-label-container {
-    display: inline-block;
-    vertical-align: top;
-    margin-bottom: 5px;
-  }
   
-  .form-sub-label {
-    display: block;
-    font-size: 13px;
-    color: #040406;
-  }
 .form-radio {  
   display: none;
 }
@@ -457,9 +277,3 @@ background-color: #20c997; /* #4C516D , #004F98 , #2D5DA1 , #00356B */
 color: #040406;
 }
 
-.competence-label {
-
-font-weight: bold;
-margin-left: 60px;
-
-}
