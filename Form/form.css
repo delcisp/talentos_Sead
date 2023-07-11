@@ -32,14 +32,7 @@ body {
     grid-template-columns: repeat(5, 2fr);
     gap: 10px;
   }
-  .competence-label {
-    color: #040406;
-    margin-bottom: 50px;
-    font-size: 30px;
-    text-align: justify;
-    font-weight: bold;
-    margin-left: 95px;
-  }
+  
   
   .form-container {
     border: 5px solid #f5fefd;
@@ -92,12 +85,6 @@ body {
     margin-left: 80px;
   }
   
-  .rating-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 4px;
-    margin-right: 4px;
-  }
   
   .rating-item {
     margin: 8px;
@@ -105,6 +92,7 @@ body {
   
   .rating-item-title {
     margin-right: 5px;
+    white-space: nowrap;
   }
   
   .form-label,
@@ -246,7 +234,9 @@ body {
     right: 0;
     width: 50%;
   }
-  
+   .form-label-config {
+    margin-bottom: 40px;
+   }
 
   .form-label {
     display: block;

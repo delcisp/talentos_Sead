@@ -111,14 +111,15 @@ if(isset($_POST['submit'])) {
   </div>
 </li>
         </div>
-      <li class="form-line" data-type="control_textarea" id="id_5"><label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos de formação? Se sim, quais?</label>
+      <li class="form-line" data-type="control_textarea" id="id_5">
+        <label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos de formação? Se sim, quais?</label>
     <div id="cid_5" class="form-input-wide" data-layout=""> <textarea id="input_5" class="form-textarea" name="secondquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_5" placeholder="Exemplo: Cursos livres, cursos técnicos, atualização profissional"></textarea> </div>
   </li>
   <li class="form-line" data-type="control_textarea" id="id_6"><label class="form-label form-label-top form-label-auto" id="textquestiontwo" for="input_6">De acordo com seus conhecimentos, existe outro departamento em que gostaria de atuar? Se sim, qual?</label>
-    <div id="cid_6" class="form-input-wide" data-layout=""> <textarea id="input_6" class="form-textarea" name="thirdquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_6" placeholder="Exemplo: Ouvidoria, Comunicação, ESASP, Administração, Finanças etc"></textarea> </div>
+    <div id="cid_6" class="form-input-wide" data-layout=""> <textarea id="input_6" class="form-textarea" name="thirdquestion" style="width:648px;height:80px;margin-top: 15px;margin-bottom:30px;" data-component="textarea" aria-labelledby="label_6" placeholder="Exemplo: Ouvidoria, Comunicação, ESASP, Administração, Finanças etc"></textarea> </div>
   </li>
       <!-- Selecionar competencias -->
-      <label for="competence-select" class="competence-label">Selecione até 5 características que você se identifica:</label>
+      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 características que você se identifica:</label>
       <!-- Formulário -->
       <div class="competencias">
         <div class="form-check">
@@ -315,11 +316,11 @@ if(isset($_POST['submit'])) {
             <input type="checkbox" class="form-check-input" id="competencia43" name="competencia[]" value="Visão crítica" />
             <label class="form-check-label" for="competencia43">Visão crítica</label>
           </div>
+          </div>
         </form>
         <li class="form-line" data-type="control_scale" id="id_7">
-  <label class="form-label form-label-top form-label-auto" id="ratingquestion" for="input_7">Quão satisfeito você está com a equipe que trabalha?</label>
+  <label class="form-label form-label-top" id="ratingquestion" for="input_7">Quão satisfeito você está com a equipe que trabalha?</label>
   <div id="cid_7" class="form-input-wide" data-layout="full">
-    <span class="form-sub-label-container" style="vertical-align:top">
       <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0" class="form-scale-table" data-component="scale" style="white-space: nowrap;">
         <div class="rating-item-group">
           <div class="rating-item">
@@ -369,7 +370,7 @@ if(isset($_POST['submit'])) {
     </span>
   </div>
 </li>
-  <li class="form-line" data-type="control_scale" id="ratingquestiontwo">
+<li class="form-line" data-type="control_scale" id="ratingquestiontwo">
     <label class="form-label form-label-top form-label-auto" id="label_8" for="input_8">Quão satisfeito você está com as decisões da sua vida?</label>
     <div id="cid_8" class="form-input-wide" data-layout="full">
       <span class="form-sub-label-container" style="vertical-align:top">
@@ -424,7 +425,6 @@ if(isset($_POST['submit'])) {
       </span>
     </div>
   </li>
-  </div>
   <li class="form-line" data-type="control_button" id="id_submit">
     <div id="cid_submit" class="form-input-wide" data-layout="full">
       <button class="submit" id="submit" name="submit" >Enviar</button>
@@ -436,6 +436,7 @@ if(isset($_POST['submit'])) {
       </div>
     </div>
   </li>
+  </div>
 </body>
 <script src="./Form/form.js"></script>
 

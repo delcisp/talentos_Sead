@@ -46,7 +46,7 @@ $competenciasPHP = json_encode($competenciasData);
 <html lang="pt-br">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -60,8 +60,17 @@ $competenciasPHP = json_encode($competenciasData);
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="../assets/css/demo.css" rel="stylesheet" />
+    <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 </head>
-
+<style>
+    #chartdiv {
+      width: 100%;
+      height: 330px;
+      align-items: center;
+    }
+    </style>
 <body>
     <div class="wrapper">
         <div class="sidebar" data-image="">
@@ -150,14 +159,39 @@ $competenciasPHP = json_encode($competenciasData);
                                     <h4 class="card-title">Soft Skills</h4>
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
-                                <div class="card-body ">
-                                    <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Afabilidade
-                                        <i class="fa fa-circle text-danger"></i> Ética
-                                        <i class="fa fa-circle text-warning"></i> Concentração
-                                    </div>
-                                    <hr>
+                                <div class="card-body">
+                                <div id="chartdiv"></div>
+                            
+      <script>
+    am5.ready(function() {
+        var root = am5.Root.new("chartdiv");
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        var chart = root.container.children.push(am5percent.PieChart.new(root, {
+            layout: root.verticalLayout
+        }));
+
+        var series = chart.series.push(am5percent.PieSeries.new(root, {
+            valueField: "value",
+            categoryField: "category"
+        }));
+
+        var competenciasData = <?php echo $competenciasPHP; ?>;
+        series.data.setAll(competenciasData);
+
+        var legend = chart.children.push(am5.Legend.new(root, {
+            centerX: am5.percent(50),
+            x: am5.percent(50),
+            marginTop: 15,
+            marginBottom: 15
+        }));
+
+        legend.data.setAll(series.dataItems);
+
+        series.appear(1000, 100);
+    });
+</script>
+<hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
                                     </div>
@@ -188,7 +222,7 @@ $competenciasPHP = json_encode($competenciasData);
                         <div class="col-md-4">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Cursos livres</h4>
+                                    <h4 class="card-title">Formações de ensino superior</h4>
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">
@@ -207,27 +241,7 @@ $competenciasPHP = json_encode($competenciasData);
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h4 class="card-title">Formações</h4>
-                                    <p class="card-category">Graduação, pós-graduação, mestrado, doutorado, especializações</p>
-                                </div>
-                                <div class="card-body ">
-                                    <div id="chartActivity" class="ct-chart"></div>
-                                </div>
-                                <div class="card-footer ">
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Engenheira Civil
-                                        <i class="fa fa-circle text-danger"></i>Advocacia
-                                    </div>
-                                    <hr>
-                                    <div class="stats">
-                                        <i class="fa fa-check"></i> Informações certificadas
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-md-6">
                             <div class="card  card-tasks">
                                 <div class="card-header ">
