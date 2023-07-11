@@ -62,10 +62,8 @@ if(isset($_POST['submit'])) {
 </head>
 
 <body>
-  
-<form action="form.php" method="POST">
+  <form action="form.php" method="POST">
   <div class="form-container">
-    <form id="competence-form">
       <div class="form-line-container">
       <li class="form-line form-line-column form-col-1 form-line-column-left" data-type="control_fullname" id="id_1">
           <label class="form-label form-label-top" id="name" name="name" for="firstname">Nome</label>
@@ -82,41 +80,14 @@ if(isset($_POST['submit'])) {
             </div>
           </div>
         </li>
-        <li class="form-line form-line-column form-col-1 form-line-column-right" data-type="control_dropdown" id="id_2">
+        <li class="form-line form-line-column form-line-column-right form-col-2" data-type="control_dropdown" id="id_2">
           <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
           <div id="cid_2" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
               <option value="">Selecione</option>
-              <option value="APEAM">APEAM</option>
-              <option value="APOIO AO GAB">APOIO AO GABINETE</option>
-              <option value="ARQUIVO ADM">ARQUIVO ADM</option>
-              <option value="ASCOM">ASCOM</option>
-              <option value="ATA">ASSSSORIA TÉCNICA</option>
-              <option value="AUDIT-EXT">AUDITORIA EXTERNA</option>
-              <option value="CI">CONTROLADORIA INTERNA</option>
-              <option value="CPAT">CPAT</option>
-              <option value="CRD">CRD</option>
-              <option value="CRD-DEF">CRD-DEFENSORIA</option>
-              <option value="CRI-SEAD">CRI-SEAD</option>
-              <option value="CTA">CTA</option>
-              <option value="DAFI">DAFI</option>
-              <option value="DETI">DETI</option>
-              <option value="DGFC">GESTÃO DE FROTA E COMBUSTÍVEL</option>
-              <option value="ESASP">ESASP</option>
-              <option value="GCP">GERÊNCIA DE CONTAS PÚBLICAS</option>
-              <option value="GDP">GERÊNCIA DE DIÁRIAS E PASSAGENS</option>
-              <option value="GELOG">GELOG</option>
-              <option value="GEOF">GEOF</option>
-              <option value="GEPES">GEPES</option>
-              <option value="GIPIAP">GIPIAP</option>
-              <option value="GT-CTA">GT CTA</option>
-              <option value="GT-MD">GT MD</option>
-              <option value="JUNTA -MED">JUNTA MÉDICA</option>
-             
-            </select>
+                   </select>
           </div>
         </li>
-        </div>
         <li class="form-line form-line-column form-col-2 form-line-column-left" data-type="control_dropdown" id="id_3">
           <label class="form-label form-label-bottom" id="cargo"  for="input_3"> Cargo atual </label>
           <div id="cid_3" class="form-input-wide" data-layout="half">
@@ -125,17 +96,22 @@ if(isset($_POST['submit'])) {
           </select>
           </div>
         </li>
-        <li class="form-line form-line-column form-col-2 " data-type="control_dropdown" id="id_4">
-          <label class="form-label form-label-right" id="formacao"  for="input_4"> Você tem formação? Se sim, qual? </label>
-          <div id="cid_4" class="form-input-wide" data-layout="half">
-          <select class="form-dropdown" id="input_4" name="formacao" aria-label="Formacao">
-            <option value="Selecione">Selecione</option>
-          </select>
-          </div>
-        </li>
-     
-      
-  <li class="form-line" data-type="control_textarea" id="id_5"><label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos de formação? Se sim, quais?</label>
+        <li class="form-line form-line-column form-line-column-input-four" data-type="control_dropdown" id="id_4">
+  <label class="form-label form-label-right" id="formacao" for="input_4"> Quais formaçoes voce tem? </label>
+  <div id="cid_4" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_4" name="formacao" aria-label="Formacao" onchange="mostrarCampoPersonalizado(this)">
+      <option value="Selecione">Selecione</option>
+      <option value="Nao tenho formaçao">Nao tenho formaçao</option>
+      <option value="outros">outros</option>
+    </select>
+  </div>
+  <div id="campoPersonalizado" style="display: none;">
+    <label for="textoPersonalizado">Digite sua opção:</label>
+    <input type="text" id="textoPersonalizado" name="textoPersonalizado" onblur="atualizarOpcaoPersonalizada(this.value)">
+  </div>
+</li>
+        </div>
+      <li class="form-line" data-type="control_textarea" id="id_5"><label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos de formação? Se sim, quais?</label>
     <div id="cid_5" class="form-input-wide" data-layout=""> <textarea id="input_5" class="form-textarea" name="secondquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_5" placeholder="Exemplo: Cursos livres, cursos técnicos, atualização profissional"></textarea> </div>
   </li>
   <li class="form-line" data-type="control_textarea" id="id_6"><label class="form-label form-label-top form-label-auto" id="textquestiontwo" for="input_6">De acordo com seus conhecimentos, existe outro departamento em que gostaria de atuar? Se sim, qual?</label>
@@ -158,7 +134,6 @@ if(isset($_POST['submit'])) {
             <input type="checkbox" class="form-check-input" id="competencia3" name="competencia[]" value="Autocontrole" />
              <label class="form-check-label" for="competencia3">Autocontrole</label> 
           </div>
-          
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="competencia4" name="competencia[]" value="Capacidade de agir sob pressão" />
           <label class="form-check-label" for="competencia4">Capacidade de agir sob pressão</label> 
@@ -340,68 +315,60 @@ if(isset($_POST['submit'])) {
             <input type="checkbox" class="form-check-input" id="competencia43" name="competencia[]" value="Visão crítica" />
             <label class="form-check-label" for="competencia43">Visão crítica</label>
           </div>
-        
         </form>
-  </div>
-
-  
-
-  <li class="form-line" data-type="control_scale" id="id_7">
-    <label class="form-label form-label-top form-label-auto" id="ratingquestion" for="input_7">Quão satisfeito você está com a equipe que trabalha?</label>
-    <div id="cid_7" class="form-input-wide" data-layout="full">
-      <span class="form-sub-label-container" style="vertical-align:top">
-        <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0" class="form-scale-table" data-component="scale">
-          <div class="rating-item-group">
-            <div class="rating-item">
-              <span class="rating-item-title for-from">
-               
-              </span>
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1" id="input_7_1" />
-              <label for="input_7_1">1</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2" id="input_7_2" />
-              <label for="input_7_2">2</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3" id="input_7_3" />
-              <label for="input_7_3">3</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="4" title="4" id="input_7_4" />
-              <label for="input_7_4">4</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="5" title="5" id="input_7_5" />
-              <label for="input_7_5">5</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="6" title="6" id="input_7_6" />
-              <label for="input_7_6">6</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="7" title="7" id="input_7_7" />
-              <label for="input_7_7">7</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="8" title="8" id="input_7_8" />
-              <label for="input_7_8">8</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="9" title="9" id="input_7_9" />
-              <label for="input_7_9">9</label>
-            </div>
-            <div class="rating-item">
-              <span class="rating-item-title for-to">
-              </span>
-              <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10" id="input_7_10" />
-              <label for="input_7_10">10</label>
-            </div>
+        <li class="form-line" data-type="control_scale" id="id_7">
+  <label class="form-label form-label-top form-label-auto" id="ratingquestion" for="input_7">Quão satisfeito você está com a equipe que trabalha?</label>
+  <div id="cid_7" class="form-input-wide" data-layout="full">
+    <span class="form-sub-label-container" style="vertical-align:top">
+      <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0" class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+        <div class="rating-item-group">
+          <div class="rating-item">
+            <span class="rating-item-title for-from"></span>
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1" id="input_7_1" />
+            <label for="input_7_1">1</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2" id="input_7_2" />
+            <label for="input_7_2">2</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3" id="input_7_3" />
+            <label for="input_7_3">3</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="4" title="4" id="input_7_4" />
+            <label for="input_7_4">4</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="5" title="5" id="input_7_5" />
+            <label for="input_7_5">5</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="6" title="6" id="input_7_6" />
+            <label for="input_7_6">6</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="7" title="7" id="input_7_7" />
+            <label for="input_7_7">7</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="8" title="8" id="input_7_8" />
+            <label for="input_7_8">8</label>
+          </div>
+          <div class="rating-item">
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="9" title="9" id="input_7_9" />
+            <label for="input_7_9">9</label>
+          </div>
+          <div class="rating-item">
+            <span class="rating-item-title for-to"></span>
+            <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10" id="input_7_10" />
+            <label for="input_7_10">10</label>
           </div>
         </div>
-      </span>
-    </div>
-  </li>
+      </div>
+    </span>
+  </div>
+</li>
   <li class="form-line" data-type="control_scale" id="ratingquestiontwo">
     <label class="form-label form-label-top form-label-auto" id="label_8" for="input_8">Quão satisfeito você está com as decisões da sua vida?</label>
     <div id="cid_8" class="form-input-wide" data-layout="full">
@@ -457,6 +424,7 @@ if(isset($_POST['submit'])) {
       </span>
     </div>
   </li>
+  </div>
   <li class="form-line" data-type="control_button" id="id_submit">
     <div id="cid_submit" class="form-input-wide" data-layout="full">
       <button class="submit" id="submit" name="submit" >Enviar</button>
@@ -469,7 +437,6 @@ if(isset($_POST['submit'])) {
     </div>
   </li>
 </body>
-
 <script src="./Form/form.js"></script>
 
 </html>
