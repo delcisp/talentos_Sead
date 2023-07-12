@@ -42,7 +42,7 @@ if(isset($_POST['submit'])) {
   else {
     echo "<script>alert('$errorMsg');</script>";
   }
-}
+}//
 ?>
 <!DOCTYPE html>
 <html>

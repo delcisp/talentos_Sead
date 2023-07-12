@@ -20,7 +20,6 @@ if ($resultCompetencia->num_rows > 0) {
         }
     }
 }
-
 // Conta as ocorrências de cada competência
 $competenciasContagem = array_count_values($competencias);
 
@@ -40,7 +39,7 @@ foreach ($competenciasSelecionadas as $competencia) {
 
 $competenciasPHP = json_encode($competenciasData);
 
-
+//
 ?>
 
 <!DOCTYPE html>

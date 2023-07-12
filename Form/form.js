@@ -39,7 +39,7 @@ function redirecionar() {
       }
     });
   });
-  
+  //
 
   function mostrarCampoPersonalizado(selectElement) {
     var campoPersonalizado = document.getElementById('campoPersonalizado');
