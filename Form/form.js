@@ -2,25 +2,44 @@ function redirecionar() {
     window.location.href = './agradecimento.php';
   } 
 
-  const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-
-  let checkedCount = 0;
+  const checkboxesPergunta1 = document.querySelectorAll('input[name="hardcompetencia[]"]');
+  const checkboxesPergunta2 = document.querySelectorAll('input[name="competencia[]"]');
   
-  checkboxes.forEach(function (checkbox) {
+  let checkedCountPergunta1 = 0;
+  let checkedCountPergunta2 = 0;
+  
+  checkboxesPergunta1.forEach(function (checkbox) {
     checkbox.addEventListener('change', function () {
       if (this.checked) {
-        checkedCount++;
+        checkedCountPergunta1++;
       } else {
-        checkedCount--;
+        checkedCountPergunta1--;
       }
   
-      if (checkedCount > 5) {
-        this.checked = false; // Desmarca o checkbox selecionado
-        checkedCount--;
-        alert('Selecione apenas 5 características.'); // Exibe o alerta
+      if (checkedCountPergunta1 > 5) {
+        this.checked = false; 
+        checkedCountPergunta1--;
+        alert('Selecione apenas 5 características.'); 
       }
     });
   });
+  
+  checkboxesPergunta2.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+      if (this.checked) {
+        checkedCountPergunta2++;
+      } else {
+        checkedCountPergunta2--;
+      }
+  
+      if (checkedCountPergunta2 > 5) {
+        this.checked = false; 
+        checkedCountPergunta2--;
+        alert('Selecione apenas 5 características.'); 
+      }
+    });
+  });
+  
 
   function mostrarCampoPersonalizado(selectElement) {
     var campoPersonalizado = document.getElementById('campoPersonalizado');

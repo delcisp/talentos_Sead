@@ -5,7 +5,7 @@ if(isset($_POST['submit'])) {
   $allAnswered = true;
   $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
 
-  if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["departament"]) || empty($_POST["role"]) || empty($_POST["firstquestion"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || empty($_POST["competencia"])) {
+  if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["departament"]) || empty($_POST["role"]) || empty($_POST["firstquestion"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
@@ -26,20 +26,18 @@ if(isset($_POST['submit'])) {
     
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
+
+    $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
+    $competenciaHardString = implode(", ", $competenciaHardSelecionada);
    
-
-
-    $query = "INSERT INTO usuarios(firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia) VALUES
-    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString')";
+    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia, hardcompetencia) VALUES
+    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString', '$competenciaHardString')";
 
     $result = mysqli_query($conn, $query);
   
     $redirectURL = 'agradecimento.php?firstname=' . urlencode($firstname);
     header('Location: ' . $redirectURL);
     exit;
-
-    // header("Location: agradecimento.php");
-  //  exit();
   }
   else {
     echo "<script>alert('$errorMsg');</script>";
@@ -85,6 +83,31 @@ if(isset($_POST['submit'])) {
           <div id="cid_2" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
               <option value="">Selecione</option>
+              <option value="APEAM">APEAM</option>
+              <option value="APOIO AO GAB">APOIO AO GABINETE</option>
+              <option value="ARQUIVO ADM">ARQUIVO ADM</option>
+              <option value="ASCOM">ASCOM</option>
+              <option value="ATA">ASSSSORIA TÉCNICA</option>
+              <option value="AUDIT-EXT">AUDITORIA EXTERNA</option>
+              <option value="CI">CONTROLADORIA INTERNA</option>
+              <option value="CPAT">CPAT</option>
+              <option value="CRD">CRD</option>
+              <option value="CRD-DEF">CRD-DEFENSORIA</option>
+              <option value="CRI-SEAD">CRI-SEAD</option>
+              <option value="CTA">CTA</option>
+              <option value="DAFI">DAFI</option>
+              <option value="DETI">DETI</option>
+              <option value="DGFC">GESTÃO DE FROTA E COMBUSTÍVEL</option>
+              <option value="ESASP">ESASP</option>
+              <option value="GCP">GERÊNCIA DE CONTAS PÚBLICAS</option>
+              <option value="GDP">GERÊNCIA DE DIÁRIAS E PASSAGENS</option>
+              <option value="GELOG">GELOG</option>
+              <option value="GEOF">GEOF</option>
+              <option value="GEPES">GEPES</option>
+              <option value="GIPIAP">GIPIAP</option>
+              <option value="GT-CTA">GT CTA</option>
+              <option value="GT-MD">GT MD</option>
+              <option value="JUNTA -MED">JUNTA MÉDICA</option>
                    </select>
           </div>
         </li>
@@ -93,16 +116,18 @@ if(isset($_POST['submit'])) {
           <div id="cid_3" class="form-input-wide" data-layout="half">
           <select class="form-dropdown" id="input_3" name="role" aria-label="Role">
             <option value="Selecione">Selecione</option>
+            <option value="Lorem">Lorem</option>
+            <option value="Ipsum">Ipsum</option>
           </select>
           </div>
         </li>
         <li class="form-line form-line-column form-line-column-input-four" data-type="control_dropdown" id="id_4">
-  <label class="form-label form-label-right" id="formacao" for="input_4"> Quais formaçoes voce tem? </label>
+  <label class="form-label form-label-right" id="firstquestion" for="input_4"> Quais formaçoes voce tem? </label>
   <div id="cid_4" class="form-input-wide" data-layout="half">
-    <select class="form-dropdown" id="input_4" name="formacao" aria-label="Formacao" onchange="mostrarCampoPersonalizado(this)">
+    <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion" onchange="mostrarCampoPersonalizado(this)">
       <option value="Selecione">Selecione</option>
       <option value="Nao tenho formaçao">Nao tenho formaçao</option>
-      <option value="outros">outros</option>
+      <option value="outros">Outros</option>
     </select>
   </div>
   <div id="campoPersonalizado" style="display: none;">
@@ -113,13 +138,95 @@ if(isset($_POST['submit'])) {
         </div>
       <li class="form-line" data-type="control_textarea" id="id_5">
         <label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos de formação? Se sim, quais?</label>
-    <div id="cid_5" class="form-input-wide" data-layout=""> <textarea id="input_5" class="form-textarea" name="secondquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_5" placeholder="Exemplo: Cursos livres, cursos técnicos, atualização profissional"></textarea> </div>
+    <div id="cid_5" class="form-input-wide" data-layout=""> 
+      <textarea id="input_5" class="form-textarea" name="secondquestion" style="width:648px;height:80px;margin-top: 15px;" data-component="textarea" aria-labelledby="label_5" placeholder="Exemplo: Cursos livres, cursos técnicos, atualização profissional"></textarea> </div>
   </li>
   <li class="form-line" data-type="control_textarea" id="id_6"><label class="form-label form-label-top form-label-auto" id="textquestiontwo" for="input_6">De acordo com seus conhecimentos, existe outro departamento em que gostaria de atuar? Se sim, qual?</label>
-    <div id="cid_6" class="form-input-wide" data-layout=""> <textarea id="input_6" class="form-textarea" name="thirdquestion" style="width:648px;height:80px;margin-top: 15px;margin-bottom:30px;" data-component="textarea" aria-labelledby="label_6" placeholder="Exemplo: Ouvidoria, Comunicação, ESASP, Administração, Finanças etc"></textarea> </div>
+    <div id="cid_6" class="form-input-wide" data-layout=""> 
+      <textarea id="input_6" class="form-textarea" name="thirdquestion" style="width:648px;height:80px;margin-top: 15px;margin-bottom:30px;" data-component="textarea" aria-labelledby="label_6" placeholder="Exemplo: Ouvidoria, Comunicação, ESASP, Administração, Finanças etc"></textarea> </div>
   </li>
+
+  <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Hard Skills que você se identifica:</label>
+   <div class="competencias">
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia1" name="hardcompetencia[]" value="Proficiências completa em Word, Excel, PowerPoint e Outlook"/>
+      <label class="form-check-label" for="hardcompetencia1">Proficiências completa em Word, Excel, PowerPoint e Outlook</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia2" name="hardcompetencia[]" value="Conhecimento em sistemas operacionais (windows, macOS, Linux)"/>
+      <label class="form-check-label" for="hardcompetencia2">Conhecimento em sistemas operacionais (windows, macOS, Linux)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia3" name="hardcompetencia[]" value="Coleta de dados(pesquisa, questionários, entrevistas)"/>
+      <label class="form-check-label" for="hardcompetencia3">Coleta de dados(pesquisa, questionários, entrevistas)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia4" name="hardcompetencia[]" value="Análise de dados quantitativos e qualitativos"/>
+      <label class="form-check-label" for="hardcompetencia4">Análise de dados quantitativos e qualitativos</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia5" name="hardcompetencia[]" value="Apresentação de dados de forma clara e atraente (gráficos, tabelas)"/>
+      <label class="form-check-label" for="hardcompetencia5">Apresentação de dados de forma clara e atraente (gráficos, tabelas)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia6" name="hardcompetencia[]" value="Domínio de programas de design gráfico (Adobe Illustrator, Adobe Photoshop, CorelDRAW)"/>
+      <label class="form-check-label" for="hardcompetencia6">Domínio de programas de design gráfico (Adobe Illustrator, Adobe Photoshop, CorelDRAW)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia7" name="hardcompetencia[]" value="Conhecimento de princípios de design (cores, tipografia, composição)"/>
+      <label class="form-check-label" for="hardcompetencia7">Conhecimento de princípios de design (cores, tipografia, composição)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia8" name="hardcompetencia[]" value="Criação de conteúdo para mídias sociais (imagens, vídeos, infográficos)"/>
+      <label class="form-check-label" for="hardcompetencia8">Criação de conteúdo para mídias sociais (imagens, vídeos, infográficos)</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia9" name="hardcompetencia[]" value="Escrita clara, concisa e gramaticalmente correta"/>
+      <label class="form-check-label" for="hardcompetencia9">Escrita clara, concisa e gramaticalmente correta</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia10" name="hardcompetencia[]" value="Habilidade em redação acadêmica, jornalística ou técnica"/>
+      <label class="form-check-label" for="hardcompetencia10">Habilidade em redação acadêmica, jornalística ou técnica</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia11" name="hardcompetencia[]" value="Vocabulário variado e adequado ao contexto"/>
+      <label class="form-check-label" for="hardcompetencia11">Vocabulário variado e adequado ao contexto</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia12" name="hardcompetencia[]" value="Proficiência em línguas estrangeiras"/>
+      <label class="form-check-label" for="hardcompetencia12">Proficiência em línguas estrangeiras</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia13" name="hardcompetencia[]" value="Capacidade de comunicação escrita e verbal em diferentes idiomas"/>
+      <label class="form-check-label" for="hardcompetencia13">Capacidade de comunicação escrita e verbal em diferentes idiomas</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia14" name="hardcompetencia[]" value="Tradução e interpretação em idiomas estrangeiros"/>
+      <label class="form-check-label" for="hardcompetencia14">Tradução e interpretação em idiomas estrangeiros</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia15" name="hardcompetencia[]" value="Edição de imagens e retoque fotográfico"/>
+      <label class="form-check-label" for="hardcompetencia15">Edição de imagens e retoque fotográfico</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia16" name="hardcompetencia[]" value="Experiência com softwares ou equipamentos específicos da área de atuação"/>
+      <label class="form-check-label" for="hardcompetencia16">Experiência com softwares ou equipamentos específicos da área de atuação</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" clas="form-check-input" id="hardcompetencia17" name="hardcompetencia[]" value="Conhecimento especializado em áreas específicas (exemplo: programação, contabilidade)"/>
+      <label class="form-check-label" for="hardcompetencia17">Conhecimento especializado em áreas específicas (exemplo: programação, contabilidade)</label>
+</div> 
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia18" name="hardcompetencia[]" value="Capacidade de resolver problemas técnicos e propor soluções inovadoras"/>
+      <label class="form-check-label" for="hardcompetencia18">Capacidade de resolver problemas técnicos e propor soluções inovadoras</label> 
+</div>
+<div class="form-check">
+      <input type="checkbox" class="form-check-input" id="hardcompetencia19" name="hardcompetencia[]" value="Atualização constante em relação às novas tecnologias e tendências da área"/>
+      <label class="form-check-label" for="hardcompetencia19">Atualização constante em relação às novas tecnologias e tendências da área</label> 
+</div>
+   </div>
       <!-- Selecionar competencias -->
-      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 características que você se identifica:</label>
+      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Soft Skills que você se identifica:</label>
       <!-- Formulário -->
       <div class="competencias">
         <div class="form-check">

@@ -3,6 +3,7 @@ include_once('../../config.php');
 
 $sql = "SELECT * FROM usuarios ORDER BY id DESC";
 $result = $conn->query($sql);
+
 $sql = "SELECT competencia FROM usuarios";
 $resultCompetencia = $conn->query($sql);
 
@@ -39,6 +40,7 @@ foreach ($competenciasSelecionadas as $competencia) {
 
 $competenciasPHP = json_encode($competenciasData);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -73,7 +75,7 @@ $competenciasPHP = json_encode($competenciasData);
     </style>
 <body>
     <div class="wrapper">
-        <div class="sidebar" data-image="">
+        <div class="sidebar">
             <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
@@ -106,8 +108,8 @@ $competenciasPHP = json_encode($competenciasData);
                     </li>
                   
                 </ul>
-            </div>
-        </div>
+            </div> <!--fecha o sidebar-wrapper-->
+        </div> <!--fecha a class sidebar -->
         <div class="main-panel">
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
@@ -148,7 +150,7 @@ $competenciasPHP = json_encode($competenciasData);
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> <!-- fecha o container fluid -->
             </nav>
             <div class="content">
                 <div class="container-fluid">
@@ -239,132 +241,28 @@ $competenciasPHP = json_encode($competenciasData);
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!--fecha o primeiro row -->
                     <div class="row">
                         
                         <div class="col-md-6">
                             <div class="card  card-tasks">
-                                <div class="card-header ">
+                                <div class="card-header text-center">
                                     <h4 class="card-title">Quadro de Servidores</h4>
                                     <p class="card-category">Pesquise por nome, cargo ou skills</p>
                                 </div>
-                                <div class="card-body ">
-                                    <div class="table-full-width">
+                                <div class="card-body">
+                                    
                                         <table class="table">
-                                                <thead>
-                                                    <tr class="bg-light">
-                                                        <th class="border-top-0">Usuário</th>
-                                                        <th class="border-top-0">Departamento</th>
-                                                        <th class="border-top-0">Cargo</th>
-                                                        <th class="border-top-0">Formações</th>
-                                                        <th class="border-top-0">Cursos livres</th>
-                                                        <th class="border-top-0">Departamento Opcional</th>
-                                                        <th class="border-top-0">Soft Skills</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <?php
-                                                    while($user_data = mysqli_fetch_assoc($result))
-                                                    {   
-                                                        echo "<tr>";
-                                                        echo "<td class='custom-class'>".$user_data['firstname']." ".$user_data['lastname']."</td>";
-                                                        echo "<td class='custom-class'>".$user_data['departament']. "</td>";
-                                                        echo "<td class='custom-class'>".$user_data['role']. "</td>";
-                                                        echo "<td class='custom-class'>".$user_data['firstquestion']. "</td>";
-                                                        echo "<td class='custom-class'>".$user_data['secondquestion']. "</td>";
-                                                        echo "<td class='custom-class'>".$user_data['thirdquestion']. "</td>";
-                                                        echo "<td class='custom-class'>".$user_data['competencia']. "</td>"; 
-                                                        echo "</tr>";
-                                                    } 
-                                                    ?>
-                                                </tbody>
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-          
-        </div>
-    </div>
-    <!--   -->
-    <!-- <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-            <i class="fa fa-cog fa-2x"> </i>
-        </a>
-
-        <ul class="dropdown-menu">
-			<li class="header-title"> Sidebar Style</li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger">
-                    <p>Background Image</p>
-                    <label class="switch">
-                        <input type="checkbox" data-toggle="switch" checked="" data-on-color="primary" data-off-color="primary"><span class="toggle"></span>
-                    </label>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="adjustments-line">
-                <a href="javascript:void(0)" class="switch-trigger background-color">
-                    <p>Filters</p>
-                    <div class="pull-right">
-                        <span class="badge filter badge-black" data-color="black"></span>
-                        <span class="badge filter badge-azure" data-color="azure"></span>
-                        <span class="badge filter badge-green" data-color="green"></span>
-                        <span class="badge filter badge-orange" data-color="orange"></span>
-                        <span class="badge filter badge-red" data-color="red"></span>
-                        <span class="badge filter badge-purple active" data-color="purple"></span>
-                    </div>
-                    <div class="clearfix"></div>
-                </a>
-            </li>
-            <li class="header-title">Sidebar Images</li>
-
-            <li class="active">
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="../assets/img/sidebar-1.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="../assets/img/sidebar-3.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="..//assets/img/sidebar-4.jpg" alt="" />
-                </a>
-            </li>
-            <li>
-                <a class="img-holder switch-trigger" href="javascript:void(0)">
-                    <img src="../assets/img/sidebar-5.jpg" alt="" />
-                </a>
-            </li>
-
-            <li class="button-container">
-                <div class="">
-                    <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard" target="_blank" class="btn btn-info btn-block btn-fill">Download, it's free!</a>
-                </div>
-            </li>
-
-            <li class="header-title pro-title text-center">Want more components?</li>
-
-            <li class="button-container">
-                <div class="">
-                    <a href="http://www.creative-tim.com/product/light-bootstrap-dashboard-pro" target="_blank" class="btn btn-warning btn-block btn-fill">Get The PRO Version!</a>
-                </div>
-            </li>
-
-            <li class="header-title" id="sharrreTitle">Thank you for sharing!</li>
-
-            <li class="button-container">
-				<button id="twitter" class="btn btn-social btn-outline btn-twitter btn-round sharrre"><i class="fa fa-twitter"></i> · 256</button>
-                <button id="facebook" class="btn btn-social btn-outline btn-facebook btn-round sharrre"><i class="fa fa-facebook-square"></i> · 426</button>
-            </li>
-        </ul>
-    </div>
-</div>
- -->
+            </div> <!-- fecha o segundo row -->
+</div> <!--fecha o container fluid -->
+</div> <!--fecha o content -->
+        </div> <!--fecha a class main panel-->
+</div> <!--fecha a class wrapper -->
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>

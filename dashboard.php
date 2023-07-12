@@ -8,8 +8,24 @@ $result = $conn->query($sql);
 $sql = "SELECT competencia FROM usuarios";
 $resultCompetencia = $conn->query($sql);
 
+$sql = "SELECT hardcompetencia FROM usuarios";
+$resultHardCompetencia = $conn-> query($sql);
+
 // Array para armazenar as competências mais selecionadas
 $competencias = array();
+$hardcompetencia = array(); 
+
+if ($resultHardCompetencia->num_rows > 0) {
+    while ($row = $resultHardCompetencia->fetch_assoc()) {
+     $HardCompetenciasSelecionadas = explode(",", $row["hardcompetencia"]);
+     $hardCompetencias = array(); // Renomear a variável para evitar colisão
+ 
+     foreach ($HardCompetenciasSelecionadas as $hardcompetencia) {
+         $hardCompetencias[] = $hardcompetencia; // Adicionar elementos ao array renomeado
+     }
+    }
+ }
+ 
 
 // Verifica se a consulta retornou resultados
 if ($resultCompetencia->num_rows > 0) {
@@ -308,6 +324,7 @@ h1 {
                                             <th class="border-top-0">Cursos livres</th>
                                             <th class="border-top-0">Departamento Opcional</th>
                                             <th class="border-top-0">Soft Skills</th>
+                                            <th class="border-top-0">Hard Skills</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -322,6 +339,7 @@ h1 {
                                             echo "<td class='custom-class'>".$user_data['secondquestion']. "</td>";
                                             echo "<td class='custom-class'>".$user_data['thirdquestion']. "</td>";
                                             echo "<td class='custom-class'>".$user_data['competencia']. "</td>"; 
+                                            echo "<td class='custom-class'>".$user_data['hardcompetencia']."</td>";
                                             echo "</tr>";
                                         }
                                         
