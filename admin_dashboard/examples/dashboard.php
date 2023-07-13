@@ -39,7 +39,31 @@ foreach ($competenciasSelecionadas as $competencia) {
 
 $competenciasPHP = json_encode($competenciasData);
 
-//
+$sql = "SELECT hardcompetencia FROM usuarios";
+$resultHardCompetencia = $conn->query($sql);
+
+$hardcompetencias = array();
+
+if ($resultHardCompetencia->num_rows > 0) {
+    while ($row = $resultHardCompetencia->fetch_assoc()) {
+    $hardCompetenciasSelecionadas = explode(",", $row["hardcompetencia"]);
+    foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
+        $hardcompetencias[] = $hardcompetencia;
+    }
+    }
+} 
+$hardCompetenciasContagem = array_count_values($hardcompetencias);
+arsort($hardCompetenciasContagem);
+$hardCompetenciasSelecionadas = array_keys(array_slice($hardCompetenciasContagem, 0, 5));
+$hardCompetenciasData[] = array();
+foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
+    $hardCompetenciasData[] = array(
+        "category" => $hardcompetencia,
+        "value" => $hardCompetenciasContagem[$hardcompetencia]
+    );
+    $hardCompetenciasPHP = json_encode($hardCompetenciasData);
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +95,17 @@ $competenciasPHP = json_encode($competenciasData);
       height: 330px;
       align-items: center;
     }
-    </style>
+    #chartdivtwo {
+      width: 100%;
+      height: 330px;
+      align-items: center;
+        }
+     #chartdivthird {
+        width: 100%;
+      height: 330px;
+      align-items: center; 
+     }   
+        </style>
 <body>
     <div class="wrapper">
         <div class="sidebar">
@@ -94,9 +128,9 @@ $competenciasPHP = json_encode($competenciasData);
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="./user.html">
+                        <a class="nav-link" href="">
                             <i class="nc-icon nc-circle-09"></i>
-                            <p>Usuário</p>
+                            <p>Quadro de servidores</p>
                         </a>
                     </li>
                     <li>
@@ -206,13 +240,37 @@ $competenciasPHP = json_encode($competenciasData);
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">
-                                    <div id="chartPreferencesOne" class="ct-chart ct-perfect-fourth"></div>
-                                
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Informática básica
-                                        <i class="fa fa-circle text-danger"></i> Excel avançado
-                                        <i class="fa fa-circle text-warning"></i> Gestão de pessoas
-                                    </div>
+                                <div id="chartdivtwo"></div>
+                                <script>
+    am5.ready(function() {
+        var root = am5.Root.new("chartdivtwo");
+        root.setThemes([am5themes_Animated.new(root)]);
+
+        var chart = root.container.children.push(am5percent.PieChart.new(root, {
+            layout: root.verticalLayout
+        }));
+
+        var series = chart.series.push(am5percent.PieSeries.new(root, {
+            valueField: "value",
+            categoryField: "category"
+        }));
+
+        var hardCompetenciasData = <?php echo $hardCompetenciasPHP; ?>;
+        series.data.setAll(hardCompetenciasData);
+
+        var legend = chart.children.push(am5.Legend.new(root, {
+            centerX: am5.percent(50),
+            x: am5.percent(50),
+            marginTop: 15,
+            marginBottom: 15
+        }));
+
+        legend.data.setAll(series.dataItems);
+
+        series.appear(1000, 100);
+    });
+</script>
+                                    
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
@@ -227,12 +285,45 @@ $competenciasPHP = json_encode($competenciasData);
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">
-                                    <div id="chartPreferencesTwo" class="ct-chart ct-perfect-fourth"></div>
-                                    <div class="legend">
-                                        <i class="fa fa-circle text-info"></i> Auxiliar de administração
-                                        <i class="fa fa-circle text-danger"></i> Secretariado
-                                        <i class="fa fa-circle text-warning"></i> Espanhol básico
-                                    </div>
+                                <div id="chartdivthird"></div>
+                                <script>
+am5.ready(function() {
+
+var root = am5.Root.new("chartdivthird");
+
+root.setThemes([
+  am5themes_Animated.new(root)
+]);
+var chart = root.container.children.push(am5percent.PieChart.new(root, {
+  layout: root.verticalLayout
+}));
+var series = chart.series.push(am5percent.PieSeries.new(root, {
+  valueField: "value",
+  categoryField: "category"
+}));
+
+series.data.setAll([
+  { value: 10, category: "One" },
+  { value: 9, category: "Two" },
+  { value: 6, category: "Three" },
+  { value: 5, category: "Four" },
+  { value: 4, category: "Five" },
+  { value: 3, category: "Six" },
+  { value: 1, category: "Seven" },
+]);
+var legend = chart.children.push(am5.Legend.new(root, {
+  centerX: am5.percent(50),
+  x: am5.percent(50),
+  marginTop: 15,
+  marginBottom: 15
+}));
+
+legend.data.setAll(series.dataItems);
+
+series.appear(1000, 100);
+
+}); 
+</script>
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
