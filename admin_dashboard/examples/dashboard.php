@@ -128,7 +128,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="">
+                        <a class="nav-link" href="../../dashtable.php">
                             <i class="nc-icon nc-circle-09"></i>
                             <p>Quadro de servidores</p>
                         </a>
