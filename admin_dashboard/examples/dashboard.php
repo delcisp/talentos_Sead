@@ -122,20 +122,20 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="../../dashboard.php">
-                            <i class="nc-icon nc-chart-pie-35"></i>
+                        <a class="nav-link" href="#">
+                        <img width="40" height="40" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-dashboard-mobile-app-development-flaticons-lineal-color-flat-icons-3.png" alt="external-dashboard-mobile-app-development-flaticons-lineal-color-flat-icons-3"/>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../dashtable.php">
-                            <i class="nc-icon nc-circle-09"></i>
+                        <img width="40" height="40" src="https://img.icons8.com/bubbles/50/crowd--v2.png" alt="crowd--v2"/>
                             <p>Quadro de servidores</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../lgpd.php">
-                            <i class="nc-icon nc-notes"></i>
+                        <img width="40" height="40" src="https://img.icons8.com/stickers/100/quiz.png" alt="quiz"/>
                             <p>Formulário</p>
                         </a>
                     </li>
@@ -147,7 +147,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#pablo"> Dashboard </a>
+                    <a class="navbar-brand" href="#"></a>
                     <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -157,27 +157,15 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                    <i class="nc-icon nc-palette"></i>
+                                
                                     <span class="d-lg-none">Dashboard</span>
                                 </a>
                             </li>
-                          
-                            <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="nc-icon nc-zoom-split"></i>
-                                    <span class="d-lg-block">&nbsp;Pesquisa</span>
-                                </a>
-                            </li>
                         </ul>
-                        <ul class="navbar-nav ml-auto">
+                        <ul class="navbar-nav ml-auto">                           
                             <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
-                                    <span class="no-icon">Account</span>
-                                </a>
-                            </li>
-                           
-                            <li class="nav-item">
-                                <a class="nav-link" href="#pablo">
+                                <a class="nav-link" href="../../index.php">
+                                <img width="28" height="28" src="https://img.icons8.com/metro/26/exit.png" alt="exit"/>
                                     <span class="no-icon">Sair</span>
                                 </a>
                             </li>
@@ -332,21 +320,6 @@ series.appear(1000, 100);
                             </div>
                         </div>
                     </div> <!--fecha o primeiro row -->
-                    <div class="row">
-                        
-                        <div class="col-md-6">
-                            <div class="card  card-tasks">
-                                <div class="card-header text-center">
-                                    <h4 class="card-title">Quadro de Servidores</h4>
-                                    <p class="card-category">Pesquise por nome, cargo ou skills</p>
-                                </div>
-                                <div class="card-body">
-                                    
-                                        <table class="table">
-
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div> <!-- fecha o segundo row -->
 </div> <!--fecha o container fluid -->

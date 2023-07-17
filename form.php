@@ -47,6 +47,7 @@ if(isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html>
 <head>
+  <html lang="pt-br">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário</title>
@@ -87,7 +88,7 @@ if(isset($_POST['submit'])) {
               <option value="APOIO AO GAB">APOIO AO GABINETE</option>
               <option value="ARQUIVO ADM">ARQUIVO ADM</option>
               <option value="ASCOM">ASCOM</option>
-              <option value="ATA">ASSSSORIA TÉCNICA</option>
+              <option value="ATA">ASSESSORIA TÉCNICA</option>
               <option value="AUDIT-EXT">AUDITORIA EXTERNA</option>
               <option value="CI">CONTROLADORIA INTERNA</option>
               <option value="CPAT">CPAT</option>
@@ -107,12 +108,25 @@ if(isset($_POST['submit'])) {
               <option value="GIPIAP">GIPIAP</option>
               <option value="GT-CTA">GT CTA</option>
               <option value="GT-MD">GT MD</option>
-              <option value="JUNTA -MED">JUNTA MÉDICA</option>
+              <option value="JUNTA-MED">JUNTA MÉDICA</option>
+              <option value="OUVIDORIA">OUVIDORIA</option>
+              <option value="PROTOCOLO">PROTOCOLO</option>
+              <option value="SCI">SCI</option>
+              <option value="SEAG">SEAG</option>
+              <option value="SEPAGAP">SEPAGAP</option>
+              <option value="SGPGP">SGPGP</option>
+              <option value="SGRH">SGRH</option>
+              <option value="SGRH-GRD">SGRH-GRD</option>
+              <option value="SGRH-ASS">SGRH-ASS</option>
+              <option value="SGRH-FP">SGRH-FP</option>
+              <option value="SGRH-GB">SGRH-GB</option>
+              <option value="SGRH-GV">SGRH-GV</option>
+              <option value="TRANSPORTE">TRANSPORTE</option>
                    </select>
           </div>
         </li>
         <li class="form-line form-line-column form-col-2 form-line-column-left" data-type="control_dropdown" id="id_3">
-          <label class="form-label form-label-bottom" id="cargo"  for="input_3"> Cargo atual </label>
+          <label class="form-label form-label-top" id="cargo"  for="input_3"> Cargo atual </label>
           <div id="cid_3" class="form-input-wide" data-layout="half">
           <select class="form-dropdown" id="input_3" name="role" aria-label="Role">
             <option value="Selecione">Selecione</option>
@@ -122,7 +136,7 @@ if(isset($_POST['submit'])) {
           </div>
         </li>
         <li class="form-line form-line-column form-line-column-input-four" data-type="control_dropdown" id="id_4">
-  <label class="form-label form-label-right" id="firstquestion" for="input_4"> Quais formaçoes voce tem? </label>
+  <label class="form-label form-label-top" id="firstquestion" for="input_4">Você tem formação?</label>
   <div id="cid_4" class="form-input-wide" data-layout="half">
     <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion" onchange="mostrarCampoPersonalizado(this)">
       <option value="Selecione">Selecione</option>
