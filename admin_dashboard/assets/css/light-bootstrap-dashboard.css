@@ -584,13 +584,13 @@ body>.navbar-collapse:before {
 
 .sidebar:after,
 body>.navbar-collapse:after {
-    background: #20c997;
-    background: -moz-linear-gradient(top, #20c997 0%, #20c997 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #20c997), color-stop(100%, #20c997));
-    background: -webkit-linear-gradient(top, #20c997 0%, #20c997 100%);
-    background: -o-linear-gradient(top, #20c997 0%, #20c997 100%);
-    background: -ms-linear-gradient(top, #20c997 0%, #20c997 100%);
-    background: linear-gradient(to bottom, #20c997 0%, #20c997 100%);
+    background: #f0fff0;
+    background: -moz-linear-gradient(top, #29AB87 0%, #29AB87 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #29AB87), color-stop(100%, #29AB87));
+    background: -webkit-linear-gradient(top, #29AB87 0%, #29AB87 100%);
+    background: -o-linear-gradient(top, #29AB87 0%, #29AB87 100%);
+    background: -ms-linear-gradient(top, #29AB87 0%,#29AB87 100%);
+    background: linear-gradient(to bottom,#50C878 0%, #50C878 100%);
     background-size: 150% 150%;
     z-index: 3;
     opacity: 1;
@@ -2103,12 +2103,6 @@ fieldset[disabled] .form-control {
     font-size: 16px;
 }
 
-.navbar.fixed {
-    width: calc(100% - $sidebar-width);
-    right: 0;
-    left: auto;
-    border-radius: 0;
-}
 
 .navbar .nc-icon {
     font-weight: 700;
@@ -2928,7 +2922,6 @@ Copyright (c) 2015 Daniel Eden
     top: 0;
     width: 1px;
     background-color: #DDDDDD;
-    card-body: "";
     position: absolute;
 }
 
@@ -4485,9 +4478,7 @@ Copyright (c) 2015 Daniel Eden
     .dropdown-menu {
         display: none;
     }
-    .navbar-fixed-top {
-        -webkit-backface-visibility: hidden;
-    }
+    
     #bodyClick {
         height: 100%;
         width: 100%;
@@ -4737,7 +4728,6 @@ License - nucleoapp.com/license/
     display: inline-block;
     font: normal normal normal 14px/1 'nucleo-icons';
     font-size: inherit;
-    speak: none;
     text-transform: none;
     /* Better Font Rendering */
     -webkit-font-smoothing: antialiased;

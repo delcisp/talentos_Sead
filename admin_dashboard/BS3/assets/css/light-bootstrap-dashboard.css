@@ -418,6 +418,8 @@ input:focus {
     top: 0;
     left: 0;
     z-index: 2;
+    background-color: #f0fff0;
+    color: #f0fff0;
 }
 
 .sidebar:before {
@@ -452,29 +454,6 @@ input:focus {
     background: linear-gradient(to bottom, #1F77D0 0%, #533ce1 100%);
     background-size: 150% 150%;
 }
-
-.sidebar[data-color="azure"]:after {
-    background: #1DC7EA;
-    background: -moz-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1DC7EA), color-stop(100%, #4091ff));
-    background: -webkit-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
-    background: -o-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
-    background: -ms-linear-gradient(top, #1DC7EA 0%, #4091ff 100%);
-    background: linear-gradient(to bottom, #1DC7EA 0%, #4091ff 100%);
-    background-size: 150% 150%;
-}
-
-.sidebar[data-color="green"]:after {
-    background: #87CB16;
-    background: -moz-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #87CB16), color-stop(100%, #6dc030));
-    background: -webkit-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -o-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: -ms-linear-gradient(top, #87CB16 0%, #6dc030 100%);
-    background: linear-gradient(to bottom, #87CB16 0%, #6dc030 100%);
-    background-size: 150% 150%;
-}
-
 
 
 .main-panel {
@@ -1703,12 +1682,6 @@ fieldset[disabled] .btn-neutral.active {
     font-size: 16px;
 }
 
-.navbar.fixed {
-    width: calc(100% - $sidebar-width);
-    right: 0;
-    left: auto;
-    border-radius: 0;
-}
 
 .navbar-nav > li > .dropdown-menu {
     border-radius: 10px;
@@ -3729,9 +3702,7 @@ fieldset[disabled] .btn-neutral.active {
     .dropdown-menu {
         display: none;
     }
-    .navbar-fixed-top {
-        -webkit-backface-visibility: hidden;
-    }
+  
     #bodyClick {
         height: 100%;
         width: calc(100% - 260px);

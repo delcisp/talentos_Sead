@@ -54,7 +54,7 @@ if ($resultHardCompetencia->num_rows > 0) {
 } 
 $hardCompetenciasContagem = array_count_values($hardcompetencias);
 arsort($hardCompetenciasContagem);
-$hardCompetenciasSelecionadas = array_keys(array_slice($hardCompetenciasContagem, 0, 5));
+$hardCompetenciasSelecionadas = array_keys(array_slice($hardCompetenciasContagem, 1, 5));
 $hardCompetenciasData[] = array();
 foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
     $hardCompetenciasData[] = array(
@@ -73,9 +73,9 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
 <head>
     <meta charset="utf-8">
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="../assets/img/favicon.ico">
+    <link rel="icon" href="../../Imagens/icon_sead.ico" type="image/ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Dashboard Admin</title>
+    <title>Dashboard</title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -92,19 +92,27 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
 <style>
     #chartdiv {
       width: 100%;
-      height: 330px;
+      height: 400px;
       align-items: center;
     }
     #chartdivtwo {
       width: 100%;
-      height: 330px;
+      height: 400px;
       align-items: center;
         }
      #chartdivthird {
         width: 100%;
-      height: 330px;
+      height: 400px;
       align-items: center; 
      }   
+     .content {
+        background-color: #FBFFFF; /* #E1EBEE; */
+     }
+     .main-panel {
+        background-color: #FBFFFF;
+     }
+     
+    
         </style>
 <body>
     <div class="wrapper">
@@ -116,26 +124,26 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
     -->
             <div class="sidebar-wrapper">
                 <div class="logo">
-                    <a href="http://www.creative-tim.com" class="simple-text">
+                    <a href="#" class="simple-text">
                         Gestão de Competências
                     </a>
                 </div>
                 <ul class="nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
-                        <img width="40" height="40" src="https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-dashboard-mobile-app-development-flaticons-lineal-color-flat-icons-3.png" alt="external-dashboard-mobile-app-development-flaticons-lineal-color-flat-icons-3"/>
+                        <img width="40" height="40" src="https://img.icons8.com/ios/50/laptop-metrics--v2.png" alt="laptop-metrics--v2"/>
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../dashtable.php">
-                        <img width="40" height="40" src="https://img.icons8.com/bubbles/50/crowd--v2.png" alt="crowd--v2"/>
+                        <img width="40" height="40" src="https://img.icons8.com/ios/50/commercial-development-management.png" alt="commercial-development-management"/>
                             <p>Quadro de servidores</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../lgpd.php">
-                        <img width="40" height="40" src="https://img.icons8.com/stickers/100/quiz.png" alt="quiz"/>
+                        <img width="40" height="40" src="https://img.icons8.com/external-smashingstocks-mixed-smashing-stocks/68/external-Form-audit-smashingstocks-mixed-smashing-stocks.png" alt="external-Form-audit-smashingstocks-mixed-smashing-stocks"/>
                             <p>Formulário</p>
                         </a>
                     </li>
@@ -171,7 +179,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                             </li>
                         </ul>
                     </div>
-                </div> <!-- fecha o container fluid -->
+                </div> 
             </nav>
             <div class="content">
                 <div class="container-fluid">
@@ -266,6 +274,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                                 </div>
                             </div>
                         </div>
+                        <hr>
                         <div class="col-md-4">
                             <div class="card ">
                                 <div class="card-header ">

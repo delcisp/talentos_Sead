@@ -8,6 +8,7 @@ $firstname = isset($_GET['firstname']) ? $_GET['firstname'] : 'Usuário';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Agradecimento</title>
   <link rel="stylesheet" href="./Obrigado/agradecimento.css">
+  <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
 </head>
 <body>
   <div class="container">

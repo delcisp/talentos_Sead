@@ -21,9 +21,11 @@ $result = mysqli_query($conn, $query);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quadro de funcionários</title>
     <link href="https://unpkg.com/tailwindcss@1.5.2/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
 
 </head>
@@ -50,6 +52,7 @@ $result = mysqli_query($conn, $query);
             align-items: center;
             flex-direction: center;
             margin-left: 300px;
+            background-color: #E1EBEE;
         }
         
     }
@@ -76,7 +79,7 @@ $result = mysqli_query($conn, $query);
     }
    
     </style>
-<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #E1EBEE;">
     <div class="position-relative">
         <div class="-my-2 py-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 pr-10 lg:px-8">
             <div class="align-middle rounded-tl-lg rounded-tr-lg inline-block w-full py-4 overflow-hidden bg-white shadow-lg px-12" id="headerr">

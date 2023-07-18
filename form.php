@@ -130,8 +130,24 @@ if(isset($_POST['submit'])) {
           <div id="cid_3" class="form-input-wide" data-layout="half">
           <select class="form-dropdown" id="input_3" name="role" aria-label="Role">
             <option value="Selecione">Selecione</option>
-            <option value="Lorem">Lorem</option>
+            <option value="A">Arqui</option>
             <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+            <option value="Ipsum">Ipsum</option>
+
           </select>
           </div>
         </li>
@@ -140,7 +156,75 @@ if(isset($_POST['submit'])) {
   <div id="cid_4" class="form-input-wide" data-layout="half">
     <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion" onchange="mostrarCampoPersonalizado(this)">
       <option value="Selecione">Selecione</option>
-      <option value="Nao tenho formaçao">Nao tenho formaçao</option>
+      <option value="Não tenho formação">Não tenho formação</option>
+      <option value="Administração">Administração</option>
+      <option value="Agronomia">Agronomia</option>
+      <option value="Agronegócio">Agronegócio</option>
+      <option value="Análise e desenvolvimento de sistemas">Análise e desenvolvimento de sistemas</option>
+      <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
+      <option value="Arquivologia">Arquivologia</option>
+      <option value="Artes">Artes</option>
+      <option value="Artes Cênicas">Artes cênicas</option>
+      <option value="Artes e mídias digitais">Artes e mídias digitais</option>
+      <option value="Automação industrial">Automação industrial</option>
+      <option value="Biologia">Biologia</option>
+      <option value="Biomedicina">Biomedicina</option>
+      <option value="Bioquímica">Bioquímica</option>
+      <option value="Ciências contábeis">Ciências contábeis</option>
+      <option value="Ciências econômicas">Ciências econômicas</option>
+      <option value="Ciências sociais">Ciências sociais</option>
+      <option value="Cibersegurança">Cibersegurança</option>
+      <option value="Comunicação social">Comunicação social</option>
+      <option value="Desenho industrial">Desenho industrial</option>
+      <option value="Design Gráfico">Design gráfico</option>
+      <option value="Design de interiores">Design de interiores</option>
+      <option value="Direito">Direito</option>
+      <option value="Economia">Economia</option>
+      <option value="Enfermagem">Enfermagem</option>
+      <option value="Educação física">Educação física</option>
+      <option value="Engenharia ambiental">Engenharia ambiental</option>
+      <option value="Engenharia Civil">Engenharia civil</option>
+      <option value="Engenharia da computação">Engenharia da computação</option>
+      <option value="Engenharia elétrica">Engenharia elétrica</option>
+      <option value="Engenharia mecânica">Engenharia mecânica</option>
+      <option value="Engenharia química">Engenharia química</option>
+      <option value="Engenharia de alimentos">Engenharia de alimentos</option>
+      <option value="Engenharia de gestão">Engenharia de gestão</option>
+      <option value="Engenharia industrial">Engenharia industrial</option>
+      <option value="Engenharia de Transporte e Logística">Engenharia de Transporte e Logística</option>
+      <option value="Farmácia">Farmácia</option>
+      <option value="Filosofia">Filosofia</option>
+      <option value="Fisioterapia">Fisioterapia</option>
+      <option value="Fonoaudiologia">Fonoaudiologia</option>
+      <option value="Gatronomia">Gastronomia</option>
+      <option value="Gestão da qualidade">Gestão da qualidade</option>
+      <option value="Gestão de tecnologia da informação">Gestão de tecnologia da informação</option>
+      <option value="Gestão ambiental">Gestão ambiental</option>
+      <option value="Gestão de políticas públicas">Gestão de políticas públicas</option>
+      <option value="Gestão de agronegócio">Gestão de agronegócio</option>
+      <option value="Gestão pública">Gestão pública</option>
+      <option value="Geografia">Geografia</option>
+      <option value="História">História</option>
+      <option value="Hotelaria">Hotelaria</option>
+      <option value="Jornalismo">Jornalismo</option>
+      <option value="Letras">Letras</option>
+      <option value="Marketing">Marketing</option>
+      <option value="Matemática">Matemática</option>
+      <option value="Medicina">Medicina</option>
+      <option value="Nutrição">Nutrição</option>
+      <option value="Odontologia">Odontologia</option>
+      <option value="Pedagogia">Pedagogia</option>
+      <option value="Psicologia">Psicologia</option>
+      <option value="Publicidade e propaganda">Publicidade e propaganda</option>
+      <option value="Relações internacionais">Relações internacionais</option>
+      <option value="Recursos Humanos">Recursos Humanos</option>
+      <option value="Relações públicas">Relações públicas</option>
+      <option value="Serviço social">Serviço social</option>
+      <option value="Sistemas de informação">Sistemas de informação</option>
+      <option value="Tecnologias digitais">Tecnologias digitais</option>
+      <option value="Teologia">Teologia</option>
+      <option value="Turismo">Turismo</option>
+      <option value="Medicina"> Medicina veterinária</option>
       <option value="outros">Outros</option>
     </select>
   </div>
