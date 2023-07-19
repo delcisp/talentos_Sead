@@ -28,7 +28,7 @@ if(isset($_POST['submit'])) {
     $competenciaString = implode(", ", $competenciaSelecionada);
 
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
-    $competenciaHardString = implode(", ", $competenciaHardSelecionada);
+    $competenciaHardString = implode("/", $competenciaHardSelecionada);
    
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia, hardcompetencia) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString', '$competenciaHardString')";
@@ -255,7 +255,7 @@ if(isset($_POST['submit'])) {
       <label class="form-check-label" for="hardcompetencia2">Conhecimento em sistemas operacionais (windows, macOS, Linux)</label> 
 </div>
 <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="hardcompetencia3" name="hardcompetencia[]" value="Coleta de dados(pesquisa, questionários, entrevistas)"/>
+      <input type="checkbox" class="form-check-input" id="hardcompetencia3" name="hardcompetencia[]" value="Coleta de dados(pesquisa questionários entrevistas)"/>
       <label class="form-check-label" for="hardcompetencia3">Coleta de dados(pesquisa, questionários, entrevistas)</label> 
 </div>
 <div class="form-check">
@@ -279,7 +279,7 @@ if(isset($_POST['submit'])) {
       <label class="form-check-label" for="hardcompetencia8">Criação de conteúdo para mídias sociais (imagens, vídeos, infográficos)</label> 
 </div>
 <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="hardcompetencia9" name="hardcompetencia[]" value="Escrita clara, concisa e gramaticalmente correta"/>
+      <input type="checkbox" class="form-check-input" id="hardcompetencia9" name="hardcompetencia[]" value="Escrita clara concisa e gramaticalmente correta"/>
       <label class="form-check-label" for="hardcompetencia9">Escrita clara, concisa e gramaticalmente correta</label> 
 </div>
 <div class="form-check">

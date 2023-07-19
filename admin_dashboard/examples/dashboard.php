@@ -46,23 +46,53 @@ $hardcompetencias = array();
 
 if ($resultHardCompetencia->num_rows > 0) {
     while ($row = $resultHardCompetencia->fetch_assoc()) {
-    $hardCompetenciasSelecionadas = explode(",", $row["hardcompetencia"]);
-    foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
-        $hardcompetencias[] = $hardcompetencia;
+        $hardCompetenciasSelecionadas = explode("/", $row["hardcompetencia"]); // Use a unique delimiter
+        foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
+            // Exclude empty or undefined hardcompetencias
+            if (!empty(trim($hardcompetencia))) {
+                $hardcompetencias[] = $hardcompetencia;
+            }
+        }
     }
-    }
-} 
+}
+
 $hardCompetenciasContagem = array_count_values($hardcompetencias);
 arsort($hardCompetenciasContagem);
-$hardCompetenciasSelecionadas = array_keys(array_slice($hardCompetenciasContagem, 1, 5));
-$hardCompetenciasData[] = array();
+$hardCompetenciasSelecionadas = array_keys(array_slice($hardCompetenciasContagem, 0, 5)); // Slice the first 5 elements
+
+$hardCompetenciasData = array();
 foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
     $hardCompetenciasData[] = array(
         "category" => $hardcompetencia,
         "value" => $hardCompetenciasContagem[$hardcompetencia]
     );
-    $hardCompetenciasPHP = json_encode($hardCompetenciasData);
 }
+
+$hardCompetenciasPHP = json_encode($hardCompetenciasData);
+
+$sql = "SELECT firstquestion FROM usuarios ORDER BY id DESC";
+$resultFirstquestion = $conn->query($sql);
+
+$firstquestion = array();
+
+while ($row = $resultFirstquestion->fetch_assoc()) {
+    $firstquestion[] = $row['firstquestion'];
+}
+
+$firstquestionContagem = array_count_values($firstquestion);
+arsort($firstquestionContagem);
+
+$firstquestionSelecionadas = array_keys(array_slice($firstquestionContagem, 0, 5));
+
+$firstquestionData = array();
+foreach($firstquestionSelecionadas as $firstquestion) {
+    $firstquestionData[] = array (
+        "category" => $firstquestion,
+        "value" => $firstquestionContagem[$firstquestion]
+    );
+}
+ 
+$firstquestionPHP = json_encode($firstquestionData);
 
 ?>
 
@@ -83,7 +113,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
     <!-- CSS Files -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-    <!-- CSS Just for demo purpose, don't include it in your project -->
+    
     <link href="../assets/css/demo.css" rel="stylesheet" />
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
 <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
@@ -92,17 +122,17 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
 <style>
     #chartdiv {
       width: 100%;
-      height: 400px;
+      height: 700px;
       align-items: center;
     }
     #chartdivtwo {
       width: 100%;
-      height: 400px;
+      height: 700px;
       align-items: center;
         }
      #chartdivthird {
         width: 100%;
-      height: 400px;
+      height: 700px;
       align-items: center; 
      }   
      .content {
@@ -111,17 +141,17 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
      .main-panel {
         background-color: #FBFFFF;
      }
+     h1 {
+        text-align: center;
+        margin-left: 170px;
+     }
      
     
         </style>
 <body>
     <div class="wrapper">
         <div class="sidebar">
-            <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-        Tip 2: you can also add an image using data-image tag
-    -->
+    
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
@@ -162,6 +192,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                        <h1> GRÁFICOS INFORMATIVOS DE SERVIDORES </H1>
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
@@ -255,7 +286,7 @@ foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
         series.data.setAll(hardCompetenciasData);
 
         var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.percent(50),
+            centerX: am5.percent(39),
             x: am5.percent(50),
             marginTop: 15,
             marginBottom: 15
@@ -289,8 +320,7 @@ am5.ready(function() {
 var root = am5.Root.new("chartdivthird");
 
 root.setThemes([
-  am5themes_Animated.new(root)
-]);
+  am5themes_Animated.new(root)]);
 var chart = root.container.children.push(am5percent.PieChart.new(root, {
   layout: root.verticalLayout
 }));
@@ -299,24 +329,16 @@ var series = chart.series.push(am5percent.PieSeries.new(root, {
   categoryField: "category"
 }));
 
-series.data.setAll([
-  { value: 10, category: "One" },
-  { value: 9, category: "Two" },
-  { value: 6, category: "Three" },
-  { value: 5, category: "Four" },
-  { value: 4, category: "Five" },
-  { value: 3, category: "Six" },
-  { value: 1, category: "Seven" },
-]);
+var firstquestionData = <?php echo $firstquestionPHP; ?>;
+series.data.setAll(firstquestionData);
+
 var legend = chart.children.push(am5.Legend.new(root, {
-  centerX: am5.percent(50),
-  x: am5.percent(50),
-  marginTop: 15,
-  marginBottom: 15
+    centerX:am5.percent(50),
+    x: am5.percent(50),
+    marginTop: 15, 
+    marginBottom: 15
 }));
-
 legend.data.setAll(series.dataItems);
-
 series.appear(1000, 100);
 
 }); 
@@ -353,13 +375,7 @@ series.appear(1000, 100);
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        // Javascript method's body can be found in assets/js/demos.js
-        demo.initDashboardPageCharts();
-
-        demo.showNotification();
-
-    });
+   
 </script>
 
 </html>
