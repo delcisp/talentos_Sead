@@ -85,13 +85,13 @@ arsort($firstquestionContagem);
 $firstquestionSelecionadas = array_keys(array_slice($firstquestionContagem, 0, 5));
 
 $firstquestionData = array();
-foreach($firstquestionSelecionadas as $firstquestion) {
-    $firstquestionData[] = array (
+foreach ($firstquestionSelecionadas as $firstquestion) {
+    $firstquestionData[] = array(
         "category" => $firstquestion,
         "value" => $firstquestionContagem[$firstquestion]
     );
 }
- 
+
 $firstquestionPHP = json_encode($firstquestionData);
 
 ?>
@@ -106,52 +106,58 @@ $firstquestionPHP = json_encode($firstquestionData);
     <link rel="icon" href="../../Imagens/icon_sead.ico" type="image/ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>Dashboard</title>
-    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'
+        name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <!-- CSS Files -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets/css/light-bootstrap-dashboard.css?v=2.0.0 " rel="stylesheet" />
-    
+
     <link href="../assets/css/demo.css" rel="stylesheet" />
     <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
+    <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
 </head>
 <style>
     #chartdiv {
-      width: 100%;
-      height: 700px;
-      align-items: center;
-    }
-    #chartdivtwo {
-      width: 100%;
-      height: 700px;
-      align-items: center;
-        }
-     #chartdivthird {
         width: 100%;
-      height: 700px;
-      align-items: center; 
-     }   
-     .content {
-        background-color: #FBFFFF; /* #E1EBEE; */
-     }
-     .main-panel {
+        height: 700px;
+        align-items: center;
+    }
+
+    #chartdivtwo {
+        width: 100%;
+        height: 700px;
+        align-items: center;
+    }
+
+    #chartdivthird {
+        width: 100%;
+        height: 700px;
+        align-items: center;
+    }
+
+    .content {
         background-color: #FBFFFF;
-     }
-     h1 {
+        /* #E1EBEE; */
+    }
+
+    .main-panel {
+        background-color: #FBFFFF;
+    }
+
+    h1 {
         text-align: center;
         margin-left: 170px;
-     }
-     
-    
-        </style>
+    }
+</style>
+
 <body>
     <div class="wrapper">
         <div class="sidebar">
-    
+
             <div class="sidebar-wrapper">
                 <div class="logo">
                     <a href="#" class="simple-text">
@@ -161,23 +167,28 @@ $firstquestionPHP = json_encode($firstquestionData);
                 <ul class="nav">
                     <li class="nav-item active">
                         <a class="nav-link" href="#">
-                        <img width="40" height="40" src="https://img.icons8.com/ios/50/laptop-metrics--v2.png" alt="laptop-metrics--v2"/>
+                            <img width="40" height="40" src="https://img.icons8.com/ios/50/laptop-metrics--v2.png"
+                                alt="laptop-metrics--v2" />
                             <p>Dashboard</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../dashtable.php">
-                        <img width="40" height="40" src="https://img.icons8.com/ios/50/commercial-development-management.png" alt="commercial-development-management"/>
+                            <img width="40" height="40"
+                                src="https://img.icons8.com/ios/50/commercial-development-management.png"
+                                alt="commercial-development-management" />
                             <p>Quadro de servidores</p>
                         </a>
                     </li>
                     <li>
                         <a class="nav-link" href="../../lgpd.php">
-                        <img width="40" height="40" src="https://img.icons8.com/external-smashingstocks-mixed-smashing-stocks/68/external-Form-audit-smashingstocks-mixed-smashing-stocks.png" alt="external-Form-audit-smashingstocks-mixed-smashing-stocks"/>
+                            <img width="40" height="40"
+                                src="https://img.icons8.com/external-smashingstocks-mixed-smashing-stocks/68/external-Form-audit-smashingstocks-mixed-smashing-stocks.png"
+                                alt="external-Form-audit-smashingstocks-mixed-smashing-stocks" />
                             <p>Formulário</p>
                         </a>
                     </li>
-                  
+
                 </ul>
             </div> <!--fecha o sidebar-wrapper-->
         </div> <!--fecha a class sidebar -->
@@ -186,7 +197,8 @@ $firstquestionPHP = json_encode($firstquestionData);
             <nav class="navbar navbar-expand-lg " color-on-scroll="500">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#"></a>
-                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <button href="" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                        aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
                         <span class="navbar-toggler-bar burger-lines"></span>
@@ -196,21 +208,22 @@ $firstquestionPHP = json_encode($firstquestionData);
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
-                                
+
                                     <span class="d-lg-none">Dashboard</span>
                                 </a>
                             </li>
                         </ul>
-                        <ul class="navbar-nav ml-auto">                           
+                        <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="../../index.php">
-                                <img width="28" height="28" src="https://img.icons8.com/metro/26/exit.png" alt="exit"/>
+                                    <img width="28" height="28" src="https://img.icons8.com/metro/26/exit.png"
+                                        alt="exit" />
                                     <span class="no-icon">Sair</span>
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </div> 
+                </div>
             </nav>
             <div class="content">
                 <div class="container-fluid">
@@ -222,38 +235,38 @@ $firstquestionPHP = json_encode($firstquestionData);
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body">
-                                <div id="chartdiv"></div>
-                            
-      <script>
-    am5.ready(function() {
-        var root = am5.Root.new("chartdiv");
-        root.setThemes([am5themes_Animated.new(root)]);
+                                    <div id="chartdiv"></div>
 
-        var chart = root.container.children.push(am5percent.PieChart.new(root, {
-            layout: root.verticalLayout
-        }));
+                                    <script>
+                                        am5.ready(function () {
+                                            var root = am5.Root.new("chartdiv");
+                                            root.setThemes([am5themes_Animated.new(root)]);
 
-        var series = chart.series.push(am5percent.PieSeries.new(root, {
-            valueField: "value",
-            categoryField: "category"
-        }));
+                                            var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                                                layout: root.verticalLayout
+                                            }));
 
-        var competenciasData = <?php echo $competenciasPHP; ?>;
-        series.data.setAll(competenciasData);
+                                            var series = chart.series.push(am5percent.PieSeries.new(root, {
+                                                valueField: "value",
+                                                categoryField: "category"
+                                            }));
 
-        var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.percent(50),
-            x: am5.percent(50),
-            marginTop: 15,
-            marginBottom: 15
-        }));
+                                            var competenciasData = <?php echo $competenciasPHP; ?>;
+                                            series.data.setAll(competenciasData);
 
-        legend.data.setAll(series.dataItems);
+                                            var legend = chart.children.push(am5.Legend.new(root, {
+                                                centerX: am5.percent(50),
+                                                x: am5.percent(50),
+                                                marginTop: 15,
+                                                marginBottom: 15
+                                            }));
 
-        series.appear(1000, 100);
-    });
-</script>
-<hr>
+                                            legend.data.setAll(series.dataItems);
+
+                                            series.appear(1000, 100);
+                                        });
+                                    </script>
+                                    <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
                                     </div>
@@ -267,37 +280,37 @@ $firstquestionPHP = json_encode($firstquestionData);
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">
-                                <div id="chartdivtwo"></div>
-                                <script>
-    am5.ready(function() {
-        var root = am5.Root.new("chartdivtwo");
-        root.setThemes([am5themes_Animated.new(root)]);
+                                    <div id="chartdivtwo"></div>
+                                    <script>
+                                        am5.ready(function () {
+                                            var root = am5.Root.new("chartdivtwo");
+                                            root.setThemes([am5themes_Animated.new(root)]);
 
-        var chart = root.container.children.push(am5percent.PieChart.new(root, {
-            layout: root.verticalLayout
-        }));
+                                            var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                                                layout: root.verticalLayout
+                                            }));
 
-        var series = chart.series.push(am5percent.PieSeries.new(root, {
-            valueField: "value",
-            categoryField: "category"
-        }));
+                                            var series = chart.series.push(am5percent.PieSeries.new(root, {
+                                                valueField: "value",
+                                                categoryField: "category"
+                                            }));
 
-        var hardCompetenciasData = <?php echo $hardCompetenciasPHP; ?>;
-        series.data.setAll(hardCompetenciasData);
+                                            var hardCompetenciasData = <?php echo $hardCompetenciasPHP; ?>;
+                                            series.data.setAll(hardCompetenciasData);
 
-        var legend = chart.children.push(am5.Legend.new(root, {
-            centerX: am5.percent(39),
-            x: am5.percent(50),
-            marginTop: 15,
-            marginBottom: 15
-        }));
+                                            var legend = chart.children.push(am5.Legend.new(root, {
+                                                centerX: am5.percent(39),
+                                                x: am5.percent(50),
+                                                marginTop: 15,
+                                                marginBottom: 15
+                                            }));
 
-        legend.data.setAll(series.dataItems);
+                                            legend.data.setAll(series.dataItems);
 
-        series.appear(1000, 100);
-    });
-</script>
-                                    
+                                            series.appear(1000, 100);
+                                        });
+                                    </script>
+
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
@@ -313,36 +326,36 @@ $firstquestionPHP = json_encode($firstquestionData);
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">
-                                <div id="chartdivthird"></div>
-                                <script>
-am5.ready(function() {
+                                    <div id="chartdivthird"></div>
+                                    <script>
+                                        am5.ready(function () {
 
-var root = am5.Root.new("chartdivthird");
+                                            var root = am5.Root.new("chartdivthird");
 
-root.setThemes([
-  am5themes_Animated.new(root)]);
-var chart = root.container.children.push(am5percent.PieChart.new(root, {
-  layout: root.verticalLayout
-}));
-var series = chart.series.push(am5percent.PieSeries.new(root, {
-  valueField: "value",
-  categoryField: "category"
-}));
+                                            root.setThemes([
+                                                am5themes_Animated.new(root)]);
+                                            var chart = root.container.children.push(am5percent.PieChart.new(root, {
+                                                layout: root.verticalLayout
+                                            }));
+                                            var series = chart.series.push(am5percent.PieSeries.new(root, {
+                                                valueField: "value",
+                                                categoryField: "category"
+                                            }));
 
-var firstquestionData = <?php echo $firstquestionPHP; ?>;
-series.data.setAll(firstquestionData);
+                                            var firstquestionData = <?php echo $firstquestionPHP; ?>;
+                                            series.data.setAll(firstquestionData);
 
-var legend = chart.children.push(am5.Legend.new(root, {
-    centerX:am5.percent(50),
-    x: am5.percent(50),
-    marginTop: 15, 
-    marginBottom: 15
-}));
-legend.data.setAll(series.dataItems);
-series.appear(1000, 100);
+                                            var legend = chart.children.push(am5.Legend.new(root, {
+                                                centerX: am5.percent(50),
+                                                x: am5.percent(50),
+                                                marginTop: 15,
+                                                marginBottom: 15
+                                            }));
+                                            legend.data.setAll(series.dataItems);
+                                            series.appear(1000, 100);
 
-}); 
-</script>
+                                        }); 
+                                    </script>
                                     <hr>
                                     <div class="stats">
                                         <i class="fa fa-clock-o"></i> Atualizado agora
@@ -353,10 +366,10 @@ series.appear(1000, 100);
                     </div> <!--fecha o primeiro row -->
                 </div>
             </div> <!-- fecha o segundo row -->
-</div> <!--fecha o container fluid -->
-</div> <!--fecha o content -->
-        </div> <!--fecha a class main panel-->
-</div> <!--fecha a class wrapper -->
+        </div> <!--fecha o container fluid -->
+    </div> <!--fecha o content -->
+    </div> <!--fecha a class main panel-->
+    </div> <!--fecha a class wrapper -->
 </body>
 <!--   Core JS Files   -->
 <script src="../assets/js/core/jquery.3.2.1.min.js" type="text/javascript"></script>
@@ -375,7 +388,7 @@ series.appear(1000, 100);
 <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
 <script src="../assets/js/demo.js"></script>
 <script type="text/javascript">
-   
+
 </script>
 
 </html>
