@@ -147,11 +147,6 @@ $firstquestionPHP = json_encode($firstquestionData);
     .main-panel {
         background-color: #FBFFFF;
     }
-
-    h1 {
-        text-align: center;
-        margin-left: 170px;
-    }
 </style>
 
 <body>
@@ -204,7 +199,7 @@ $firstquestionPHP = json_encode($firstquestionData);
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                        <h1> GRÁFICOS INFORMATIVOS DE SERVIDORES </H1>
+
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
@@ -322,7 +317,7 @@ $firstquestionPHP = json_encode($firstquestionData);
                         <div class="col-md-4">
                             <div class="card ">
                                 <div class="card-header ">
-                                    <h4 class="card-title">Formações de ensino superior</h4>
+                                    <h4 class="card-title">Formações Superior</h4>
                                     <p class="card-category">Mais selecionadas pelos servidores</p>
                                 </div>
                                 <div class="card-body ">

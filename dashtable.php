@@ -1,19 +1,5 @@
 <?php
 include_once('config.php');
-
-$pageSize = 5;
-$pageNumber = isset($_GET['page']) ? $_GET['page'] : 1;
-$startIndex = ($pageNumber - 1) * $pageSize;
-
-// Verifica se foi feita alguma pesquisa
-if (isset($_GET['search']) && !empty($_GET['search'])) {
-    $searchTerm = $_GET['search'];
-    $query = "SELECT * FROM usuarios WHERE firstname LIKE '%$searchTerm%' OR lastname LIKE '%$searchTerm%' OR departament LIKE '%$searchTerm%' OR role LIKE '%$searchTerm%' ORDER BY firstname ASC LIMIT $startIndex, $pageSize";
-} else {
-    $query = "SELECT * FROM usuarios ORDER BY firstname ASC LIMIT $startIndex, $pageSize";
-}
-
-$result = mysqli_query($conn, $query);
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -143,7 +129,7 @@ $result = mysqli_query($conn, $query);
                             $modalCounter = 0;
                             while ($user_data = mysqli_fetch_assoc($result)) {
 
-                                $modalId = "modal" . ++$modalCounter; //cria um ID único para cada modal
+                                $modalId = "modal" . ++$modalCounter;
                                 ?>
 
                                 <tr data-bs-target="#<?php echo $modalId; ?>">

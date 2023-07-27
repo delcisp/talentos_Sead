@@ -11,8 +11,6 @@ if (isset($_POST['submit'])) {
   }
 
   if ($allAnswered) {
-    // Se todas as perguntas foram respondidas, você pode prosseguir com a inserção no banco de dados
-
     include_once('config.php');
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
