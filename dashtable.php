@@ -19,53 +19,79 @@ include_once('config.php');
     .hidden {
         display: none;
     }
+ 
+    body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #E1EBEE;
+        }
 
-    @media (min-width: 768px) and (max-width: 1024px) {
+        .position-relative {
+            padding: 10px;
+        }
+
         .table-container {
-            max-height: 400px;
-            width: 900px;
-            align-items: center;
+            max-height: 600px;
             overflow-y: scroll;
-            overflow-x: scroll;
-
         }
 
-        .input-container {
-            width: 20%;
-            /* Ou qualquer outro valor que você preferir */
+        /* Responsive styles for screens from 320px to 480px (smaller mobile devices) */
+        @media (max-width: 480px) {
+            .table-container {
+                max-height: 400px;
+            }
+            .align-middle {
+                width: 100%;
+                max-width: 300px;
+                padding: 10px;
+            }
         }
 
-        /* Outros estilos para telas grandes */
-        body {
-            width: 400px;
-            align-items: center;
-            flex-direction: center;
-            margin-left: 300px;
-            background-color: #E1EBEE;
+        /* Responsive styles for screens from 481px to 767px (larger mobile devices) */
+        @media (min-width: 481px) and (max-width: 767px) {
+            .table-container {
+                max-height: 400px;
+            }
+            .align-middle {
+                width: 100%;
+                max-width: 400px;
+                padding: 10px;
+            }
         }
 
-    }
-
-    /* Estilos para tela média (maior que 568px) */
-    @media (min-width: 375px) and (max-width: 667px) {
-        .table-container {
-            height: 500px;
-            width: 350px;
-            align-items: center;
-            overflow-y: scroll;
-            overflow-x: scroll;
-
+        /* Responsive styles for screens from 768px to 1023px (tablets) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .table-container {
+                max-height: 500px;
+            }
+            .align-middle {
+                width: 100%;
+                max-width: 500px;
+            }
         }
 
-        /* Outros estilos para telas grandes */
-        body {
-            width: 500px;
-            align-items: center;
-            flex-direction: center;
-
+        /* Responsive styles for screens from 1024px to 1399px (small laptops) */
+        @media (min-width: 1024px) and (max-width: 1399px) {
+            .table-container {
+                max-height: 600px;
+            }
+            .align-middle {
+                width: 100%;
+                max-width: 950px;
+            }
         }
 
-    }
+        /* Responsive styles for screens 1400px and above (larger screens) */
+        @media (min-width: 1400px) {
+            .table-container {
+                max-height: 700px;
+            }
+            .align-middle {
+                width: 100%;
+                max-width: 1200px;
+            }
+        }
+    
 </style>
 
 <body class="h-screen overflow-hidden flex items-center justify-center" style="background: #E1EBEE;">
@@ -218,6 +244,7 @@ include_once('config.php');
                 </div>
             </div>
         </div>
+                            </div>
 </body>
 
 </html>
