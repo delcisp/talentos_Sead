@@ -5,7 +5,7 @@ if (isset($_POST['submit'])) {
   $allAnswered = true;
   $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
 
-  if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["departament"]) || empty($_POST["role"]) || empty($_POST["firstquestion"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
+  if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["departament"]) || empty($_POST["role"]) || empty($_POST["firstquestion"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0 || empty($_POST["justification"])) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
@@ -21,6 +21,7 @@ if (isset($_POST['submit'])) {
     $ratingq2 = $_POST['ratingq2'];
     $secondquestion = $_POST['secondquestion'];
     $thirdquestion = $_POST['thirdquestion'];
+    $justification = $_POST['justification'];
 
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
@@ -28,8 +29,8 @@ if (isset($_POST['submit'])) {
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
     $competenciaHardString = implode("/", $competenciaHardSelecionada);
 
-    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia, hardcompetencia) VALUES
-    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString', '$competenciaHardString')";
+    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia, hardcompetencia, justification) VALUES
+    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString', '$competenciaHardString', '$justification')";
 
     $result = mysqli_query($conn, $query);
 
@@ -39,7 +40,7 @@ if (isset($_POST['submit'])) {
   } else {
     echo "<script>alert('$errorMsg');</script>";
   }
-} //
+} 
 ?>
 <!DOCTYPE html>
 <html>

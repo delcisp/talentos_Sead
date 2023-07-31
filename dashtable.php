@@ -3,6 +3,7 @@ include_once('config.php');
 ?>
 <!doctype html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,79 +20,83 @@ include_once('config.php');
     .hidden {
         display: none;
     }
- 
+
     body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #E1EBEE;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #E1EBEE;
+    }
+
+    .position-relative {
+        padding: 10px;
+    }
+
+    .table-container {
+        max-height: 600px;
+        overflow-y: scroll;
+    }
+
+    /* Responsive styles for screens from 320px to 480px (smaller mobile devices) */
+    @media (max-width: 480px) {
+        .table-container {
+            max-height: 400px;
         }
 
-        .position-relative {
+        .align-middle {
+            width: 100%;
+            max-width: 300px;
             padding: 10px;
         }
+    }
 
+    /* Responsive styles for screens from 481px to 767px (larger mobile devices) */
+    @media (min-width: 481px) and (max-width: 767px) {
+        .table-container {
+            max-height: 400px;
+        }
+
+        .align-middle {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+        }
+    }
+
+    /* Responsive styles for screens from 768px to 1023px (tablets) */
+    @media (min-width: 768px) and (max-width: 1023px) {
+        .table-container {
+            max-height: 500px;
+        }
+
+        .align-middle {
+            width: 100%;
+            max-width: 500px;
+        }
+    }
+
+    /* Responsive styles for screens from 1024px to 1399px (small laptops) */
+    @media (min-width: 1024px) and (max-width: 1399px) {
         .table-container {
             max-height: 600px;
-            overflow-y: scroll;
         }
 
-        /* Responsive styles for screens from 320px to 480px (smaller mobile devices) */
-        @media (max-width: 480px) {
-            .table-container {
-                max-height: 400px;
-            }
-            .align-middle {
-                width: 100%;
-                max-width: 300px;
-                padding: 10px;
-            }
+        .align-middle {
+            width: 100%;
+            max-width: 950px;
+        }
+    }
+
+    /* Responsive styles for screens 1400px and above (larger screens) */
+    @media (min-width: 1400px) {
+        .table-container {
+            max-height: 700px;
         }
 
-        /* Responsive styles for screens from 481px to 767px (larger mobile devices) */
-        @media (min-width: 481px) and (max-width: 767px) {
-            .table-container {
-                max-height: 400px;
-            }
-            .align-middle {
-                width: 100%;
-                max-width: 400px;
-                padding: 10px;
-            }
+        .align-middle {
+            width: 100%;
+            max-width: 1200px;
         }
-
-        /* Responsive styles for screens from 768px to 1023px (tablets) */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .table-container {
-                max-height: 500px;
-            }
-            .align-middle {
-                width: 100%;
-                max-width: 500px;
-            }
-        }
-
-        /* Responsive styles for screens from 1024px to 1399px (small laptops) */
-        @media (min-width: 1024px) and (max-width: 1399px) {
-            .table-container {
-                max-height: 600px;
-            }
-            .align-middle {
-                width: 100%;
-                max-width: 950px;
-            }
-        }
-
-        /* Responsive styles for screens 1400px and above (larger screens) */
-        @media (min-width: 1400px) {
-            .table-container {
-                max-height: 700px;
-            }
-            .align-middle {
-                width: 100%;
-                max-width: 1200px;
-            }
-        }
-    
+    }
 </style>
 
 <body class="h-screen overflow-hidden flex items-center justify-center" style="background: #E1EBEE;">
@@ -227,6 +232,11 @@ include_once('config.php');
                                                 <p>Satisfação com a equipe:
                                                     <?php echo $user_data['ratingq']; ?>
                                                 </p>
+                                                <?php if ($user_data['ratingq'] <= 5): ?>
+                                                    <p>Justificativa:
+                                                        <?php echo nl2br($user_data['justification']); ?>
+                                                    </p>
+                                                <?php endif; ?>
 
                                             </div>
                                             <div class='modal-footer'>
@@ -244,7 +254,7 @@ include_once('config.php');
                 </div>
             </div>
         </div>
-                            </div>
+    </div>
 </body>
 
 </html>
