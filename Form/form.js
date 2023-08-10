@@ -90,7 +90,7 @@ function redirecionar() {
         justificationTextarea.style.display = "block";
       } else {
         justificationTextarea.style.display = "none";
-      }
+      }z
     }
 
   

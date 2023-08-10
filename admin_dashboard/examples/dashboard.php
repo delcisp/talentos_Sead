@@ -294,7 +294,7 @@ $firstquestionPHP = json_encode($firstquestionData);
                                             series.data.setAll(hardCompetenciasData);
 
                                             var legend = chart.children.push(am5.Legend.new(root, {
-                                                centerX: am5.percent(39),
+                                                centerX: am5.percent(48),
                                                 x: am5.percent(50),
                                                 marginTop: 15,
                                                 marginBottom: 15

@@ -17,6 +17,7 @@ include_once('config.php');
 
 </head>
 <style>
+
     .hidden {
         display: none;
     }
@@ -123,8 +124,10 @@ include_once('config.php');
                             <input type="text" id="searchInput" name="search"
                                 class="flex-shrink flex-grow flex-auto leading-normal tracking-wide w-px flex-1 rounded rounded-l-none px-3 relative focus:outline-none text-xs lg:text-base text-gray-500 font-thin sm:w-full md:w-1/2 lg:w-7/12"
                                 placeholder="Procure por servidor, cargo, departamento">
-                        </div>
+                               
+                        </div>                  
                     </div>
+                   <button class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'onclick="window.location.href='./admin_dashboard/examples/dashboard.php'">Voltar</button>
                 </div>
             </div>
         </div>
