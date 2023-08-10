@@ -1,11 +1,13 @@
 <?php
 if (isset($_POST['submit'])) {
-
   // Verifica se todas as perguntas foram respondidas
   $allAnswered = true;
   $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
 
-  if (empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["departament"]) || empty($_POST["role"]) || empty($_POST["firstquestion"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0 || empty($_POST["justification"])) {
+  $cargoSelecionado = $_POST["role"];
+  $formacaoSelecionada = $_POST["firstquestion"];
+  $departamentoSelecionado = $_POST["departament"];
+  if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) ||$cargoSelecionado == "Selecione" || empty ($cargoSelecionado) || $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
@@ -92,7 +94,7 @@ if (isset($_POST['submit'])) {
           <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
           <div id="cid_2" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
-              <option value="">Selecione</option>
+              <option>Selecione</option>
               <option value="APEAM">APEAM</option>
               <option value="APOIO AO GAB">APOIO AO GABINETE</option>
               <option value="ARQUIVO ADM">ARQUIVO ADM</option>
@@ -152,7 +154,7 @@ if (isset($_POST['submit'])) {
           <div id="cid_4" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion"
               onchange="mostrarCampoPersonalizado(this)">
-              <option value="Selecione">Selecione</option>
+              <option>Selecione</option>
               <option value="Não tenho formação">Não tenho formação</option>
               <option value="Administração">Administração</option>
               <option value="Agronomia">Agronomia</option>
