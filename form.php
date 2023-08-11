@@ -75,15 +75,15 @@ if (isset($_POST['submit'])) {
           <div id="cid_1" class="form-input-wide" data-layout="full">
             <div data-wrapper-react="true">
               <span class="form-sub-label-container" style="vertical-align:top" data-input-type="first">
-                <input type="text" id="firstname" name="firstname" class="form-textbox" data-defaultvalue="" value=""
-                  data-component="first" aria-labelledby="label_1 sublabel_1_first">
+                <input type="text" id="firstname" name="firstname" class="form-textbox" data-defaultvalue="" 
+                  data-component="first" aria-labelledby="label_1 sublabel_1_first" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : ''; ?>" required>
                 <label class="form-sub-label" for="first_1" id="sublabel_1_first" style="min-height:13px"
                   aria-hidden="false">Primeiro nome</label>
               </span>
               <span class="form-sub-label-container" style="vertical-align:top" data-input-type="last">
-                <input type="text" id="last_1" name="lastname" class="form-textbox" data-defaultvalue=""
-                  autoComplete="section-input_1 family-name" size="" value="" data-component="last"
-                  aria-labelledby="label_1 sublabel_1_last" />
+                <input type="text" id="lastname" name="lastname" class="form-textbox" data-defaultvalue=""
+                  autoComplete="section-input_1 family-name" size="" data-component="last"
+                  aria-labelledby="label_1 sublabel_1_last" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>" required>
                 <label class="form-sub-label" for="last_1" id="sublabel_1_last" style="min-height:13px"
                   aria-hidden="false">Último nome</label>
               </span>
@@ -94,45 +94,45 @@ if (isset($_POST['submit'])) {
           <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
           <div id="cid_2" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
-              <option>Selecione</option>
-              <option value="APEAM">APEAM</option>
-              <option value="APOIO AO GAB">APOIO AO GABINETE</option>
-              <option value="ARQUIVO ADM">ARQUIVO ADM</option>
-              <option value="ASCOM">ASCOM</option>
-              <option value="ATA">ASSESSORIA TÉCNICA</option>
-              <option value="AUDIT-EXT">AUDITORIA EXTERNA</option>
-              <option value="CI">CONTROLADORIA INTERNA</option>
-              <option value="CPAT">CPAT</option>
-              <option value="CRD">CRD</option>
-              <option value="CRD-DEF">CRD-DEFENSORIA</option>
-              <option value="CRI-SEAD">CRI-SEAD</option>
-              <option value="CTA">CTA</option>
-              <option value="DAFI">DAFI</option>
-              <option value="DETI">DETI</option>
-              <option value="DGFC">GESTÃO DE FROTA E COMBUSTÍVEL</option>
-              <option value="ESASP">ESASP</option>
-              <option value="GCP">GERÊNCIA DE CONTAS PÚBLICAS</option>
-              <option value="GDP">GERÊNCIA DE DIÁRIAS E PASSAGENS</option>
-              <option value="GELOG">GELOG</option>
-              <option value="GEOF">GEOF</option>
-              <option value="GEPES">GEPES</option>
-              <option value="GIPIAP">GIPIAP</option>
-              <option value="GT-CTA">GT CTA</option>
-              <option value="GT-MD">GT MD</option>
-              <option value="JUNTA-MED">JUNTA MÉDICA</option>
-              <option value="OUVIDORIA">OUVIDORIA</option>
-              <option value="PROTOCOLO">PROTOCOLO</option>
-              <option value="SCI">SCI</option>
-              <option value="SEAG">SEAG</option>
-              <option value="SEPAGAP">SEPAGAP</option>
-              <option value="SGPGP">SGPGP</option>
-              <option value="SGRH">SGRH</option>
-              <option value="SGRH-GRD">SGRH-GRD</option>
-              <option value="SGRH-ASS">SGRH-ASS</option>
-              <option value="SGRH-FP">SGRH-FP</option>
-              <option value="SGRH-GB">SGRH-GB</option>
-              <option value="SGRH-GV">SGRH-GV</option>
-              <option value="TRANSPORTE">TRANSPORTE</option>
+            <option>Selecione</option>
+              <option value="Arquivo público do Amazonas" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas') echo 'selected'; ?>>Arquivo público do Amazonas</option>
+              <option value="Apoio ao Gabinete" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete') echo 'selected'; ?>>Apoio ao Gabinete</option>
+              <option value="Arquivo administrativo" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo administrativo') echo 'selected'; ?>>Arquivo administrativo</option>
+              <option value="Assessoria de Comunicação" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria de Comunicação') echo 'selected'; ?>>Assessoria de Comunicação</option>
+              <option value="Assessoria Técnica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria Técnica') echo 'selected'; ?>>Assessoria Técnica</option>
+              <option value="Auditoria Externa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Auditoria Externa') echo 'selected'; ?>>Auditoria Externa</option>
+              <option value="Controladoria Interna"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Controladoria Interna') echo 'selected'; ?>>Controladoria Interna</option>
+              <option value="Coordenadoria de Patrimônio"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Coordenadoria de Patrimônio') echo 'selected'; ?>>Coordenadoria de Patrimônio</option>
+              <option value="Comissão de Regime Disciplinar"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regime Disciplinar') echo 'selected'; ?>>Comissão de Regime Disciplinar</option>
+              <option value="CRD Defensoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'CRD Defensoria') echo 'selected'; ?>>CRD Defensoria</option>
+              <option value="Comissão de Regularização de Imóveis"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regularização de Imóveis') echo 'selected'; ?>>Comissão de Regularização de Imóveis</option>
+              <option value="Consultoria Técnico Administrativa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Consultoria Técnico Administrativa') echo 'selected'; ?>>Consultoria Técnico Administrativa</option>
+              <option value="Administração e Finanças - DAFI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Administração e Finanças - DAFI') echo 'selected'; ?>>Administração e Finanças - DAFI</option>
+              <option value="Tecnologia da informação - DETI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Tecnologia da informação - DETI') echo 'selected'; ?>>Tecnologia da informação - DETI</option>
+              <option value="Gestão de Frota e Combustível"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gestão de Frota e Combustível') echo 'selected'; ?>>Gestão de Frota e Combustível</option>
+              <option value="Escola de Governo - ESASP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Escola de Governo - ESASP') echo 'selected'; ?>>Escola de Governo - ESASP</option>
+              <option value="Gerência de Contas Públicas"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Contas Públicas') echo 'selected'; ?>>Gerência de Contas Públicas</option>
+              <option value="Gerência de Diárias e Passagens"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Diárias e Passagens') echo 'selected'; ?>>Gerência de Diárias e Passagens</option>
+              <option value="Gerência de Apoio Logístico"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Apoio Logístico') echo 'selected'; ?>>Gerência de Apoio Logístico</option>
+              <option value="Gerência de Planejamento, Orçamento e Finanças"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Planejamento, Orçamento e Finanças') echo 'selected'; ?>>Gerência de Planejamento, Orçamento e Finanças</option>
+              <option value="Gerência de Pessoal"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Pessoal') echo 'selected'; ?>>Gerência de Pessoal</option>
+              <option value="GIPIAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GIPIAP') echo 'selected'; ?>>GIPIAP</option>
+              <option value="GT-CTA"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-CTA') echo 'selected'; ?>>GT-CTA</option>
+              <option value="GT-MD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-MD') echo 'selected'; ?>>GT-MD</option>
+              <option value="Junta Médica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Junta Médica') echo 'selected'; ?>>Junta Médica</option>
+              <option value="Ouvidoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Ouvidoria') echo 'selected'; ?>>Ouvidoria</option>
+              <option value="Protocolo"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Protocolo') echo 'selected'; ?>>Protocolo</option>
+              <option value="Setor de Contratos Institucionais"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Setor de Contratos Institucionais') echo 'selected'; ?>>Setor de Contratos Institucionais</option>
+              <option value="Secretaria Executiva Administração e Gestão"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Secretaria Executiva Administração e Gestão') echo 'selected'; ?>>Secretaria Executiva Administração e Gestão</option>
+              <option value="SEPAGAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SEPAGAP') echo 'selected'; ?>>SEPAGAP</option>>
+              <option value="SGPGP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGPGP') echo 'selected'; ?>>SGPGP</option>
+              <option value="SGRH"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH') echo 'selected'; ?>>SGRH</option>
+              <option value="SGRH-GRD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRG-GRD') echo 'selected'; ?>>SGRH-GRD</option>
+              <option value="SGRH-ASS"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SRGH-ASS') echo 'selected'; ?>>SGRH-ASS</option>
+              <option value="SGRH-FP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-FP') echo 'selected'; ?>>SGRH-FP</option>
+              <option value="SGRH-GB"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GB') echo 'selected'; ?>>SGRH-GB</option>
+              <option value="SGRH-GV"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GV') echo 'selected'; ?>>SGRH-GV</option>
+              <option value="TRANSPORTE"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'TRANSPORTE') echo 'selected'; ?>>TRANSPORTE</option>
             </select>
           </div>
         </li>
@@ -140,12 +140,13 @@ if (isset($_POST['submit'])) {
           <label class="form-label form-label-top" id="cargo" for="input_3"> Cargo atual </label>
           <div id="cid_3" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_3" name="role" aria-label="Role">
-              <option value="Selecione">Selecione</option>
-              <option value="A">Arqui</option>
-              <option value="Ipsum">Ipsum</option>
-              <option value="Ipsum">Ipsum</option>
-              <option value="Ipsum">Ipsum</option>
-              <option value="Ipsum">Ipsum</option>
+            <option value="Selecione">Selecione</option>
+              <option value="Auxiliar Administrativo"<?php if(isset($_POST['role']) && $_POST['role'] == 'Auxiliar Administrativo') echo 'selected'; ?>>Auxiliar Administrativo</option>
+              <option value="Auxiliar de TI"<?php if(isset($_POST['role']) && $_POST['role'] == 'Auxiliar de TI') echo 'selected'; ?>>Auxiliar de TI</option>
+              <option value="Gerente de Departamento"<?php if(isset($_POST['role']) && $_POST['role'] == 'Gerente de Departamento') echo 'selected'; ?>>Gerente de Departamento</option>
+              <option value="Segurança"<?php if(isset($_POST['role']) && $_POST['role'] == 'Segurança') echo 'selected'; ?>>Segurança</option>
+              <option value="LOREM"<?php if(isset($_POST['role']) && $_POST['role'] == 'LOREM') echo 'selected'; ?>>LOREM</option>
+              <option value="IPSUM"<?php if(isset($_POST['role']) && $_POST['role'] == 'IPSUM') echo 'selected'; ?>>IPSUM</option>
             </select>
           </div>
         </li>
@@ -155,40 +156,40 @@ if (isset($_POST['submit'])) {
             <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion"
               onchange="mostrarCampoPersonalizado(this)">
               <option>Selecione</option>
-              <option value="Não tenho formação">Não tenho formação</option>
-              <option value="Administração">Administração</option>
-              <option value="Agronomia">Agronomia</option>
-              <option value="Agronegócio">Agronegócio</option>
-              <option value="Análise e desenvolvimento de sistemas">Análise e desenvolvimento de sistemas</option>
-              <option value="Arquitetura e Urbanismo">Arquitetura e Urbanismo</option>
-              <option value="Arquivologia">Arquivologia</option>
-              <option value="Artes">Artes</option>
-              <option value="Artes Cênicas">Artes cênicas</option>
-              <option value="Artes e mídias digitais">Artes e mídias digitais</option>
-              <option value="Automação industrial">Automação industrial</option>
-              <option value="Biologia">Biologia</option>
-              <option value="Biomedicina">Biomedicina</option>
-              <option value="Bioquímica">Bioquímica</option>
-              <option value="Ciências contábeis">Ciências contábeis</option>
-              <option value="Ciências econômicas">Ciências econômicas</option>
-              <option value="Ciências sociais">Ciências sociais</option>
-              <option value="Cibersegurança">Cibersegurança</option>
-              <option value="Comunicação social">Comunicação social</option>
-              <option value="Desenho industrial">Desenho industrial</option>
-              <option value="Design Gráfico">Design gráfico</option>
-              <option value="Design de interiores">Design de interiores</option>
-              <option value="Direito">Direito</option>
-              <option value="Economia">Economia</option>
-              <option value="Enfermagem">Enfermagem</option>
-              <option value="Educação física">Educação física</option>
-              <option value="Engenharia ambiental">Engenharia ambiental</option>
-              <option value="Engenharia Civil">Engenharia civil</option>
-              <option value="Engenharia da computação">Engenharia da computação</option>
-              <option value="Engenharia elétrica">Engenharia elétrica</option>
-              <option value="Engenharia mecânica">Engenharia mecânica</option>
-              <option value="Engenharia química">Engenharia química</option>
-              <option value="Engenharia de alimentos">Engenharia de alimentos</option>
-              <option value="Engenharia de gestão">Engenharia de gestão</option>
+              <option value="Não tenho formação"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Não tenho formação') echo 'selected'; ?>>Não tenho formação</option>
+              <option value="Administração"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Administração') echo 'selected'; ?>>Administração</option>
+              <option value="Agronomia">Agronomia<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Agronomia') echo 'selected'; ?>>Agronomia</option>
+              <option value="Agronegócio"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Agronegócio') echo 'selected'; ?>>Agronegócio</option>
+              <option value="Análise e desenvolvimento de sistemas"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Análise e Desenvolvimento de Sistemas') echo 'selected'; ?>>Análise e Desenvolvimento de Sistemas</option>
+              <option value="Arquitetura e Urbanismo"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Arquitetura e Urbanismo') echo 'selected'; ?>>Arquitetura e Urbanismo</option>
+              <option value="Arquivologia"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Arquivologia') echo 'selected'; ?>>Arquivologia</option>>Arquivologia</option>
+              <option value="Artes"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Artes') echo 'selected'; ?>>Artes</option>
+              <option value="Artes Cênicas"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Artes Cênicas') echo 'selected'; ?>>Artes Cênicas</option>
+              <option value="Artes e Mídias Digitais"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Artes e Mídias Digitais') echo 'selected'; ?>>Artes e Mídias Digitais</option>
+              <option value="Automação industrial"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Automação Industria') echo 'selected'; ?>>Automação Industrial</option>
+              <option value="Biologia"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Biologia') echo 'selected'; ?>>Biologia</option>
+              <option value="Biomedicina"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Biomedicina') echo 'selected'; ?>>Biomedicina</option>
+              <option value="Bioquímica"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Bioquímica') echo 'selected'; ?>>Bioquímica</option>
+              <option value="Ciências Contábeis"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Ciências Contábeis') echo 'selected'; ?>>Ciências Contábeis</option>
+              <option value="Ciências Econômicas"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Ciências Econômicas') echo 'selected'; ?>>Ciências Econômicas</option>
+              <option value="Ciências Sociais"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Ciências Sociais') echo 'selected'; ?>>Ciências Sociais</option>
+              <option value="Cibersegurança"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Cibersegurança') echo 'selected'; ?>>Cibersegurança</option>
+              <option value="Comunicação Social"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Comunicação Social') echo 'selected'; ?>>Comunicação Social</option>
+              <option value="Desenho Industrial"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Desenho Industrial') echo 'selected'; ?>>Desenho Industrial</option>
+              <option value="Design Gráfico"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Design Gráfico') echo 'selected'; ?>>Design Gráfico</option>
+              <option value="Design de Interiores"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Design de Interiores') echo 'selected'; ?>>Design de Interiores</option>
+              <option value="Direito"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Direito') echo 'selected'; ?>>Direito</option>
+              <option value="Economia"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Economia') echo 'selected'; ?>>Economia</option>
+              <option value="Enfermagem"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Enfermagem') echo 'selected'; ?>>Enfermagem</option>
+              <option value="Educação Física"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Administração') echo 'selected'; ?>>Educação Física</option>
+              <option value="Engenharia Ambiental"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia Ambiental') echo 'selected'; ?>>Engenharia Ambiental</option>
+              <option value="Engenharia Civil"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia Civil') echo 'selected'; ?>>Engenheria Civil</option>
+              <option value="Engenharia da Computação"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia da Computação') echo 'selected'; ?>>Engenharia da Computação</option>
+              <option value="Engenharia Elétrica"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia Elétrica') echo 'selected'; ?>>Engenharia Elétrica</option>
+              <option value="Engenharia Mecânica"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia Mecânica') echo 'selected'; ?>>Engenharia Mecânica</option>
+              <option value="Engenharia química"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia Química') echo 'selected'; ?>>Engenharia Química</option>
+              <option value="Engenharia de Alimentos"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia de Alimentos') echo 'selected'; ?>>Engenharia de Alimentos</option>
+              <option value="Engenharia de Gestão"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Engenharia de Gestão') echo 'selected'; ?>>Engenharia de Gestão</option>
               <option value="Engenharia industrial">Engenharia industrial</option>
               <option value="Engenharia de Transporte e Logística">Engenharia de Transporte e Logística</option>
               <option value="Farmácia">Farmácia</option>
@@ -595,7 +596,7 @@ if (isset($_POST['submit'])) {
           <label class="form-check-label" for="competencia43">Visão crítica</label>
         </div>
       </div>
-  </form>
+
   <li class="form-line" data-type="control_scale" id="id_7">
     <label class="form-label form-label-top" id="ratingquestion" for="input_7">Quão satisfeito você está com a equipe
       que trabalha?</label>
@@ -660,6 +661,7 @@ if (isset($_POST['submit'])) {
       </span>
     </div>
   </li>
+  
   <li class="form-line" data-type="control_scale" id="ratingquestiontwo">
     <label class="form-label form-label-top form-label-auto" id="label_8" for="input_8">Quão satisfeito você está com as
       decisões da sua vida?</label>
@@ -739,6 +741,7 @@ if (isset($_POST['submit'])) {
     </div>
   </li>
   </div>
+  </form>
 </body>
 <script src="./Form/form.js"></script>
 
