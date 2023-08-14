@@ -52,6 +52,9 @@ if (isset($_POST['submit'])) {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Formulário</title>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+<script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     integrity="sha512-x4RR/yiGvQzBpPqkIdK6ZAXIM4Bnl6ooHohb3ofsvBaO7HMsmV6/D3ZSXsAIrlnGeq6y2lpie75i4J8q5SDi0A=="
@@ -90,52 +93,14 @@ if (isset($_POST['submit'])) {
             </div>
           </div>
         </li>
-        <li class="form-line form-line-column form-line-column-right form-col-2" data-type="control_dropdown" id="id_2">
-          <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
-          <div id="cid_2" class="form-input-wide" data-layout="half">
-            <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
-            <option>Selecione</option>
-              <option value="Arquivo público do Amazonas" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas') echo 'selected'; ?>>Arquivo público do Amazonas</option>
-              <option value="Apoio ao Gabinete" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete') echo 'selected'; ?>>Apoio ao Gabinete</option>
-              <option value="Arquivo administrativo" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo administrativo') echo 'selected'; ?>>Arquivo administrativo</option>
-              <option value="Assessoria de Comunicação" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria de Comunicação') echo 'selected'; ?>>Assessoria de Comunicação</option>
-              <option value="Assessoria Técnica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria Técnica') echo 'selected'; ?>>Assessoria Técnica</option>
-              <option value="Auditoria Externa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Auditoria Externa') echo 'selected'; ?>>Auditoria Externa</option>
-              <option value="Controladoria Interna"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Controladoria Interna') echo 'selected'; ?>>Controladoria Interna</option>
-              <option value="Coordenadoria de Patrimônio"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Coordenadoria de Patrimônio') echo 'selected'; ?>>Coordenadoria de Patrimônio</option>
-              <option value="Comissão de Regime Disciplinar"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regime Disciplinar') echo 'selected'; ?>>Comissão de Regime Disciplinar</option>
-              <option value="CRD Defensoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'CRD Defensoria') echo 'selected'; ?>>CRD Defensoria</option>
-              <option value="Comissão de Regularização de Imóveis"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regularização de Imóveis') echo 'selected'; ?>>Comissão de Regularização de Imóveis</option>
-              <option value="Consultoria Técnico Administrativa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Consultoria Técnico Administrativa') echo 'selected'; ?>>Consultoria Técnico Administrativa</option>
-              <option value="Administração e Finanças - DAFI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Administração e Finanças - DAFI') echo 'selected'; ?>>Administração e Finanças - DAFI</option>
-              <option value="Tecnologia da informação - DETI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Tecnologia da informação - DETI') echo 'selected'; ?>>Tecnologia da informação - DETI</option>
-              <option value="Gestão de Frota e Combustível"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gestão de Frota e Combustível') echo 'selected'; ?>>Gestão de Frota e Combustível</option>
-              <option value="Escola de Governo - ESASP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Escola de Governo - ESASP') echo 'selected'; ?>>Escola de Governo - ESASP</option>
-              <option value="Gerência de Contas Públicas"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Contas Públicas') echo 'selected'; ?>>Gerência de Contas Públicas</option>
-              <option value="Gerência de Diárias e Passagens"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Diárias e Passagens') echo 'selected'; ?>>Gerência de Diárias e Passagens</option>
-              <option value="Gerência de Apoio Logístico"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Apoio Logístico') echo 'selected'; ?>>Gerência de Apoio Logístico</option>
-              <option value="Gerência de Planejamento, Orçamento e Finanças"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Planejamento, Orçamento e Finanças') echo 'selected'; ?>>Gerência de Planejamento, Orçamento e Finanças</option>
-              <option value="Gerência de Pessoal"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Pessoal') echo 'selected'; ?>>Gerência de Pessoal</option>
-              <option value="GIPIAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GIPIAP') echo 'selected'; ?>>GIPIAP</option>
-              <option value="GT-CTA"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-CTA') echo 'selected'; ?>>GT-CTA</option>
-              <option value="GT-MD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-MD') echo 'selected'; ?>>GT-MD</option>
-              <option value="Junta Médica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Junta Médica') echo 'selected'; ?>>Junta Médica</option>
-              <option value="Ouvidoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Ouvidoria') echo 'selected'; ?>>Ouvidoria</option>
-              <option value="Protocolo"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Protocolo') echo 'selected'; ?>>Protocolo</option>
-              <option value="Setor de Contratos Institucionais"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Setor de Contratos Institucionais') echo 'selected'; ?>>Setor de Contratos Institucionais</option>
-              <option value="Secretaria Executiva Administração e Gestão"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Secretaria Executiva Administração e Gestão') echo 'selected'; ?>>Secretaria Executiva Administração e Gestão</option>
-              <option value="SEPAGAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SEPAGAP') echo 'selected'; ?>>SEPAGAP</option>>
-              <option value="SGPGP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGPGP') echo 'selected'; ?>>SGPGP</option>
-              <option value="SGRH"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH') echo 'selected'; ?>>SGRH</option>
-              <option value="SGRH-GRD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRG-GRD') echo 'selected'; ?>>SGRH-GRD</option>
-              <option value="SGRH-ASS"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SRGH-ASS') echo 'selected'; ?>>SGRH-ASS</option>
-              <option value="SGRH-FP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-FP') echo 'selected'; ?>>SGRH-FP</option>
-              <option value="SGRH-GB"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GB') echo 'selected'; ?>>SGRH-GB</option>
-              <option value="SGRH-GV"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GV') echo 'selected'; ?>>SGRH-GV</option>
-              <option value="TRANSPORTE"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'TRANSPORTE') echo 'selected'; ?>>TRANSPORTE</option>
-            </select>
-          </div>
+        <li class="form-line form-line-column form-line-column-right form-line-container" data-type="control_dropdown" id="id_data">
+          <label class="form-label form-label-top" id="data"> Data de Nascimento</label>
+        
+          <input type="text" id="calendario" name="calendario" class="form-textbox" data-defaultvalue=""
+                  autoComplete="section-input_1 family-name" size="" data-component="date">
+      
         </li>
+        
         <li class="form-line form-line-column form-col-2 form-line-column-left" data-type="control_dropdown" id="id_3">
           <label class="form-label form-label-top" id="cargo" for="input_3"> Cargo atual </label>
           <div id="cid_3" class="form-input-wide" data-layout="half">
@@ -150,15 +115,15 @@ if (isset($_POST['submit'])) {
             </select>
           </div>
         </li>
-        <li class="form-line form-line-column form-line-column-input-four" data-type="control_dropdown" id="id_4">
-          <label class="form-label form-label-top" id="firstquestion" for="input_4">Você tem formação?</label>
+        <li class="form-line form-line-column " data-type="control_dropdown" id="id_4">
+          <label class="form-label form-label-top" id="firstquestion" for="input_4">Você tem graduação?</label>
           <div id="cid_4" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion"
               onchange="mostrarCampoPersonalizado(this)">
               <option>Selecione</option>
               <option value="Não tenho formação"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Não tenho formação') echo 'selected'; ?>>Não tenho formação</option>
               <option value="Administração"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Administração') echo 'selected'; ?>>Administração</option>
-              <option value="Agronomia">Agronomia<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Agronomia') echo 'selected'; ?>>Agronomia</option>
+              <option value="Agronomia"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Agronomia') echo 'selected'; ?>>Agronomia</option>
               <option value="Agronegócio"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Agronegócio') echo 'selected'; ?>>Agronegócio</option>
               <option value="Análise e desenvolvimento de sistemas"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Análise e Desenvolvimento de Sistemas') echo 'selected'; ?>>Análise e Desenvolvimento de Sistemas</option>
               <option value="Arquitetura e Urbanismo"<?php if(isset($_POST['firstquestion']) && $_POST['firstquestion'] == 'Arquitetura e Urbanismo') echo 'selected'; ?>>Arquitetura e Urbanismo</option>
@@ -230,8 +195,53 @@ if (isset($_POST['submit'])) {
           </div>
           <div id="campoPersonalizado" style="display: none;">
             <label for="textoPersonalizado">Digite sua opção:</label>
-            <input type="text" id="textoPersonalizado" name="textoPersonalizado"
-              onblur="atualizarOpcaoPersonalizada(this.value)">
+            <input type="text" id="textoPersonalizado" name="textoPersonalizado" onblur="atualizarOpcaoPersonalizada(this.value)">
+          </div>
+        </li>
+        <li class="form-line form-line-column form-col-2 form-line-column-right-two" data-type="control_dropdown" id="id_2">
+          <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
+          <div id="cid_2" class="form-input-wide" data-layout="half">
+            <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
+            <option>Selecione</option>
+              <option value="Arquivo público do Amazonas" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas') echo 'selected'; ?>>Arquivo público do Amazonas</option>
+              <option value="Apoio ao Gabinete" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete') echo 'selected'; ?>>Apoio ao Gabinete</option>
+              <option value="Arquivo administrativo" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Arquivo administrativo') echo 'selected'; ?>>Arquivo administrativo</option>
+              <option value="Assessoria de Comunicação" <?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria de Comunicação') echo 'selected'; ?>>Assessoria de Comunicação</option>
+              <option value="Assessoria Técnica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Assessoria Técnica') echo 'selected'; ?>>Assessoria Técnica</option>
+              <option value="Auditoria Externa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Auditoria Externa') echo 'selected'; ?>>Auditoria Externa</option>
+              <option value="Controladoria Interna"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Controladoria Interna') echo 'selected'; ?>>Controladoria Interna</option>
+              <option value="Coordenadoria de Patrimônio"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Coordenadoria de Patrimônio') echo 'selected'; ?>>Coordenadoria de Patrimônio</option>
+              <option value="Comissão de Regime Disciplinar"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regime Disciplinar') echo 'selected'; ?>>Comissão de Regime Disciplinar</option>
+              <option value="CRD Defensoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'CRD Defensoria') echo 'selected'; ?>>CRD Defensoria</option>
+              <option value="Comissão de Regularização de Imóveis"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regularização de Imóveis') echo 'selected'; ?>>Comissão de Regularização de Imóveis</option>
+              <option value="Consultoria Técnico Administrativa"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Consultoria Técnico Administrativa') echo 'selected'; ?>>Consultoria Técnico Administrativa</option>
+              <option value="Administração e Finanças - DAFI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Administração e Finanças - DAFI') echo 'selected'; ?>>Administração e Finanças - DAFI</option>
+              <option value="Tecnologia da informação - DETI"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Tecnologia da informação - DETI') echo 'selected'; ?>>Tecnologia da informação - DETI</option>
+              <option value="Gestão de Frota e Combustível"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gestão de Frota e Combustível') echo 'selected'; ?>>Gestão de Frota e Combustível</option>
+              <option value="Escola de Governo - ESASP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Escola de Governo - ESASP') echo 'selected'; ?>>Escola de Governo - ESASP</option>
+              <option value="Gerência de Contas Públicas"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Contas Públicas') echo 'selected'; ?>>Gerência de Contas Públicas</option>
+              <option value="Gerência de Diárias e Passagens"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Diárias e Passagens') echo 'selected'; ?>>Gerência de Diárias e Passagens</option>
+              <option value="Gerência de Apoio Logístico"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Apoio Logístico') echo 'selected'; ?>>Gerência de Apoio Logístico</option>
+              <option value="Gerência de Planejamento, Orçamento e Finanças"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Planejamento, Orçamento e Finanças') echo 'selected'; ?>>Gerência de Planejamento, Orçamento e Finanças</option>
+              <option value="Gerência de Pessoal"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Pessoal') echo 'selected'; ?>>Gerência de Pessoal</option>
+              <option value="GIPIAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GIPIAP') echo 'selected'; ?>>GIPIAP</option>
+              <option value="GT-CTA"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-CTA') echo 'selected'; ?>>GT-CTA</option>
+              <option value="GT-MD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'GT-MD') echo 'selected'; ?>>GT-MD</option>
+              <option value="Junta Médica"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Junta Médica') echo 'selected'; ?>>Junta Médica</option>
+              <option value="Ouvidoria"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Ouvidoria') echo 'selected'; ?>>Ouvidoria</option>
+              <option value="Protocolo"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Protocolo') echo 'selected'; ?>>Protocolo</option>
+              <option value="Setor de Contratos Institucionais"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Setor de Contratos Institucionais') echo 'selected'; ?>>Setor de Contratos Institucionais</option>
+              <option value="Secretaria Executiva Administração e Gestão"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'Secretaria Executiva Administração e Gestão') echo 'selected'; ?>>Secretaria Executiva Administração e Gestão</option>
+              <option value="SEPAGAP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SEPAGAP') echo 'selected'; ?>>SEPAGAP</option>>
+              <option value="SGPGP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGPGP') echo 'selected'; ?>>SGPGP</option>
+              <option value="SGRH"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH') echo 'selected'; ?>>SGRH</option>
+              <option value="SGRH-GRD"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRG-GRD') echo 'selected'; ?>>SGRH-GRD</option>
+              <option value="SGRH-ASS"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SRGH-ASS') echo 'selected'; ?>>SGRH-ASS</option>
+              <option value="SGRH-FP"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-FP') echo 'selected'; ?>>SGRH-FP</option>
+              <option value="SGRH-GB"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GB') echo 'selected'; ?>>SGRH-GB</option>
+              <option value="SGRH-GV"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GV') echo 'selected'; ?>>SGRH-GV</option>
+              <option value="TRANSPORTE"<?php if(isset($_POST['departament']) && $_POST['departament'] == 'TRANSPORTE') echo 'selected'; ?>>TRANSPORTE</option>
+            </select>
           </div>
         </li>
       </div>
@@ -255,7 +265,7 @@ if (isset($_POST['submit'])) {
         </div>
       </li>
 
-      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Hard Skills que
+      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Competências Técnicas que
         você se identifica:</label>
       <div class="competencias">
         <div class="form-check">
@@ -370,7 +380,7 @@ if (isset($_POST['submit'])) {
         </div>
       </div>
       <!-- Selecionar competencias -->
-      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Soft Skills que
+      <label for="competence-select" class="form-label form-label-top form-label-config">Selecione até 5 Competências Socioemocionais que
         você se identifica:</label>
       <!-- Formulário -->
       <div class="competencias">
@@ -743,6 +753,24 @@ if (isset($_POST['submit'])) {
   </div>
   </form>
 </body>
+<script>
+$(function() {
+  $("#calendario").datepicker({
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado','Domingo'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez']
+    });
+  $("#calendario").datepicker({dateFormat: 'dd-mm-yy'});
+    $( "#calendario" ).datepicker({
+        showOn: "button",
+        buttonImage: "calendario.png",
+        buttonImageOnly: true
+    });
+});
+</script>
 <script src="./Form/form.js"></script>
 
 </html>

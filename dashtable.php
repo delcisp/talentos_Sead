@@ -14,10 +14,11 @@ include_once('config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
 </head>
 <style>
-
     .hidden {
         display: none;
     }
@@ -124,10 +125,12 @@ include_once('config.php');
                             <input type="text" id="searchInput" name="search"
                                 class="flex-shrink flex-grow flex-auto leading-normal tracking-wide w-px flex-1 rounded rounded-l-none px-3 relative focus:outline-none text-xs lg:text-base text-gray-500 font-thin sm:w-full md:w-1/2 lg:w-7/12"
                                 placeholder="Procure por servidor, cargo, departamento">
-                               
-                        </div>                  
+
+                        </div>
                     </div>
-                   <button class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'onclick="window.location.href='./admin_dashboard/examples/dashboard.php'">Voltar</button>
+                    <button
+                        class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'
+                        onclick="window.location.href='./admin_dashboard/examples/dashboard.php'">Voltar</button>
                 </div>
             </div>
         </div>
@@ -140,19 +143,15 @@ include_once('config.php');
                             <tr>
                                 <th
                                     class="px-6 py-3 border-b-2 border-gray-300 text-left leading-4 text-blue-500 tracking-wider">
-                                    Usuário</th>
+                                    Servidor</th>
                                 <th
                                     class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
                                     Departamento</th>
                                 <th
                                     class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-blue-500 tracking-wider">
                                     Cargo</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                    Formações</th>
-                                <th
-                                    class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 text-blue-500 tracking-wider">
-                                    Departamento Opcional</th>
+
+
                                 <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                             </tr>
                         </thead>
@@ -182,12 +181,8 @@ include_once('config.php');
                                     <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
                                         <?php echo $user_data['role']; ?>
                                     </td>
-                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
-                                        <?php echo $user_data['firstquestion']; ?>
-                                    </td>
-                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
-                                        <?php echo $user_data['thirdquestion']; ?>
-                                    </td>
+
+
                                     <td
                                         class='px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5'>
                                         <button
@@ -197,13 +192,19 @@ include_once('config.php');
                                         </button>
                                     </td>
                                 </tr>
-
                                 <div class='modal fade' id='<?php echo $modalId; ?>' tabindex='-1'
                                     aria-labelledby='exampleModalLabel' aria-hidden='true'>
                                     <div class='modal-dialog'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
                                                 <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
+                                                <!-- pra conseguir fazer a conversao pra um json tem q adicionar a funcao html de caracteres especiais e colocar o UTF-8 -->
+                                                <button onclick="emitirRelatorio('<?php echo $modalId; ?>', <?php echo htmlspecialchars(json_encode($user_data), ENT_QUOTES, 'UTF-8'); ?>)">
+    <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
+</button>
+
+</button>
+
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal'
                                                     aria-label='Close'></button>
                                             </div>
@@ -226,10 +227,10 @@ include_once('config.php');
                                                 <p>Departamento Opcional:
                                                     <?php echo $user_data['thirdquestion']; ?>
                                                 </p>
-                                                <p class="hard-competencia">Hard Skills:
+                                                <p class="hard-competencia">Competências Técnicas:
                                                     <?php echo $user_data['hardcompetencia']; ?>
                                                 </p>
-                                                <p class="competencia">Soft Skills:
+                                                <p class="competencia">Competências Socioemocionais:
                                                     <?php echo $user_data['competencia']; ?>
                                                 </p>
                                                 <p>Satisfação com a equipe:
@@ -240,7 +241,6 @@ include_once('config.php');
                                                         <?php echo nl2br($user_data['justification']); ?>
                                                     </p>
                                                 <?php endif; ?>
-
                                             </div>
                                             <div class='modal-footer'>
                                                 <button type='button' class='btn btn-secondary'
@@ -250,7 +250,37 @@ include_once('config.php');
                                     </div>
                                 </div>
                             <?php } ?>
+
                     </table>
+                    <script>
+                        function emitirRelatorio(modalId, user_data) {
+                            var data = [];
+
+                            data.push(['Nome', user_data['firstname'] + ' ' + user_data['lastname']]);
+                            data.push(['Departamento', user_data['departament']]);
+                            data.push(['Cargo', user_data['role']]);
+                            data.push(['Formações', user_data['firstquestion']]);
+                            data.push(['Cursos', user_data['secondquestion']]);
+                            data.push(['Departamento Opcional', user_data['thirdquestion']]);
+                            data.push(['Competências Técnicas', user_data['hardcompetencia']]);
+                            data.push(['Competências Socioemocionais', user_data['competencia']]);
+                            data.push(['Satisfação com a equipe', user_data['ratingq']]);
+ 
+                            if (user_data['ratingq'] <= 5) {
+                                data.push(['Justificativa', user_data['justification']]);
+                            }
+                               
+                            var ws = XLSX.utils.aoa_to_sheet(data);
+                            var wb = XLSX.utils.book_new();
+                            XLSX.utils.book_append_sheet(wb, ws, 'Relatorio');
+
+                            var fileName = 'relatorio.xlsx';
+                            XLSX.writeFile(wb, fileName);
+
+                        }
+                    </script>
+
+
                 </div>
                 <div class="sm:flex-1 sm:flex sm:items-center sm:justify-between mt-4 work-sans">
 
@@ -262,6 +292,8 @@ include_once('config.php');
 
 </html>
 <script>
+
+
     $(document).ready(function () {
         $('#searchInput').on('input', function () {
             var searchTerm = $(this).val().toLowerCase();
@@ -287,4 +319,6 @@ include_once('config.php');
             });
         });
     });
+
+
 </script>

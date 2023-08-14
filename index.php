@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit(); // Certifique-se de que o script não continua a ser executado após o redirecionamento
     } else {
         // Redireciona para a página "lgpd.php" se o usuário não for administrador
-        $lgpd_path = "./lgpd.php";
+        $lgpd_path = "./whyiamdoingthis.html";
         header("Location: " . $lgpd_path);
         exit();
     }
