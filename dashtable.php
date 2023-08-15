@@ -199,11 +199,13 @@ include_once('config.php');
                                             <div class='modal-header'>
                                                 <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
                                                 <!-- pra conseguir fazer a conversao pra um json tem q adicionar a funcao html de caracteres especiais e colocar o UTF-8 -->
-                                                <button onclick="emitirRelatorio('<?php echo $modalId; ?>', <?php echo htmlspecialchars(json_encode($user_data), ENT_QUOTES, 'UTF-8'); ?>)">
-    <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
-</button>
+                                                <button type="submit">
+                                                    <img width="32" height="32"
+                                                        src="https://img.icons8.com/windows/32/graph-report.png"
+                                                        alt="graph-report" title="Emitir relatório">
+                                                </button>
 
-</button>
+                                                </button>
 
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal'
                                                     aria-label='Close'></button>
@@ -252,33 +254,7 @@ include_once('config.php');
                             <?php } ?>
 
                     </table>
-                    <script>
-                        function emitirRelatorio(modalId, user_data) {
-                            var data = [];
 
-                            data.push(['Nome', user_data['firstname'] + ' ' + user_data['lastname']]);
-                            data.push(['Departamento', user_data['departament']]);
-                            data.push(['Cargo', user_data['role']]);
-                            data.push(['Formações', user_data['firstquestion']]);
-                            data.push(['Cursos', user_data['secondquestion']]);
-                            data.push(['Departamento Opcional', user_data['thirdquestion']]);
-                            data.push(['Competências Técnicas', user_data['hardcompetencia']]);
-                            data.push(['Competências Socioemocionais', user_data['competencia']]);
-                            data.push(['Satisfação com a equipe', user_data['ratingq']]);
- 
-                            if (user_data['ratingq'] <= 5) {
-                                data.push(['Justificativa', user_data['justification']]);
-                            }
-                               
-                            var ws = XLSX.utils.aoa_to_sheet(data);
-                            var wb = XLSX.utils.book_new();
-                            XLSX.utils.book_append_sheet(wb, ws, 'Relatorio');
-
-                            var fileName = 'relatorio.xlsx';
-                            XLSX.writeFile(wb, fileName);
-
-                        }
-                    </script>
 
 
                 </div>
