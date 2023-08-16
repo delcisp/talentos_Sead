@@ -2,7 +2,7 @@
 
 $dbHost = "localhost";
 $dbUsername = "root";
-$dbPassword = "12345";
+$dbPassword = "";
 $dbName = "formcompetencias";
 
 $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
@@ -16,5 +16,4 @@ $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
 
 //$conn->close();
-
 ?>
