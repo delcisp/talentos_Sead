@@ -2,7 +2,7 @@
 
 $dbHost = "localhost";
 $dbUsername = "root";
-$dbPassword = "";
+$dbPassword = "12345";
 $dbName = "formcompetencias";
 
 $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);

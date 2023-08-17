@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php'; 
 include_once('config.php');
 ?>
 <!doctype html>
@@ -156,61 +157,45 @@ include_once('config.php');
                             </tr>
                         </thead>
                         <tbody class="bg-white">
-                            <?php
-                            $query = "SELECT * FROM usuarios ORDER BY firstname ASC";
-                            $result = mysqli_query($conn, $query);
-                            $modalCounter = 0;
-                            while ($user_data = mysqli_fetch_assoc($result)) {
+    <?php
+    $query = "SELECT * FROM usuarios ORDER BY firstname ASC";
+    $result = mysqli_query($conn, $query);
+    $modalCounter = 0;
+    while ($user_data = mysqli_fetch_assoc($result)) {
+        $modalId = "modal" . ++$modalCounter;
+    ?>
 
-                                $modalId = "modal" . ++$modalCounter;
-                                ?>
-
-                                <tr data-bs-target="#<?php echo $modalId; ?>">
-                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500'>
-                                        <div class='flex items-center'>
-                                            <div>
-                                                <div class='text-sm leading-5 text-gray-800'>
-                                                    <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
-                                        <?php echo $user_data['departament']; ?>
-                                    </td>
-                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
-                                        <?php echo $user_data['role']; ?>
-                                    </td>
-
-
-                                    <td
-                                        class='px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5'>
-                                        <button
-                                            class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'
-                                            data-bs-toggle='modal' data-bs-target='#<?php echo $modalId; ?>'>
-                                            Ver Detalhes
-                                        </button>
-                                    </td>
-                                </tr>
-                                <div class='modal fade' id='<?php echo $modalId; ?>' tabindex='-1'
-                                    aria-labelledby='exampleModalLabel' aria-hidden='true'>
-                                    <div class='modal-dialog'>
-                                        <div class='modal-content'>
-                                            <div class='modal-header'>
-                                                <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
-                                                <!-- pra conseguir fazer a conversao pra um json tem q adicionar a funcao html de caracteres especiais e colocar o UTF-8 -->
-                                                <button type="submit">
-                                                    <img width="32" height="32"
-                                                        src="https://img.icons8.com/windows/32/graph-report.png"
-                                                        alt="graph-report" title="Emitir relatório">
-                                                </button>
-
-                                                </button>
-
-                                                <button type='button' class='btn-close' data-bs-dismiss='modal'
-                                                    aria-label='Close'></button>
-                                            </div>
-                                            <div class='modal-body'>
+        <tr data-bs-target="#<?php echo $modalId; ?>">
+            <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500'>
+                <div class='flex items-center'>
+                    <div>
+                        <div class='text-sm leading-5 text-gray-800'>
+                            <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
+                <?php echo $user_data['departament']; ?>
+            </td>
+            <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
+                <?php echo $user_data['role']; ?>
+            </td>
+            <td class='px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5'>
+                <button class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none' data-bs-toggle='modal' data-bs-target='#<?php echo $modalId; ?>'>
+                    Ver Detalhes
+                </button>
+            </td>
+        </tr>
+        <div class='modal fade' id='<?php echo $modalId; ?>' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+            <div class='modal-dialog'>
+                <div class='modal-content'>
+                    <div class='modal-header'>
+                        <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
+                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                    </div>
+                    <div class='modal-body'>
+                                            
                                                 <p>Nome:
                                                     <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
                                                 </p>
@@ -243,14 +228,34 @@ include_once('config.php');
                                                         <?php echo nl2br($user_data['justification']); ?>
                                                     </p>
                                                 <?php endif; ?>
+                                                
+                            <input type='hidden' name='userId' value='<?php echo $user_data['id']; ?>'>
+                            <input type='hidden' name='firstname' value='<?php echo$user_data['firstname']; ?> '>
+                            <input type='hidden' name='lastname' value='<?php echo$user_data['lastname']; ?> '>
+                            <input type='hidden' name='departament' value='<?php echo$user_data['departament']; ?> '>
+                            <input type='hidden' name='role' value='<?php echo$user_data['role']; ?> '>
+                            <input type='hidden' name='firstquestion' value='<?php echo$user_data['firstquestion']; ?> '>
+                            <input type='hidden' name='secondquestion' value='<?php echo$user_data['secondquestion']; ?> '>
+                            <input type='hidden' name='thirdquestion' value='<?php echo$user_data['thirdquestion']; ?> '>
+                            <input type='hidden' name='hardcompetencias' value='<?php echo$user_data['hardcompetencias']; ?> '>
+                            <input type='hidden' name='competencias' value='<?php echo$user_data['competencias']; ?> '>
+                            <form action='emitirRelatorio.php' method='POST'>
+                            <button type='submit' class='btn btn-primary'>Emitir Relatório</button>
+                        </form>
                                             </div>
                                             <div class='modal-footer'>
+                                     
+
+                                           <!--     <button type="submit">
+        <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
+    </button> -->
                                                 <button type='button' class='btn btn-secondary'
                                                     data-bs-dismiss='modal'>Fechar</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                </form>
                             <?php } ?>
 
                     </table>

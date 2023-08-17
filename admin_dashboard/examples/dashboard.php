@@ -14,9 +14,11 @@ $competencias = array();
 if ($resultCompetencia->num_rows > 0) {
     // Loop pelos resultados da consulta
     while ($row = $resultCompetencia->fetch_assoc()) {
-        $competenciasSelecionadas = explode(", ", $row["competencia"]);
-        foreach ($competenciasSelecionadas as $competencia) {
-            $competencias[] = $competencia;
+        if (!is_null($row["competencia"])) {
+            $competenciasSelecionadas = explode(", ", $row["competencia"]);
+            foreach ($competenciasSelecionadas as $competencia) {
+                $competencias[] = $competencia;
+            }
         }
     }
 }
@@ -46,12 +48,14 @@ $hardcompetencias = array();
 
 if ($resultHardCompetencia->num_rows > 0) {
     while ($row = $resultHardCompetencia->fetch_assoc()) {
+        if(!is_null($row["hardcompetencia"])) {
         $hardCompetenciasSelecionadas = explode("/", $row["hardcompetencia"]); // Use a unique delimiter
         foreach ($hardCompetenciasSelecionadas as $hardcompetencia) {
             // Exclude empty or undefined hardcompetencias
             if (!empty(trim($hardcompetencia))) {
                 $hardcompetencias[] = $hardcompetencia;
             }
+        }
         }
     }
 }
