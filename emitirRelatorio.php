@@ -4,10 +4,11 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 
 //fazendo os posts do dashtable e banco pra o relatorio
-//$firstname = $_POST['firstname'];
-//  $lastname = $_POST['lastname'];
-//  $departament = $_POST['departament'];
-//  $role = $_POST['firstquestion'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$departament = $_POST['departament'];
+$role = $_POST['role'];
+$competencia = $_POST['competencia'];
 
 if (isset($_POST['emitirRelatorio'])) {
     require __DIR__ . '/vendor/autoload.php';
@@ -17,13 +18,17 @@ if (isset($_POST['emitirRelatorio'])) {
     //setando valores
     $activeWorksheet = $spreadsheet->getActiveSheet();
 
-    $activeWorksheet->setCellValue('B1', 'SERVIDORES');
-    $activeWorksheet->setCellValue('C1', 'RESPOSTAS DOS SERVIDORES');
-
-    $activeWorksheet->getStyle('B1')->getFont()->setSize(20); // Tamanho maior para A1
-    $activeWorksheet->getStyle('C1')->getFont()->setSize(20);
+    $activeWorksheet->setCellValue('B2', 'SERVIDORES');
+    $activeWorksheet->setCellValue('C2', 'RESPOSTAS DOS SERVIDORES');
+    $activeWorksheet->getStyle('B2')->getFont()->setSize(20); // Tamanho maior para A1
+    $activeWorksheet->getStyle('C2')->getFont()->setSize(20);
+    $activeWorksheet->getStyle('B2:C2')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+    $activeWorksheet->getStyle('B2:C2')->getFill()->getStartColor()->setARGB('ffa4ffa4');
     
-    // $activeWorksheet->setCellValue('A2', $firstname . " " . $lastname);
+    $activeWorksheet->setCellValue('C3', $firstname . " " . $lastname);
+    $activeWorksheet->setCellValue('C6', $departament);
+    $activeWorksheet->setCellValue('C5', $role);
+    $activeWorksheet->setCellValue('C12', $competencia);
 
     $titles = [
         'NOME', 'DATA DE NASCIMENTO', 'CARGO ATUAL', 'DEPARTAMENTO', 
@@ -31,46 +36,47 @@ if (isset($_POST['emitirRelatorio'])) {
         'CEP', 'COMPETÊNCIAS TÉCNICAS', 'COMPETÊNCIAS SOCIOEMOCIONAIS', 
         'SATISFAÇÃO COM A EQUIPE DE TRABALHO', 'JUSTIFICATIVA'
     ];
-    $row = 2;  // Começar a partir da linha 2
+    $row = 3;  // Começar a partir da linha 2
     
     foreach ($titles as $title) {
         $activeWorksheet->setCellValue('B' . $row, $title);
         $activeWorksheet->getColumnDimension('B')->setWidth(45);  // Largura da coluna A
-        $activeWorksheet->getColumnDimension('C')->setWidth(60);
+        $activeWorksheet->getColumnDimension('C')->setWidth(70);
         $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(22);  // Altura da linha
         $row++;
     }
-    $activeWorksheet->getStyle('B2:B' . ($row - 1))->getFont()->setSize(12);  // Tamanho menor para coluna A
-$activeWorksheet->getStyle('C2:C' . ($row - 1))->getFont()->setSize(12); 
-$activeWorksheet->getStyle('B2:B' . ($row - 1))->getFont()->setBold(true);
-$activeWorksheet->getStyle('C2:C' . ($row - 1))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-$activeWorksheet->getStyle('C2:C' . ($row - 1))->getFill()->getStartColor()->setARGB('fff5ffe2');
-$activeWorksheet->getStyle('B2:C' . ($row - 1))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
-$activeWorksheet->getStyle('B2:C' . ($row - 1))->getFill()->getStartColor()->setARGB('fff5ffe2');
+    $activeWorksheet->getStyle('B3:B' . ($row - 1))->getFont()->setSize(12);  // Tamanho menor para coluna A
+$activeWorksheet->getStyle('C3:C' . ($row - 1))->getFont()->setSize(12); 
+$activeWorksheet->getStyle('B3:B' . ($row - 1))->getFont()->setBold(true);
+$activeWorksheet->getStyle('C3:C' . ($row - 1))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+$activeWorksheet->getStyle('C3:C' . ($row - 1))->getFill()->getStartColor()->setARGB('fffffff2');
+$activeWorksheet->getStyle('B3:C' . ($row - 1))->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+$activeWorksheet->getStyle('B3:C' . ($row - 1))->getFill()->getStartColor()->setARGB('fffffff2');
 
-    $spreadsheet->getActiveSheet()->getStyle('B1:C1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+    $spreadsheet->getActiveSheet()->getStyle('B2:C2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
    
     //setando a borda dos títulos de coluna
     $styleTopArray = [
         'borders' => [
-            'outline' => [
+            'allBorders' => [
                 'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
-                'color' => ['argb' => 'ff50c878'],
+                'color' => ['argb' => 'ff040406'],
             ],
         ],
     ];
-    $activeWorksheet->getStyle('B1:C1')->applyFromArray($styleTopArray);
+    $activeWorksheet->getStyle('B2:C2')->applyFromArray($styleTopArray);
 
     $styleTitlesArray = [
         'borders' => [
             'allBorders' => [
             'borderStyle' => \PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THICK,
-                'color' => ['argb' => 'ff91d2ff'],
+                'color' => ['argb' => 'ff040406'],
         ],
         ],
         ];
-    $activeWorksheet->getStyle('B2:C13')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-    $activeWorksheet->getStyle('B2:C13')->applyFromArray($styleTitlesArray);
+    $activeWorksheet->getStyle('B3:C14')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $activeWorksheet->getStyle('B3:C14')->applyFromArray($styleTitlesArray);
     //criando o xlsx e setando as configurações de download
     $writer = new Xlsx($spreadsheet);
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); //suggestion: header('Content-Type: application/vnd.ms-excel');

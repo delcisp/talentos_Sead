@@ -239,6 +239,14 @@ include_once('config.php');
                                                         value="<?php echo $user_data['firstname']; ?>">
                                                     <input type="hidden" name="lastname"
                                                         value="<?php echo $user_data['lastname']; ?>">
+                                                    <input type='hidden' name="departament"
+                                                        value='<?php echo $user_data['departament']; ?> '>
+                                                    <input type='hidden' name="role"
+                                                        value='<?php echo $user_data['role']; ?> '>
+                                                    <input type='hidden' name="firstquestion"
+                                                        value='<?php echo $user_data['firstquestion']; ?> '>
+                                                        <input type='hidden' name="competencia"
+                                                        value='<?php echo $user_data['competencia']; ?> '>
                                                     <button type='submit' name='emitirRelatorio'
                                                         class='btn btn-primary'>Emitir Relatório</button>
                                                 </form>

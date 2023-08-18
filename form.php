@@ -95,7 +95,6 @@ if (isset($_POST['submit'])) {
         </li>
         <li class="form-line form-line-column form-line-column-right form-line-container" data-type="control_dropdown" id="id_data">
           <label class="form-label form-label-top" id="data"> Data de Nascimento</label>
-        
           <input type="text" id="calendario" name="calendario" class="form-textbox" data-defaultvalue=""
                   autoComplete="section-input_1 family-name" size="" data-component="date">
       
