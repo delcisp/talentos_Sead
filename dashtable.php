@@ -204,6 +204,26 @@ include_once('config.php');
                                                 <p>Nome:
                                                     <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
                                                 </p>
+                                                <p>Data de Nascimento:
+                                                    <?php
+                                                    
+                                                    $birthdate = $user_data['birthdate'];
+
+                                                    // Verifica se a data de nascimento está presente
+                                                    if ($birthdate !== null && $birthdate !== '0000-00-00') {
+                                                        // Converte o formato da data para "XX/XX/XXXX"
+                                                        $formatted_birthdate = date('d/m/Y', strtotime($birthdate));
+                                                        echo $formatted_birthdate;
+                                                    } else {
+                                                        echo "não informada";
+                                                    }
+                                                    ?>
+                                                </p>
+                                                <p>
+                                                    Telefone:
+                                                    <?php echo $user_data['telefone'];?>
+                                                </p>
+                                                </p>
                                                 <p>Departamento:
                                                     <?php echo $user_data['departament']; ?>
                                                 </p>
@@ -245,7 +265,7 @@ include_once('config.php');
                                                         value='<?php echo $user_data['role']; ?> '>
                                                     <input type='hidden' name="firstquestion"
                                                         value='<?php echo $user_data['firstquestion']; ?> '>
-                                                        <input type='hidden' name="competencia"
+                                                    <input type='hidden' name="competencia"
                                                         value='<?php echo $user_data['competencia']; ?> '>
                                                     <button type='submit' name='emitirRelatorio'
                                                         class='btn btn-primary'>Emitir Relatório</button>

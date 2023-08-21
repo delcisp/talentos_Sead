@@ -1,3 +1,6 @@
+$('#telefone').mask('(00) 00000-0000');
+$('#data').mask('00/00/0000');
+
 function redirecionar() {
     window.location.href = './agradecimento.php';
   } 
