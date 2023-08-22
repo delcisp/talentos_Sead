@@ -17,9 +17,14 @@ p {
 }
 
 body {
+  background-image: url('../Imagens/bgBodyForm.png');
+  background-size: cover; /* Ajusta o tamanho da imagem para cobrir todo o body */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Fixa a imagem de fundo enquanto rola o conteúdo */
+  background-position: center -70px; /* Centraliza a imagem de fundo */
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 70px;
+    padding: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,7 +60,7 @@ body {
   .form-container {
     position: relative;
     border: 5px solid #f5fefd;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 5px;
     max-width: 900px;
     width: auto;
@@ -80,10 +85,11 @@ body {
   .form-line-column-right-three {
 
     position: absolute;
-    margin-top: 35px;
-    top: 280px;
+   
+    top: 20px;
     right: 0;
     width: 50%;
+  
   }
   .form-container {
     max-width: 450px;
@@ -326,6 +332,18 @@ body {
   .form-line-column-right-three {
     position: absolute;
     top: 275px;
+    right: 0;
+    width: 50%;
+  }
+  .form-line-column-right-four {
+    position: absolute;
+    top: 400px;
+    right: 0;
+    width: 50%;
+  }
+  .form-line-column-right-five {
+    position: absolute;
+    top: 525px;
     right: 0;
     width: 50%;
   }
