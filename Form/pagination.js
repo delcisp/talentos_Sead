@@ -21,8 +21,15 @@ document.addEventListener('DOMContentLoaded', function() {
             currentPage = page2;
         } else if (currentPage === page2) {
             currentPage = page3;
+            nextButton.style.display = 'none'; // Oculta o botão "Próximo" na página 3
         }
         currentPage.style.display = 'block';
+
+        if (currentPage === page1) {
+            prevButton.style.display = 'none'; // Oculta o botão "Anterior" na página 1
+        } else {
+            prevButton.style.display = 'block'; // Torna o botão "Anterior" visível nas outras páginas
+        }
     });
 
     // Evento de clique no botão "Anterior"
@@ -30,12 +37,21 @@ document.addEventListener('DOMContentLoaded', function() {
         currentPage.style.display = 'none';
         if (currentPage === page3) {
             currentPage = page2;
+            nextButton.style.display = 'block'; // Torna o botão "Próximo" visível novamente na página 2
         } else if (currentPage === page2) {
             currentPage = page1;
         }
         currentPage.style.display = 'block';
+
+        if (currentPage === page1) {
+            prevButton.style.display = 'none'; // Oculta o botão "Anterior" na página 1
+        } else {
+            prevButton.style.display = 'block'; // Torna o botão "Anterior" visível nas outras páginas
+        }
     });
 });
+
+
 
 
 

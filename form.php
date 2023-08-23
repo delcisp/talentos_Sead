@@ -157,15 +157,16 @@ if (isset($_POST['submit'])) {
           </div>
         </li>
         <li class="form-line form-line-column form-col-2 form-line-column-right-five" data-type="control_dropdown"
-          id="id_2">
-          <label class="form-label form-label-top" id="departament" for="input_2">Departamento</label>
-          <div id="cid_2" class="form-input-wide" data-layout="half">
-            <select class="form-dropdown" id="input_2" name="departament" aria-label="Department">
-              <option>Selecione</option>
-              <option>AAA</option>
-            </select>
-          </div>
-        </li> 
+    id="department_section">
+  <label class="form-label form-label-top" for="input_departament">Departamento</label>
+  <div id="department_container" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_departament" name="department" aria-label="Department">
+      <option>Selecione</option>
+      <option>AAA</option>
+    </select>
+  </div>
+</li>
+ 
         <li class="form-line form-line-column " data-type="control_dropdown" id="id_4">
           <label class="form-label form-label-top" id="firstquestion" for="input_4">Qual o seu grau de escolaridade?</label>
           <div id="cid_4" class="form-input-wide" data-layout="half">
@@ -181,7 +182,24 @@ if (isset($_POST['submit'])) {
               onblur="atualizarOpcaoPersonalizada(this.value)">
           </div>
         </li>
-         <!--form-line-column-right-three -->
+        <li class="form-line form-line-column form-col-2 form-line-column-right-six" data-type="control_dropdown"
+    id="id_2">
+  <label class="form-label form-label-top" id="bloodtype_label" for="input_2">Qual o seu tipo sanguíneo?</label>
+  <div id="cid_2" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_2" name="bloodtype" aria-label="bloodtype">
+      <option>Selecione</option>
+      <option>A+</option>
+      <option>B+</option>
+      <option>AB+</option>
+      <option>O+</option>
+      <option>A-</option>
+      <option>B-</option>
+      <option>AB-</option>
+      <option>O-</option>
+    </select>
+  </div>
+</li>
+
         
      
       </div>
@@ -190,6 +208,243 @@ if (isset($_POST['submit'])) {
 
 <div class="form-page" id="page-2" style="display: none;">   
 
+
+<label class="form-label form-label-top form-label-config">Qual a sua cor ou raça?</label>
+<div class="checkbox-wrapper-18">
+  <label for="checkbox-amarela">
+    <div class="round">
+    <input type="checkbox" id="checkbox-amarela" />
+      <span class="checkbox-text">Amarela</span>
+    </div>
+<div class="round">
+  <input type="checkbox" id="checkbox-branco" />
+  <label for="checkbox-branco">
+    <span class="checkbox-text">Branco</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-indigena" />
+  <label for="checkbox-indigena">
+    <span class="checkbox-text">Indígena</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-pardo" />
+  <label for="checkbox-pardo">
+    <span class="checkbox-text">Pardo</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-preta" />
+  <label for="checkbox-preta">
+    <span class="checkbox-text">Preta</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-nao-classificar" />
+  <label for="checkbox-nao-classificar">
+    <span class="checkbox-text">Prefiro não me classificar</span>
+  </label>
+</div>
+      </div>
+      <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
+<div class="checkbox-wrapper-18">
+<div class="round">
+  <input type="checkbox" id="checkbox-mulhercis" />
+  <label for="checkbox-mulhercis">
+    <span class="checkbox-text">Mulher cisgênera (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-homemcis" />
+  <label for="checkbox-homemcis">
+    <span class="checkbox-text">Homem cisgênero (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-mulhertrans" />
+  <label for="checkbox-mulhertrans">
+    <span class="checkbox-text">Mulher trans (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-homemtrans" />
+  <label for="checkbox-homemtrans">
+    <span class="checkbox-text">(Homem Trans se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-naobinario" />
+  <label for="checkbox-naobinario">
+    <span class="checkbox-text">Não binário (não se sente pertencente ao gênero masculino ou ao feminino)</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-nao-classificar2" />
+  <label for="checkbox-nao-classificar2">
+    <span class="checkbox-text">Prefiro não me classificar</span>
+  </label>
+</div>
+      </div>
+      <label class="form-label form-label-top form-label-config">Você é doador de órgãos?</label>
+<div class="checkbox-wrapper-18">
+<div class="round">
+  <input type="checkbox" id="checkbox-sim" />
+  <label for="checkbox-sim">
+    <span class="checkbox-text">Sim</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-nao" />
+  <label for="checkbox-nao">
+    <span class="checkbox-text">Não</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-naodecidi" />
+  <label for="checkbox-naodecidi">
+    <span class="checkbox-text">Ainda não me decidi</span>
+  </label>
+</div>
+      </div>
+      <li class="form-line" data-type="control_scale" id="id_7">
+        <label class="form-label form-label-top" id="ratingquestion">Quão satisfeito você está com a
+          equipe
+          que trabalha?</label>
+        <div id="cid_7" class="form-input-wide" data-layout="full">
+          <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+            class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+            <div class="rating-item-group">
+              <div class="rating-item">
+                <span class="rating-item-title for-from"></span>
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1"
+                  id="input_7_1" />
+                <label for="input_7_1">1</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2"
+                  id="input_7_2" />
+                <label for="input_7_2">2</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3"
+                  id="input_7_3" />
+                <label for="input_7_3">3</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="4" title="4"
+                  id="input_7_4" />
+                <label for="input_7_4">4</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="5" title="5"
+                  id="input_7_5" />
+                <label for="input_7_5">5</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="6" title="6"
+                  id="input_7_6" />
+                <label for="input_7_6">6</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="7" title="7"
+                  id="input_7_7" />
+                <label for="input_7_7">7</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="8" title="8"
+                  id="input_7_8" />
+                <label for="input_7_8">8</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="9" title="9"
+                  id="input_7_9" />
+                <label for="input_7_9">9</label>
+              </div>
+              <div class="rating-item">
+                <span class="rating-item-title for-to"></span>
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10"
+                  id="input_7_10" />
+                <label for="input_7_10">10</label>
+              </div>
+            </div>
+          </div>
+          </span>
+        </div>
+      </li>
+
+     
+      <li class="form-line" data-type="control_scale" id="ratingquestiontwo">
+    <label class="form-label form-label-top form-label-auto" id="label_8">Quão satisfeito você está com as decisões da sua vida?</label>
+    <div id="cid_8" class="form-input-wide" data-layout="full">
+      <span class="form-sub-label-container" style="vertical-align:top">
+        <div role="radiogroup" aria-labelledby="label_8 sublabel_input_8_description" cellpadding="4"
+          cellspacing="0" class="form-scale-table" data-component="scale">
+          <div class="rating-item-group">
+            <div class="rating-item">
+              <span class="rating-item-title for-from">
+              </span>
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="1" title="1"
+                id="input_8_1" />
+              <label for="input_8_1">1</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="2" title="2"
+                id="input_8_2" />
+              <label for="input_8_2">2</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="3" title="3"
+                id="input_8_3" />
+              <label for="input_8_3">3</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="4" title="4"
+                id="input_8_4" />
+              <label for="input_8_4">4</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="5" title="5"
+                id="input_8_5" />
+              <label for="input_8_5">5</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="6" title="6"
+                id="input_8_6" />
+              <label for="input_8_6">6</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="7" title="7"
+                id="input_8_7" />
+              <label for="input_8_7">7</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="8" title="8"
+                id="input_8_8" />
+              <label for="input_8_8">8</label>
+            </div>
+            <div class="rating-item">
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="9" title="9"
+                id="input_8_9" />
+              <label for="input_8_9">9</label>
+            </div>
+            <div class="rating-item">
+              <span class="rating-item-title for-to">
+              </span>
+              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="10"
+                title="10" id="input_8_10" />
+              <label for="input_8_10">10</label>
+            </div>
+          </div>
+        </div>
+      </span>
+    </div>
+  </li>
+
+     
+      </div> <!-- fechando a pagina 2 -->
+
+      <div class="form-page" id="page-3" style="display: none;">
       <label class="form-label form-label-top form-label-config">Selecione até 5 Competências
         Técnicas que
         você se identifica:</label>
@@ -536,171 +791,7 @@ if (isset($_POST['submit'])) {
             value="Visão crítica" />
           <label class="form-check-label" for="competencia43">Visão crítica</label>
         </div>
-      </div>
-        
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="competencia43" name="competencia[]"
-            value="Visão crítica"/>
-          <label class="form-check-label" for="competencia43">Visão crítica</label>
         </div>
-      
-
-      </div> <!-- fechando a pagina 2 -->
-
-      <div class="form-page" id="page-3" style="display: none;">
-     
-      <li class="form-line" data-type="control_textarea" id="id_5">
-        <label class="form-label form-label-top form-label-auto" id="textquestion" for="input_5"> Você tem outros tipos
-          de formação? Se sim, quais?</label>
-        <div id="cid_5" class="form-input-wide" data-layout="">
-          <textarea id="input_5" class="form-textarea" name="secondquestion"
-            style="width:648px;height:80px;margin-top: 15px;" data-component="textarea"
-            placeholder="Exemplo: Cursos livres, cursos técnicos, atualização profissional"></textarea>
-        </div>
-      </li>
-      <li class="form-line" data-type="control_textarea" id="id_6"><label
-          class="form-label form-label-top form-label-auto" id="textquestiontwo" for="input_6">De acordo com seus
-          conhecimentos, existe outro departamento em que gostaria de atuar? Se sim, qual?</label>
-        <div id="cid_6" class="form-input-wide" data-layout="">
-          <textarea id="input_6" class="form-textarea" name="thirdquestion"
-            style="width:648px;height:80px;margin-top: 15px;margin-bottom:30px;" data-component="textarea"
-            placeholder="Exemplo: Ouvidoria, Comunicação, ESASP, Administração, Finanças etc"></textarea>
-        </div>
-      </li> 
-      <li class="form-line" data-type="control_scale" id="id_7">
-        <label class="form-label form-label-top" id="ratingquestion">Quão satisfeito você está com a
-          equipe
-          que trabalha?</label>
-        <div id="cid_7" class="form-input-wide" data-layout="full">
-          <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
-            class="form-scale-table" data-component="scale" style="white-space: nowrap;">
-            <div class="rating-item-group">
-              <div class="rating-item">
-                <span class="rating-item-title for-from"></span>
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1"
-                  id="input_7_1" />
-                <label for="input_7_1">1</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2"
-                  id="input_7_2" />
-                <label for="input_7_2">2</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3"
-                  id="input_7_3" />
-                <label for="input_7_3">3</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="4" title="4"
-                  id="input_7_4" />
-                <label for="input_7_4">4</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="5" title="5"
-                  id="input_7_5" />
-                <label for="input_7_5">5</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="6" title="6"
-                  id="input_7_6" />
-                <label for="input_7_6">6</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="7" title="7"
-                  id="input_7_7" />
-                <label for="input_7_7">7</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="8" title="8"
-                  id="input_7_8" />
-                <label for="input_7_8">8</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="9" title="9"
-                  id="input_7_9" />
-                <label for="input_7_9">9</label>
-              </div>
-              <div class="rating-item">
-                <span class="rating-item-title for-to"></span>
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10"
-                  id="input_7_10" />
-                <label for="input_7_10">10</label>
-              </div>
-            </div>
-          </div>
-          </span>
-        </div>
-      </li>
-
-     
-      <li class="form-line" data-type="control_scale" id="ratingquestiontwo">
-    <label class="form-label form-label-top form-label-auto" id="label_8">Quão satisfeito você está com as decisões da sua vida?</label>
-    <div id="cid_8" class="form-input-wide" data-layout="full">
-      <span class="form-sub-label-container" style="vertical-align:top">
-        <div role="radiogroup" aria-labelledby="label_8 sublabel_input_8_description" cellpadding="4"
-          cellspacing="0" class="form-scale-table" data-component="scale">
-          <div class="rating-item-group">
-            <div class="rating-item">
-              <span class="rating-item-title for-from">
-              </span>
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="1" title="1"
-                id="input_8_1" />
-              <label for="input_8_1">1</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="2" title="2"
-                id="input_8_2" />
-              <label for="input_8_2">2</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="3" title="3"
-                id="input_8_3" />
-              <label for="input_8_3">3</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="4" title="4"
-                id="input_8_4" />
-              <label for="input_8_4">4</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="5" title="5"
-                id="input_8_5" />
-              <label for="input_8_5">5</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="6" title="6"
-                id="input_8_6" />
-              <label for="input_8_6">6</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="7" title="7"
-                id="input_8_7" />
-              <label for="input_8_7">7</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="8" title="8"
-                id="input_8_8" />
-              <label for="input_8_8">8</label>
-            </div>
-            <div class="rating-item">
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="9" title="9"
-                id="input_8_9" />
-              <label for="input_8_9">9</label>
-            </div>
-            <div class="rating-item">
-              <span class="rating-item-title for-to">
-              </span>
-              <input type="radio" aria-describedby="label_8" class="form-radio" name="ratingq2" value="10"
-                title="10" id="input_8_10" />
-              <label for="input_8_10">10</label>
-            </div>
-          </div>
-        </div>
-      </span>
-    </div>
-  </li>
-
       <li class="form-line" data-type="control_button" id="id_submit">
         <div id="cid_submit" class="form-input-wide" data-layout="full">
           <button class="submit" id="submit" name="submit">Enviar</button>
@@ -712,17 +803,15 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
       </li>
-      
-      
-
-    </div>
+    </div><!-- fechando a pagina 3 -->
     <div class="form-navigation">
         <button type="button" id="prev-button" >Anterior</button>
         <button type="button" id="next-button">Próximo</button>
         <button type="submit" id="submit-button" style="display: none;">Enviar</button>
       </div> 
-  </form>
-  </div> <!-- fechando a pagina 3 -->
+    </div> <!--fecha o container-->
+ 
+ 
   <script src="./Form/form.js"></script>
 </body>
 </html>
