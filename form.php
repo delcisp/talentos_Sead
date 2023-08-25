@@ -7,7 +7,9 @@ if (isset($_POST['submit'])) {
   $cargoSelecionado = $_POST["role"];
   $formacaoSelecionada = $_POST["firstquestion"];
   $departamentoSelecionado = $_POST["departament"];
-  if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty($_POST["thirdquestion"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
+  if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
+  $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["birthdate"]) || empty($_POST["cep"]) || empty($_POST["uf"])
+|| empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
@@ -21,27 +23,32 @@ if (isset($_POST['submit'])) {
     $firstquestion = $_POST['firstquestion'];
     $ratingq = $_POST['ratingq'];
     $ratingq2 = $_POST['ratingq2'];
-    $secondquestion = $_POST['secondquestion'];
-    $thirdquestion = $_POST['thirdquestion'];
     $justification = $_POST['justification'];
     $birthdate = $_POST['birthdate'];
     $telefone = $_POST['telefone'];
-
+    $cep = $_POST['cep'];
+    $cidade = $_POST['cidade'];
+    $uf = $_POST['uf'];
+    $bairro = $_POST['bairro'];
+    $endereco = $_POST['endereco'];
+    $bloodtype = $_POST['bloodtype'];
+    $genero = $_POST['genero'];
+    $raca = $_POST['raca'];
+    $doador = $_POST['doador'];
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
-
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
     $competenciaHardString = implode("/", $competenciaHardSelecionada);
-
     $birthdate = $_POST['birthdate'];
     // Converta o formato da data para "XXXX-XX-XX"
     $birthdate = str_replace('/', '-', $birthdate);
     $birthdate = date('Y-m-d', strtotime($birthdate));
-    
     $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
      
-    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, secondquestion, thirdquestion, competencia, hardcompetencia, justification, birthdate, telefone) VALUES
-    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$secondquestion', '$thirdquestion', '$competenciaString', '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo')";
+    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, competencia,
+     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador) VALUES
+    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$competenciaString',
+     '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo', '$cep', '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', '$genero', '$raca', '$doador')";
 
     $result = mysqli_query($conn, $query);
 
@@ -52,6 +59,7 @@ if (isset($_POST['submit'])) {
     echo "<script>alert('$errorMsg');</script>";
   }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -156,11 +164,10 @@ if (isset($_POST['submit'])) {
             </select>
           </div>
         </li>
-        <li class="form-line form-line-column form-col-2 form-line-column-right-five" data-type="control_dropdown"
-    id="department_section">
+        <li class="form-line form-line-column form-col-2 form-line-column-right-five" data-type="control_dropdown" id="department_section">
   <label class="form-label form-label-top" for="input_departament">Departamento</label>
   <div id="department_container" class="form-input-wide" data-layout="half">
-    <select class="form-dropdown" id="input_departament" name="department" aria-label="Department">
+    <select class="form-dropdown" id="input_departament" name="departament" aria-label="Departament">
       <option>Selecione</option>
       <option>AAA</option>
     </select>
@@ -170,8 +177,7 @@ if (isset($_POST['submit'])) {
         <li class="form-line form-line-column " data-type="control_dropdown" id="id_4">
           <label class="form-label form-label-top" id="firstquestion" for="input_4">Qual o seu grau de escolaridade?</label>
           <div id="cid_4" class="form-input-wide" data-layout="half">
-            <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion"
-              onchange="mostrarCampoPersonalizado(this)">
+            <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion">
               <option>Selecione</option>
               <option>AAA</option>
             </select>
@@ -208,105 +214,105 @@ if (isset($_POST['submit'])) {
 
 <div class="form-page" id="page-2" style="display: none;">   
 
-
 <label class="form-label form-label-top form-label-config">Qual a sua cor ou raça?</label>
-<div class="checkbox-wrapper-18">
-  <label for="checkbox-amarela">
+<div class="checkbox-wrapper-18" id="checkone" >
     <div class="round">
-    <input type="checkbox" id="checkbox-amarela" />
+    <input type="checkbox" id="checkbox-amarela" name="raca" value="amarela" />
+    <label for="checkbox-amarela">
       <span class="checkbox-text">Amarela</span>
     </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-branco" />
-  <label for="checkbox-branco">
-    <span class="checkbox-text">Branco</span>
+  <input type="checkbox" id="checkbox-branca" name="raca" value="branca" />
+  <label for="checkbox-branca">
+    <span class="checkbox-text">Branca</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-indigena" />
+  <input type="checkbox" id="checkbox-indigena" name="raca" value="indigena" />
   <label for="checkbox-indigena">
     <span class="checkbox-text">Indígena</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-pardo" />
-  <label for="checkbox-pardo">
-    <span class="checkbox-text">Pardo</span>
+  <input type="checkbox" id="checkbox-parda" name="raca" value="parda" />
+  <label for="checkbox-parda">
+    <span class="checkbox-text">Parda</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-preta" />
+  <input type="checkbox" id="checkbox-preta" name="raca" value="preta" />
   <label for="checkbox-preta">
     <span class="checkbox-text">Preta</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-nao-classificar" />
+  <input type="checkbox" id="checkbox-nao-classificar" name="raca" value="prefiro nao me classificar" />
   <label for="checkbox-nao-classificar">
     <span class="checkbox-text">Prefiro não me classificar</span>
   </label>
 </div>
-      </div>
-      <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
-<div class="checkbox-wrapper-18">
+</div>
+<label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
+<div class="checkbox-wrapper-18" id="checktwo" >
 <div class="round">
-  <input type="checkbox" id="checkbox-mulhercis" />
+  <input type="checkbox" id="checkbox-mulhercis" name="genero" value="mulher cisgênera" />
   <label for="checkbox-mulhercis">
     <span class="checkbox-text">Mulher cisgênera (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-homemcis" />
+  <input type="checkbox" id="checkbox-homemcis" name="genero" value="homem cisgênero" />
   <label for="checkbox-homemcis">
     <span class="checkbox-text">Homem cisgênero (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-mulhertrans" />
+  <input type="checkbox" id="checkbox-mulhertrans" name="genero" value="mulher trans" />
   <label for="checkbox-mulhertrans">
     <span class="checkbox-text">Mulher trans (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-homemtrans" />
+  <input type="checkbox" id="checkbox-homemtrans" name="genero" value="homem trans" />
   <label for="checkbox-homemtrans">
     <span class="checkbox-text">(Homem Trans se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-naobinario" />
+  <input type="checkbox" id="checkbox-naobinario" name="genero" value="não binário" />
   <label for="checkbox-naobinario">
     <span class="checkbox-text">Não binário (não se sente pertencente ao gênero masculino ou ao feminino)</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-nao-classificar2" />
+  <input type="checkbox" id="checkbox-nao-classificar2" name="genero" value="prefiro não me classificar" />
   <label for="checkbox-nao-classificar2">
     <span class="checkbox-text">Prefiro não me classificar</span>
   </label>
 </div>
-      </div>
-      <label class="form-label form-label-top form-label-config">Você é doador de órgãos?</label>
-<div class="checkbox-wrapper-18">
+</div>
+<label class="form-label form-label-top form-label-config">Você é doador de órgãos?</label>
+<div class="checkbox-wrapper-18" id="checkthree" >
 <div class="round">
-  <input type="checkbox" id="checkbox-sim" />
+  <input type="checkbox" id="checkbox-sim" name="doador" value="sim" />
   <label for="checkbox-sim">
     <span class="checkbox-text">Sim</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-nao" />
+  <input type="checkbox" id="checkbox-nao" name="doador" value="não" />
   <label for="checkbox-nao">
     <span class="checkbox-text">Não</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-naodecidi" />
+  <input type="checkbox" id="checkbox-naodecidi" name="doador" value="ainda não me decidi" />
   <label for="checkbox-naodecidi">
     <span class="checkbox-text">Ainda não me decidi</span>
   </label>
 </div>
-      </div>
+</div>
+     
       <li class="form-line" data-type="control_scale" id="id_7">
         <label class="form-label form-label-top" id="ratingquestion">Quão satisfeito você está com a
           equipe

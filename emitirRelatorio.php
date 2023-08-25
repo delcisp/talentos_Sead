@@ -10,6 +10,19 @@ $departament = $_POST['departament'];
 $role = $_POST['role'];
 $competencia = $_POST['competencia'];
 
+
+$competenciaLines = explode("\n", $competencia);
+$competenciaLinesCount = count($competenciaLines);
+
+if ($competenciaLinesCount > 1) {
+    for ($i = 0; $i < $competenciaLinesCount; $i++) {
+        $activeWorksheet->setCellValue('C12', $competenciaLines[$i]);  // Define cada linha individualmente
+        if ($i < $competenciaLinesCount - 1) {
+            $activeWorksheet->getRowDimension(12)->setRowHeight(-1);  // Ajusta a altura da linha automaticamente
+            $activeWorksheet->setCellValue('C12', '');  // Limpa o valor para a próxima linha
+        }
+    }
+}
 if (isset($_POST['emitirRelatorio'])) {
     require __DIR__ . '/vendor/autoload.php';
     //criando um spreadsheet
@@ -41,7 +54,7 @@ if (isset($_POST['emitirRelatorio'])) {
     foreach ($titles as $title) {
         $activeWorksheet->setCellValue('B' . $row, $title);
         $activeWorksheet->getColumnDimension('B')->setWidth(45);  // Largura da coluna A
-        $activeWorksheet->getColumnDimension('C')->setWidth(70);
+        $activeWorksheet->getColumnDimension('C')->setWidth(100);
         $spreadsheet->getActiveSheet()->getRowDimension($row)->setRowHeight(22);  // Altura da linha
         $row++;
     }
@@ -80,7 +93,7 @@ $activeWorksheet->getStyle('B3:C' . ($row - 1))->getFill()->getStartColor()->set
     //criando o xlsx e setando as configurações de download
     $writer = new Xlsx($spreadsheet);
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); //suggestion: header('Content-Type: application/vnd.ms-excel');
-    header('Content-Disposition: attachment;filename="Testing.xlsx"');
+    header('Content-Disposition: attachment;filename="Relatorio.xlsx"');
     header('Cache-Control: max-age=0');
     $writer->save('php://output');
     exit();

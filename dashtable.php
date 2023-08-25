@@ -151,12 +151,14 @@ include_once('config.php');
                                 <th
                                     class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-blue-500 tracking-wider">
                                     Cargo</th>
-
+                                <th
+                                    class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 text-blue-500 tracking-wider">
+                                    Data de Nascimento</th>
 
                                 <th class="px-6 py-3 border-b-2 border-gray-300"></th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody class="bg-white">                       
                             <?php
                             $query = "SELECT * FROM usuarios ORDER BY firstname ASC";
                             $result = mysqli_query($conn, $query);
@@ -181,6 +183,15 @@ include_once('config.php');
                                     <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
                                         <?php echo $user_data['role']; ?>
                                     </td>
+                                    <td class='px-6 py-4 whitespace-no-wrap border-b border-gray-500 text-sm leading-5'>
+                                        <?php
+                                         $birthdate = $user_data['birthdate'];
+                                        $formatted_birthdate = date('d/m/Y', strtotime($birthdate));
+
+                                        echo $formatted_birthdate;
+                                        ?>
+                                    </td>
+
                                     <td
                                         class='px-6 py-4 whitespace-no-wrap text-right border-b border-gray-500 text-sm leading-5'>
                                         <button
@@ -191,7 +202,7 @@ include_once('config.php');
                                     </td>
                                 </tr>
                                 <div class='modal fade' id='<?php echo $modalId; ?>' tabindex='-1'
-                                    aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                                    aria-labelledby='exampleModalLabel' aria-hidden='true' >
                                     <div class='modal-dialog'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
@@ -199,17 +210,16 @@ include_once('config.php');
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal'
                                                     aria-label='Close'></button>
                                             </div>
-                                            <div class='modal-body'>
-
+                                            <div class='modal-body' >
+                                           
                                                 <p>Nome:
                                                     <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
                                                 </p>
                                                 <p>Data de Nascimento:
                                                     <?php
-                                                    
+
                                                     $birthdate = $user_data['birthdate'];
 
-                                                    // Verifica se a data de nascimento está presente
                                                     if ($birthdate !== null && $birthdate !== '0000-00-00') {
                                                         // Converte o formato da data para "XX/XX/XXXX"
                                                         $formatted_birthdate = date('d/m/Y', strtotime($birthdate));
@@ -219,25 +229,45 @@ include_once('config.php');
                                                     }
                                                     ?>
                                                 </p>
-                                                <p>
-                                                    Telefone:
-                                                    <?php echo $user_data['telefone'];?>
+                                                <p>Telefone:
+                                                    <?php echo $user_data['telefone']; ?>
                                                 </p>
+                                                <p>Tipo sanguíneo:
+                                                    <?php echo $user_data['bloodtype']; ?>
                                                 </p>
+                                                <p>CEP:
+                                                    <?php echo $user_data['cep']; ?>
+                                                </p>
+                                                <p>UF:
+                                                    <?php echo $user_data['uf']; ?>
+                                                </p>
+                                                <p>Cidade:
+                                                    <?php echo $user_data['cidade']; ?>
+                                                </p>
+                                                <p>Bairro:
+                                                    <?php echo $user_data['bairro']; ?>
+                                                </p>
+                                                <p>Endereço:
+                                                    <?php echo $user_data['endereco']; ?>
+                                                </p>
+                                              
                                                 <p>Departamento:
                                                     <?php echo $user_data['departament']; ?>
                                                 </p>
-                                                <p>Cargo:
+                                                <p>Cargo atual:
                                                     <?php echo $user_data['role']; ?>
                                                 </p>
-                                                <p>Formações:
+                                                <p>Grau de escolaridade:
                                                     <?php echo $user_data['firstquestion']; ?>
                                                 </p>
-                                                <p>Cursos:
-                                                    <?php echo $user_data['secondquestion']; ?>
+                                                <p>Cor ou raça:
+                                                    <?php echo $user_data['raca']; ?>
                                                 </p>
-                                                <p>Departamento Opcional:
-                                                    <?php echo $user_data['thirdquestion']; ?>
+                                                <p>Identidade de gênero:
+                                                    <?php echo $user_data['genero']; ?>
+                                                </p>
+                                                <p>Doador de órgãos:
+                                                    <?php echo $user_data['doador']; ?>
                                                 </p>
                                                 <p class="hard-competencia">Competências Técnicas:
                                                     <?php echo $user_data['hardcompetencia']; ?>
@@ -267,8 +297,10 @@ include_once('config.php');
                                                         value='<?php echo $user_data['firstquestion']; ?> '>
                                                     <input type='hidden' name="competencia"
                                                         value='<?php echo $user_data['competencia']; ?> '>
+
                                                     <button type='submit' name='emitirRelatorio'
                                                         class='btn btn-primary'>Emitir Relatório</button>
+
                                                 </form>
 
                                             </div>

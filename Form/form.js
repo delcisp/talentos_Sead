@@ -1,3 +1,23 @@
+// Função para lidar com a seleção exclusiva de checkboxes em um grupo
+function handleCheckboxGroup(groupId) {
+  const checkboxes = document.querySelectorAll(`#${groupId} input[type="checkbox"]`);
+  
+  checkboxes.forEach(checkbox => {
+      checkbox.addEventListener('click', () => {
+          checkboxes.forEach(otherCheckbox => {
+              if (otherCheckbox !== checkbox) {
+                  otherCheckbox.checked = false;
+              }
+          });
+      });
+  });
+}
+
+// Chama a função para cada grupo de checkboxes usando os ids
+handleCheckboxGroup('checkone');
+handleCheckboxGroup('checktwo');
+handleCheckboxGroup('checkthree');
+
 
 $("#cep").blur(function(){
   // Remove tudo o que não é número para fazer a pesquisa
@@ -34,6 +54,7 @@ $("#cep").blur(function(){
 //colocando mascara nos inputs
 $('#telefone').mask('(00) 00000-0000');
 $('#data').mask('00/00/0000');
+//$('#cep').mask('00000-000')
 
 function redirecionar() {
     window.location.href = './agradecimento.php';
