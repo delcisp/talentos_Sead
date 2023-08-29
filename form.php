@@ -169,7 +169,98 @@ if (isset($_POST['submit'])) {
   <div id="department_container" class="form-input-wide" data-layout="half">
     <select class="form-dropdown" id="input_departament" name="departament" aria-label="Departament">
       <option>Selecione</option>
-      <option>AAA</option>
+      <option value="Arquivo público do Amazonas" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas')
+                echo 'selected'; ?>>Arquivo público do Amazonas
+              </option>
+              <option value="Apoio ao Gabinete" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete')
+                echo 'selected'; ?>>Apoio ao Gabinete</option>
+              <option value="Arquivo administrativo" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Arquivo administrativo')
+                echo 'selected'; ?>>Arquivo administrativo</option>
+              <option value="Assessoria de Comunicação" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Assessoria de Comunicação')
+                echo 'selected'; ?>>Assessoria de Comunicação
+              </option>
+              <option value="Assessoria Técnica" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Assessoria Técnica')
+                echo 'selected'; ?>>Assessoria Técnica</option>
+              <option value="Auditoria Externa" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Auditoria Externa')
+                echo 'selected'; ?>>Auditoria Externa</option>
+              <option value="Controladoria Interna" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Controladoria Interna')
+                echo 'selected'; ?>>Controladoria Interna</option>
+              <option value="Coordenadoria de Patrimônio" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Coordenadoria de Patrimônio')
+                echo 'selected'; ?>>Coordenadoria de Patrimônio
+              </option>
+              <option value="Comissão de Regime Disciplinar" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regime Disciplinar')
+                echo 'selected'; ?>>Comissão de Regime
+                Disciplinar</option>
+              <option value="CRD Defensoria" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'CRD Defensoria')
+                echo 'selected'; ?>>CRD Defensoria</option>
+              <option value="Comissão de Regularização de Imóveis" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Comissão de Regularização de Imóveis')
+                echo 'selected'; ?>>Comissão de
+                Regularização de Imóveis</option>
+              <option value="Consultoria Técnico Administrativa" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Consultoria Técnico Administrativa')
+                echo 'selected'; ?>>Consultoria Técnico
+                Administrativa</option>
+              <option value="Administração e Finanças - DAFI" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Administração e Finanças - DAFI')
+                echo 'selected'; ?>>Administração e Finanças -
+                DAFI</option>
+              <option value="Tecnologia da informação - DETI" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Tecnologia da informação - DETI')
+                echo 'selected'; ?>>Tecnologia da informação -
+                DETI</option>
+              <option value="Gestão de Frota e Combustível" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gestão de Frota e Combustível')
+                echo 'selected'; ?>>Gestão de Frota e
+                Combustível</option>
+              <option value="Escola de Governo - ESASP" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Escola de Governo - ESASP')
+                echo 'selected'; ?>>Escola de Governo - ESASP
+              </option>
+              <option value="Gerência de Contas Públicas" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Contas Públicas')
+                echo 'selected'; ?>>Gerência de Contas Públicas
+              </option>
+              <option value="Gerência de Diárias e Passagens" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Diárias e Passagens')
+                echo 'selected'; ?>>Gerência de Diárias e
+                Passagens</option>
+              <option value="Gerência de Apoio Logístico" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Apoio Logístico')
+                echo 'selected'; ?>>Gerência de Apoio Logístico
+              </option>
+              <option value="Gerência de Planejamento, Orçamento e Finanças" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Planejamento, Orçamento e Finanças')
+                echo 'selected'; ?>>Gerência de
+                Planejamento, Orçamento e Finanças</option>
+              <option value="Gerência de Pessoal" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Gerência de Pessoal')
+                echo 'selected'; ?>>Gerência de Pessoal</option>
+              <option value="GIPIAP" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'GIPIAP')
+                echo 'selected'; ?>>GIPIAP</option>
+              <option value="GT-CTA" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'GT-CTA')
+                echo 'selected'; ?>>GT-CTA</option>
+              <option value="GT-MD" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'GT-MD')
+                echo 'selected'; ?>>GT-MD</option>
+              <option value="Junta Médica" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Junta Médica')
+                echo 'selected'; ?>>Junta Médica</option>
+              <option value="Ouvidoria" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Ouvidoria')
+                echo 'selected'; ?>>Ouvidoria</option>
+              <option value="Protocolo" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Protocolo')
+                echo 'selected'; ?>>Protocolo</option>
+              <option value="Setor de Contratos Institucionais" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Setor de Contratos Institucionais')
+                echo 'selected'; ?>>Setor de Contratos
+                Institucionais</option>
+              <option value="Secretaria Executiva Administração e Gestão" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Secretaria Executiva Administração e Gestão')
+                echo 'selected'; ?>>Secretaria
+                Executiva Administração e Gestão</option>
+              <option value="SEPAGAP" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SEPAGAP')
+                echo 'selected'; ?>>SEPAGAP</option>>
+              <option value="SGPGP" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGPGP')
+                echo 'selected'; ?>>SGPGP</option>
+              <option value="SGRH" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGRH')
+                echo 'selected'; ?>>SGRH</option>
+              <option value="SGRH-GRD" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGRG-GRD')
+                echo 'selected'; ?>>SGRH-GRD</option>
+              <option value="SGRH-ASS" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SRGH-ASS')
+                echo 'selected'; ?>>SGRH-ASS</option>
+              <option value="SGRH-FP" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGRH-FP')
+                echo 'selected'; ?>>SGRH-FP</option>
+              <option value="SGRH-GB" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GB')
+                echo 'selected'; ?>>SGRH-GB</option>
+              <option value="SGRH-GV" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'SGRH-GV')
+                echo 'selected'; ?>>SGRH-GV</option>
+              <option value="TRANSPORTE" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'TRANSPORTE')
+                echo 'selected'; ?>>TRANSPORTE</option>
     </select>
   </div>
 </li>
@@ -312,7 +403,89 @@ if (isset($_POST['submit'])) {
   </label>
 </div>
 </div>
-     
+
+
+
+<label class="form-label form-label-top form-label-config">Se você pudesse trabalhar em outros setores, quais seriam?</label>
+        <div class="competencias">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor1" name="setorop[]"
+            value="DAFI" />
+          <label class="form-check-label" for="setor1">DAFI</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor2" name="setorop[]"
+            value="Gabinete" />
+          <label class="form-check-label" for="setor2">GABINETE</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor3" name="setorop[]"
+            value="ESASP" />
+          <label class="form-check-label" for="setor3">ESASP</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor4" name="setorop[]"
+            value="Atualização constante em relação às novas tecnologias e tendências da área" />
+          <label class="form-check-label" for="setor4">ASSESSORIA TÉCNICA ADMINISTRATIVA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor5" name="setorop[]"
+            value="ASCOM" />
+          <label class="form-check-label" for="setor5">ASCOM</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor6" name="setorop[]"
+            value="OUVIDORIA" />
+          <label class="form-check-label" for="setor3">OUVIDORIA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor7" name="setorop[]"
+            value="CRD" />
+          <label class="form-check-label" for="setor7">CRD</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor8" name="setorop[]"
+            value="JUNTA MÉDICA" />
+          <label class="form-check-label" for="setor8">JUNTA MÉDICA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor9" name="setorop[]"
+            value="SGRH" />
+          <label class="form-check-label" for="setor9">SGRH</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor10" name="setorop[]"
+            value="CTA" />
+          <label class="form-check-label" for="setor10">CTA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor11" name="setorop[]"
+            value="APEAM" />
+          <label class="form-check-label" for="setor11">APEAM</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor12" name="setorop[]"
+            value="GESTÃO DE BENS MÓVEIS" />
+          <label class="form-check-label" for="setor12">GESTÃO DE BENS MÓVEIS</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor13" name="setorop[]"
+            value="DETI" />
+          <label class="form-check-label" for="setor13">DETI</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor14" name="setorop[]"
+            value="GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS" />
+          <label class="form-check-label" for="setor14">GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS</label>
+        </div>
+       
+      </div>
+
+
+
+
+
+
       <li class="form-line" data-type="control_scale" id="id_7">
         <label class="form-label form-label-top" id="ratingquestion">Quão satisfeito você está com a
           equipe
