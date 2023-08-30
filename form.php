@@ -270,15 +270,45 @@ if (isset($_POST['submit'])) {
           <div id="cid_4" class="form-input-wide" data-layout="half">
             <select class="form-dropdown" id="input_4" name="firstquestion" aria-label="Firsquestion">
               <option>Selecione</option>
-              <option>AAA</option>
+              <option>Ensino fundamental</option>
+              <option>Ensino médio</option>
+              <option>Ensino médio técnico</option> <!-- Aparecer um select pra selecionar qual -->
+              <option>Graduação</option> <!-- Aparecer um select pra selecionar qual -->
+              <option>Especialização</option> <!-- Aparecer um select pra selecionar qual -->
+              <option>Mestrado</option> <!-- Aparecer um select pra selecionar qual -->
+              <option>Doutorado</option> <!-- Aparecer um select pra selecionar qual -->
             </select>
+            <div id="degreeTextareaDiv" style="display: none;">
+  <textarea id="degreeTextarea" name="degreeTextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
+</div>         
           </div>
-          <div id="campoPersonalizado" style="display: none;">
+          </li>
+          <li class="form-line form-line-column " data-type="control_dropdown" id="id_5">
+          <label class="form-label form-label-top" id="situacaofunc" for="input_5">Qual a sua situação funcional atual?</label>
+          <div id="cid_5" class="form-input-wide" data-layout="half">
+          <select class="form-dropdown" id="input_5" name="situacaofunc" aria-label="situacaofunc">
+          <option>Selecione</option>
+          <option>Estatutário</option>
+          <option>Comissionado</option>
+          <option>Licenciado</option>
+          <option>À disposição de outro órgão</option>
+          <option>Temporário</option>
+          <option>CLT</option>
+          <option>De outras esferas</option>
+          </select>
+          </div>
+          </li>
+          <!-- Textarea de grau de escolaridade (inicialmente oculta) -->
+<!-- textarea pra falar qual a area -->
+         
+
+
+         <!-- <div id="campoPersonalizado" style="display: none;">
             <label for="textoPersonalizado">Digite sua opção:</label>
             <input type="text" id="textoPersonalizado" name="textoPersonalizado"
               onblur="atualizarOpcaoPersonalizada(this.value)">
-          </div>
-        </li>
+          </div> -->
+        
         <li class="form-line form-line-column form-col-2 form-line-column-right-six" data-type="control_dropdown"
     id="id_2">
   <label class="form-label form-label-top" id="bloodtype_label" for="input_2">Qual o seu tipo sanguíneo?</label>
@@ -296,10 +326,24 @@ if (isset($_POST['submit'])) {
     </select>
   </div>
 </li>
-
+<li class="form-line form-line-column form-col-2 form-line-column-right-seven" data-type="control_dropdown"
+    id="id_2">
+  <label class="form-label form-label-top"  for="input_6">Quanto tempo está na instituição?</label>
+  <div id="cid_2" class="form-input-wide" data-layout="half">
+    <select class="form-dropdown" id="input_6" name="timeofservice" aria-label="timeofservice">
+      <option>Selecione</option>
+      <option>Menos de 1 ano</option>
+      <option>De 1 a 3 anos</option>
+      <option>De 3 a 5 anos</option>
+      <option>De 5 a 10 anos</option>
+      <option>Mais de 10 anos</option>
+     
+    </select>
+  </div>
+</li>
         
      
-      </div>
+      </div> <!-- fim do form-line-container -->
       
 </div> <!-- fechando a pagina 1 -->
 
@@ -983,6 +1027,10 @@ if (isset($_POST['submit'])) {
         </div>
       </li>
     </div><!-- fechando a pagina 3 -->
+    <div id="page-4" style="display: none;">
+   <h1>oi</h1>
+</div> <!--fechando a pagina 4 -->
+
     <div class="form-navigation">
         <button type="button" id="prev-button" >Anterior</button>
         <button type="button" id="next-button">Próximo</button>

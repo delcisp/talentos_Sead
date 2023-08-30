@@ -98,7 +98,7 @@ function redirecionar() {
     });
   });
   //
-
+  // QUANDO O USUARIO SELECIONAR "OUTROS"
   function mostrarCampoPersonalizado(selectElement) {
     var campoPersonalizado = document.getElementById('campoPersonalizado');
     var textoPersonalizado = document.getElementById('textoPersonalizado');
@@ -154,6 +154,27 @@ function redirecionar() {
   
     ratingInputs.forEach(input => {
       input.addEventListener("change", handleRatingChange);
+    });
+  });
+  
+  document.addEventListener("DOMContentLoaded", function() {
+  
+    const selectElement = document.getElementById("input_4");
+    const degreeTextareaDiv = document.getElementById("degreeTextareaDiv");
+
+    selectElement.addEventListener("change", function() {
+      const selectedOption = selectElement.options[selectElement.selectedIndex].value;
+
+      if (selectedOption === "Graduação" || selectedOption === "Especialização" || selectedOption === "Mestrado" || selectedOption === "Doutorado") {
+        degreeTextareaDiv.style.display = "block";
+        degreeTextareaDiv.style.marginTop = "10px"; // Exibe a div da textarea
+        degreeTextarea.style.width = "100%"; // Define a largura
+        degreeTextarea.style.height = "60px"; // Define a altura
+        // Permite redimensionamento vertical
+        // Outros estilos conforme necessário
+      } else {
+        degreeTextareaDiv.style.display = "none"; // Oculta a div da textarea
+      }
     });
   });
 
