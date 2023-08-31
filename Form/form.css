@@ -1,4 +1,74 @@
 
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400');
+.tooltip {
+  position: relative;
+  background: #78C55F;
+  padding: 5px 12px;
+  margin: 5px;
+  top: 20px;
+  margin-left: 290px;
+  font-size: 15px;
+  border-radius: 100%;
+  color: #FFF;
+}
+
+.tooltip:before,
+.tooltip:after {
+  position: absolute;
+  content: '';
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.tooltip:before {
+  border-width: 10px 8px 0 8px;
+  border-style: solid;
+  border-color: #78C55F transparent transparent transparent;
+  top: -15px;
+   transform: translateY(20px);
+}
+
+.tooltip:after {
+  content: attr(data-tooltip);
+  background: #78C55F;
+  width: 200px;
+  height: 70px;
+  font-size: 13px;
+  font-weight: 300;
+  top: -75px;
+  left: -10px;
+  padding: 10px;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  transform: translateY(20px);
+}
+
+.tooltip:hover::before,
+.tooltip:hover::after {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+@keyframes shake {
+  0% { 
+    transform: rotate(2deg);
+  }
+  50% {
+   transform: rotate(-3deg);
+  }
+  70% {
+    transform: rotate(3deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#anim:hover {
+  animation: shake 500ms ease-in-out forwards;
+}
+
 .form-page {
   display: none;
 }
@@ -116,7 +186,7 @@ label {
     margin-right: 20px;
   }
 }
-
+#input_7,
 #input_6,
 #input_5,
 #input_departament,
@@ -249,6 +319,7 @@ label {
 }
 
 .checkbox-wrapper-18 .round label .checkbox-text {
+
   margin-left: 30px;
   top: 50px;
   white-space: nowrap;
@@ -264,6 +335,7 @@ label {
   height: 28px;
   width: 28px;
   margin-left: 30px;
+  margin: 5px;
 
 }
 

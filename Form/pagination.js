@@ -13,8 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Variável para controlar a página atual
     let currentPage = page1;
-    prevButton.style.display = 'none';
-   
 
     nextButton.addEventListener('click', function() {
         currentPage.style.display = 'none';
@@ -23,37 +21,37 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (currentPage === page2) {
             currentPage = page3;
         } else if (currentPage === page3) {
-            currentPage = page4; // Altera para a nova página (page-4) quando necessário
-            nextButton.style.display = 'none'; // Oculta o botão "Próximo" na página 4
+            currentPage = page4;
         }
         currentPage.style.display = 'block';
 
-        if (currentPage === page1) {
-            prevButton.style.display = 'none'; // Oculta o botão "Anterior" na página 1
-        } else {
-            prevButton.style.display = 'block'; // Torna o botão "Anterior" visível nas outras páginas
-        }
+        updateButtonVisibility();
     });
 
-
-    // Evento de clique no botão "Anterior"
     prevButton.addEventListener('click', function() {
         currentPage.style.display = 'none';
-        if (currentPage === page3) {
-            currentPage = page2;
-            nextButton.style.display = 'block'; // Torna o botão "Próximo" visível novamente na página 2
-        } else if (currentPage === page2) {
+        if (currentPage === page2) {
             currentPage = page1;
+        } else if (currentPage === page3) {
+            currentPage = page2;
+        } else if (currentPage === page4) {
+            currentPage = page3;
         }
         currentPage.style.display = 'block';
 
-        if (currentPage === page1) {
-            prevButton.style.display = 'none'; // Oculta o botão "Anterior" na página 1
-        } else {
-            prevButton.style.display = 'block'; // Torna o botão "Anterior" visível nas outras páginas
-        }
+        updateButtonVisibility();
     });
+
+    function updateButtonVisibility() {
+        if (currentPage === page4) {
+            nextButton.style.display = 'none';
+        } else {
+            nextButton.style.display = 'block';
+        }
+    }
 });
+
+
 
 
 

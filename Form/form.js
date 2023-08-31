@@ -17,6 +17,9 @@ function handleCheckboxGroup(groupId) {
 handleCheckboxGroup('checkone');
 handleCheckboxGroup('checktwo');
 handleCheckboxGroup('checkthree');
+handleCheckboxGroup('checkfour');
+handleCheckboxGroup("checkfive");
+handleCheckboxGroup('checksix');
 
 
 $("#cep").blur(function(){
@@ -167,15 +170,31 @@ function redirecionar() {
 
       if (selectedOption === "Graduação" || selectedOption === "Especialização" || selectedOption === "Mestrado" || selectedOption === "Doutorado") {
         degreeTextareaDiv.style.display = "block";
-        degreeTextareaDiv.style.marginTop = "10px"; // Exibe a div da textarea
-        degreeTextarea.style.width = "100%"; // Define a largura
-        degreeTextarea.style.height = "60px"; // Define a altura
-        // Permite redimensionamento vertical
-        // Outros estilos conforme necessário
+        degreeTextareaDiv.style.marginTop = "10px";
+        degreeTextarea.style.width = "100%"; 
+        degreeTextarea.style.height = "60px"; 
+        degreeTextarea.style.resize = "none";//textarea normalmente vem com o resize habilitado, o que é ruim pq permite q o usuario mexa no tamanho da caixa e bagunce o layout
       } else {
-        degreeTextareaDiv.style.display = "none"; // Oculta a div da textarea
+        degreeTextareaDiv.style.display = "none"; 
       }
     });
   });
 
-  
+document.addEventListener("DOMContentLoaded", function() {
+  const selectedElement = document.getElementById("input_7");
+  const gratificationTextareaDiv = document.getElementById("gratificationTextareaDiv");
+    
+  selectedElement.addEventListener("change", function() {
+    const selectedOption = selectedElement.options[selectedElement.selectedIndex].value;
+    if (selectedOption === "Sim") {
+      gratificationTextareaDiv.style.display = "block";
+      gratificationTextareaDiv.style.marginTop = "10px";
+      gratificationTextarea.style.width = "100%";
+      gratificationTextarea.style.height = "60px"; 
+      gratificationTextarea.style.resize = "none";
+    } else {
+      gratificationTextareaDiv.style.display= "none";
+    }
+  })
+
+});

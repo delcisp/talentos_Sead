@@ -328,8 +328,10 @@ if (isset($_POST['submit'])) {
 </li>
 <li class="form-line form-line-column form-col-2 form-line-column-right-seven" data-type="control_dropdown"
     id="id_2">
+    
   <label class="form-label form-label-top"  for="input_6">Quanto tempo está na instituição?</label>
   <div id="cid_2" class="form-input-wide" data-layout="half">
+    
     <select class="form-dropdown" id="input_6" name="timeofservice" aria-label="timeofservice">
       <option>Selecione</option>
       <option>Menos de 1 ano</option>
@@ -339,9 +341,25 @@ if (isset($_POST['submit'])) {
       <option>Mais de 10 anos</option>
      
     </select>
+    
   </div>
 </li>
-        
+<li class="form-line form-line-column " data-type="control_dropdown" id="id_7">
+<div id="anim">
+    <span class="tooltip" data-tooltip="Exemplo: Gerente, Secretário(a), Coordenador(a)">?</span>
+    </div>
+          <label class="form-label form-label-top" id="funcaogratificada" for="input_7">Você tem função gratificada?</label>
+          <div id="cid_5" class="form-input-wide" data-layout="half"> 
+          <select class="form-dropdown" id="input_7" name="funcaogratificada" aria-label="funcaogratificada">
+          <option>Selecione</option>
+          <option>Sim</option>
+          <option>Não</option>
+          </select>
+          <div id="gratificationTextareaDiv" style="display: none;">
+  <textarea id="gratificationTextarea" name="gratificationTextarea" placeholder="Informe a sua função gratificada e há quanto tempo você atua nela"></textarea>
+</div>      
+          </div>
+          </li>    
      
       </div> <!-- fim do form-line-container -->
       
@@ -387,6 +405,8 @@ if (isset($_POST['submit'])) {
   </label>
 </div>
 </div>
+
+
 <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
 <div class="checkbox-wrapper-18" id="checktwo" >
 <div class="round">
@@ -449,81 +469,89 @@ if (isset($_POST['submit'])) {
 </div>
 
 
+<label class="form-label form-label-top form-label-config">Qual a forma de realização de trabalho você prefere?</label>
+<div class="checkbox-wrapper-18" id="checkfour">
+    <div class="round">
+    <input type="checkbox" id="checkbox-trabalharsozinho" name="formadetrabalho" value="Prefiro trabalhar sozinho" />
+    <label for="checkbox-trabalharsozinho">
+      <span class="checkbox-text">Prefiro trabalhar sozinho</span>
+    </div>
+<div class="round">
+  <input type="checkbox" id="checkbox-trabalharemgrupo" name="formadetrabalho" value="Prefiro trabalhar em grupo" />
+  <label for="checkbox-trabalharemgrupo">
+    <span class="checkbox-text">Prefiro trabalhar em grupo</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-sempreferencia" name="formadetrabalho" value="não tenho preferências" />
+  <label for="checkbox-sempreferencia">
+    <span class="checkbox-text">não tenho preferências</span>
+  </label>
+</div>
+</div>
 
-<label class="form-label form-label-top form-label-config">Se você pudesse trabalhar em outros setores, quais seriam?</label>
-        <div class="competencias">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor1" name="setorop[]"
-            value="DAFI" />
-          <label class="form-check-label" for="setor1">DAFI</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor2" name="setorop[]"
-            value="Gabinete" />
-          <label class="form-check-label" for="setor2">GABINETE</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor3" name="setorop[]"
-            value="ESASP" />
-          <label class="form-check-label" for="setor3">ESASP</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor4" name="setorop[]"
-            value="Atualização constante em relação às novas tecnologias e tendências da área" />
-          <label class="form-check-label" for="setor4">ASSESSORIA TÉCNICA ADMINISTRATIVA</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor5" name="setorop[]"
-            value="ASCOM" />
-          <label class="form-check-label" for="setor5">ASCOM</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor6" name="setorop[]"
-            value="OUVIDORIA" />
-          <label class="form-check-label" for="setor3">OUVIDORIA</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor7" name="setorop[]"
-            value="CRD" />
-          <label class="form-check-label" for="setor7">CRD</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor8" name="setorop[]"
-            value="JUNTA MÉDICA" />
-          <label class="form-check-label" for="setor8">JUNTA MÉDICA</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor9" name="setorop[]"
-            value="SGRH" />
-          <label class="form-check-label" for="setor9">SGRH</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor10" name="setorop[]"
-            value="CTA" />
-          <label class="form-check-label" for="setor10">CTA</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor11" name="setorop[]"
-            value="APEAM" />
-          <label class="form-check-label" for="setor11">APEAM</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor12" name="setorop[]"
-            value="GESTÃO DE BENS MÓVEIS" />
-          <label class="form-check-label" for="setor12">GESTÃO DE BENS MÓVEIS</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor13" name="setorop[]"
-            value="DETI" />
-          <label class="form-check-label" for="setor13">DETI</label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="setor14" name="setorop[]"
-            value="GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS" />
-          <label class="form-check-label" for="setor14">GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS</label>
-        </div>
-       
-      </div>
+
+
+<label class="form-label form-label-top form-label-config">Como você costuma agir quando participa de reuniões de trabalho?</label>
+<div class="checkbox-wrapper-18" id="checkfive">
+    <div class="round">
+    <input type="checkbox" id="checkbox-exporideias" name="reuniaotrabalho" value="Gosto de expor minhas ideias mostrando claramente os pontos com os quais discordo ou concordo" />
+    <label for="checkbox-exporideias">
+      <span class="checkbox-text">Gosto de expor minhas ideias mostrando claramente os pontos com os quais discordo ou concordo</span>
+    </div>
+<div class="round">
+  <input type="checkbox" id="checkbox-naodaopiniao" name="reuniaotrabalho" value="Prefiro não emitir opinião durante a reunião, mas converso com meu gestor posteriormente para discutir pontos relevantes" />
+  <label for="checkbox-naodaopiniao">
+    <span class="checkbox-text">Prefiro não emitir opinião durante a reunião, mas converso com meu gestor após para discutir pontos relevantes</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-semopiniao" name="reuniaotrabalho" value="Não exponho a minha opinião em momento algum." />
+  <label for="checkbox-semopiniao">
+    <span class="checkbox-text">Não exponho a minha opinião em momento algum</span>
+  </label>
+</div>
+</div>
+
+
+<label class="form-label form-label-top form-label-config">Como você costuma agir diante de prazos e metas?</label>
+<div class="checkbox-wrapper-18" id="checksix">
+    <div class="round">
+    <input type="checkbox" id="checkbox-seorganiza" name="deadlines" value="Organizo minhas atividades para realizá-las dentro do prazo determinado" />
+    <label for="checkbox-seorganiza">
+      <span class="checkbox-text">Organizo minhas atividades para realizá-las dentro do prazo determinado</span>
+    </div>
+<div class="round">
+  <input type="checkbox" id="checkbox-salva" name="deadlines" value="salvo quando acontecem situações fora do planejado" />
+  <label for="checkbox-salva">
+    <span class="checkbox-text">salvo quando acontecem situações fora do planejado</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-prioridade" name="deadlines" value="Priorizo, a partir da indicação do(a) gestor(a), as atividades com prazos específicos" />
+  <label for="checkbox-prioridade">
+    <span class="checkbox-text">Priorizo, a partir da indicação do(a) gestor(a), as atividades com prazos específicos</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-autonoma" name="deadlines" value="Prioriza, de forma autônoma, as atividades com prazos específicos" />
+  <label for="checkbox-autonoma">
+    <span class="checkbox-text">Prioriza, de forma autônoma, as atividades com prazos específicos</span>
+  </label>
+</div>
+<div class="round">
+  <input type="checkbox" id="checkbox-dificuldade" name="deadlines" value="Tenho dificuldade quanto ao atendimento de prazos, no entanto, busco realizar as atividades de forma satisfatória e atingir a meta estabelecida." />
+  <label for="checkbox-dificuldade">
+    <span class="checkbox-text">Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</span>
+  </label>
+</div>
+</div>
+
+
+
+
+<label class="form-label form-label-top form-label-config">Se quiser, escreva em poucas palavras sobre alguma idéia de mudança/melhoria no seu local de trabalho: </label>
+<textarea placeholder="aqui sua sugestão" style="resize:none; width: 98%; height: 100px;  margin-left: 7px;" ></textarea>
 
 
 
@@ -668,6 +696,166 @@ if (isset($_POST['submit'])) {
       </div> <!-- fechando a pagina 2 -->
 
       <div class="form-page" id="page-3" style="display: none;">
+      <label class="form-label form-label-top form-label-config">Se você pudesse trabalhar em outros setores, quais seriam?</label>
+        <div class="competencias">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor1" name="setorop[]"
+            value="DAFI" />
+          <label class="form-check-label" for="setor1">DAFI</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor2" name="setorop[]"
+            value="Gabinete" />
+          <label class="form-check-label" for="setor2">GABINETE</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor3" name="setorop[]"
+            value="ESASP" />
+          <label class="form-check-label" for="setor3">ESASP</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor4" name="setorop[]"
+            value="Atualização constante em relação às novas tecnologias e tendências da área" />
+          <label class="form-check-label" for="setor4">ASSESSORIA TÉCNICA ADMINISTRATIVA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor5" name="setorop[]"
+            value="ASCOM" />
+          <label class="form-check-label" for="setor5">ASCOM</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor6" name="setorop[]"
+            value="OUVIDORIA" />
+          <label class="form-check-label" for="setor3">OUVIDORIA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor7" name="setorop[]"
+            value="CRD" />
+          <label class="form-check-label" for="setor7">CRD</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor8" name="setorop[]"
+            value="JUNTA MÉDICA" />
+          <label class="form-check-label" for="setor8">JUNTA MÉDICA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor9" name="setorop[]"
+            value="SGRH" />
+          <label class="form-check-label" for="setor9">SGRH</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor10" name="setorop[]"
+            value="CTA" />
+          <label class="form-check-label" for="setor10">CTA</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor11" name="setorop[]"
+            value="APEAM" />
+          <label class="form-check-label" for="setor11">APEAM</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor12" name="setorop[]"
+            value="GESTÃO DE BENS MÓVEIS" />
+          <label class="form-check-label" for="setor12">GESTÃO DE BENS MÓVEIS</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor13" name="setorop[]"
+            value="DETI" />
+          <label class="form-check-label" for="setor13">DETI</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="setor14" name="setorop[]"
+            value="GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS" />
+          <label class="form-check-label" for="setor14">GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS</label>
+        </div>
+       
+      </div>
+      <label class="form-label form-label-top form-label-config">Selecione até 5 atividades com as quais você prefere trabalhar</label>
+        <div class="competencias">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp1" name="atividadesp[]"
+            value="Atendimento ao público externo/intero" />
+          <label class="form-check-label" for="atividadesp1">Atendimento ao público externo/intero</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp2" name="atividadesp[]"
+            value="trabalho com recursos tecnológicos/digitais/virtuais" />
+          <label class="form-check-label" for="atividadesp2">trabalho com recursos tecnológicos/digitais/virtuais</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp3" name="atividadesp[]"
+            value="Confecção de despachos/pareceres e decisões relacionados às atividades de assessoria jurídica" />
+          <label class="form-check-label" for="atividadesp3">Confecção de despachos/pareceres e decisões relacionados às atividades de assessoria jurídica</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp4" name="atividadesp[]"
+            value="Atividades Administrativas" />
+          <label class="form-check-label" for="atividadesp4">Atividades Administrativas</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp5" name="atividadesp[]"
+            value="Orientação de equipes de trabalho" />
+          <label class="form-check-label" for="atividadesp5">Orientação de equipes de trabalho</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp6" name="atividadesp[]"
+            value="Análise de números" />
+          <label class="form-check-label" for="atividadesp6">Análise de números</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp7" name="atividadesp[]"
+            value="dados estatísticos e/ou financeiros" />
+          <label class="form-check-label" for="atividadesp7">dados estatísticos e/ou financeiros</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp8" name="atividadesp[]"
+            value="Elaboração de documentos" />
+          <label class="form-check-label" for="atividadesp8">Elaboração de documentos</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp9" name="atividadesp[]"
+            value="projetos e relatórios" />
+          <label class="form-check-label" for="atividadesp9">projetos e relatórios</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp10" name="atividadesp[]"
+            value="Tarefas rotineiras" />
+          <label class="form-check-label" for="atividadesp10">Tarefas rotineiras</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp11" name="atividadesp[]"
+            value="Simplificadas" />
+          <label class="form-check-label" for="atividadesp11">Simplificadas</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp12" name="atividadesp[]"
+            value="Com poucas mudanças" />
+          <label class="form-check-label" for="atividadesp12">Com poucas mudanças</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp13" name="atividadesp[]"
+            value="Atividades desafiadoras e complexas" />
+          <label class="form-check-label" for="atividadesp13">Atividades desafiadoras e complexas</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp14" name="atividadesp[]"
+            value="Com muitas variáveis" />
+          <label class="form-check-label" for="atividadesp14">Com muitas variáveis</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp15" name="atividadesp[]"
+            value="Acompanhamento e cumprimento de prazos e metas" />
+          <label class="form-check-label" for="atividadesp15">Acompanhamento e cumprimento de prazos e metas</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="atividadesp16" name="atividadesp[]"
+            value="Trabalho com grupos (oficinas, palestras, orientações)" />
+          <label class="form-check-label" for="atividadesp16">Trabalho com grupos (oficinas, palestras, orientações)</label>
+        </div>
+
+
+        
+</div>
       <label class="form-label form-label-top form-label-config">Selecione até 5 Competências
         Técnicas que
         você se identifica:</label>
@@ -787,7 +975,7 @@ if (isset($_POST['submit'])) {
 
 
 
-
+  
       <label class="form-label form-label-top form-label-config">Selecione até 5 Competências
         Socioemocionais que
         você se identifica:</label>
@@ -1033,7 +1221,9 @@ if (isset($_POST['submit'])) {
 
     <div class="form-navigation">
         <button type="button" id="prev-button" >Anterior</button>
+        <div class="button-container">
         <button type="button" id="next-button">Próximo</button>
+        </div>
         <button type="submit" id="submit-button" style="display: none;">Enviar</button>
       </div> 
     </div> <!--fecha o container-->

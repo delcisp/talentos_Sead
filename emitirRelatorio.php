@@ -42,7 +42,6 @@ if (isset($_POST['emitirRelatorio'])) {
     $activeWorksheet->setCellValue('C6', $departament);
     $activeWorksheet->setCellValue('C5', $role);
     $activeWorksheet->setCellValue('C12', $competencia);
-
     $titles = [
         'NOME', 'DATA DE NASCIMENTO', 'CARGO ATUAL', 'DEPARTAMENTO', 
         'FORMAÇÃO DE ENSINO SUPERIOR', 'DEPARTAMENTOS OPCIONAIS', 'ENDEREÇO', 
