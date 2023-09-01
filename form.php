@@ -9,11 +9,13 @@ if (isset($_POST['submit'])) {
   $departamentoSelecionado = $_POST["departament"];
   if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
   $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["birthdate"]) || empty($_POST["cep"]) || empty($_POST["uf"])
-|| empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
+|| empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])
+  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty(($_POST["situacaofunc"])) || empty($_POST["timeofservice"]) || empty($_POST["funcaogratificada"]) || empty($_POST["formadetrabalho"]) 
+  || empty($_POST["reuniaotrabalho"]) ||  empty($_POST["deadlines"])  || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
-
+//timeofservice funcaogratificada formadetrabalho reuniaotrabalho deadlines suggestion
   if ($allAnswered) {
     include_once('config.php');
     $firstname = $_POST['firstname'];
@@ -35,6 +37,13 @@ if (isset($_POST['submit'])) {
     $genero = $_POST['genero'];
     $raca = $_POST['raca'];
     $doador = $_POST['doador'];
+    $situacaofunc = $_POST['situacaofunc'];
+    $timeofservice = $_POST['timeofservice'];
+    $funcaogratificada = $_POST['funcaogratificada'];
+    $formadetrabalho = $_POST['formadetrabalho'];
+    $reuniaotrabalho = $_POST['reuniaotrabalho'];
+    $deadlines = $_POST['deadlines'];
+    $suggestion = $_POST['suggestion'];
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
@@ -46,9 +55,10 @@ if (isset($_POST['submit'])) {
     $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
      
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, competencia,
-     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador) VALUES
+     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$competenciaString',
-     '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo', '$cep', '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', '$genero', '$raca', '$doador')";
+     '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo', '$cep', '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
+     '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion' )";
 
     $result = mysqli_query($conn, $query);
 
@@ -551,7 +561,7 @@ if (isset($_POST['submit'])) {
 
 
 <label class="form-label form-label-top form-label-config">Se quiser, escreva em poucas palavras sobre alguma idéia de mudança/melhoria no seu local de trabalho: </label>
-<textarea placeholder="aqui sua sugestão" style="resize:none; width: 98%; height: 100px;  margin-left: 7px;" ></textarea>
+<textarea placeholder="aqui sua sugestão" name="suggestion" style="resize:none; width: 95%; height: 100px; margin-left: 10px;" ></textarea>
 
 
 

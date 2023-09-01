@@ -100,7 +100,7 @@ function redirecionar() {
       }
     });
   });
-  //
+
   // QUANDO O USUARIO SELECIONAR "OUTROS"
   function mostrarCampoPersonalizado(selectElement) {
     var campoPersonalizado = document.getElementById('campoPersonalizado');
@@ -139,11 +139,13 @@ function redirecionar() {
     const formInputWide = document.getElementById("cid_7");
     formInputWide.appendChild(justificationTextarea);
 
-
+    
     function handleRatingChange() {
-      justificationTextarea.style.width = "100%";
-    justificationTextarea.style.height = "100px"; 
-
+      justificationTextarea.style.width = "97%";
+    justificationTextarea.style.height = "100px";
+    justificationTextarea.style.resize = "none"; 
+  
+  
       const selectedRating = parseInt(document.querySelector('input[name="ratingq"]:checked').value);
 
 
