@@ -44,6 +44,14 @@ if (isset($_POST['submit'])) {
     $reuniaotrabalho = $_POST['reuniaotrabalho'];
     $deadlines = $_POST['deadlines'];
     $suggestion = $_POST['suggestion'];
+    $habespacial = $_POST['habespacial'];
+    $habcorporal = $_POST['habcorporal'];
+    $habmusical = $_POST['habmusical'];
+    $hablinguistica = $_POST['hablinguistica'];
+    $habmath = $_POST['habmath'];
+    $habinterpessoal = $_POST['habinterpessoal'];
+    $habnatureba = $_POST['habnatureba'];
+    $habemocional = $_POST['habemocional'];
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
@@ -55,10 +63,12 @@ if (isset($_POST['submit'])) {
     $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
      
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, competencia,
-     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion) VALUES
+     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
+     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$competenciaString',
      '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo', '$cep', '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
-     '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion' )";
+     '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion', '$habespacial', '$habcorporal', '$habmusical', 
+     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional')";
 
     $result = mysqli_query($conn, $query);
 
@@ -122,7 +132,7 @@ if (isset($_POST['submit'])) {
           value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>"
           required>
         <label class="form-sub-label" for="lastname" id="sublabel_1_last" style="min-height:13px"
-          aria-hidden="false">Último nome</label>
+          aria-hidden="false">Sobrenome</label>
       </span>
     </div>
   </div>
@@ -370,7 +380,20 @@ if (isset($_POST['submit'])) {
 </div>      
           </div>
           </li>    
-     
+          <li class="form-line form-line-column form-col-2 form-line-column-right-eight" data-type="control_dropdown">
+          <div id="anim">
+    <span class="tooltip" data-tooltip="interesse em trocar de setor com outro servidor">?</span>
+    </div>
+  <label class="form-label form-label-top"  for="input_8">Você tem interesse permuta?</label>
+  <div id="cid_2" class="form-input-wide" data-layout="half">
+    
+    <select class="form-dropdown" id="input_8" name="permuta" aria-label="permuta">
+      <option>Selecione</option>
+      <option>Sim</option>
+      <option>Não</option>    
+    </select>  
+  </div>
+</li>
       </div> <!-- fim do form-line-container -->
       
 </div> <!-- fechando a pagina 1 -->
@@ -417,6 +440,168 @@ if (isset($_POST['submit'])) {
 </div>
 
 
+
+<label class="form-label-habilities ">Habilidade espacial</label>
+<label class="form-sub-label-habilities">Compreendo e elaboro facilmente quadros, desenhos, esquemas, gráficos e tabelas.</label>
+<div class="checkbox-wrapper-18" id="checkseven" >
+    <div class="round">
+    <input type="checkbox" id="checkbox-sim" name="habespacial" value="Sim" />
+    <label for="checkbox-sim">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-nao" name="habespacial" value="Não" />
+    <label for="checkbox-nao">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-parcialmente" name="habespacial" value="Parcialmente" />
+    <label for="checkbox-parcialmente">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade Corporal</label>
+<label class="form-sub-label-habilities">Tenho capacidade de equilíbrio flexibilidade, velocidade e coordenação motora.</label>
+<div class="checkbox-wrapper-18" id="checkeight">
+    <div class="round">
+    <input type="checkbox" id="checkbox-yes" name="habcorporal" value="Sim" />
+    <label for="checkbox-yes">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-no" name="habcorporal" value="Não" />
+    <label for="checkbox-no">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-partially" name="habcorporal" value="Parcialmente" />
+    <label for="checkbox-partially">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities">Habilidade Musical</label>
+<label class="form-sub-label-habilities">Possuo afinidade com instrumentos musicais, ritmo e harmonia.</label>
+<div class="checkbox-wrapper-18" id="checknine">
+    <div class="round">
+    <input type="checkbox" id="checkbox-si" name="habmusical" value="Sim" />
+    <label for="checkbox-si">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-nah" name="habmusical" value="Não" />
+    <label for="checkbox-nah">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-poquito" name="habmusical" value="Parcialmente" />
+    <label for="checkbox-poquito">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade Linguística</label>
+<label class="form-sub-label-habilities">Possuo facilidade em aprender novos idiomas bem como para me expressar oralmente ou através da escrita.</label>
+<div class="checkbox-wrapper-18" id="checkten">
+    <div class="round">
+    <input type="checkbox" id="checkbox-oui" name="hablinguistica" value="Sim" />
+    <label for="checkbox-oui">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-non" name="hablinguistica" value="Não" />
+    <label for="checkbox-non">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-partiellement" name="hablinguistica" value="Parcialmente" />
+    <label for="checkbox-partiellement">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade Lógico-Matemática</label>
+<label class="form-sub-label-habilities">Tenho boa capacidade de raciocínio lógico, compreensão de cálculos, utilização de fórmulas, interpretação de números e resolução de problemas.</label>
+<div class="checkbox-wrapper-18" id="checkeleven">
+    <div class="round">
+    <input type="checkbox" id="checkbox-ja" name="habmath" value="Sim" />
+    <label for="checkbox-ja">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-nein" name="habmath" value="Não" />
+    <label for="checkbox-nein">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-teilweise" name="habmath" value="Parcialmente" />
+    <label for="checkbox-teilweise">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade Interpessoal</label>
+<label class="form-sub-label-habilities">Tenho facilidade para me relacionar, escutar e compreender pessoas, para dar e receber feedbacks.</label>
+<div class="checkbox-wrapper-18" id="checktwelve">
+    <div class="round">
+    <input type="checkbox" id="checkbox-ae" name="habinterpessoal" value="Sim" />
+    <label for="checkbox-ae">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-kahore" name="habinterpessoal" value="Não" />
+    <label for="checkbox-kahore">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-wāhanga" name="habinterpessoal" value="Parcialmente" />
+    <label for="checkbox-wāhanga">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade naturalista</label>
+<label class="form-sub-label-habilities">Possuo sensibilidade para reconhecer a importância dos elementos da natureza e sua relação com a vida humana.</label>
+<div class="checkbox-wrapper-18" id="checkthirteen">
+    <div class="round">
+    <input type="checkbox" id="checkbox-sicuro" name="habnatureba" value="Sim" />
+    <label for="checkbox-sicuro">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-noi" name="habnatureba" value="Não" />
+    <label for="checkbox-noi">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-parzialmente" name="habnatureba" value="Parcialmente" />
+    <label for="checkbox-parzialmente">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+<label class="form-label-habilities ">Habilidade Emocional</label>
+<label class="form-sub-label-habilities">Possuo capacidade de conhecer e lidar com as minhas emoções, de reconhecer emoções em outras pessoas e de gerenciar conflitos.</label>
+<div class="checkbox-wrapper-18" id="checkfourteen">
+    <div class="round">
+    <input type="checkbox" id="checkbox-hee" name="habemocional" value="Sim" />
+    <label for="checkbox-heẽ">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-nahaniri" name="habemocional" value="Não" />
+    <label for="checkbox-nahániri">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-parcialmentee" name="habemocional" value="Parcialmente" />
+    <label for="checkbox-parcialmentee">
+      <span class="checkbox-text">Parcialmente</span>
+    </div>
+</div>
+
+
 <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
 <div class="checkbox-wrapper-18" id="checktwo" >
 <div class="round">
@@ -459,14 +644,14 @@ if (isset($_POST['submit'])) {
 <label class="form-label form-label-top form-label-config">Você é doador de órgãos?</label>
 <div class="checkbox-wrapper-18" id="checkthree" >
 <div class="round">
-  <input type="checkbox" id="checkbox-sim" name="doador" value="sim" />
-  <label for="checkbox-sim">
+  <input type="checkbox" id="checkbox-simm" name="doador" value="sim" />
+  <label for="checkbox-simm">
     <span class="checkbox-text">Sim</span>
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-nao" name="doador" value="não" />
-  <label for="checkbox-nao">
+  <input type="checkbox" id="checkbox-naoo" name="doador" value="não" />
+  <label for="checkbox-naoo">
     <span class="checkbox-text">Não</span>
   </label>
 </div>
@@ -477,7 +662,6 @@ if (isset($_POST['submit'])) {
   </label>
 </div>
 </div>
-
 
 <label class="form-label form-label-top form-label-config">Qual a forma de realização de trabalho você prefere?</label>
 <div class="checkbox-wrapper-18" id="checkfour">
@@ -563,7 +747,9 @@ if (isset($_POST['submit'])) {
 <label class="form-label form-label-top form-label-config">Se quiser, escreva em poucas palavras sobre alguma idéia de mudança/melhoria no seu local de trabalho: </label>
 <textarea placeholder="aqui sua sugestão" name="suggestion" style="resize:none; width: 95%; height: 100px; margin-left: 10px;" ></textarea>
 
-
+<label class="form-label form-label-top form-label-config">Relacione abaixo até 3 cursosde curta duração (Congressos, Treinamentos, Palestras, Capacitações etc) que você considere
+  importantes dentro da sua formação: </label>
+  <textarea name="freecourses"style="resize:none; width: 95%; height: 100px; margin-left: 10px;" ></textarea>
 
 
 

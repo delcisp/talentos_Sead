@@ -186,6 +186,7 @@ label {
     margin-right: 20px;
   }
 }
+#input_8,
 #input_7,
 #input_6,
 #input_5,
@@ -528,6 +529,13 @@ input[type="checkbox"]:checked {
   width: 50%;
 
 }
+.form-line-column-right-eight {
+  position: absolute;
+  top: 900px;
+  right: 0;
+  width: 50%;
+
+}
 .form-label-config {
   margin-bottom: 40px;
   margin-top: 40px;
@@ -540,6 +548,23 @@ input[type="checkbox"]:checked {
   font-size: 20px;
 }
 
+
+.form-label-habilities {
+  display: block;
+  font-weight: 600;
+  color: #040406;
+  font-size: 20px;
+  margin-top: 20px;
+ 
+}
+
+.form-sub-label-habilities {
+ 
+  font-size: 0.75em;
+  margin-top: 5px;
+  display: block;
+  
+}
 
 .form-textbox {
   width: 100%;

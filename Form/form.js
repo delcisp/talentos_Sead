@@ -20,6 +20,16 @@ handleCheckboxGroup('checkthree');
 handleCheckboxGroup('checkfour');
 handleCheckboxGroup("checkfive");
 handleCheckboxGroup('checksix');
+handleCheckboxGroup('checkseven');
+handleCheckboxGroup('checkeight');
+handleCheckboxGroup('checknine');
+handleCheckboxGroup('checkten');
+handleCheckboxGroup('checkeleven');
+handleCheckboxGroup('checktwelve');
+handleCheckboxGroup('checkthirteen');
+handleCheckboxGroup('checkfourteen');
+
+
 
 
 $("#cep").blur(function(){
@@ -63,43 +73,36 @@ function redirecionar() {
     window.location.href = './agradecimento.php';
   } 
 
+  function limitarSelecoes(checkboxes, contadorLimite) {
+    let checkedCount = 0;
+  
+    checkboxes.forEach(function (checkbox) {
+      checkbox.addEventListener('change', function () {
+        if (this.checked) {
+          checkedCount++;
+        } else {
+          checkedCount--;
+        }
+  
+        if (checkedCount > contadorLimite) {
+          this.checked = false;
+          checkedCount--;
+          alert('Selecione apenas ' + contadorLimite + ' características.');
+        }
+      });
+    });
+  }
+  
   const checkboxesPergunta1 = document.querySelectorAll('input[name="hardcompetencia[]"]');
   const checkboxesPergunta2 = document.querySelectorAll('input[name="competencia[]"]');
+  const checkboxesAtividades = document.querySelectorAll('input[name="atividadesp[]"');
+  const checkboxesSetores = document.querySelectorAll('input[name = "setorop[]"]');
+
+  limitarSelecoes(checkboxesAtividades, 5);
+  limitarSelecoes(checkboxesPergunta1, 5);
+  limitarSelecoes(checkboxesPergunta2, 5);
+  limitarSelecoes(checkboxesSetores, 3);
   
-  let checkedCountPergunta1 = 0;
-  let checkedCountPergunta2 = 0;
-  
-  checkboxesPergunta1.forEach(function (checkbox) {
-    checkbox.addEventListener('change', function () {
-      if (this.checked) {
-        checkedCountPergunta1++;
-      } else {
-        checkedCountPergunta1--;
-      }
-  
-      if (checkedCountPergunta1 > 5) {
-        this.checked = false; 
-        checkedCountPergunta1--;
-        alert('Selecione apenas 5 características.'); 
-      }
-    });
-  });
-  
-  checkboxesPergunta2.forEach(function (checkbox) {
-    checkbox.addEventListener('change', function () {
-      if (this.checked) {
-        checkedCountPergunta2++;
-      } else {
-        checkedCountPergunta2--;
-      }
-  
-      if (checkedCountPergunta2 > 5) {
-        this.checked = false; 
-        checkedCountPergunta2--;
-        alert('Selecione apenas 5 características.'); 
-      }
-    });
-  });
 
   // QUANDO O USUARIO SELECIONAR "OUTROS"
   function mostrarCampoPersonalizado(selectElement) {
