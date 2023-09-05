@@ -490,7 +490,21 @@ input[type="checkbox"]:checked {
 
 .form-line-column-right-two {
   position: absolute;
-  top: 151px;
+  top: 143px;
+  right: 0;
+  width: 50%;
+}
+
+.form-line-column-right-uf {
+  position: absolute;
+  top: 149px;
+  right: 0;
+  width: 50%;
+}
+
+.form-line-column-right-permuta {
+  position: absolute;
+  top: 250px;
   right: 0;
   width: 50%;
 }
