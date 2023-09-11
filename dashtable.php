@@ -275,15 +275,6 @@ include_once('config.php');
                                                 <p class="competencia">Competências Socioemocionais:
                                                     <?php echo $user_data['competencia']; ?>
                                                 </p>
-                                                <p>Satisfação com a equipe:
-                                                    <?php echo $user_data['ratingq']; ?>
-                                                </p>
-                                                <?php if ($user_data['ratingq'] <= 5): ?>
-                                                    <p>Justificativa:
-                                                        <?php echo nl2br($user_data['justification']); ?>
-                                                    </p>
-                                                <?php endif; ?>
-
                                                 <form action='emitirRelatorio.php' method='POST'>
                                                     <input type="hidden" name="firstname"
                                                         value="<?php echo $user_data['firstname']; ?>">

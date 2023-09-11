@@ -73,7 +73,7 @@ function redirecionar() {
     window.location.href = './agradecimento.php';
   } 
 
-  function limitarSelecoes(checkboxes, contadorLimite) {
+  function limitarSelecoes(checkboxes, contadorLimite, campo) {
     let checkedCount = 0;
   
     checkboxes.forEach(function (checkbox) {
@@ -87,7 +87,7 @@ function redirecionar() {
         if (checkedCount > contadorLimite) {
           this.checked = false;
           checkedCount--;
-          alert('Selecione apenas ' + contadorLimite + ' características.');
+          alert('Selecione apenas ' + contadorLimite +  campo);
         }
       });
     });
@@ -98,10 +98,10 @@ function redirecionar() {
   const checkboxesAtividades = document.querySelectorAll('input[name="atividadesp[]"');
   const checkboxesSetores = document.querySelectorAll('input[name = "setorop[]"]');
 
-  limitarSelecoes(checkboxesAtividades, 5);
-  limitarSelecoes(checkboxesPergunta1, 5);
-  limitarSelecoes(checkboxesPergunta2, 5);
-  limitarSelecoes(checkboxesSetores, 3);
+  limitarSelecoes(checkboxesAtividades, 5, ' atividades');
+  limitarSelecoes(checkboxesPergunta1, 5, ' competências técnicas');
+  limitarSelecoes(checkboxesPergunta2, 5, ' competências socioemocionais');
+  limitarSelecoes(checkboxesSetores, 3, ' setores');
   
 
   // QUANDO O USUARIO SELECIONAR "OUTROS"

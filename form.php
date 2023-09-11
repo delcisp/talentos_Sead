@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
   if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
   $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["birthdate"]) || empty($_POST["cep"]) || empty($_POST["uf"])
 || empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])
-  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty($_POST["ratingq"]) || empty($_POST["ratingq2"]) || empty(($_POST["situacaofunc"])) || empty($_POST["timeofservice"]) || empty($_POST["funcaogratificada"]) || empty($_POST["formadetrabalho"]) 
+  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty(($_POST["situacaofunc"])) || empty($_POST["timeofservice"]) || empty($_POST["funcaogratificada"]) || empty($_POST["formadetrabalho"]) 
   || empty($_POST["reuniaotrabalho"]) ||  empty($_POST["deadlines"])  || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
@@ -23,9 +23,6 @@ if (isset($_POST['submit'])) {
     $departament = $_POST['departament'];
     $role = $_POST['role'];
     $firstquestion = $_POST['firstquestion'];
-    $ratingq = $_POST['ratingq'];
-    $ratingq2 = $_POST['ratingq2'];
-    $justification = $_POST['justification'];
     $birthdate = $_POST['birthdate'];
     $telefone = $_POST['telefone'];
     $cep = $_POST['cep'];
@@ -52,6 +49,7 @@ if (isset($_POST['submit'])) {
     $habinterpessoal = $_POST['habinterpessoal'];
     $habnatureba = $_POST['habnatureba'];
     $habemocional = $_POST['habemocional'];
+    $tinycourses = $_POST['tinycourses'];
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
@@ -62,13 +60,13 @@ if (isset($_POST['submit'])) {
     $birthdate = date('Y-m-d', strtotime($birthdate));
     $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
      
-    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, ratingq, ratingq2, competencia,
-     hardcompetencia, justification, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
-     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional) VALUES
-    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$ratingq', '$ratingq2', '$competenciaString',
-     '$competenciaHardString', '$justification', '$birthdate', '$telefone_limpo', '$cep', '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
+    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, competencia,
+     hardcompetencia, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
+     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, tinycourses) VALUES
+    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$competenciaString','$competenciaHardString',  '$birthdate', '$telefone_limpo', '$cep',
+     '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
      '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion', '$habespacial', '$habcorporal', '$habmusical', 
-     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional')";
+     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$tinycourses' )";
 
     $result = mysqli_query($conn, $query);
 
@@ -294,7 +292,7 @@ if (isset($_POST['submit'])) {
 </div>
 <label class="form-label form-label-top form-label-config" style="margin-bottom: 20px;">Relacione abaixo até 3 cursos de curta duração que você considere
   importantes dentro da sua formação: </label>
-  <textarea name="freecourses"style="resize:none; width: 100%; height: 100px;  margin-bottom:20px;" placeholder="Congressos, Treinamentos, Palestras, Capacitações etc" ></textarea>
+  <textarea name="tinycourses"style="resize:none; width: 100%; height: 100px;  margin-bottom:20px;" placeholder="Congressos, Treinamentos, Palestras, Capacitações etc" ></textarea>
 
 </div> <!-- fechando a pagina 1 -->
 
@@ -1146,7 +1144,99 @@ if (isset($_POST['submit'])) {
         </div>
        
       </div>
-      <label class="form-label form-label-top form-label-config">Selecione até 5 atividades com as quais você prefere trabalhar</label>
+      
+      <label class="form-label form-label-top form-label-config">Selecione até 3 habilidades sociais, artísticas, culturais e esportivas que gostaria de conduzir/participar na SEAD. </label>
+        <div class="competencias">
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace1" name="habsace[]"
+            value="Literatura, leitura, escrita" />
+          <label class="form-check-label" for="habsace1">Literatura, leitura, escrita</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace2" name="habsace[]"
+            value="Língua Brasileira de Sinais" />
+          <label class="form-check-label" for="habsace2">Língua Brasileira de Sinais</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace3" name="habsace[]"
+            value="Pintura, Desenho" />
+          <label class="form-check-label" for="habsace3">Pintura, Desenho</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace4" name="habsace[]"
+            value="Jogos Eletrônicos, Virtuais" />
+          <label class="form-check-label" for="habsace4">Jogos Eletrônicos, Virtuais</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace5" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace5">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace6" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace6">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace7" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace7">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace8" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace8">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace9" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace9">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace10" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace10">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace11" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace11">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace12" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace12">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace13" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace13">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace14" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace14">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace15" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace15">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace16" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace16">Esasp</label>
+        </div>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace17" name="habsace[]"
+            value="ESASP" />
+          <label class="form-check-label" for="habsace17">Esasp</label>
+        </div>
+
+
+        </div>
+
+       <label class="form-label form-label-top form-label-config">Selecione até 5 atividades com as quais você prefere trabalhar</label>
         <div class="competencias">
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp1" name="atividadesp[]"
