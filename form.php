@@ -50,10 +50,23 @@ if (isset($_POST['submit'])) {
     $habnatureba = $_POST['habnatureba'];
     $habemocional = $_POST['habemocional'];
     $tinycourses = $_POST['tinycourses'];
+    
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
+
+
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
-    $competenciaHardString = implode("/", $competenciaHardSelecionada);
+    $competenciaHardString = implode(" / ", $competenciaHardSelecionada);
+
+    $setorSelecionado = isset($_POST['setorop']) ? $_POST['setorop'] : [];
+    $setorString = implode (" / ", $setorSelecionado);
+    
+    $habsaceSelecionada = isset($_POST['habsace']) ? $_POST['habsace'] : [];
+    $habsaceString = implode (" / ", $habsaceSelecionada);
+
+    $atividadespSelecionada = isset($_POST['atividadesp']) ? $_POST['atividadesp'] : [];
+    $atividadespString = implode (" / ", $atividadespSelecionada);
+
     $birthdate = $_POST['birthdate'];
     // Converta o formato da data para "XXXX-XX-XX"
     $birthdate = str_replace('/', '-', $birthdate);
@@ -62,11 +75,12 @@ if (isset($_POST['submit'])) {
      
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, competencia,
      hardcompetencia, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
-     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, tinycourses) VALUES
+     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, 
+     setorop,  tinycourses, habsace, atividadesp) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$competenciaString','$competenciaHardString',  '$birthdate', '$telefone_limpo', '$cep',
      '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
      '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion', '$habespacial', '$habcorporal', '$habmusical', 
-     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$tinycourses' )";
+     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString' )";
 
     $result = mysqli_query($conn, $query);
 
@@ -192,7 +206,7 @@ if (isset($_POST['submit'])) {
 </div>         
           </div>
           </li>
-         
+      
           <!-- Textarea de grau de escolaridade (inicialmente oculta) -->
 <!-- textarea pra falar qual a area -->
          
@@ -1129,17 +1143,17 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="setor12" name="setorop[]"
-            value="GESTÃO DE BENS MÓVEIS" />
+            value="Gestão de bens móveis" />
           <label class="form-check-label" for="setor12">Gestão de bens móveis</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="setor13" name="setorop[]"
-            value="DETI" />
+            value="Tecnologia da informação" />
           <label class="form-check-label" for="setor13">Tecnologia da informação</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="setor14" name="setorop[]"
-            value="GESTÃO DE GASTOS PÚBLICOS E COMBUSTÍVEIS" />
+            value="Gestão de gastos públicos e combustíveis" />
           <label class="form-check-label" for="setor14">Gestão de gastos públicos e combustíveis</label>
         </div>
        
@@ -1169,70 +1183,74 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace5" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace5">Esasp</label>
+            value="Esportes, Atividades Físicas" />
+          <label class="form-check-label" for="habsace5">Esportes, Atividades Físicas</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace6" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace6">Esasp</label>
+            value="Instrumento Musical" />
+          <label class="form-check-label" for="habsace6">Instrumento Musical</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace7" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace7">Esasp</label>
+            value="Canto, Coral" />
+          <label class="form-check-label" for="habsace7">Canto, Coral</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace8" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace8">Esasp</label>
+            value="Culinária" />
+          <label class="form-check-label" for="habsace8">Culinária</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace9" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace9">Esasp</label>
+            value="Fotografia" />
+          <label class="form-check-label" for="habsace9">Fotografia</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace10" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace10">Esasp</label>
+            value="Trabalhos Manuais" />
+          <label class="form-check-label" for="habsace10">Trabalhos Manuais</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace11" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace11">Esasp</label>
+            value="Fotografia" />
+          <label class="form-check-label" for="habsace11">Fotografia</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace12" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace12">Esasp</label>
+            value="Cinegrafia" />
+          <label class="form-check-label" for="habsace12">Cinegrafia</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace13" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace13">Esasp</label>
+            value="Teatro" />
+          <label class="form-check-label" for="habsace13">Teatro</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace14" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace14">Esasp</label>
+            value="Idiomas" />
+          <label class="form-check-label" for="habsace14">Idiomas</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace15" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace15">Esasp</label>
+            value="Meditação, Ioga" />
+          <label class="form-check-label" for="habsace15">Meditação, Ioga</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace16" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace16">Esasp</label>
+            value="Jardinagem, Horta" />
+          <label class="form-check-label" for="habsace16">Jardinagem, Horta</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="habsace17" name="habsace[]"
-            value="ESASP" />
-          <label class="form-check-label" for="habsace17">Esasp</label>
+            value="Decoração" />
+          <label class="form-check-label" for="habsace17">Decoração</label>
         </div>
-
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="habsace18" name="habsace[]"
+            value="Não tenho ou não gostaria de informar" />
+          <label class="form-check-label" for="habsace18">Não tenho ou não gostaria de informar</label>
+        </div>
 
         </div>
 
@@ -1335,17 +1353,13 @@ if (isset($_POST['submit'])) {
         </div>
       </li>
     </div><!-- fechando a pagina 3 -->
-    <div id="page-4" style="display: none;">
-   <h1>oi</h1>
-</div> <!--fechando a pagina 4 -->
+ 
 
     <div class="form-navigation">
         <button type="button" id="prev-button">Anterior</button>
         <div class="button-container">
         <button type="button" id="next-button">Próximo</button>
         </div>
-        <button type="submit" id="submit-button" style="display: none;">Enviar</button>
-      </div> 
     </div> <!--fecha o container-->
  
  

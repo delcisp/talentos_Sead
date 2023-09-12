@@ -97,11 +97,13 @@ function redirecionar() {
   const checkboxesPergunta2 = document.querySelectorAll('input[name="competencia[]"]');
   const checkboxesAtividades = document.querySelectorAll('input[name="atividadesp[]"');
   const checkboxesSetores = document.querySelectorAll('input[name = "setorop[]"]');
+  const checkboxesHabsace = document.querySelectorAll('input[name = "habsace[]"]');
 
   limitarSelecoes(checkboxesAtividades, 5, ' atividades');
   limitarSelecoes(checkboxesPergunta1, 5, ' competências técnicas');
   limitarSelecoes(checkboxesPergunta2, 5, ' competências socioemocionais');
   limitarSelecoes(checkboxesSetores, 3, ' setores');
+  limitarSelecoes(checkboxesHabsace, 3, ' habilidades')
   
 
   // QUANDO O USUARIO SELECIONAR "OUTROS"
@@ -166,40 +168,41 @@ function redirecionar() {
   });
   
   document.addEventListener("DOMContentLoaded", function() {
-  
     const selectElement = document.getElementById("input_4");
     const degreeTextareaDiv = document.getElementById("degreeTextareaDiv");
-
+    const degreeTextarea = document.getElementById("degreeTextarea");
+  
     selectElement.addEventListener("change", function() {
       const selectedOption = selectElement.options[selectElement.selectedIndex].value;
-
+  
       if (selectedOption === "Graduação" || selectedOption === "Especialização" || selectedOption === "Mestrado" || selectedOption === "Doutorado") {
         degreeTextareaDiv.style.display = "block";
         degreeTextareaDiv.style.marginTop = "10px";
-        degreeTextarea.style.width = "100%"; 
+        degreeTextarea.style.width = "100%";
         degreeTextarea.style.height = "60px"; 
-        degreeTextarea.style.resize = "none";//textarea normalmente vem com o resize habilitado, o que é ruim pq permite q o usuario mexa no tamanho da caixa e bagunce o layout
+        degreeTextarea.style.resize = "none";
       } else {
         degreeTextareaDiv.style.display = "none"; 
       }
     });
   });
-
-document.addEventListener("DOMContentLoaded", function() {
-  const selectedElement = document.getElementById("input_7");
-  const gratificationTextareaDiv = document.getElementById("gratificationTextareaDiv");
-    
-  selectedElement.addEventListener("change", function() {
-    const selectedOption = selectedElement.options[selectedElement.selectedIndex].value;
-    if (selectedOption === "Sim") {
-      gratificationTextareaDiv.style.display = "block";
-      gratificationTextareaDiv.style.marginTop = "10px";
-      gratificationTextarea.style.width = "100%";
-      gratificationTextarea.style.height = "60px"; 
-      gratificationTextarea.style.resize = "none";
-    } else {
-      gratificationTextareaDiv.style.display= "none";
-    }
-  })
-
-});
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const selectedElement = document.getElementById("input_7");
+    const gratificationTextareaDiv = document.getElementById("gratificationTextareaDiv");
+    const gratificationTextarea = document.getElementById("gratificationTextarea");
+      
+    selectedElement.addEventListener("change", function() {
+      const selectedOption = selectedElement.options[selectedElement.selectedIndex].value;
+      if (selectedOption === "Sim") {
+        gratificationTextareaDiv.style.display = "block";
+        gratificationTextareaDiv.style.marginTop = "10px";
+        gratificationTextarea.style.width = "100%";
+        gratificationTextarea.style.height = "60px"; 
+        gratificationTextarea.style.resize = "none";
+      } else {
+        gratificationTextareaDiv.style.display= "none";
+      }
+    });
+  });
+  
