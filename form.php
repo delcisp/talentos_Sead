@@ -1,4 +1,7 @@
 <?php
+
+//PARA ZERAR OS REGISTROS DE ID NO BANCO DE DADOS E COMEÇAR DO ID 1 O COMANDO É : ALTER TABLE usuarios AUTO_INCREMENT = 1;
+
 if (isset($_POST['submit'])) {
   // Verifica se todas as perguntas foram respondidas
   $allAnswered = true;
@@ -50,6 +53,8 @@ if (isset($_POST['submit'])) {
     $habnatureba = $_POST['habnatureba'];
     $habemocional = $_POST['habemocional'];
     $tinycourses = $_POST['tinycourses'];
+    $degreetextarea = $_POST['degreetextarea'];
+    $temfuncaogratificada = $_POST['temfuncaogratificada'];
     
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
@@ -76,12 +81,12 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, competencia,
      hardcompetencia, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
      timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, 
-     setorop,  tinycourses, habsace, atividadesp) VALUES
+     setorop,  tinycourses, habsace, atividadesp, degreetextarea, temfuncaogratificada) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$competenciaString','$competenciaHardString',  '$birthdate', '$telefone_limpo', '$cep',
      '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
      '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion', '$habespacial', '$habcorporal', '$habmusical', 
-     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString' )";
-
+     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString', '$degreetextarea', '$temfuncaogratificada') ";
+    
     $result = mysqli_query($conn, $query);
 
     $redirectURL = 'agradecimento.php?firstname=' . urlencode($firstname);
@@ -196,13 +201,13 @@ if (isset($_POST['submit'])) {
               <option>Ensino fundamental</option>
               <option>Ensino médio</option>
               <option>Ensino médio técnico</option> <!-- Aparecer um select pra selecionar qual -->
-              <option>Graduação</option> <!-- Aparecer um select pra selecionar qual -->
+              <option> Graduação</option> <!-- Aparecer um select pra selecionar qual -->
               <option>Especialização</option> <!-- Aparecer um select pra selecionar qual -->
               <option>Mestrado</option> <!-- Aparecer um select pra selecionar qual -->
               <option>Doutorado</option> <!-- Aparecer um select pra selecionar qual -->
             </select>
             <div id="degreeTextareaDiv" style="display: none;">
-  <textarea id="degreeTextarea" name="degreeTextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
+  <textarea id="degreetextarea" name="degreetextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
 </div>         
           </div>
           </li>
@@ -222,9 +227,6 @@ if (isset($_POST['submit'])) {
               <option>Preta</option> 
               <option>Prefiro não me classificar</option>   
             </select>
-            <div id="degreeTextareaDiv" style="display: none;">
-  <textarea id="degreeTextarea" name="degreeTextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
-</div>         
           </div>
           </li>
 
@@ -355,7 +357,7 @@ if (isset($_POST['submit'])) {
           <option>Não</option>
           </select>
           <div id="gratificationTextareaDiv" style="display: none;">
-  <textarea id="gratificationTextarea" name="gratificationTextarea" placeholder="Informe a sua função gratificada e há quanto tempo você atua nela"></textarea>
+  <textarea id="gratificationTextarea" name="temfuncaogratificada" placeholder="Informe a sua função gratificada e há quanto tempo você atua nela"></textarea>
 </div>      
           </div>
           </li>    

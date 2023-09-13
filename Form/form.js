@@ -181,6 +181,7 @@ function redirecionar() {
         degreeTextarea.style.width = "100%";
         degreeTextarea.style.height = "60px"; 
         degreeTextarea.style.resize = "none";
+        degreeTextarea.style.borderRadius = "5px";
       } else {
         degreeTextareaDiv.style.display = "none"; 
       }
@@ -200,6 +201,7 @@ function redirecionar() {
         gratificationTextarea.style.width = "100%";
         gratificationTextarea.style.height = "60px"; 
         gratificationTextarea.style.resize = "none";
+        gratificationTextarea.style.borderRadius = "5px";
       } else {
         gratificationTextareaDiv.style.display= "none";
       }

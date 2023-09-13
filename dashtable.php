@@ -201,20 +201,20 @@ include_once('config.php');
                                         </button>
                                     </td>
                                 </tr>
-                                <div class='modal fade' id='<?php echo $modalId; ?>' tabindex='-1'
+                                <div class='modal fade ' id='<?php echo $modalId; ?>' tabindex='-1'
                                     aria-labelledby='exampleModalLabel' aria-hidden='true' >
-                                    <div class='modal-dialog'>
+                                    <div class='modal-dialog modal-lg'>
                                         <div class='modal-content'>
                                             <div class='modal-header'>
                                                 <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal'
                                                     aria-label='Close'></button>
                                             </div>
-                                            <div class='modal-body' >
-                                           
-                                                <p>Nome:
-                                                    <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?>
-                                                </p>
+                                            <div class='modal-body'>
+                                            <div class="row">
+                                            <div class="col-md-4"> <!-- CAMPOS DE DADOS PESSOAIS -->
+                                            <h1 style="font-size: 20px; margin-bottom: 10px; margin-right: 50px;" >DADOS PESSOAIS</h1>
+                                            <p>Nome:   <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?> </p>
                                                 <p>Data de Nascimento:
                                                     <?php
 
@@ -229,52 +229,46 @@ include_once('config.php');
                                                     }
                                                     ?>
                                                 </p>
-                                                <p>Telefone:
-                                                    <?php echo $user_data['telefone']; ?>
-                                                </p>
-                                                <p>Tipo sanguíneo:
-                                                    <?php echo $user_data['bloodtype']; ?>
-                                                </p>
-                                                <p>CEP:
-                                                    <?php echo $user_data['cep']; ?>
-                                                </p>
-                                                <p>UF:
-                                                    <?php echo $user_data['uf']; ?>
-                                                </p>
-                                                <p>Cidade:
-                                                    <?php echo $user_data['cidade']; ?>
-                                                </p>
-                                                <p>Bairro:
-                                                    <?php echo $user_data['bairro']; ?>
-                                                </p>
-                                                <p>Endereço:
-                                                    <?php echo $user_data['endereco']; ?>
-                                                </p>
+                                                <p>Telefone: <?php echo $user_data['telefone']; ?> </p>
+                                                <p>CEP: <?php echo $user_data['cep']; ?> </p>
+                                                <p>UF: <?php echo $user_data['uf']; ?> </p>
+                                                <p>Cidade: <?php echo $user_data['cidade']; ?> </p>
+                                                <p>Bairro: <?php echo $user_data['bairro']; ?> </p>
+                                                <p>Endereço: <?php echo $user_data['endereco']; ?> </p>
+                                                <p>Cor ou raça: <?php echo $user_data['raca']; ?> </p>
+                                                <p>Gênero: <?php echo $user_data['genero']; ?> </p>
+                                                <p>Formação acadêmica: <?php echo $user_data['firstquestion']; ?> </p>
+                                                <p>Cursos livres: <?php echo $user_data['tinycourses']; ?> </p> 
+                                                <p>Tipo sanguíneo: <?php echo $user_data['bloodtype']; ?> </p>
+                                                </div>
+
+                                            <div class="col-md-4"> <!-- CAMPOS DE ENQUADRAMENTO FUNCIONAL -->
+                                              <h1 style="font-size: 20px; margin-bottom: 10px;">ENQUADRAMENTO FUNCIONAL</h1>
+                                              <p>Situação Funcional: <?php echo $user_data['situacaofunc']; ?> </p>
+                                              <p>Cargo Efetivo: <?php echo $user_data['role']; ?> </p>
+                                              <p>Departamento: <?php echo $user_data['departament']; ?>  </p>
+                                              <p>Tempo na instituição: <?php echo $user_data['timeofservice']; ?> </p>
+                                              <p>Função gratificada: <?php echo $user_data['funcaogratificada']; ?> </p>
+                                              <p>Soft Skills: <?php echo $user_data['competencia']; ?> </p>
+                                              <p>Hard Skills: <?php echo $user_data['hardcompetencia']; ?> </p>
                                               
-                                                <p>Departamento:
-                                                    <?php echo $user_data['departament']; ?>
-                                                </p>
-                                                <p>Cargo atual:
-                                                    <?php echo $user_data['role']; ?>
-                                                </p>
-                                                <p>Grau de escolaridade:
-                                                    <?php echo $user_data['firstquestion']; ?>
-                                                </p>
-                                                <p>Cor ou raça:
-                                                    <?php echo $user_data['raca']; ?>
-                                                </p>
-                                                <p>Identidade de gênero:
-                                                    <?php echo $user_data['genero']; ?>
-                                                </p>
-                                                <p>Doador de órgãos:
-                                                    <?php echo $user_data['doador']; ?>
-                                                </p>
-                                                <p class="hard-competencia">Competências Técnicas:
-                                                    <?php echo $user_data['hardcompetencia']; ?>
-                                                </p>
-                                                <p class="competencia">Competências Socioemocionais:
-                                                    <?php echo $user_data['competencia']; ?>
-                                                </p>
+                                            </div>
+                                               
+                                            <div class="col-md-4"> <!-- CAMPOS DE PERFIL PROFISSIONAL --> 
+                                              <h1 style="font-size: 20px; margin-bottom: 10px;">PERFIL PROFISSIONAL</h1> 
+                                              <p>Preferências de trabalho: <?php echo $user_data ['']; ?> </p>
+                                              <p>Forma de trabalho: <?php echo $user_data['formadetrabalho']; ?> </p>
+                                              <p>Participação em Reuniões: <?php echo $user_data['reuniaotrabalho']; ?> </p>
+                                              <p>Prazos e Metas: <?php echo $user_data['deadlines']; ?> </p>
+                                              <p>Sugestão de mudanças: <?php echo $user_data['suggestion']; ?> </p>
+                                              <p> </p>
+                                            </div>
+                                            </div>
+                                               
+
+
+
+
                                                 <form action='emitirRelatorio.php' method='POST'>
                                                     <input type="hidden" name="firstname"
                                                         value="<?php echo $user_data['firstname']; ?>">

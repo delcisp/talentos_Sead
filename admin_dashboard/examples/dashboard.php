@@ -7,6 +7,33 @@ $result = $conn->query($sql);
 $sql = "SELECT competencia FROM usuarios";
 $resultCompetencia = $conn->query($sql);
 
+$query = "SELECT id FROM usuarios ORDER BY id DESC LIMIT 1";
+$resultId = mysqli_query($conn, $query);
+
+if ($resultId) {
+    // Verifique quantas linhas foram retornadas (deve ser 1 ou 0)
+    $numRows = mysqli_num_rows($resultId);
+
+    if ($numRows > 0) {
+        // O último ID registrado é igual ao número de registros
+        $row = mysqli_fetch_assoc($resultId);
+        $ultimoID = $row['id'];
+
+        // Defina uma variável JavaScript com o valor
+        echo "<script>var numeroServidores = {$ultimoID};</script>";
+    } else {
+        // Não há registros na tabela
+        echo "<script>var numeroServidores = 0;</script>";
+    }
+
+    // Lembre-se de liberar o resultado da consulta
+    mysqli_free_result($resultId);
+} else {
+    // Lida com erros de consulta, se houver algum
+    echo "Erro na consulta: " . mysqli_error($conn);
+}
+
+
 // Array para armazenar as competências mais selecionadas
 $competencias = array();
 
@@ -97,7 +124,7 @@ foreach ($firstquestionSelecionadas as $firstquestion) {
 }
 
 $firstquestionPHP = json_encode($firstquestionData);
-
+mysqli_close($conn);
 ?>
 
 <!DOCTYPE html>
@@ -203,7 +230,7 @@ $firstquestionPHP = json_encode($firstquestionData);
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-
+                    <h1 style="font-size: 35px; margin-left: auto; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif " ><script>document.write(numeroServidores);</script> servidores já participaram da pesquisa</h1>
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">
