@@ -55,6 +55,8 @@ if (isset($_POST['submit'])) {
     $tinycourses = $_POST['tinycourses'];
     $degreetextarea = $_POST['degreetextarea'];
     $temfuncaogratificada = $_POST['temfuncaogratificada'];
+    $teletrabalho = $_POST['teletrabalho'];
+    $permuta = $_POST['permuta'];
     
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
@@ -81,11 +83,11 @@ if (isset($_POST['submit'])) {
     $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, competencia,
      hardcompetencia, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
      timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines, suggestion, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, 
-     setorop,  tinycourses, habsace, atividadesp, degreetextarea, temfuncaogratificada) VALUES
+     setorop,  tinycourses, habsace, atividadesp, degreetextarea, temfuncaogratificada, teletrabalho, permuta) VALUES
     ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$competenciaString','$competenciaHardString',  '$birthdate', '$telefone_limpo', '$cep',
      '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
      '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines', '$suggestion', '$habespacial', '$habcorporal', '$habmusical', 
-     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString', '$degreetextarea', '$temfuncaogratificada') ";
+     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString', '$degreetextarea', '$temfuncaogratificada', '$teletrabalho', '$permuta') ";
     
     $result = mysqli_query($conn, $query);
 
@@ -207,7 +209,7 @@ if (isset($_POST['submit'])) {
               <option>Doutorado</option> <!-- Aparecer um select pra selecionar qual -->
             </select>
             <div id="degreeTextareaDiv" style="display: none;">
-  <textarea id="degreetextarea" name="degreetextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
+  <textarea id="degreeTextarea" name="degreetextarea" placeholder="Informe sua graduação/especialização/mestrado/doutorado"></textarea>
 </div>         
           </div>
           </li>
@@ -218,7 +220,7 @@ if (isset($_POST['submit'])) {
 <li class="form-line form-line-column " data-type="control_dropdown" id="id_4">
           <label class="form-label form-label-top" id="raca_label" for="input_4">Qual a sua cor ou raça?</label>
           <div id="cid_4" class="form-input-wide" data-layout="half">
-            <select class="form-dropdown" id="input_4" name="raca" aria-label="Firsquestion">
+            <select class="form-dropdown" id="input_4" name="raca" aria-label="a">
               <option>Selecione</option>
               <option>Amarela</option>
               <option>Branca</option>
@@ -509,7 +511,25 @@ if (isset($_POST['submit'])) {
 </div>
 </div>
 
-
+<label class="form-label-habilities ">Você tem interesse em entrar para o programa de Teletrabalho?</label>
+<label class="form-sub-label-habilities">Caso você já seja teletrabalhador ou não se enquadre no Programa, responda "Não se Aplica".</label>
+<div class="checkbox-wrapper-18" id="teletrabalhor">
+    <div class="round">
+    <input type="checkbox" id="checkbox-quero" name="teletrabalho" value="Sim" />
+    <label for="checkbox-quero">
+      <span class="checkbox-text">Sim</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-naoquero" name="teletrabalho" value="Não" />
+    <label for="checkbox-naoquero">
+      <span class="checkbox-text">Não</span>
+    </div>
+    <div class="round">
+    <input type="checkbox" id="checkbox-naoseaplica" name="teletrabalho" value="Parcialmente" />
+    <label for="checkbox-naoseaplica">
+      <span class="checkbox-text">Não se aplica</span>
+    </div>
+</div>
 
 <label class="form-label form-label-top form-label-config">Como você costuma agir quando participa de reuniões de trabalho?</label>
 <div class="checkbox-wrapper-18" id="checkfive">
@@ -1261,17 +1281,17 @@ if (isset($_POST['submit'])) {
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp1" name="atividadesp[]"
             value="Atendimento ao público externo/intero" />
-          <label class="form-check-label" for="atividadesp1">Atendimento ao público externo/intero</label>
+          <label class="form-check-label" for="atividadesp1">Atendimento ao público externo e interno</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp2" name="atividadesp[]"
-            value="trabalho com recursos tecnológicos/digitais/virtuais" />
-          <label class="form-check-label" for="atividadesp2">trabalho com recursos tecnológicos/digitais/virtuais</label>
+            value="trabalho com recursos tecnológicos, digitais, virtuais" />
+          <label class="form-check-label" for="atividadesp2">trabalho com recursos tecnológicos, digitais, virtuais</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp3" name="atividadesp[]"
-            value="Confecção de despachos/pareceres e decisões relacionados às atividades de assessoria jurídica" />
-          <label class="form-check-label" for="atividadesp3">Confecção de despachos/pareceres e decisões relacionados às atividades de assessoria jurídica</label>
+            value="Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica" />
+          <label class="form-check-label" for="atividadesp3">Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica</label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp4" name="atividadesp[]"
@@ -1290,7 +1310,7 @@ if (isset($_POST['submit'])) {
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="atividadesp7" name="atividadesp[]"
-            value="dados estatísticos e/ou financeiros" />
+            value="dados estatísticos ou financeiros" />
           <label class="form-check-label" for="atividadesp7">dados estatísticos e/ou financeiros</label>
         </div>
         <div class="form-check">

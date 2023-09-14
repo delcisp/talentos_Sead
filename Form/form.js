@@ -28,7 +28,7 @@ handleCheckboxGroup('checkeleven');
 handleCheckboxGroup('checktwelve');
 handleCheckboxGroup('checkthirteen');
 handleCheckboxGroup('checkfourteen');
-
+handleCheckboxGroup('teletrabalhor');
 
 
 

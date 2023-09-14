@@ -230,7 +230,7 @@ mysqli_close($conn);
                         <span class="navbar-toggler-bar burger-lines"></span>
                     </button>
                     <div class="collapse navbar-collapse justify-content-end" id="navigation">
-                    <h1 style="font-size: 35px; margin-left: auto; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif " ><script>document.write(numeroServidores);</script> servidores já participaram da pesquisa</h1>
+                    <h1 style="font-size: 35px; margin-left: auto; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif " ><script>document.write(numeroServidores);</script> SERVIDORES PARTICIPARAM DA PESQUISA</h1>
                         <ul class="nav navbar-nav mr-auto">
                             <li class="nav-item">
                                 <a href="#" class="nav-link" data-toggle="dropdown">

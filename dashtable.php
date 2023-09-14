@@ -20,6 +20,14 @@ include_once('config.php');
 
 </head>
 <style>
+
+    .css-modal-dialog {
+       
+       max-width: 1250px;
+       max-height: 300px;
+    }
+
+
     .hidden {
         display: none;
     }
@@ -201,74 +209,13 @@ include_once('config.php');
                                         </button>
                                     </td>
                                 </tr>
+                            </div>
                                 <div class='modal fade ' id='<?php echo $modalId; ?>' tabindex='-1'
                                     aria-labelledby='exampleModalLabel' aria-hidden='true' >
-                                    <div class='modal-dialog modal-lg'>
+                                    <div class='modal-dialog  css-modal-dialog '> <!-- modal-lg -->
                                         <div class='modal-content'>
                                             <div class='modal-header'>
                                                 <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
-                                                <button type='button' class='btn-close' data-bs-dismiss='modal'
-                                                    aria-label='Close'></button>
-                                            </div>
-                                            <div class='modal-body'>
-                                            <div class="row">
-                                            <div class="col-md-4"> <!-- CAMPOS DE DADOS PESSOAIS -->
-                                            <h1 style="font-size: 20px; margin-bottom: 10px; margin-right: 50px;" >DADOS PESSOAIS</h1>
-                                            <p>Nome:   <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?> </p>
-                                                <p>Data de Nascimento:
-                                                    <?php
-
-                                                    $birthdate = $user_data['birthdate'];
-
-                                                    if ($birthdate !== null && $birthdate !== '0000-00-00') {
-                                                        // Converte o formato da data para "XX/XX/XXXX"
-                                                        $formatted_birthdate = date('d/m/Y', strtotime($birthdate));
-                                                        echo $formatted_birthdate;
-                                                    } else {
-                                                        echo "não informada";
-                                                    }
-                                                    ?>
-                                                </p>
-                                                <p>Telefone: <?php echo $user_data['telefone']; ?> </p>
-                                                <p>CEP: <?php echo $user_data['cep']; ?> </p>
-                                                <p>UF: <?php echo $user_data['uf']; ?> </p>
-                                                <p>Cidade: <?php echo $user_data['cidade']; ?> </p>
-                                                <p>Bairro: <?php echo $user_data['bairro']; ?> </p>
-                                                <p>Endereço: <?php echo $user_data['endereco']; ?> </p>
-                                                <p>Cor ou raça: <?php echo $user_data['raca']; ?> </p>
-                                                <p>Gênero: <?php echo $user_data['genero']; ?> </p>
-                                                <p>Formação acadêmica: <?php echo $user_data['firstquestion']; ?> </p>
-                                                <p>Cursos livres: <?php echo $user_data['tinycourses']; ?> </p> 
-                                                <p>Tipo sanguíneo: <?php echo $user_data['bloodtype']; ?> </p>
-                                                </div>
-
-                                            <div class="col-md-4"> <!-- CAMPOS DE ENQUADRAMENTO FUNCIONAL -->
-                                              <h1 style="font-size: 20px; margin-bottom: 10px;">ENQUADRAMENTO FUNCIONAL</h1>
-                                              <p>Situação Funcional: <?php echo $user_data['situacaofunc']; ?> </p>
-                                              <p>Cargo Efetivo: <?php echo $user_data['role']; ?> </p>
-                                              <p>Departamento: <?php echo $user_data['departament']; ?>  </p>
-                                              <p>Tempo na instituição: <?php echo $user_data['timeofservice']; ?> </p>
-                                              <p>Função gratificada: <?php echo $user_data['funcaogratificada']; ?> </p>
-                                              <p>Soft Skills: <?php echo $user_data['competencia']; ?> </p>
-                                              <p>Hard Skills: <?php echo $user_data['hardcompetencia']; ?> </p>
-                                              
-                                            </div>
-                                               
-                                            <div class="col-md-4"> <!-- CAMPOS DE PERFIL PROFISSIONAL --> 
-                                              <h1 style="font-size: 20px; margin-bottom: 10px;">PERFIL PROFISSIONAL</h1> 
-                                              <p>Preferências de trabalho: <?php echo $user_data ['']; ?> </p>
-                                              <p>Forma de trabalho: <?php echo $user_data['formadetrabalho']; ?> </p>
-                                              <p>Participação em Reuniões: <?php echo $user_data['reuniaotrabalho']; ?> </p>
-                                              <p>Prazos e Metas: <?php echo $user_data['deadlines']; ?> </p>
-                                              <p>Sugestão de mudanças: <?php echo $user_data['suggestion']; ?> </p>
-                                              <p> </p>
-                                            </div>
-                                            </div>
-                                               
-
-
-
-
                                                 <form action='emitirRelatorio.php' method='POST'>
                                                     <input type="hidden" name="firstname"
                                                         value="<?php echo $user_data['firstname']; ?>">
@@ -282,19 +229,109 @@ include_once('config.php');
                                                         value='<?php echo $user_data['firstquestion']; ?> '>
                                                     <input type='hidden' name="competencia"
                                                         value='<?php echo $user_data['competencia']; ?> '>
-
-                                                    <button type='submit' name='emitirRelatorio'
-                                                        class='btn btn-primary'>Emitir Relatório</button>
-
+                                                        <button type='submit' name='emitirRelatorio' style="margin-left: 10px;"  >
+        <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
+    </button> 
                                                 </form>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal'
+                                                    aria-label='Close'></button>
+                                                    
+                                            </div>
+                                            <div class='modal-body'>
+                                            <div class="row">
+                                            <div class="col-md-3"> <!-- CAMPOS DE DADOS PESSOAIS -->
+                                            <div class="card" style="width:18rem;">
+                                            <div class="card-header" style="text-align:center;" >
+                                            <h1 style="font-size: 20px; color: #4299e1; " >DADOS PESSOAIS</h1>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Nome Completo:</strong> <?php echo $user_data['firstname'] . " " . $user_data['lastname']; ?> </li>
+                                            <li class="list-group-item"><strong>Data de Nascimento:</strong>
+                                                    <?php
+
+                                                    $birthdate = $user_data['birthdate'];
+
+                                                    if ($birthdate !== null && $birthdate !== '0000-00-00') {
+                                                        // Converte o formato da data para "XX/XX/XXXX"
+                                                        $formatted_birthdate = date('d/m/Y', strtotime($birthdate));
+                                                        echo $formatted_birthdate;
+                                                    } else {
+                                                        echo "não informada";
+                                                    }
+                                                    ?></li>
+                                            <li class="list-group-item"><strong>Telefone:</strong> <?php echo $user_data['telefone']; ?> </li>
+                                            <li class="list-group-item"><strong>CEP:</strong> <?php echo $user_data['cep']; ?></li>
+                                            <li class="list-group-item"><strong>UF:</strong> <?php echo $user_data['uf']; ?></li>
+                                            <li class="list-group-item"><strong>Cidade:</strong> <?php echo $user_data['cidade']; ?>  </li>
+                                            <li class="list-group-item"><strong>Bairro:</strong> <?php echo $user_data['bairro']; ?></li>
+                                            <li class="list-group-item"><strong>Endereço:</strong> <?php echo $user_data['endereco']; ?></li>
+                                            <li class="list-group-item"><strong>Cor ou raça:</strong> <?php echo $user_data['raca']; ?></li>
+                                            <li class="list-group-item"><strong>Gênero:</strong> <?php echo $user_data['genero']; ?></li>
+                                            <li class="list-group-item"><strong>Formação acadêmica:</strong> <?php echo $user_data['firstquestion']; ?></li>
+                                            <li class="list-group-item"><strong>Cursos livres:</strong> <?php echo $user_data['tinycourses']; ?></li>
+                                            <li class="list-group-item"><strong>Tipo sanguíneo:</strong> <?php echo $user_data['bloodtype']; ?></li>
+                                                </ul>
+                                                </div>
+                                                </div>
+
+                                            <div class="col-md-3"> <!-- CAMPOS DE ENQUADRAMENTO FUNCIONAL -->
+                                            <div class="card" style="width: 18rem;">
+                                            <div class="card-header" style="text-align:center;" >
+                                              <h1 style="font-size: 20px; color: #4299e1;">ENQUADRAMENTO FUNCIONAL</h1>
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                                <li class="list-group-item"><strong>Situação Funcional:</strong>  <?php echo $user_data['situacaofunc']; ?></li>    
+                                                <li class="list-group-item"><strong>Cargo Efetivo:</strong><?php echo $user_data['role']; ?></li> 
+                                                <li class="list-group-item"><strong> Departamento:</strong> <?php echo $user_data['departament']; ?></li> 
+                                                <li class="list-group-item"><strong>Tempo na instituição:</strong> <?php echo $user_data['timeofservice']; ?></li> 
+                                                <li class="list-group-item"><strong>Função gratificada:</strong> <?php echo $user_data['funcaogratificada']; ?></li> 
+                                                <li class="list-group-item"><strong>Soft Skills:</strong> <?php echo $user_data['competencia']; ?></li> 
+                                                <li class="list-group-item"><strong>Hard Skills:</strong> <?php echo $user_data['hardcompetencia']; ?></li>
+                                                </ul>
+                                                </div>
+                                            </div>
+                                               
+                                            <div class="col-md-3"> <!-- CAMPOS DE PERFIL PROFISSIONAL --> 
+                                            <div class="card" style="width: 18rem;">
+                                            <div class="card-header" style="text-align:center;" >
+                                              <h1 style="font-size: 20px; color: #4299e1;">PERFIL PROFISSIONAL</h1> 
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Preferências de trabalho:</strong> <?php echo $user_data ['atividadesp']; ?></li> 
+                                            <li class="list-group-item"><strong>Forma de trabalho:</strong> <?php echo $user_data['formadetrabalho']; ?></li> 
+                                            <li class="list-group-item"><strong>Participação em Reuniões:</strong> <?php echo $user_data['reuniaotrabalho']; ?></li> 
+                                            <li class="list-group-item"><strong>Prazos e Metas:</strong> <?php echo $user_data['deadlines']; ?> </li> 
+                                            <li class="list-group-item"><strong>Sugestão de mudanças:</strong> <?php echo $user_data['suggestion']; ?></li> 
+                                            <li class="list-group-item"><strong>Setores opcionais:</strong> <?php echo $user_data['setorop']; ?></li> 
+                                            <li class="list-group-item"><strong>Teletrabalho:</strong> <?php echo $user_data['teletrabalho']; ?></li> 
+                                            <li class="list-group-item"><strong>Interesse em permuta:</strong> <?php echo $user_data['permuta']; ?></li> 
+                                                </ul>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3"> <!-- CAMPOS DE HABILIDADES -->
+                                            <div class="card" style="width: 18rem;">
+                                            <div class="card-header" style="text-align:center;" >
+                                              <h1 style="font-size: 20px; color: #4299e1;">HABILIDADES</h1> 
+                                                </div>
+                                                <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><strong>Habilidade Espacial:</strong> <?php echo $user_data ['habespacial']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Corporal:</strong> <?php echo $user_data ['habcorporal']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Musical:</strong> <?php echo $user_data ['habmusical']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Linguística:</strong> <?php echo $user_data ['hablinguistica']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Lógico-Matemática:</strong> <?php echo $user_data ['habmath']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Interpessoal:</strong> <?php echo $user_data ['habinterpessoal']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Naturalista:</strong> <?php echo $user_data ['habnatureba']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidade Emocional:</strong> <?php echo $user_data ['habemocional']; ?></li>
+                                            <li class="list-group-item"><strong>Habilidades sociais/culturais:</strong> <?php echo $user_data ['habsace']; ?></li>
+                                                </ul>
+                                            </div>
+                                            </div>
 
                                             </div>
+                                            </div>
                                             <div class='modal-footer'>
-
-
-                                                <!--     <button type="submit">
-        <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
-    </button> -->
+                                                                                      
                                                 <button type='button' class='btn btn-secondary'
                                                     data-bs-dismiss='modal'>Fechar</button>
                                             </div>
