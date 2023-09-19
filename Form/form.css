@@ -1,5 +1,46 @@
 
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400');
+
+@media screen and (max-width: 569px) {
+  body {
+    padding: 20px;
+  }
+
+  .form-label-data {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+
+  .form-line-column-right-three {
+
+    position: absolute;
+
+    top: 20px;
+    right: 0;
+    width: 50%;
+
+  }
+
+  .form-container {
+    max-width: 450px;
+  }
+
+  .competencias {
+    grid-template-columns: repeat(2, 2fr);
+    gap: 10px;
+  }
+
+  .form-dropdown {
+    width: 50%;
+  }
+
+  #input_3 {
+
+    margin-right: 20px;
+  }
+}
+
+
 .tooltip {
   position: relative;
   background: #78C55F;
@@ -148,44 +189,7 @@ label {
 
 }
 
-@media screen and (max-width: 569px) {
-  body {
-    padding: 20px;
-  }
 
-  .form-label-data {
-    font-size: 16px;
-    white-space: nowrap;
-  }
-
-  .form-line-column-right-three {
-
-    position: absolute;
-
-    top: 20px;
-    right: 0;
-    width: 50%;
-
-  }
-
-  .form-container {
-    max-width: 450px;
-  }
-
-  .competencias {
-    grid-template-columns: repeat(2, 2fr);
-    gap: 10px;
-  }
-
-  .form-dropdown {
-    width: 50%;
-  }
-
-  #input_3 {
-
-    margin-right: 20px;
-  }
-}
 #input_8,
 #input_7,
 #input_6,
@@ -333,10 +337,10 @@ label {
 }
 
 .checkbox-wrapper-18 .round label .checkbox-text {
-
   margin-left: 30px;
   top: 50px;
   white-space: nowrap;
+
 }
 
 .checkbox-wrapper-18 .round label {

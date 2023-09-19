@@ -1,3 +1,4 @@
+EMITIR RELATORIO EM 8 COLUNAS: 
 <?php
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -57,84 +58,74 @@ if (isset($_POST['emitirRelatorio'])) {
 
     //setando os titulos
     $sheet->setCellValue('A2', 'DADOS PESSOAIS');
-    $sheet->setCellValue('B2', 'ENQUADRAMENTO FUNCIONAL');
-    $sheet->setCellValue('C2', 'PERFIL PROFISSIONAL');
-    $sheet->setCellValue('D2', 'HABILIDADES');
+    $sheet->setCellValue('C2', 'ENQUADRAMENTO FUNCIONAL');
+    $sheet->setCellValue('E2', 'PERFIL PROFISSIONAL');
+    $sheet->setCellValue('G2', 'HABILIDADES');
+    //setando tipo o align-items do titulo
+    $sheet->getStyle('A2:H2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle('A2:H2')->getFont()->setBold(true);
     
     //SETANDO OS VALORES DO BANCO DE DADOS NA COLUNA B - DADOS PESSOAIS
-    $sheet->setCellValue('A3', 'NOME: ' . "" . $firstname . " " . $lastname);
-    $sheet->setCellValue('A4', 'DATA DE NASCIMENTO: ' . "" . $birthdate);
-    $sheet->setCellValue('A5', 'ENDEREÇO: ' . "" .  $endereco);
-    $sheet->setCellValue('A6', 'CEP: ' . "" . $cep);
-    $sheet->setCellValue('A7', 'UF: ' . "" . $uf);
-    $sheet->setCellValue('A8', 'CIDADE: ' . "" . $cidade);
-    $sheet->setCellValue('A9', 'BAIRRO: ' . "" . $bairro);
-    $sheet->setCellValue('A10','TELEFONE: ' . "" . $telefone);
-    $sheet->setCellValue('A11', 'TIPO SANGUÍNEO: ' . "" . $bloodtype);
-    $sheet->setCellValue('A12', 'FORMAÇÃO: ' . "" . $firstquestion);
-    $sheet->setCellValue('A13', 'COR OU RAÇA: ' . "" . $raca);
-    $sheet->setCellValue('A14', 'DOADOR DE ÓRGÃOS: ' . "" . $doador);
-    $sheet->setCellValue('A15', 'IDENTIDADE DE GÊNERO: ' . "" . $genero);
-    $sheet->setCellValue('A16', 'CURSOS LIVRES:' . "" . $tinycourses);
+    $sheet->setCellValue('B3', 'NOME: ' . "" . $firstname . " " . $lastname);
+    $sheet->setCellValue('B4', $birthdate);
+    $sheet->setCellValue('B5', $endereco);
+    $sheet->setCellValue('B6', $cep);
+    $sheet->setCellValue('B7', $uf);
+    $sheet->setCellValue('B8', $cidade);
+    $sheet->setCellValue('B9', $bairro);
+    $sheet->setCellValue('B10', $telefone);
+    $sheet->setCellValue('B11', $bloodtype);
+    $sheet->setCellValue('B12', $firstquestion);
+    $sheet->setCellValue('B13', $raca);
+    $sheet->setCellValue('B14', $doador);
+    $sheet->setCellValue('B15', $genero);
+    $sheet->setCellValue('B16', $tinycourses);
     
 
     //SETANDO OS VALORES DO BANCO DE DADOS NA COLUNA C - ENQUADRAMENTO FUNCIONAL 
-    $sheet->setCellValue('B3', 'DEPARTAMENTO: ' . "" . $departament);
-    $sheet->setCellValue('B4', 'CARGO: ' . "" . $role);
-    $sheet->setCellValue('B5', 'SITUAÇÃO FUNCIONAL: ' . "" .  $situacaofunc);
-    $sheet->setCellValue('B6', 'FUNÇÃO GRATIFICADA: ' . "" . $funcaogratificada);
-    $sheet->setCellValue('B7', 'TEMPO NA INSTITUIÇÃO: ' . "" .  $timeofservice);
-    $sheet->setCellValue('B8', 'C0MPETÊNCIAS TÉCNICAS: ' . "" . $hardcompetencia);
-    $sheet->setCellValue('B9', 'COMPETÊNCIAS SOCIOEMOCIONAIS: ' . "" .  $competencia);
+    $sheet->setCellValue('D3', $departament);
+    $sheet->setCellValue('D4', $role);
+    $sheet->setCellValue('D5', $situacaofunc);
+    $sheet->setCellValue('D6', $funcaogratificada);
+    $sheet->setCellValue('D7', $timeofservice);
+    $sheet->setCellValue('D8', $hardcompetencia);
+    $sheet->setCellValue('D9', $competencia);
 
 
     //SETANDO OS VALORES DO BANCO DE DADOS NA COLUNA F - PERFIL PROFISSIONAL
-    $sheet->setCellValue('C3', 'PREFERÊNCIAS DE TRABALHO: ' . "" . $atividadesp);
-    $sheet->setCellValue('C4', 'FORMA DE TRABALHO PREFERIDA: ' . "" . $formadetrabalho);
-    $sheet->setCellValue('C5', 'PARTICIPAÇÃO EM REUNIÕES: ' . "" .  $reuniaotrabalho);
-    $sheet->setCellValue('C6', 'PRAZOS E METAS: ' . "" .  $deadlines);
-    $sheet->setCellValue('C7', 'SUGESTÃO DE MUDANÇAS: ' . "" .  $suggestion);
-    $sheet->setCellValue('C8', 'SETORES OPCIONAIS:' . "" . $setorop);
-    $sheet->setCellValue('C9', 'TELETRABALHO: '. "" .  $teletrabalho);
-    $sheet->setCellValue('C10','INTERESSE EM PERMUTA: ' . "" . $permuta);
+    $sheet->setCellValue('F3', $atividadesp);
+    $sheet->setCellValue('F4', $formadetrabalho);
+    $sheet->setCellValue('F5', $reuniaotrabalho);
+    $sheet->setCellValue('F6', $deadlines);
+    $sheet->setCellValue('F7', $suggestion);
+    $sheet->setCellValue('F8', $setorop);
+    $sheet->setCellValue('F9', $teletrabalho);
+    $sheet->setCellValue('F10', $permuta);
 
     //SETANDO OS VALORES DO BANCO DE DADOS NA COLUNA H - HABILIDADES
-    $sheet->setCellValue('D3', 'HABILIDADE ESPACIAL: ' . "" . $habespacial);
-    $sheet->setCellValue('D4', 'HABILIDADE CORPORAL: ' . "" . $habcorporal);
-    $sheet->setCellValue('D5', 'HABILIDADE MUSICAL: ' . "" . $habmusical);
-    $sheet->setCellValue('D6', 'HABILIDADE LINGUÍSTICA: ' . "" .  $hablinguistica);
-    $sheet->setCellValue('D7', 'HABILIDADE LÓGICO-MATEMÁTICA: ' . "" .  $habmath);
-    $sheet->setCellValue('D8', 'HABILIDADE INTERPESSOAL: ' . "" . $habinterpessoal);
-    $sheet->setCellValue('D9', 'HABILIDADE NATURALISTA: ' . "" . $habnatureba);
-    $sheet->setCellValue('D10','HABILIDADE EMOCIONAL: ' . "" . $habemocional);
-    $sheet->setCellValue('D11', 'HABILIDADE SOCIAL/CULTURAL: ' . "" .  $habsace);
+    $sheet->setCellValue('H3', $habespacial);
+    $sheet->setCellValue('H4', $habcorporal);
+    $sheet->setCellValue('H5', $habmusical);
+    $sheet->setCellValue('H6', $hablinguistica);
+    $sheet->setCellValue('H7', $habmath);
+    $sheet->setCellValue('H8', $habinterpessoal);
+    $sheet->setCellValue('H9', $habnatureba);
+    $sheet->setCellValue('H10', $habemocional);
+    $sheet->setCellValue('H11', $habsace);
 
-   
-    
-    $columns = ['A', 'B', 'C', 'D'];
-    $width = 65;
+
+    $columnsWithoutDatas = ['A', 'C', 'E', 'G'];
+    $columns = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    $width = 45;
     
     foreach ($columns as $column) {
         $sheet->getColumnDimension($column)->setWidth($width);
-        $sheet->getStyle($column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_LEFT);
-    }
-    //setando tipo o align-items do titulo
-    $sheet->getStyle('A2:D2')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
-    $sheet->getStyle('A2:D2')->getFont()->setBold(true);
-
-    //height para os titulos
-    $sheet->getRowDimension('2')->setRowHeight(40);
-
-    //height para os dados
-    $height = 30;
-    for ($row = 2; $row <= 16; $row++) {
-        $sheet->getRowDimension($row)->setRowHeight($height);
+        $sheet->getStyle($column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
     }
     
- 
-
-    
-
+    foreach($columnsWithoutDatas as $column) {
+        $sheet->getStyle($column)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+    }
 
     //SETANDO BORDAS PARA OS TITULOS DE CADA COLUNA
     
@@ -157,8 +148,58 @@ if (isset($_POST['emitirRelatorio'])) {
         ],
         ];
 
+      
+//SETANDO OS DADOS QUE VAO RECEBER OS VALORES AO LADO
+    $titlesDados = [
+        'NOME', 'DATA DE NASCIMENTO', 'ENDEREÇO', 
+        'CEP', 'UF', 'CIDADE', 'BAIRRO', 'TELEFONE',
+        'TIPO SANGUÍNEO', 'FORMAÇÃO', 'COR OU RAÇA', 'DOADOR DE ÓRGÃOS',
+        'IDENTIDADE DE GÊNERO', 'CURSOS LIVRES'
+    ];
+    $row = 3;
+    foreach ($titlesDados as $title) {
+        $sheet->setCellValue('A' . $row, $title);
+        $row++;
+    }
+   
+    $titlesEnquadramento = [
+        'DEPARTAMENTO', 'CARGO ATUAL', 'SITUAÇÃO FUNCIONAL', 'FUNÇÃO GRATIFICADA', 
+        'TEMPO NA INSTITUIÇÃO', 'COMPETÊNCIAS TÉCNICAS',
+        'COMPETÊNCIAS SOCIOEMOCIONAIS'
+    ];
+    $rowEnquadramento = 3;
+    foreach($titlesEnquadramento as $title) {
+        $sheet->setCellValue('C' . $rowEnquadramento, $title);
+        $rowEnquadramento++;
+    }
+
+    $titlesPerfilProfissional = [
+       'PREFERÊNCIAS DE TRABALHO', 'FORMA DE TRABALHO', 'PARTICIPAÇÃO EM REUNIÕES',
+       'PRAZOS E METAS', 'SUGESTÃO DE MUDANÇAS', 'SETORES OPCIONAIS', 'TELETRABALHO',
+       'INTERESSE EM PERMUTA' 
+    ];
+    $rowProfissional = 3;
+    foreach($titlesPerfilProfissional as $title) {
+        $sheet->setCellValue('E' . $rowProfissional, $title);
+        $rowProfissional++;
+    }
+
+    $titlesHabilidades = [
+        'HABILIDADE ESPACIAL', 'HABILIDADE CORPORAL', 'HABILIDADE MUSICAL', 'HABILIDADE LINGUÍSTICA',
+        'HABILIDADE LÓGICO-MATEMÁTICA', 'HABILIDADE INTERPESSOAL', 'HABILIDADE NATURALISTA' ,'HABILIDADE EMOCIONAL',
+        'HABILIDADES SOCIAIS/CULTURAIS'
+    ];
+    $rowHabilidades = 3;
+    foreach($titlesHabilidades as $title) {
+        $sheet->setCellValue('G' . $rowHabilidades, $title);
+        $rowHabilidades++;
+    }
    
     
+
+
+
+
     //criando o xlsx e setando as configurações de download
     $writer = new Xlsx($spreadsheet);
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); //suggestion: header('Content-Type: application/vnd.ms-excel');

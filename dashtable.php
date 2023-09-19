@@ -229,10 +229,83 @@ include_once('config.php');
                                                         value='<?php echo $user_data['firstquestion']; ?> '>
                                                     <input type='hidden' name="competencia"
                                                         value='<?php echo $user_data['competencia']; ?> '>
+                                                    <input type='hidden' name="hardcompetencia"
+                                                        value='<?php echo $user_data['hardcompetencia']; ?> '>
+                                                        <input type='hidden' name="birthdate"
+                                                        value='<?php echo $user_data['birthdate']; ?> '>
+                                                        <input type='hidden' name="cep"
+                                                        value='<?php echo $user_data['cep']; ?> '>
+                                                        <input type='hidden' name="uf"
+                                                        value='<?php echo $user_data['uf']; ?> '>
+                                                        <input type='hidden' name="cidade"
+                                                        value='<?php echo $user_data['cidade']; ?> '>
+                                                        <input type='hidden' name="bairro"
+                                                        value='<?php echo $user_data['bairro']; ?> '>
+                                                        <input type='hidden' name="endereco"
+                                                        value='<?php echo $user_data['endereco']; ?> '>
+                                                        <input type='hidden' name="bloodtype"
+                                                        value='<?php echo $user_data['bloodtype']; ?> '>
+                                                        <input type='hidden' name="raca"
+                                                        value='<?php echo $user_data['raca']; ?> '>
+                                                        <input type='hidden' name="telefone"
+                                                        value='<?php echo $user_data['telefone']; ?> '>
+                                                        <input type='hidden' name="genero"
+                                                        value='<?php echo $user_data['genero']; ?> '>
+                                                        <input type='hidden' name="doador"
+                                                        value='<?php echo $user_data['doador']; ?> '>
+                                                        <input type='hidden' name="situacaofunc"
+                                                        value='<?php echo $user_data['situacaofunc']; ?> '>
+                                                        <input type='hidden' name="timeofservice"
+                                                        value='<?php echo $user_data['timeofservice']; ?> '>
+                                                        <input type='hidden' name="funcaogratificada"
+                                                        value='<?php echo $user_data['funcaogratificada']; ?> '>
+                                                        <input type='hidden' name="formadetrabalho"
+                                                        value='<?php echo $user_data['formadetrabalho']; ?> '>
+                                                        <input type='hidden' name="reuniaotrabalho"
+                                                        value='<?php echo $user_data['reuniaotrabalho']; ?> '>
+                                                        <input type='hidden' name="deadlines"
+                                                        value='<?php echo $user_data['deadlines']; ?> '>
+                                                        <input type='hidden' name="suggestion"
+                                                        value='<?php echo $user_data['suggestion']; ?> '>
+                                                        <input type='hidden' name="habespacial"
+                                                        value='<?php echo $user_data['habespacial']; ?> '>
+                                                        <input type='hidden' name="habcorporal"
+                                                        value='<?php echo $user_data['habcorporal']; ?> '>
+                                                        <input type='hidden' name="habmusical"
+                                                        value='<?php echo $user_data['habmusical']; ?> '>
+                                                        <input type='hidden' name="hablinguistica"
+                                                        value='<?php echo $user_data['hablinguistica']; ?> '>
+                                                        <input type='hidden' name="habmath"
+                                                        value='<?php echo $user_data['habmath']; ?> '>
+                                                        <input type='hidden' name="habinterpessoal"
+                                                        value='<?php echo $user_data['habinterpessoal']; ?> '>
+                                                        <input type='hidden' name="habnatureba"
+                                                        value='<?php echo $user_data['habnatureba']; ?> '>
+                                                        <input type='hidden' name="habemocional"
+                                                        value='<?php echo $user_data['habemocional']; ?> '>
+                                                        <input type='hidden' name="tinycourses"
+                                                        value='<?php echo $user_data['tinycourses']; ?> '>
+                                                        <input type='hidden' name="setorp"
+                                                        value='<?php echo $user_data['setorp']; ?> '>
+                                                        <input type='hidden' name="habsace"
+                                                        value='<?php echo $user_data['habsace']; ?> '>
+                                                        <input type='hidden' name="atividadesp"
+                                                        value='<?php echo $user_data['atividadesp']; ?> '>
+                                                        <input type='hidden' name="degreetextarea"
+                                                        value='<?php echo $user_data['degreetextarea']; ?> '>
+                                                        <input type='hidden' name="temfuncaogratificada"
+                                                        value='<?php echo $user_data['temfuncaogratificada']; ?> '>
+                                                        <input type='hidden' name="teletrabalho"
+                                                        value='<?php echo $user_data['teletrabalho']; ?> '>
+                                                        <input type='hidden' name="permuta"
+                                                        value='<?php echo $user_data['permuta']; ?> '>
+
+
                                                         <button type='submit' name='emitirRelatorio' style="margin-left: 10px;"  >
         <img width="32" height="32" src="https://img.icons8.com/windows/32/graph-report.png" alt="graph-report" title="Emitir relatório">
-    </button> 
+    </button>          
                                                 </form>
+                                                
                                                 <button type='button' class='btn-close' data-bs-dismiss='modal'
                                                     aria-label='Close'></button>
                                                     

@@ -1092,9 +1092,9 @@ if (isset($_POST['submit'])) {
   </label>
 </div>
 <div class="round">
-  <input type="checkbox" id="checkbox-dificuldade" name="deadlines" value="Tenho dificuldade quanto ao atendimento de prazos, no entanto, busco realizar as atividades de forma satisfatória e atingir a meta estabelecida." />
+  <input type="checkbox" id="checkbox-dificuldade" name="deadlines" value="Tenho dificuldade quanto ao atendimento de prazos, mas busco realizar as atividades de forma satisfatória e atingir a meta estabelecida." />
   <label for="checkbox-dificuldade">
-    <span class="checkbox-text">Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</span>
+    <span class="checkbox-text" style="font-size: 15px;"  >Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</span>
   </label>
 </div>
 </div>
