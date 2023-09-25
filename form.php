@@ -8,9 +8,10 @@ if (isset($_POST['submit'])) {
   $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
 
   $cargoSelecionado = $_POST["role"];
+  $bloodtypeSelecionado = $_POST["bloodtype"];
   $formacaoSelecionada = $_POST["firstquestion"];
   $departamentoSelecionado = $_POST["departament"];
-  if ($departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
+  if ($bloodtypeSelecionado == "Selecione" || empty($bloodtypeSelecionado)  || $departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
   $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["birthdate"]) || empty($_POST["cep"]) || empty($_POST["uf"])
 || empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])
   || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty(($_POST["situacaofunc"])) || empty($_POST["timeofservice"]) || empty($_POST["funcaogratificada"]) || empty($_POST["formadetrabalho"]) 
@@ -269,42 +270,81 @@ if (isset($_POST['submit'])) {
 </li>
       </div> <!-- fim do form-line-container -->
  
+
+      <li class="form-line" data-type="control_scale" id="id_7">
+        <label class="form-label form-label-top" id="ratingquestion" for="input_7">Quão satisfeito você está com a
+          equipe
+          que trabalha?</label>
+        <div id="cid_7" class="form-input-wide" data-layout="full">
+          <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+            class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+            <div class="rating-item-group">
+              <div class="rating-item">
+                <span class="rating-item-title for-from"></span>
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1"
+                  id="input_7_1" />
+                <label for="input_7_1">1</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2"
+                  id="input_7_2" />
+                <label for="input_7_2">2</label>
+              </div>
+              <div class="rating-item">
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3"
+                  id="input_7_3" />
+                <label for="input_7_3">3</label>
+              </div>
+    
+              <div class="rating-item">
+                <span class="rating-item-title for-to"></span>
+                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10"
+                  id="input_7_10" />
+                <label for="input_7_10">10</label>
+              </div>
+            </div>
+          </div>
+          </span>
+        </div>
+      </li>
+
+
       <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
 <div class="checkbox-wrapper-18" id="checktwo" style="margin-bottom: 20px;" >
 <div class="round">
   <input type="checkbox" id="checkbox-mulhercis" name="genero" value="mulher cisgênera" />
   <label for="checkbox-mulhercis">
-    <span class="checkbox-text">Mulher cisgênera (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
+    <span class="checkbox-text"><strong>Mulher cisgênera</strong> (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
   <input type="checkbox" id="checkbox-homemcis" name="genero" value="homem cisgênero" />
   <label for="checkbox-homemcis">
-    <span class="checkbox-text">Homem cisgênero (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
+    <span class="checkbox-text"><strong>Homem cisgênero</strong> (se identifica com o gênero que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
   <input type="checkbox" id="checkbox-mulhertrans" name="genero" value="mulher trans" />
   <label for="checkbox-mulhertrans">
-    <span class="checkbox-text">Mulher trans (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
+    <span class="checkbox-text"><strong>Mulher trans</strong> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
   <input type="checkbox" id="checkbox-homemtrans" name="genero" value="homem trans" />
   <label for="checkbox-homemtrans">
-    <span class="checkbox-text">(Homem Trans se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
+    <span class="checkbox-text"><strong>Homem Trans</strong> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</span>
   </label>
 </div>
 <div class="round">
   <input type="checkbox" id="checkbox-naobinario" name="genero" value="não binário" />
   <label for="checkbox-naobinario">
-    <span class="checkbox-text">Não binário (não se sente pertencente ao gênero masculino ou ao feminino)</span>
+    <span class="checkbox-text"><strong>Não binário</strong> (não se sente pertencente ao gênero masculino ou ao feminino)</span>
   </label>
 </div>
 <div class="round">
   <input type="checkbox" id="checkbox-nao-classificar2" name="genero" value="prefiro não me classificar" />
   <label for="checkbox-nao-classificar2">
-    <span class="checkbox-text">Prefiro não me classificar</span>
+    <span class="checkbox-text"><strong>Prefiro não me classificar</strong> </span>
   </label>
 </div>
 </div>
@@ -1062,23 +1102,18 @@ if (isset($_POST['submit'])) {
     <div class="round">
     <input type="checkbox" id="checkbox-parcialmentee" name="habemocional" value="Parcialmente" />
     <label for="checkbox-parcialmentee">
-      <span class="checkbox-text">Parcialmente</span>
+    <span class="checkbox-text">Parcialmente</span>
     </div>
 </div>
 
 <label class="form-label form-label-top form-label-config">Como você costuma agir diante de prazos e metas?</label>
 <div class="checkbox-wrapper-18" id="checksix">
     <div class="round">
-    <input type="checkbox" id="checkbox-seorganiza" name="deadlines" value="Organizo minhas atividades para realizá-las dentro do prazo determinado" />
+    <input type="checkbox" id="checkbox-seorganiza" name="deadlines" value="Organizo minhas atividades para realizá-las dentro do prazo determinado, salvo quando acontecem situações fora do planejado" />
     <label for="checkbox-seorganiza">
-      <span class="checkbox-text">Organizo minhas atividades para realizá-las dentro do prazo determinado</span>
+      <span class="checkbox-text" >Organizo minhas atividades para realizá-las dentro do prazo determinado</span>
     </div>
-<div class="round">
-  <input type="checkbox" id="checkbox-salva" name="deadlines" value="salvo quando acontecem situações fora do planejado" />
-  <label for="checkbox-salva">
-    <span class="checkbox-text">salvo quando acontecem situações fora do planejado</span>
-  </label>
-</div>
+
 <div class="round">
   <input type="checkbox" id="checkbox-prioridade" name="deadlines" value="Priorizo, a partir da indicação do(a) gestor(a), as atividades com prazos específicos" />
   <label for="checkbox-prioridade">

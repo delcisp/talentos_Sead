@@ -1,0 +1,96 @@
+:root {
+    --on-primary: #fff;
+    --color-primary: #6435c9;
+    font-family: sans-serif;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    display: grid;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  
+  .RatingQuestion {
+    border: none;
+    margin: 0 auto;
+    padding: 0 1rem;
+    max-width: 500px;
+  }
+  
+  .RatingQuestion-label {
+    width: 100%;
+    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  /* hide content but still make it accessible to screen readers */
+  .visuallyHidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+  }
+  
+  .RatingQuestion-optionsList {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .RatingQuestion-radioLabel {
+    display: inline-flex;
+    /* minimum width of 44px for tapability / clickability */
+    flex: 1 0 44px;
+    justify-content: center;
+    align-items: center;
+    /* negative margin to prevent double border */
+    margin-left: -1px;
+    /*   minimum height of 44px for tapability / clickability */
+    min-height: 44px;
+    padding: 0 8px;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .RatingQuestion-radioLabel:first-of-type {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    margin-left: 0;
+  }
+  
+  .RatingQuestion-radioLabel:last-of-type {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  
+  .RatingQuestion-radio:checked + .RatingQuestion-radioLabel {
+    background: var(--color-primary);
+    color: var(--on-primary);
+  }
+  
+  .RatingQuestion-radio:focus + .RatingQuestion-radioLabel {
+    box-shadow: 0 0 0 2px var(--on-primary), 0 0 0 3px var(--color-primary);
+    z-index: 1;
+  }
+  
+  .RatingQuestion-scaleLabelList {
+    display: flex;
+    justify-content: space-between;
+  }
