@@ -116,7 +116,6 @@ if (isset($_POST['submit'])) {
   <script src="http://code.jquery.com/jquery-1.8.2.js"></script>
   <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
- 
   <link type="text/css" rel="stylesheet"
     href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.42507" />
   <link type="text/css" rel="stylesheet"
@@ -270,44 +269,6 @@ if (isset($_POST['submit'])) {
 </li>
       </div> <!-- fim do form-line-container -->
  
-
-      <li class="form-line" data-type="control_scale" id="id_7">
-        <label class="form-label form-label-top" id="ratingquestion" for="input_7">Quão satisfeito você está com a
-          equipe
-          que trabalha?</label>
-        <div id="cid_7" class="form-input-wide" data-layout="full">
-          <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
-            class="form-scale-table" data-component="scale" style="white-space: nowrap;">
-            <div class="rating-item-group">
-              <div class="rating-item">
-                <span class="rating-item-title for-from"></span>
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="1" title="1"
-                  id="input_7_1" />
-                <label for="input_7_1">1</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="2" title="2"
-                  id="input_7_2" />
-                <label for="input_7_2">2</label>
-              </div>
-              <div class="rating-item">
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="3" title="3"
-                  id="input_7_3" />
-                <label for="input_7_3">3</label>
-              </div>
-    
-              <div class="rating-item">
-                <span class="rating-item-title for-to"></span>
-                <input type="radio" aria-describedby="label_7" class="form-radio" name="ratingq" value="10" title="10"
-                  id="input_7_10" />
-                <label for="input_7_10">10</label>
-              </div>
-            </div>
-          </div>
-          </span>
-        </div>
-      </li>
-
 
       <label class="form-label form-label-top form-label-config">Qual a sua identidade de gênero?</label>
 <div class="checkbox-wrapper-18" id="checktwo" style="margin-bottom: 20px;" >
@@ -692,8 +653,7 @@ if (isset($_POST['submit'])) {
         <div class="form-check">
           <input type="checkbox" clas="form-check-input" id="hardcompetencia17" name="hardcompetencia[]"
             value="Conhecimento especializado em áreas específicas (exemplo: programação, contabilidade)" />
-          <label class="form-check-label" for="hardcompetencia17">Conhecimento especializado em áreas específicas
-            (exemplo: programação, contabilidade)</label>
+          <label class="form-check-label" for="hardcompetencia17">Conhecimento especializado em áreas específicas: programação, contabilidade etc </label>
         </div>
         <div class="form-check">
           <input type="checkbox" class="form-check-input" id="hardcompetencia18" name="hardcompetencia[]"
@@ -708,9 +668,6 @@ if (isset($_POST['submit'])) {
             e tendências da área</label>
         </div>
       </div>
-
-
-
 
   
       <label class="form-label form-label-top form-label-config">Selecione até 5 Competências
@@ -1308,8 +1265,8 @@ if (isset($_POST['submit'])) {
             value="Não tenho ou não gostaria de informar" />
           <label class="form-check-label" for="habsace18">Não tenho ou não gostaria de informar</label>
         </div>
-
-        </div>
+      </div>
+    
 
        <label class="form-label form-label-top form-label-config">Selecione até 5 atividades com as quais você prefere trabalhar</label>
         <div class="competencias">
