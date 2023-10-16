@@ -27,6 +27,8 @@ Route::get('/lgpd', function() {
 Route::get('form', function() {
     return view('form');
 });
+Route::post('/save-this', 'FormController@salvarResposta');
+
 
 Route::resource('agradecimento', AgradecimentoController::class);
 
