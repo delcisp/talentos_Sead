@@ -7,49 +7,38 @@ use Illuminate\Foundation\Http\FormRequest;
 class PostRequest extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     *Pega as regras de validação p poder aplicar essa request
+     * @return array
      */
     public function rules(): array
     {
-        // UM SÓ REQUEST PARA TODOS OS MÉTODOS
-    switch($this->method()) {
-        case 'GET':
-        case 'DELETE': {
-            return [
-                'id' => 'required|exists:posts,id'
-            ];
-        }
-        case 'POST' : {
-            return [
-               
-            ];
-        }
-        case 'PUT':
-        case 'PATCH': {
-            return [ 
+        $rules = [];
 
-            ];
+        switch ($this->method()) {
+            case 'POST':
+                $rules = $this->rulesForCreate();
+                break;
+            case 'PUT':
+            case 'PATCH':
+                $rules = $this->rulesForUpdate();
+                break;
+            case 'DELETE':
+                $rules = $this->rulesForDelete();
+                break;
         }
-        default;
-        break;
+
+        return $rules;
     }
- 
 
+    /**
+     * Get the validation rules for creating a new resource.
+     */
+    public function rulesForCreate(): array
+    {
         return [
-            
-                'firstname' => 'required',
-                'lastname' => 'required',
-                'birthdate' => 'date', 
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'birthdate' => 'date', 
                 'cep' => 'required',
                 'uf' => 'required', 
                 'cidade' => 'required',
@@ -87,7 +76,27 @@ class PostRequest extends FormRequest
                 'setorop' => 'required', 
                 'habsace' => 'required', 
                 'atividadesp' => 'required',
- 
+            // ...
+        ];
+    }
+
+    /**
+
+     */
+    public function rulesForUpdate(): array
+    {
+        return [
+            // ...
+        ];
+    }
+
+    /**
+
+     */
+    public function rulesForDelete(): array
+    {
+        return [
+            'id' => 'required|exists:posts,id',
         ];
     }
 }

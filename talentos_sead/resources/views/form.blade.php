@@ -54,8 +54,8 @@
 }
 </style>
 <body>
-    <form id="pagination-form" action="formtwo.html" method="POST" novalidate>
-        <!-- Start your project here-->
+    <form id="pagination-form" action="{{ url('/save-this') }}" method="POST" novalidate>
+        @csrf
 
       <div class="form-container mx-auto mt-5">
         <div class="form-page" id="page-1">
@@ -1622,7 +1622,7 @@
               value="Trabalho com grupos (oficinas, palestras, orientações)" />
             <label class="form-check-label d-block mt-2" for="atividadesp16">Trabalho com grupos (oficinas, palestras, orientações)</label>
           </div>
-  
+        </form>
   
           
   </div>
@@ -1630,7 +1630,7 @@
         <div class="d-flex justify-content-between">
           <button type="button" class="btn btn-outline-primary btn-rounded" id="prev-button" data-mdb-ripple-color="dark">Anterior</button>
           <button type="button" class="btn btn-outline-primary btn-rounded" id="next-button" data-mdb-ripple-color="dark">Próximo</button>
-          <button type="button" class="btn btn-outline-primary btn-rounded" id="submit" data-mdb-ripple-color="dark" style="display: none;">Enviar</button>
+          <button type="submit" class="btn btn-outline-primary btn-rounded" id="submit" data-mdb-ripple-color="dark" style="display: none;">Enviar</button>
       </div>
         </div> <!--aqui acaba o form-container !! -->
 </body>

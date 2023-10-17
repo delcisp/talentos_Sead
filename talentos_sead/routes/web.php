@@ -1,18 +1,9 @@
 <?php
-
+use App\Http\Controllers\FormController;
 use App\Http\Controllers\AgradecimentoController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,7 +18,8 @@ Route::get('/lgpd', function() {
 Route::get('form', function() {
     return view('form');
 });
-Route::post('/save-this', 'FormController@salvarResposta');
+
+Route::post('/save-this', ['App/Http/Controllers/FormController::class', 'salvarResposta']);
 
 
 Route::resource('agradecimento', AgradecimentoController::class);

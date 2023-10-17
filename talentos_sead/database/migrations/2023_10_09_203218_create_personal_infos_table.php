@@ -29,14 +29,10 @@ return new class extends Migration
             $table->foreign('personal_data_id')
             ->references('id')
             ->on('users')
-            ->onDelete('cascade'); // Define a ação em cascata ao excluir o usuário
-
+            ->onDelete('cascade'); 
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('personal_infos');

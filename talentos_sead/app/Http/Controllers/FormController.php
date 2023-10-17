@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostRequest;
 use App\Models\personalData;
 use App\Models\personalInfo;
 use App\Models\personalProfile;
@@ -11,11 +10,13 @@ use Illuminate\Http\Request;
 class FormController extends Controller
 {
 
-    public function salvarResposta(PostRequest $request)
+    public function salvarResposta(Request $request)
 {
+    $user_id = auth()->user()->id; // Obtém o ID do usuário autenticado
 
-   $personalData = new personalData;
-   $personalData->firstname = $request->input('firstquestion');
+    $personalData = new personalData;
+    $personalData->user_id = $user_id; // Associa o usuário autenticado
+    $personalData->firstname = $request->input('firstname');
    $personalData->lastname = $request->input('lastname');
    $personalData->birthdate =  $request->input('birthdate');
    $personalData->cep = $request->input('cep');
@@ -45,7 +46,7 @@ class FormController extends Controller
    $personalInfo->teletrabalho = $request->input('teletrabalho');
    $personalInfo->reuniaotrabalho = $request->input('reuniaotrabalho');
    $personalInfo->competencia = $request->input('competencia');
-   $personalInfo->hardcompencia = $request->input('hardcompetencia');
+   $personalInfo->hardcompetencia = $request->input('hardcompetencia');
 
    $personalInfo->save();
    
@@ -87,43 +88,24 @@ class FormController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
     }
-
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        
     }
-
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request, string $id)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
-        //
+     
     }
 }
