@@ -1,16 +1,20 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class personalData extends Model
+class PersonalData extends Model
 {
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
     protected $table = 'personal_data';
 
     use HasFactory;
+
+    public function personalInfo() {
+        return $this->hasOne(PersonalInfos::class);
+    }
+
+    public function personalProfile() {
+        return $this->hasOne(PersonalProfile::class);
+    }
 }

@@ -3,24 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\personalData;
-use App\Models\personalInfo;
+use App\Models\personalInfos;
 use App\Models\personalProfile;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Session;
 class FormController extends Controller
 {
 
     public function salvarResposta(Request $request)
 {
-    $user_id = auth()->user()->id; // Obtém o ID do usuário autenticado
-
     $personalData = new personalData;
-    $personalData->user_id = $user_id; // Associa o usuário autenticado
-    $personalData->firstname = $request->input('firstname');
+   $personalData->firstname = $request->input('firstname');
    $personalData->lastname = $request->input('lastname');
    $personalData->birthdate =  $request->input('birthdate');
    $personalData->cep = $request->input('cep');
    $personalData->uf = $request->input('uf');
+   $personalData->atuanaarea = $request->input('atuanaarea');
    $personalData->cidade = $request->input('cidade');
    $personalData->bairro = $request->input('bairro');
    $personalData->endereco = $request->input('endereco');
@@ -33,22 +31,25 @@ class FormController extends Controller
    $personalData->genero = $request->input('genero');
    $personalData->tinycourses = $request->input('tinycourses');
    $personalData->save();
+// Salva o valor da variável na sessão
+  session()->put('firstname', $personalData->firstname);
 
-   $personalInfo = new personalInfo;
-   $personalInfo->personal_data_id = $personalData->id; // Chave estrangeira para personalData
-   $personalInfo->situacaofunc = $request->input('situacaofunc');
-   $personalInfo->departament = $request->input('departament');
-   $personalInfo->funcaogratificada = $request->input('funcaogratificada');
-   $personalInfo->timeofservice = $request->input('timeofservice');
-   $personalInfo->role = $request->input('role');
-   $personalInfo->permuta = $request->input('permuta');
-   $personalInfo->formadetrabalho = $request->input('formadetrabalho');
-   $personalInfo->teletrabalho = $request->input('teletrabalho');
-   $personalInfo->reuniaotrabalho = $request->input('reuniaotrabalho');
-   $personalInfo->competencia = $request->input('competencia');
-   $personalInfo->hardcompetencia = $request->input('hardcompetencia');
 
-   $personalInfo->save();
+   $personalInfos = new personalInfos();
+   $personalInfos->personal_data_id = $personalData->id; // Chave estrangeira para personalData
+   $personalInfos->situacaofunc = $request->input('situacaofunc');
+   $personalInfos->departament = $request->input('departament');
+   $personalInfos->funcaogratificada = $request->input('funcaogratificada');
+   $personalInfos->timeofservice = $request->input('timeofservice');
+   $personalInfos->role = $request->input('role');
+   $personalInfos->permuta = $request->input('permuta');
+   $personalInfos->formadetrabalho = $request->input('formadetrabalho');
+   $personalInfos->teletrabalho = $request->input('teletrabalho');
+   $personalInfos->reuniaotrabalho = $request->input('reuniaotrabalho');
+   $personalInfos->competencia = json_encode($request->input('competencia'));
+   $personalInfos->hardcompetencia = json_encode($request->input('hardcompetencia'));
+
+   $personalInfos->save();
    
    $personalProfile = new personalProfile;
    $personalProfile->personal_data_id = $personalData->id; // Chave estrangeira para personalData
@@ -62,15 +63,15 @@ class FormController extends Controller
    $personalProfile->habemocional = $request->input('habemocional');
    $personalProfile->deadlines = $request->input('deadlines');
    $personalProfile->suggestion = $request->input('suggestion');
-   $personalProfile->setorop = $request->input('setorop');
-   $personalProfile->habsace = $request->input('habsace');
-   $personalProfile->atividadesp =$request->input('atividadesp');
+   $personalProfile->setorop = json_encode($request->input('setorop'));
+   $personalProfile->habsace = json_encode($request->input('habsace'));
+   $personalProfile->atividadesp = json_encode($request->input('atividadesp'));
 
    $personalProfile->save();
 
-   // Redirecione ou retorne uma resposta, por exemplo:
-   return redirect('/form')->with('status', 'Resposta salva com sucesso!');
+   return redirect()->route('agradecimento');
 }
+
 
     /**
      * Display a listing of the resource.

@@ -62,9 +62,9 @@
         <div class="row">
 
           <div class="col-md-6"> 
-            <label class="form-label-top" for="nome">Nome</label>
+            <label class="form-label-top" for="firstname">Nome</label>
             <div class="form-outline-left">
-              <input type="text" id="nome" name="name" class="form-control input-style" autocomplete="username" />
+              <input type="text" id="firstname" name="firstname" class="form-control input-style" autocomplete="username" />
           
             </div>
           </div>
@@ -73,7 +73,7 @@
           <div class="col-md-6">
             <label class="form-label-top-right" for="sobrenome"  >Sobrenome</label>
             <div class="form-outline-right">
-              <input type="text" id="sobrenome" name="lastname" class="form-control input-style" />
+              <input type="text" id="lastname" name="lastname" class="form-control input-style" />
               
             </div>
           </div>
@@ -88,42 +88,42 @@
            <div class="col-md-6">
             <label class="form-label-top-right" for="telefone">Telefone</label>
             <div class="form-outline-right">
-             <input type="text" id="telefone" class="form-control input-style" /> 
+             <input type="text" id="telefone" name="telefone" class="form-control input-style" /> 
              </div>
            </div>
 
            <div class="col-md-6">
             <label class="form-label-top" for="cep">CEP</label>
             <div class="form-outline-left">
-             <input type="text" id="cep" class="form-control input-style" placeholder="Insira o CEP para preenchimento automático de endereço"  /> 
+             <input type="text" id="cep" name="cep" class="form-control input-style" placeholder="Insira o CEP para preenchimento automático de endereço"  /> 
              </div>
            </div>
 
              <div class="col-md-6">
               <label class="form-label-top-right" for="bairro">Bairro</label>
               <div class="form-outline-right">
-               <input type="text" id="bairro" class="form-control input-style" /> 
+               <input type="text" id="bairro" name="bairro" class="form-control input-style" /> 
                </div>
              </div>
 
              <div class="col-md-6">
               <label class="form-label-top" for="endereco">Endereço</label>
               <div class="form-outline-left">
-               <input type="text" id="endereco" class="form-control input-style" /> 
+               <input type="text" id="endereco" name="endereco" class="form-control input-style" /> 
                </div>
              </div>
 
              <div class="col-md-6"> 
               <label class="form-label-top-right" for="uf">Estado</label>
               <div class="form-outline-right">
-                <input type="text" id="uf" class="form-control input-style" /> 
+                <input type="text" id="uf" name="uf" class="form-control input-style" /> 
                 </div>
               </div>
 
               <div class="col-md-6">
                 <label class="form-label-top" for="cidade">Cidade</label>
                 <div class="form-outline-left">
-                 <input type="text" id="cidade" class="form-control input-style" /> 
+                 <input type="text" id="cidade" name="cidade" class="form-control input-style" /> 
                  </div>
                </div>     
 
@@ -208,27 +208,27 @@
         
          <p class="text-center questions-titles">Qual a sua identidade de gênero?</p>
          <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Homem cisgênero" id="Homemcis" />
+          <input class="form-check-input" type="checkbox" value="Homem cisgênero" name="genero" id="Homemcis" />
           <label class="form-check-label" for="Homemcis"><b>Homem cisgênero</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label>    
         </div>
         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Mulher cisgênera" id="Mulhercis" />
+          <input class="form-check-input" type="checkbox" value="Mulher cisgênera" name="genero" id="Mulhercis" />
           <label class="form-check-label" for="Mulhercis"><b>Mulher cisgênera</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label> 
         </div>
         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Homem Trans" id="Homemtrans" />
+          <input class="form-check-input" type="checkbox" value="Homem Trans" name="genero" id="Homemtrans" />
           <label class="form-check-label" for="Homemtrans"><b>Homem Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
         </div>
         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Mulher Trans" id="Mulhertrans" />
+          <input class="form-check-input" type="checkbox" value="Mulher Trans" name="genero" id="Mulhertrans" />
           <label class="form-check-label" for="Mulhertrans"><b>Mulher Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
         </div>
         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Não binário" id="Naobinario" />
+          <input class="form-check-input" type="checkbox" value="Não binário" name="genero" id="Naobinario" />
           <label class="form-check-label" for="Naobinario"><b>Não binário</b> (não se sente pertencente ao gênero masculino ou ao feminino)</label>
         </div>
         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" value="Prefiro não me classificar" id="naoclassifica" />
+          <input class="form-check-input" type="checkbox" value="Prefiro não me classificar" name="genero" id="naoclassifica" />
           <label class="form-check-label" for="naoclassifica"><b>Prefiro não me classificar</b></label>
         </div>
 
@@ -238,7 +238,7 @@
 
         <p class="text-center questions-titles">Relacione abaixo até 3 cursos de curta duração que você considere importantes dentro da sua formação: </p>
         <div class="mb-3">
-          <textarea class="form-control" id="sugestao" rows="4" placeholder="Digite aqui os seus cursos" style="resize: none;" ></textarea>
+          <textarea class="form-control" id="sugestao" name="tinycourses" rows="4" placeholder="Digite aqui os seus cursos" style="resize: none;" ></textarea>
       </div>
       
         </div> <!--AQUI ACABA A PÁGINA 1-->
@@ -247,7 +247,7 @@
         <div class="form-page" id="page-2">
          <div class="row">
           <div class="col-md-6">
-            <label class="form-label-top" for="situacaofunc">Qual a sua situação funcional atual?</label>
+            <label class="form-label-top"  for="situacaofunc">Qual a sua situação funcional atual?</label>
             <div class="form-outline-left">
             <select class="select form-control input-style" id="situacaofunc" name="situacaofunc" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
@@ -1632,6 +1632,7 @@
           <button type="button" class="btn btn-outline-primary btn-rounded" id="next-button" data-mdb-ripple-color="dark">Próximo</button>
           <button type="submit" class="btn btn-outline-primary btn-rounded" id="submit" data-mdb-ripple-color="dark" style="display: none;">Enviar</button>
       </div>
+      
         </div> <!--aqui acaba o form-container !! -->
 </body>
 </html>

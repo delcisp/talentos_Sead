@@ -11,7 +11,7 @@
 <body>
   <div class="container">
     <img src="images/logo_gov_azul.png" alt="Imagem" class="imagem">
-    <h1>Obrigado, {{ $firstname }}!</h1>
+    <h1>Obrigado, {{ session('firstname') }}!</h1>
     <p>Agradecemos sinceramente por sua participação no nosso formulário. Seu feedback é extremamente valioso para nós. Obrigado por fazer parte do nosso processo de aprimoramento.</p>
     <button class="logout-button" onclick="redirectLogin()">Sair</button>
   </div>

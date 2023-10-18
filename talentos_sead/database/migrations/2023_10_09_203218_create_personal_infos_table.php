@@ -23,12 +23,12 @@ return new class extends Migration
             $table->string('formadetrabalho');
             $table->string('teletrabalho');
             $table->string('reuniaotrabalho');
-            $table->string('competencia');
-            $table->string('hardcompetencia');
+            $table->json('competencia')->nullable();
+            $table->json('hardcompetencia')->nullable();
             $table->timestamps();
             $table->foreign('personal_data_id')
             ->references('id')
-            ->on('users')
+            ->on('personal_data')
             ->onDelete('cascade'); 
         });
     }

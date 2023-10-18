@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('personal_profile', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('personal_data_id'); //foreign key
+            $table->unsignedBigInteger('personal_data_id'); //chave estrangeira 
             $table->string('habespacial');
             $table->string('habcorporal');
             $table->string('habmusical');
@@ -23,14 +23,14 @@ return new class extends Migration
             $table->string('habnatureba');
             $table->string('habemocional');
             $table->string('deadlines');
-            $table->string('suggestion');
-            $table->string('setorop');
-            $table->string('habsace');
-            $table->string('atividadesp');
+            $table->string('suggestion')->nullable();
+            $table->json('setorop')->nullable();
+            $table->json('habsace')->nullable();
+            $table->json('atividadesp')->nullable();
             $table->timestamps();
             $table->foreign('personal_data_id')
             ->references('id')
-            ->on('users')
+            ->on('personal_data')
             ->onDelete('cascade'); // Define a ação em cascata ao excluir o usuário
 
         });

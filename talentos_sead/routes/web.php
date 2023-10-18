@@ -1,6 +1,5 @@
 <?php
 use App\Http\Controllers\FormController;
-use App\Http\Controllers\AgradecimentoController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,13 +17,11 @@ Route::get('/lgpd', function() {
 Route::get('form', function() {
     return view('form');
 });
+Route::get('agradecimento', function() {
+    return view('agradecimento');
+});
 
-Route::post('/save-this', ['App/Http/Controllers/FormController::class', 'salvarResposta']);
-
-
-Route::resource('agradecimento', AgradecimentoController::class);
-
-
+Route::post('/agradecimento', ['App/Http/Controllers/FormController::class', 'salvarResposta']);
 Route::get('dashboard', function() {
     return view('dashboard');
 });

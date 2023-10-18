@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PersonalProfile extends Model
+class personalInfos extends Model
 {
-    protected $table = 'personal_profile'; // Defina o nome da tabela
+    protected $table = 'personal_infos'; // Defina o nome da tabela
 
     use HasFactory;
 
