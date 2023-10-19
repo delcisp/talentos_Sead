@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Formulário</title>
     @vite([ 'resources/sass/app.scss','resources/js/app.js', 'resources/css/mdb.min.css'])
-    @vite(['public/js/form.js', 'public/js/pagination.js'])
-    @vite(['public/css/form.css'])
+    @vite(['resources/js/form.js', 'resources/js/pagination.js'])
+    @vite(['resources/css/form.css'])
     <link type="text/css" rel="stylesheet" href="https://cdn01.jotfor.ms/themes/CSS/5e6b428acc8c4e222d1beb91.css?v=3.3.42507" /> 
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>

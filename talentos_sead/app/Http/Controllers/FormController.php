@@ -69,7 +69,7 @@ class FormController extends Controller
 
    $personalProfile->save();
 
-   return redirect()->route('agradecimento');
+   return view('agradecimento');
 }
 
 
