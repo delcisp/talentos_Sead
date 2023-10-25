@@ -18,51 +18,32 @@ return [
         'passwords' => 'users',
     ],
 
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Guards
-    |--------------------------------------------------------------------------
-    |
-    | Next, you may define every authentication guard for your application.
-    | Of course, a great default configuration has been defined for you
-    | here which uses session storage and the Eloquent user provider.
-    |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | Supported: "session"
-    |
-    */
-
+  
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'ldap',
+            'host' => env('LDAP_HOST'),
+            'port' => env('LDAP_PORT'),
+            'base_dn' => env('LDAP_BASE_DN'),
+            'username' => env('LDAP_USERNAME'),
+            'password' => env('LDAP_PASSWORD'),
+            'bind_dn' => env('LDAP_BIND_DN'),
+            'filter' => env('LDAP_FILTER'),
+            'username_field' => 'username',
+            'password_field' => 'password',
+            'timeout' => env('LDAP_TIMEOUT'),
+            'active_directory' => env('LDAP_ACTIVE_DIRECTORY', false),
         ],
     ],
+    
 
-    /*
-    |--------------------------------------------------------------------------
-    | User Providers
-    |--------------------------------------------------------------------------
-    |
-    | All authentication drivers have a user provider. This defines how the
-    | users are actually retrieved out of your database or other storage
-    | mechanisms used by this application to persist your user's data.
-    |
-    | If you have multiple user tables or models you may configure multiple
-    | sources which represent each model / table. These sources may then
-    | be assigned to any extra authentication guards you have defined.
-    |
-    | Supported: "database", "eloquent"
-    |
-    */
 
     'providers' => [
-        'users' => [
+        'ldap' => [
             'driver' => 'ldap',
-            'model' => App\Models\User::class,
+            'model' => LdapRecord\Models\ActiveDirectory\User::class,
+            'rules' => [],
         ],
 
         // 'users' => [

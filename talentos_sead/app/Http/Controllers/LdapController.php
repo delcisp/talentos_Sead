@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use LdapRecord\Connection;
-class LoginController extends Controller
+class LdapController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+   public function connection () {
+    
+   }
+
     public function index()
     {
         //

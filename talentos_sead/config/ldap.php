@@ -34,9 +34,9 @@ return [
             'password' => env('LDAP_PASSWORD', 'secret'),
             'port' => env('LDAP_PORT', 389),
             'base_dn' => env('LDAP_BASE_DN', 'dc=local,dc=com'),
-            'timeout' => env('LDAP_TIMEOUT', 5),
-            'use_ssl' => env('LDAP_SSL', false),
-            'use_tls' => env('LDAP_TLS', false),
+            'timeout' => env('LDAP_TIMEOUT', 10),
+            'use_ssl' => env('LDAP_SSL', true),
+            'use_tls' => env('LDAP_TLS', true),
             'use_sasl' => env('LDAP_SASL', false),
             'sasl_options' => [
                 // 'mech' => 'GSSAPI',

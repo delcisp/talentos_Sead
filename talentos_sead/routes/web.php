@@ -1,11 +1,23 @@
 <?php
 use App\Http\Controllers\FormController;
+use Illuminate\Http\Client\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', function () {
-    return view('welcome');
+Route::post('/', function (Request $request) {
+    $credentials = $request->only('username', 'password');
+
+    $user = Auth::attempt($credentials);
+
+    if ($user) {
+        return redirect()->intended('/');
+    } else {
+        return back()->withErrors([
+            'error' => 'Usuário ou senha inválidos.',
+        ]);
+    }
 });
 
 Route::get('/waidt', function() {
