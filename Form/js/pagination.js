@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
+    const submitButton = document.getElementById('submit');
     const page1 = document.getElementById('page-1');
     const page2 = document.getElementById('page-2');
     const page3 = document.getElementById('page-3');
@@ -50,12 +51,14 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateButtonVisibility() {
         if (currentPage === page3) {
             nextButton.style.display = 'none';
+            submitButton.style.display = 'block';
+
         } else {
             nextButton.style.display = 'block';
+            submitButton.style.display = 'none';
         }
     }
 });
-
 
 
 

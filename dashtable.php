@@ -139,7 +139,7 @@ include_once('config.php');
                     </div>
                     <button
                         class='px-5 py-2 border-blue-500 border text-blue-500 rounded transition duration-300 hover:bg-blue-700 hover:text-white focus:outline-none'
-                        onclick="window.location.href='./admin_dashboard/examples/dashboard.php'">Voltar</button>
+                        onclick="window.location.href='dashboard.php'">Voltar</button>
                 </div>
             </div>
         </div>

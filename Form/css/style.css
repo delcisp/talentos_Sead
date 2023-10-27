@@ -1,0 +1,187 @@
+
+@media screen and (max-width: 569px) { 
+    .competencias {
+        grid-template-columns: repeat(2, 2fr);
+        gap: 5px;
+     
+      }
+}
+
+.form-container {
+    
+    border: 4px solid #1f456e;
+    border-radius: 5px;
+    padding: 5px;
+    max-width: 900px;
+    height: auto;
+    background-color: #FFF;
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+  
+  }
+
+  .form-check-input {
+    position: relative;
+    width: 1.200rem;
+    height: 1.200rem;
+    background-color: #fff;
+    border: 0.125rem solid rgba(0,0,0,.25);
+}
+.form-label-top {
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0px 0px 5px 2px;
+    color: #040406;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.form-label-top-right {
+    
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    margin: 0px 0px 5px 2px;
+    text-align: center;
+    color: #040406;
+    margin-left: 0;
+    margin-top: 10px;
+} 
+
+.form-outline-left {
+    margin-bottom: 15px;
+    margin-left: 10px;
+}
+.form-outline-right {
+    margin-bottom: 15px;
+    margin-right: 10px;
+}
+.input-style {
+    border: 1px solid #040406;
+    border-radius: 4px;
+}
+
+.questions-titles {
+    font-size: 22px;
+    font-weight: bold;
+    color: #040406;
+    font-family: sans-serif;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.habilities-titles {
+    font-size: 22px;
+    font-weight: bold;
+    color: #040406;
+    font-family: sans-serif;
+    margin-top: 10px;
+   
+}
+.form-check {
+    margin-left: 10px;
+}
+.competencias {
+  display: grid;
+  grid-template-columns: repeat(5, 2fr);
+  gap: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.form-check-competencias {
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 14px;
+}
+
+
+
+
+#prev-button, #next-button, #submit {
+    width: 150px;
+    height: 40px;
+    border-radius: 18px;
+    background-color: #1f456e;
+    border: solid 1px transparent;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all .1s ease-in-out;
+    border: solid 1px #fff;
+  }
+  #prev-button:hover {
+    background-color: #fff;
+    border: solid 2px #1f456e;
+    transition: all .1s ease-in-out;
+    color: #202F58;
+    font-size: 18px;
+    font-weight: 300;
+  }
+  #next-button:hover {
+    background-color: #fff;
+    border: solid 2px #1f456e;
+    transition: all .1s ease-in-out;
+    color: #202F58;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  #submit:hover {
+    background-color: #fff;
+    border: solid 2px #1f456e;
+    transition: all .1s ease-in-out;
+    color: #202F58;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .form-sub-label-habilities {
+ 
+    font-size: 0.75em;
+    margin-top: 5px;
+    display: block;
+    
+  }
+  
+  .form-textbox {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #040406;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  
+  .form-textbox:hover {
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: 1px solid #040406;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+  
+  .form-input-wide {
+    width: 100%;
+  }
+  
+  .form-radio {
+    display: inline-block;
+  }
+  
+  .form-scale-table {
+    white-space: nowrap;
+  }
+  
+  .rating-item input[type="radio"]+label {
+    background-color: #FFF;
+    color: #040406;
+  }
+  
+  .rating-item input[type="radio"]:checked+label {
+    background-color: #1f456e;
+    /* #4C516D , #004F98 , #2D5DA1 , #00356B */
+    color: #040406;
+  }
+  
