@@ -14,7 +14,8 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "phpoffice/phpspreadsheet": "dev-master"
+        "phpoffice/phpspreadsheet": "dev-master",
+        "directorytree/ldaprecord": "^2.20"
     },
     "config": {
         "platform": {

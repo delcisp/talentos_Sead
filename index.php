@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $ldap_bind = @ldap_bind($ldap_conn, $username . '@' . $ldap_user_domain, $password);
 
   if ($ldap_bind) {
-    $admin_users = ['delciane.pinheiro', 'outro.admin'];
+    $admin_users = ['delciane.pinheiro'];
 
     // Autenticação bem-sucedida
     // Redireciona para a página do documento LGPD após o login bem-sucedido
@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit(); // Certifique-se de que o script não continua a ser executado após o redirecionamento
     } else {
         // Redireciona para a página "lgpd.php" se o usuário não for administrador
-        $lgpd_path = "./whyiamdoingthis.html";
+        $lgpd_path = "./whyiamdoingthis.php";
         header("Location: " . $lgpd_path);
         exit();
     }
@@ -47,7 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ";
     // Outras ações a serem realizadas em caso de falha na autenticação
 }
+
 }
+
 ?>
 
 <!doctype html>
@@ -61,6 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="./Login/login.css">
     <link rel="icon" href="Imagens/icon_sead.ico" type="image/ico">
     <script src="./Login/login.js"></script>
+    <script src="./errors/error.js " ></script>
 </head>
 <body>
 <header>

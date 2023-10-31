@@ -495,10 +495,174 @@ if (isset($_POST['submit'])) {
             <div class="form-outline-left">
             <select class="select form-control input-style" id="cargo" name="role" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
-              <option value="A">A</option>
-              <option value="B">B</option>
-              <option value="C">C</option>
-              <option value="D">D</option>
+              <option value="Agente administrativo 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 1° classe')
+                echo 'selected'; ?>>Agente administrativo 1° classe</option>
+              <option value="Agente administrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo')
+                echo 'selected'; ?>>Agente administrativo</option>
+              <option value="Agente administrativo 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 3° classe')
+                echo 'selected'; ?>>Agente administrativo 3° classe</option>
+              <option value="Agente administrativo 4° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 4° classe')
+                echo 'selected'; ?>>Agente administrativo 4° classe</option>
+              <option value="Auxiliar de serviços gerais 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais 2° classe')
+                echo 'selected'; ?>>Auxiliar de serviços gerais 2° classe</option>
+              <option value="Auxiliar de serviços gerais 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais 3° classe')
+                echo 'selected'; ?>>Auxiliar de serviços gerais 3° classe</option>
+              <option value="Auxiliar de serviços gerais" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais')
+                echo 'selected'; ?>>Auxiliar de serviços gerais</option>
+              <option value="Auxiliar administrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo')
+                echo 'selected'; ?>>Auxiliar administrativo</option>
+              <option value="Auxiliar técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar técnico')
+                echo 'selected'; ?>>Auxiliar técnico</option>
+              <option value="Auxiliar administrativo - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - I')
+                echo 'selected'; ?>>Auxiliar administrativo - I</option>
+              <option value="Auxiliar administrativo - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - II')
+                echo 'selected'; ?>>Auxiliar administrativo - II</option>
+              <option value="Auxiliar administrativo - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - III')
+                echo 'selected'; ?>>Auxiliar administrativo - III</option>
+              <option value="Auxiliar operacional - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - I')
+                echo 'selected'; ?>>Auxiliar operacional - I</option>
+              <option value="Auxiliar operacional - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - II')
+                echo 'selected'; ?>>Auxiliar operacional - II</option>
+              <option value="Auxiliar operacional - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - III')
+                echo 'selected'; ?>>Auxiliar operacional - III</option>
+              <option value="Auxiliar serviços gerais - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - I')
+                echo 'selected'; ?>>Auxiliar serviços gerais - I</option>
+              <option value="Auxiliar serviços gerais - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - II')
+                echo 'selected'; ?>>Auxiliar serviços gerais - II</option>
+              <option value="Auxiliar serviços gerais - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - III')
+                echo 'selected'; ?>>Auxiliar serviços gerais - III</option>
+              <option value="Assistente técnico - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - I')
+                echo 'selected'; ?>>Assistente técnico - I</option>
+              <option value="Assistente técnico - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - I')
+                echo 'selected'; ?>>Assistente técnico - I</option>
+              <option value="Assistente técnico - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - II')
+                echo 'selected'; ?>>Assistente técnico - II</option>
+              <option value="Assistente técnico - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - III')
+                echo 'selected'; ?>>Assistente técnico - III</option>
+              <option value="Assistente operacional - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente operacional - II')
+                echo 'selected'; ?>>Assistente operacional - II</option>
+              <option value="Analista de finan. e contr. externo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Analista de finan. e contr. externo')
+                echo 'selected'; ?>>Analista de finan. e contr. externo</option>
+              <option value="Assessor de secretário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor de secretário')
+                echo 'selected'; ?>>Assessor de secretário</option>
+              <option value="Assessor I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor I')
+                echo 'selected'; ?>>Assessor I</option>
+              <option value="Assessor II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor II')
+                echo 'selected'; ?>>Assessor II</option>
+              <option value="Assessor III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor III')
+                echo 'selected'; ?>>Assessor III</option>
+              <option value="Assessor IV" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor IV')
+                echo 'selected'; ?>>Assessor IV</option>
+              <option value="Auditor" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor')
+                echo 'selected'; ?>>Auditor</option>
+              <option value="Auditor adjunto" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor adjunto')
+                echo 'selected'; ?>>Auditor adjunto</option>
+              <option value="Auditor assistente" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor assistente')
+                echo 'selected'; ?>>Auditor assistente</option>
+              <option value="AFP-U" <?php if (isset($_POST['role']) && $_POST['role'] == 'AFP-U')
+                echo 'selected'; ?>>AFP-U</option>
+              <option value="Consultor técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Consultor técnico A')
+                echo 'selected'; ?>>Consultor técnico A</option>
+              <option value="Consultor técnico B" <?php if (isset($_POST['role']) && $_POST['role'] == 'Consultor técnico B')
+                echo 'selected'; ?>>Consultor técnico B</option>
+              <option value="C. téc. U" <?php if (isset($_POST['role']) && $_POST['role'] == 'C. téc. U')
+                echo 'selected'; ?>>C. téc. U</option>
+              <option value="Chefe de gabinete" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de gabinete')
+                echo 'selected'; ?>>Chefe de gabinete</option>
+              <option value="Chefe de departamento" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de departamento')
+                echo 'selected'; ?>>Chefe de departamento</option>
+              <option value="Chefe de arq. púb. do Estado do Amazonas" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de arq. púb. do Estado do Amazonas')
+                echo 'selected'; ?>>Chefe de arq. púb. do Estado do Amazonas</option>
+              <option value="Coordenador de patrimônio" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador de patrimônio')
+                echo 'selected'; ?>>Coordenador de patrimônio</option>
+              <option value="Coordenador de esc. de gest. aperf. do serviço público" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador de esc. de gest. aperf. do serviço público')
+                echo 'selected'; ?>>Coordenador de esc. de gest. aperf. do serviço público</option>
+              <option value="Coordenador CTA" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador CTA')
+                echo 'selected'; ?>>Coordenador CTA</option>
+              <option value="Diretor depto. administrativo  e financeiro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Diretor depto. administrativo  e financeiro')
+                echo 'selected'; ?>>Diretor depto. administrativo  e financeiro</option>
+              <option value="Engenheiro 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro 1° classe')
+                echo 'selected'; ?>>Engenheiro 1° classe</option>
+              <option value="Engenheiro 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro 2° classe')
+                echo 'selected'; ?>>Engenheiro 2° classe</option>
+              <option value="Engenheiro Agrônomo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro Agrônomo')
+                echo 'selected'; ?>>Engenheiro Agrônomo</option>
+              <option value="Eletricista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Eletricista')
+                echo 'selected'; ?>>Eletricista</option>
+              <option value="Encadernador" <?php if (isset($_POST['role']) && $_POST['role'] == 'Encadernador')
+                echo 'selected'; ?>>Encadernador</option>
+              <option value="Fiscal rodoviário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Fiscal rodoviário')
+                echo 'selected'; ?>>Fiscal rodoviário</option>
+              <option value="Gerente" <?php if (isset($_POST['role']) && $_POST['role'] == 'Gerente')
+                echo 'selected'; ?>>Gerente</option>
+              <option value="Motorista 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Motorista 2° classe')
+                echo 'selected'; ?>>Motorista 2° classe</option>
+              <option value="Motorista rodoviário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Motorista rodoviário')
+                echo 'selected'; ?>>Motorista rodoviário</option>
+              <option value="Mot - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mot - I')
+                echo 'selected'; ?>>Mot - I</option>
+              <option value="Mot - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mot - III')
+                echo 'selected'; ?>>Mot - III</option>
+              <option value="Marinheiro fluvial de convés" <?php if (isset($_POST['role']) && $_POST['role'] == 'Marinheiro fluvial de convés')
+                echo 'selected'; ?>>Marinheiro fluvial de convés</option>
+              <option value="Marinheiro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Marinheiro')
+                echo 'selected'; ?>>Marinheiro</option>
+              <option value="Médico generalista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Médico generalista')
+                echo 'selected'; ?>>Médico generalista</option>
+              <option value="Médico especialista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Médico especialista')
+                echo 'selected'; ?>>Médico especialista</option>
+              <option value="Mecânico de manutenção de aeronave" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mecânico de manutenção de aeronave')
+                echo 'selected'; ?>>Mecânico de manutenção de aeronave</option>
+              <option value="Membro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Membro')
+                echo 'selected'; ?>>Membro</option>
+              <option value="Membro comissão regime disciplinar" <?php if (isset($_POST['role']) && $_POST['role'] == 'Membro comissão regime disciplinar')
+                echo 'selected'; ?>>Membro comissão regime disciplinar</option>
+              <option value="Operador de máquina rodoviária" <?php if (isset($_POST['role']) && $_POST['role'] == 'Operador de máquina rodoviária')
+                echo 'selected'; ?>>Operador de máquina rodoviária</option>
+              <option value="Operador de rádio" <?php if (isset($_POST['role']) && $_POST['role'] == 'Operador de rádio')
+                echo 'selected'; ?>>Operador de rádio</option>
+              <option value="Perito" <?php if (isset($_POST['role']) && $_POST['role'] == 'Perito')
+                echo 'selected'; ?>>Perito</option>
+              <option value="Procurador de contas - A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Procurador de contas - A')
+                echo 'selected'; ?>>Procurador de contas - A</option>
+              <option value="Procurador de contas - B" <?php if (isset($_POST['role']) && $_POST['role'] == 'Procurador de contas - B')
+                echo 'selected'; ?>>Procurador de contas - B</option>
+              <option value="Pensionista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Pensionista')
+                echo 'selected'; ?>>Pensionista</option>
+              <option value="Pensionista lei 1735 de 14/11/85" <?php if (isset($_POST['role']) && $_POST['role'] == 'Pensionista lei 1735 de 14/11/85')
+                echo 'selected'; ?>>Pensionista lei 1735 de 14/11/85</option>
+              <option value="Secretário de Estado" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário de Estado')
+                echo 'selected'; ?>>Secretário de Estado</option>
+              <option value="Secretário executivo de adm. e gestão" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário executivo de adm. e gestão')
+                echo 'selected'; ?>>Secretário executivo de adm. e gestão</option>
+              <option value="Secretário executivo de bens patr. e gast. público" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário executivo de bens patr. e gast. público')
+                echo 'selected'; ?>>Secretário executivo de bens patr. e gast. público</option>
+              <option value="Sub-Secretário de Estado" <?php if (isset($_POST['role']) && $_POST['role'] == 'Sub-Secretário de Estado')
+                echo 'selected'; ?>>Sub-Secretário de Estado</option>
+              <option value="Técnico 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 1° classe')
+                echo 'selected'; ?>>Técnico 1° classe</option>
+              <option value="Técnico 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 2° classe')
+                echo 'selected'; ?>>Técnico 2° classe</option>
+              <option value="Técnico 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 3° classe')
+                echo 'selected'; ?>>Técnico 3° classe</option>
+              <option value="Técnico em contabilidade" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico em contabilidade')
+                echo 'selected'; ?>>Técnico em contabilidade</option>
+              <option value="Técnico em planejamento 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico em planejamento 1° classe')
+                echo 'selected'; ?>>Técnico em planejamento 1° classe</option>
+              <option value="Técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico') echo 'selected'; ?>>Técnico</option>
+              <option value="Técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico A') echo 'selected'; ?>>Técnico A</option>
+              <option value="Técnico Adminitrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico Adminitrativo') echo 'selected'; ?>>Técnico Adminitrativo</option>
+              <option value="Técnico de contas A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de contas A') echo 'selected'; ?>>Técnico de contas A</option>
+              <option value="Técnico governamental" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico governamental') echo 'selected'; ?>>Técnico governamental</option>
+              <option value="Técnico gráfico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico gráfico') echo 'selected'; ?>>Técnico gráfico</option>
+              <option value="Técnico de nível superior" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior') echo 'selected'; ?>>Técnico de nível superior</option>
+              <option value="Técnico de nível superior 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior 1° classe') echo 'selected'; ?>>Técnico de nível superior 1° classe</option>
+              <option value="Técnico de nível superior - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - I') echo 'selected'; ?>>Técnico de nível superior - I</option>
+              <option value="Técnico de nível superior - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - III') echo 'selected'; ?>>Técnico de nível superior - III</option>
+              <option value="Telefonista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Telefonista') echo 'selected'; ?>>Telefonista</option>
+              <option value="Vigia" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia') echo 'selected'; ?>>Vigia</option>
+              <option value="Vigia - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -II') echo 'selected'; ?>>Vigia - II</option>
+              <option value="Vigia - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -III') echo 'selected'; ?>>Vigia - III</option>
             </select>
             </div>
            </div>
