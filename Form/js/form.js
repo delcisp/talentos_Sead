@@ -19,6 +19,7 @@ handleCheckboxGroup('teletrabalho');
 handleCheckboxGroup('realizacaodetrabalho');
 handleCheckboxGroup('reuniaodetrabalho');
 handleCheckboxGroup('deadlines');
+handleCheckboxGroup('timeofservice');
 
 $("#cep").blur(function(){
   // Remove tudo o que não é número para fazer a pesquisa

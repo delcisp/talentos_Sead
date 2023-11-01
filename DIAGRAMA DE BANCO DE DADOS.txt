@@ -1,0 +1,221 @@
+
+DIAGRAMA DE BANCO DE DADOS
+
+Users
+        |
+        |
+        id
+        username
+        password
+        
+Personal_Data
+
+        |
+        |
+        id
+        id_user
+        firstname
+        lastname
+        numero_matricula
+        email_institucional
+        birthdate
+        cpf
+        telefone
+        cep
+        bairro
+        uf_nascimento
+        uf_residencia
+        cidade_nascimento
+        cidade_residente
+        estado
+        nacionalidade
+        estado civil
+        bloodtype
+        sexo
+        orientacao_Sexual
+        genero
+        raca
+        deficiencia
+        doador
+        ...
+
+    Professional_Road
+        |
+        |
+        id
+        id_user
+        departament
+        firstquestion (grau de escolaridade)
+        primeiraformacao
+        segundaformacao
+        instituicao_tipo
+        instituicao_nome
+        curso_recente
+        timeofservice (tempo na instituição)
+        servicopublicoanos
+        tinycourses
+    ...
+
+    Professional_Experience
+        |
+        |
+        id
+        id_user
+        tempodeatividade
+        situacaofunc
+        funcaogratificada
+        temfuncaogratificada
+        nomeorgao
+        role
+        rolesimbolo
+        gerirequipe
+        pessoasequipe
+        ordenadespesas
+        orcamentogerido
+        planometas
+        quantasmetas
+        fazestrategias
+
+        ...
+    Public_Service
+        |
+        |
+        id
+        id_user
+        servicossaude
+        tipoescola
+        meiotransporte
+        formadetrabalho
+        teletrabalho
+        reuniaotrabalho
+        deadlines
+        setorop
+        atividadesp
+        ...
+ Personal_Engagement
+        |
+        |
+        id
+        id_user
+        tenhoautonomia
+        tomadadedecisoes
+        reconhecimento
+        valorizacao
+        espacoerro
+        aprendizado
+        expectativa
+        lideranca
+        seguranca
+        ambientedetrabalho
+        cooperacao
+        experienciadetrabalho
+        tarefaseoport
+        objetivoseresultados
+        resultadospublicos
+        admpublica
+        visibilidade
+        incertezas
+        execucaotrabalho
+        recursosdetrabalho
+        habespacial
+        habcorporal
+        habmusical
+        hablinguistica
+        habmath
+        habinterpessoal
+        habnatureba
+        habemocional
+        ...
+ Personal_Competences
+        |
+        |
+        id
+        id_user
+        competencia
+        hardcompetencia
+        mentalidadeinclusiva
+        liderancapessoas
+        inteligenciaemocional
+        orientacaoresultado
+        pensamentocriativo
+        articulacao
+        fluenciadigital
+        ...
+
+As relações entre as tabelas são as seguintes:
+
+Users --  Personal_Data* - Um usuário pode responder a várias perguntas sobre a  Personal_Data, mas cada pergunta sobre a Personal_Data pertence a um único usuário.
+Users -- Laranja*
+Users -- Coco*
+Users -- Limão*
+Users -- Morango*
+Users -- Maçã*
+
+As chaves primárias e estrangeiras são as seguintes:
+
+Users - id (chave primária)
+Personal_Data - id (chave primária), id_user (chave estrangeira)
+Laranja - id (chave primária), id_user (chave estrangeira)
+Coco - id (chave primária), id_user (chave estrangeira)
+Limão - id (chave primária), id_user (chave estrangeira)
+Morango - id (chave primária), id_user (chave estrangeira)
+Maçã - id (chave primária), id_user (chave estrangeira)
+
+A requisicao do banco de dados ficaria: 
+
+if ($allAnswered) {
+    include_once('config.php');
+    $atributoum = $_POST['atributoum'];
+    $atributodois = $_POST['atributodois'];
+    $atributotres = $_POST['atributotres'];
+    $atributoquatro = $_POST['atributoquatro'];
+
+    // Insere o registro na tabela "usuarios"
+    $query = "INSERT INTO usuarios (atributoum) VALUES ('$atributoum')";
+    $result = mysqli_query($conn, $query);
+
+    // Obtém o ID do registro inserido
+    $id_user = mysqli_insert_id($conn);
+
+    // Insere o registro na tabela "uva"
+    $query = "INSERT INTO Personal_Data (id_user, atributodois) VALUES ('$id_user', '$atributodois')";
+    $result = mysqli_query($conn, $query);
+
+    // Insere o registro na tabela "maca"
+    $query = "INSERT INTO maca (id_user, atributotres) VALUES ('$id_user', '$atributotres')";
+    $result = mysqli_query($conn, $query);
+
+    // Insere o registro na tabela "coco"
+    $query = "INSERT INTO coco (id_user, atributoquatro) VALUES ('$id_user', '$atributoquatro')";
+    $result = mysqli_query($conn, $query);
+}
+
+
+Como seria espelhar no relatorio: 
+
+<div class='modal-header'>
+        <h5 class='modal-title' id='exampleModalLabel'>Detalhes do Servidor</h5>
+        <form action='emitirRelatorio.php' method='POST'>
+            <input type="hidden" name="atributoum" value="<?php echo $user_data['atributoum']; ?>">
+            <input type="hidden" name="id_user" value="<?php echo $user_data['id_user']; ?>">
+            <input type='hidden' name="atributodois" value='<?php echo $user_data[' Personal_Data']['atributodois']; ?> '>
+            <input type='hidden' name="atributotres" value='<?php echo $user_data['maca']['atributotres']; ?> '>
+            <input type='hidden' name="atributoquatro" value='<?php echo $user_data['coco']['atributoquatro']; ?> '>
+        </form>
+    </div>
+
+Como seria espelhar em uma pagina: 
+
+<li class="list-group-item"><strong>atributoum:</strong>
+    <?php echo $user_data['atributoum']; ?>
+</li>
+<li class="list-group-item"><strong>atributodois:</strong>
+    <?php echo $user_data[' Personal_Data']['atributodois']; ?>
+</li>
+<li class="list-group-item"><strong>atributotres:</strong>
+    <?php echo $user_data['maca']['atributotres']; ?>
+</li>
+<li class="list-group-item"><strong>atributoquatro:</strong>
+    <?php echo $user_data['coco']['atributoquatro']; ?>
+</li>
+

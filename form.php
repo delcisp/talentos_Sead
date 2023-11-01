@@ -478,19 +478,6 @@ if (isset($_POST['submit'])) {
            </div>
 
            <div class="col-md-6">
-            <label class="form-label-top-right" for="temposervico">Quanto tempo está na instituição?</label>
-            <div class="form-outline-right">
-            <select class="select form-control input-style" id="temposervico" name="timeofservice" aria-placeholder="Selecione" >
-              <option value="" disabled selected>Selecione</option>
-              <option value="Menos de 1 ano">Menos de 1 ano</option>
-              <option value="De 1 a 3 anos">De 1 a 3 anos</option>
-              <option value="De 5 a 10 anos">De 5 a 10 anos</option>
-              <option value="Mais de 10 anos">Mais de 10 anos</option>
-            </select>
-            </div>
-           </div>
-
-           <div class="col-md-6">
             <label class="form-label-top" for="cargo">Cargo atual</label>
             <div class="form-outline-left">
             <select class="select form-control input-style" id="cargo" name="role" aria-placeholder="Selecione" >
@@ -680,6 +667,27 @@ if (isset($_POST['submit'])) {
            </div>
 
 </div> <!--AQUI ACABA O ROW-->
+<p class="text-center questions-titles">Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor:</p> 
+<div class="form-check timeofservice ">
+  <input class="form-check-input" type="checkbox" value="Até 1 ano" name="timeofservice" id="ateumano" />
+  <label class="form-check-label" for="ateumano">Até 1 ano</label>    
+</div>
+<div class="form-check timeofservice ">
+  <input class="form-check-input" type="checkbox" value="De 1 a 4 anos" name="timeofservice" id="quatroanos" />
+  <label class="form-check-label" for="quatroanos">De 1 a 4 anos</label>    
+</div>
+<div class="form-check timeofservice ">
+  <input class="form-check-input" type="checkbox" value="De 5 a 8 anos" name="timeofservice" id="cincoanos" />
+  <label class="form-check-label" for="cincoanos">De 5 a 8 anos</label>    
+</div>
+<div class="form-check timeofservice ">
+  <input class="form-check-input" type="checkbox" value="De 8 a 12 anos" name="timeofservice" id="oitoanos" />
+  <label class="form-check-label" for="oitoanos">De 8 a 12 anos</label>    
+</div>
+<div class="form-check timeofservice ">
+  <input class="form-check-input" type="checkbox" value="Mais de 12 anos" name="timeofservice" id="naoseimporta" />
+  <label class="form-check-label" for="naoseimporta">Mais de 12 anos</label>    
+</div>
 
 <p class="text-center questions-titles">Qual a forma de realização de trabalho você prefere?</p> 
 <div class="form-check realizacaodetrabalho ">

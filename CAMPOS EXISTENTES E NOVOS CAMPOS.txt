@@ -1,0 +1,64 @@
+CAMPOS EXISTENTES E NOVOS CAMPOS
+CAMPOS EXISTENTES 
+1 - Nome
+2 - Sobrenome
+3 - Data de Nascimento
+4 - Telefone
+5 - CEP
+6 - Bairro
+7 - Endereco
+8 - Estado
+9 - Cidade
+10 - Tipo sanguinio
+11 - Você é doador de órgãos?
+12 - Qual a sua cor ou raça? - asiatica
+13 - Qual o seu grau de escolaridade? ensino fundamental incompleto e completo, ensino medio incompleto e completo, ensino superior incompleto e completo, pos-graduacao incompleta e completa, mestrado idem, doutorado idem
+14 - Você já atua na sua área de formação?
+15 - Qual a sua identidade de gênero?
+16 - Relacione abaixo até 3 cursos de curta duração que você considere importantes dentro da sua formação:
+17 - Qual a sua situação funcional atual?
+18 - Departamento
+19 - Você tem função gratificada?
+20 - Quanto tempo está na instituição?
+21 - Cargo atual
+22 - Você tem interesse em permuta?
+23 - Qual a forma de realização de trabalho você prefere?
+24 - Você tem interesse em entrar para o programa de Teletrabalho?
+25 - Como você costuma agir quando participa de reuniões de trabalho?
+26 - Como você costuma agir diante de prazos e metas?
+27 - Selecione até 5 competências socioemocionais que você se identifica:
+28 - Habilidade espacial
+29 - Habilidade corporal
+30 - Habilidade musical 
+31 - Habilidade linguística
+32 - Habilidade Lógico-Matemática	
+33 - Habilidade interpessoal
+34 - Habilidade naturalista
+35 - Habilidade emocional
+36 - Se você pudesse trabalhar em outros setores, quais seriam?
+37 - Selecione até 3 habilidades sociais, artísticas, culturais e esportivas que gostaria de conduzir/participar na SEAD.
+38 - Selecione até 5 atividades com as quais você prefere trabalhar
+39 - sugestão de melhorias
+
+NOVOS CAMPOS 
+
+40 - Email institucional
+41 - cpf
+42 - Numero de matricula
+43 - Orientação Sexual 
+44 - nacionalidade
+45 - UF de Nascimento
+46 - Naturalidade (Cidade de Nascimento)
+47 - Estado civil
+48 - Possui alguma deficiência?
+49 - Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor: 
+50 - Quantidade de anos de atuação no Serviço Público:
+51 - Você é responsável por gerir uma equipe? 
+52 - Se sim, quantas pessoas? 
+53 - Mentalidade Inclusiva 
+54 - Liderança e Gestão de Pessoas 
+55 - Inteligência emocional
+56 - Orientação para resultados 
+57 - Pensamento criativo
+58 - Articulação
+59 - Fluência digital
