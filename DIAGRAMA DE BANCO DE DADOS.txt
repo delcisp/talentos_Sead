@@ -91,40 +91,7 @@ Personal_Data
         deadlines
         setorop
         atividadesp
-        ...
- Personal_Engagement
-        |
-        |
-        id
-        id_user
-        tenhoautonomia
-        tomadadedecisoes
-        reconhecimento
-        valorizacao
-        espacoerro
-        aprendizado
-        expectativa
-        lideranca
-        seguranca
-        ambientedetrabalho
-        cooperacao
-        experienciadetrabalho
-        tarefaseoport
-        objetivoseresultados
-        resultadospublicos
-        admpublica
-        visibilidade
-        incertezas
-        execucaotrabalho
-        recursosdetrabalho
-        habespacial
-        habcorporal
-        habmusical
-        hablinguistica
-        habmath
-        habinterpessoal
-        habnatureba
-        habemocional
+    
         ...
  Personal_Competences
         |
@@ -140,6 +107,14 @@ Personal_Data
         pensamentocriativo
         articulacao
         fluenciadigital
+        habespacial
+        habcorporal
+        habmusical
+        hablinguistica
+        habmath
+        habinterpessoal
+        habnatureba
+        habemocional
         ...
 
 As relações entre as tabelas são as seguintes:

@@ -44,7 +44,6 @@ if (isset($_POST['submit'])) {
     $formadetrabalho = $_POST['formadetrabalho'];
     $reuniaotrabalho = $_POST['reuniaotrabalho'];
     $deadlines = $_POST['deadlines'];
-   
     $habespacial = $_POST['habespacial'];
     $habcorporal = $_POST['habcorporal'];
     $habmusical = $_POST['habmusical'];
@@ -187,6 +186,19 @@ if (isset($_POST['submit'])) {
              <input type="text" id="telefone" name="telefone" class="form-control input-style" /> 
              </div>
            </div>
+           <div class="col-md-6">
+            <label class="form-label-top" for="email">Email Institucional</label>
+            <div class="form-outline-left">
+             <input type="text" id="email" name="email" class="form-control input-style" /> 
+             </div>
+           </div>
+
+           <div class="col-md-6">
+            <label class="form-label-top-right" for="CPF">CPF</label>
+            <div class="form-outline-right">
+             <input type="text" id="telefone" name="cpf" class="form-control input-style" /> 
+             </div>
+           </div>
            <form action="#" onsubmit="return false">
            <div class="col-md-6">
             <label class="form-label-top" for="cep">CEP</label>
@@ -210,7 +222,7 @@ if (isset($_POST['submit'])) {
              </div>
 
              <div class="col-md-6"> 
-              <label class="form-label-top-right" for="uf">Estado</label>
+              <label class="form-label-top-right" for="uf">UF</label>
               <div class="form-outline-right">
                 <input type="text" id="uf" name="uf" class="form-control input-style" /> 
                 </div>
@@ -222,6 +234,45 @@ if (isset($_POST['submit'])) {
                  <input type="text" id="cidade" name="cidade" class="form-control input-style" /> 
                  </div>
                </div>     
+
+               <div class="col-md-6"> 
+              <label class="form-label-top-right" for="ufnascimento">UF de Nascimento</label>
+              <div class="form-outline-right">
+                <input type="text" id="ufnascimento" name="ufnascimento" class="form-control input-style" /> 
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <label class="form-label-top" for="cidadenascimento">Cidade de Nascimento </label>
+                <div class="form-outline-left">
+                 <input type="text" id="cidade" name="cidadenascimento" class="form-control input-style" /> 
+                 </div>
+               </div>     
+
+             <div class="col-md-6">
+              <label class="form-label-top-right" for="nacionalidade">Nacionalidade</label>
+              <div class="form-outline-right">
+                <select class="select form-control input-style" id="nacionalidade" name="nacionalidade" aria-placeholder="Selecione" >
+                  <option value="" disabled selected>Selecione</option>
+                <option value="brasileira">Brasileira</option>
+                <option value="outra">Outra</option>
+              </select>
+              </div>
+             </div>
+
+             <div class="col-md-6">
+                <label class="form-label-top" for="estadocivil">Estado Civil</label>
+                <div class="form-outline-left">
+                <select class="select form-control input-style" id="estadocivil" name="estadocivil" aria-placeholder="Selecione" >
+                  <option value="" disabled selected>Selecione</option>
+                <option value="Solteiro(a)">Solteiro(a)</option>
+                <option value="União Estável">União Estável</option>
+                <option value="Casado(a)">Casado(a)</option>
+                <option value="Divorciado(a)">Divorciado(a)</option>
+                <option value="Viúvo(a)">Viúvo(a)</option>
+              </select>
+                 </div>
+               </div>   
 
              <div class="col-md-6">
               <label class="form-label-top-right" for="bloodtype">Qual o seu tipo sanguíneo?</label>
@@ -239,7 +290,6 @@ if (isset($_POST['submit'])) {
               </select>
               </div>
              </div>
-             
              <div class="col-md-6">
               <label class="form-label-top" for="doador">Você é doador de órgãos?</label>
               <div class="form-outline-left">
@@ -253,55 +303,83 @@ if (isset($_POST['submit'])) {
              </div>
 
              <div class="col-md-6">
-              <label class="form-label-top-right" for="raca">Qual a sua cor ou raça?</label>
+              <label class="form-label-top-right" for="deficiencia">Possui alguma deficiência?</label>
               <div class="form-outline-right">
-              <select class="select form-control input-style" id="raca" name="raca" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="Amarela">Amarela</option>
-                <option value="Branca">Branca</option>
-                <option value="Parda">Parda</option>
-                <option value="Preta">Preta</option>
-                <option value="Indígena">Indígena</option>
-                <option value="Prefiro não me classificar">Prefiro não me classificar</option>
-              </select>
-              </div>
-             </div>
-
-             <div class="col-md-6">
-              <label class="form-label-top" for="firstquestion">Qual o seu grau de escolaridade?</label>
-              <div class="form-outline-left">
-              <select class="select form-control input-style" id="firstquestion" name="firstquestion" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="Ensino fundamental">Ensino fundamental</option>
-                <option value="Ensino médio">Ensino médio</option>
-                <option value="Ensino médio técnico">Ensino médio técnico</option>
-                <option value="Graduação">Graduação</option>
-                <option value="Pós-graduação">Pós-graduação</option>
-                <option value="Especialização">Especialização</option>
-                <option value="Mestrado">Mestrado</option>
-                <option value="Doutorado">Doutorado</option>
-              </select>
-              <div class="mb-3" id="degreeTextareaDiv" style="display: none;" >
-                <textarea class="form-control" id="degreeTextarea" name="degreetextarea" rows="2" placeholder="Informe aqui a sua formação" style="resize: none;" ></textarea>
-            </div>
-            <div class="mb-3" id="secondDegreeTextareaDiv" style="display: none;" >
-              <textarea class="form-control" id="secondDegreeTextarea" name="seconddegreetextarea" rows="2" placeholder="Informe aqui a sua outra formação" style="resize: none;" ></textarea>
-          </div>
-              </div>
-             </div>
-             
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="atuanaarea">Você já atua na sua área de formação?</label>
-              <div class="form-outline-right">
-              <select class="select form-control input-style" id="atuanaarea" name="atuanaarea" aria-placeholder="Selecione" >
+              <select class="select form-control input-style" id="deficiencia" name="deficiencia" aria-placeholder="Selecione" >
                 <option value="" disabled selected>Selecione</option>
                 <option value="Sim">Sim</option>
                 <option value="Não">Não</option>
               </select>
               </div>
              </div>
+
+             <div class="col-md-6">
+              <label class="form-label-top" for="tipomoradia" style="white-space: nowrap;" >Qual o tipo de moradia em que você reside?</label>
+              <div class="form-outline-left">
+              <select class="select form-control input-style" id="tipomoradia" name="tipomoradia" aria-placeholder="Selecione" >
+                <option value="" disabled selected>Selecione</option>
+                <option value="Própria">Própria</option>
+                <option value="Alugada">Alugada</option>
+                <option value="Compartilhada (familiar/amigos/ terceiros)">Compartilhada (familiar/amigos/ terceiros)</option>    
+              </select>
+              </div>
+             </div>
+
+             <div class="col-md-6">
+              <label class="form-label-top-right" for="pessoasmoradia" >Quantas pessoas residem na sua moradia?</label>
+              <div class="form-outline-right">
+              <select class="select form-control input-style" id="pessoasmoradia" name="pessoasmoradia" aria-placeholder="Selecione" >
+                <option value="" disabled selected>Selecione</option>
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+              </select>
+              </div>
+             </div>
+             
+      
         </div> <!--AQUI FECHA O ROW-->
         
+        <p class="text-center questions-titles">Em qual zona da cidade está localizada a sua moradia?</p>
+         <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Norte" id="zonanorte" />
+          <label class="form-check-label" for="zonanorte"><b>Zona Norte</b></label>    
+        </div>
+        <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Leste" id="zonaleste" />
+          <label class="form-check-label" for="zonaleste"><b>Zona Leste</b></label>    
+        </div>
+        <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Sul" id="zonasul" />
+          <label class="form-check-label" for="zonasul"><b>Zona Sul</b></label>    
+        </div>
+        <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Oeste" id="zonaoeste" />
+          <label class="form-check-label" for="zonaoeste"><b>Zona Oeste</b></label>    
+        </div>
+        <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Sul" id="zonacsul" />
+          <label class="form-check-label" for="zonacsul"><b>Zona Centro-Sul</b></label>    
+        </div>
+        <div class="form-check zona ">
+          <input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Oeste" id="zonacoeste" />
+          <label class="form-check-label" for="zonacoeste"><b>Zona Centro-Oeste</b></label>    
+        </div>
+   
+
          <p class="text-center questions-titles">Qual a sua identidade de gênero?</p>
          <div class="form-check gender ">
           <input class="form-check-input" type="checkbox" name="genero" value="Homem cisgênero" id="Homemcis" />
@@ -332,14 +410,71 @@ if (isset($_POST['submit'])) {
           <!--ESSA DIV FAZ d-block (display block) para o <label> e mt-2 (margin top) para dar um espaçamento entre o <input> e o <label> -->
           </div>
 
-        <p class="text-center questions-titles">Relacione abaixo até 3 cursos de curta duração que você considere importantes dentro da sua formação: </p>
-        <div class="mb-3">
-          <textarea class="form-control" id="tinycourses" name="tinycourses" rows="4" placeholder="Digite aqui os seus cursos" style="resize: none;" ></textarea>
-      </div>
-      
+          <p class="text-center questions-titles">Qual a sua cor ou raça?</p>
+          <div class="form-check raca ">
+          <input class="form-check-input" type="checkbox" name="raca" value="Amarela" id="amarela" />
+          <label class="form-check-label" for="Amarela"><b>Amarela</b></label>    
+        </div>
+        <div class="form-check raca ">
+          <input class="form-check-input" type="checkbox" name="raca" value="Branca" id="Branca" />
+          <label class="form-check-label" for="Branca"><b>Branca</b></label>    
+        </div>
+        <div class="form-check raca ">
+          <input class="form-check-input" type="checkbox" name="raca" value="Parda" id="Parda" />
+          <label class="form-check-label" for="Parda"><b>Parda</b></label>    
+        </div>
+        <div class="form-check raca ">
+          <input class="form-check-input" type="checkbox" name="raca" value="Preta" id="Preta" />
+          <label class="form-check-label" for="Preta"><b>Preta</b></label>    
+        </div>
+        <div class="form-check raca ">
+          <input class="form-check-input" type="checkbox" name="raca" value="Indígena" id="indígena" />
+          <label class="form-check-label" for="Indígena"><b>Indígena</b></label>    
+        </div>
+        <div class="form-check raca " >
+          <input class="form-check-input" type="checkbox" name="raca" value="Prefiro não me classificar" id="naoseclassifica" />
+          <label class="form-check-label" for="naoseclassifica"><b>Prefiro não me classificar</b></label>    
+        </div>
+
+        <p class="text-center questions-titles">Em relação à sua orientação sexual, dentre as opções abaixo, com qual você se identifica? </p>
+         <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Heterossexual" id="heterossexual" />
+          <label class="form-check-label" for="heterossexual"><b>Heterossexual</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Gay" id="gay" />
+          <label class="form-check-label" for="Gay"><b>Gay</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Lésbica" id="lesbica" />
+          <label class="form-check-label" for="lesbica"><b>Lésbica</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Bissexual" id="bissexual" />
+          <label class="form-check-label" for="bissexual"><b>Bissexual</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Pansexual" id="pansexual" />
+          <label class="form-check-label" for="pansexual"><b>Pansexual</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Assexual" id="assexual" />
+          <label class="form-check-label" for="assexual"><b>Assexual</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Outra" id="outra" />
+          <label class="form-check-label" for="outra"><b>Outra</b></label>    
+        </div>
+        <div class="form-check orientacao ">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não me classificar" id="naomeclassifica" />
+          <label class="form-check-label" for="naomeclassifica"><b>Prefiro não me classificar</b></label>    
+        </div>
+        <div class="form-check orientacao"  style="margin-bottom: 20px;">
+          <input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não informar" id="Prefiro não informar" />
+          <label class="form-check-label" for="Prefiro não informar"><b>Prefiro não informar</b></label>    
+        </div>
         </div> <!--AQUI ACABA A PÁGINA 1-->
-
-
+      
         <div class="form-page" id="page-2">
          <div class="row">
           <div class="col-md-6">
@@ -364,7 +499,7 @@ if (isset($_POST['submit'])) {
             <select class="select form-control input-style" id="departament" name="departament" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
               <option value="Arquivo público do Amazonas" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas')
-              echo 'selected'; ?>>Arquivo público do Amazonas
+                echo 'selected'; ?>>Arquivo público do Amazonas
             </option>
             <option value="Apoio ao Gabinete" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete')
               echo 'selected'; ?>>Apoio ao Gabinete</option>
@@ -478,8 +613,8 @@ if (isset($_POST['submit'])) {
            </div>
 
            <div class="col-md-6">
-            <label class="form-label-top" for="cargo">Cargo atual</label>
-            <div class="form-outline-left">
+            <label class="form-label-top-right" for="cargo">Cargo atual</label>
+            <div class="form-outline-right">
             <select class="select form-control input-style" id="cargo" name="role" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
               <option value="Agente administrativo 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 1° classe')
@@ -636,28 +771,42 @@ if (isset($_POST['submit'])) {
                 echo 'selected'; ?>>Técnico em contabilidade</option>
               <option value="Técnico em planejamento 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico em planejamento 1° classe')
                 echo 'selected'; ?>>Técnico em planejamento 1° classe</option>
-              <option value="Técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico') echo 'selected'; ?>>Técnico</option>
-              <option value="Técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico A') echo 'selected'; ?>>Técnico A</option>
-              <option value="Técnico Adminitrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico Adminitrativo') echo 'selected'; ?>>Técnico Adminitrativo</option>
-              <option value="Técnico de contas A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de contas A') echo 'selected'; ?>>Técnico de contas A</option>
-              <option value="Técnico governamental" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico governamental') echo 'selected'; ?>>Técnico governamental</option>
-              <option value="Técnico gráfico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico gráfico') echo 'selected'; ?>>Técnico gráfico</option>
-              <option value="Técnico de nível superior" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior') echo 'selected'; ?>>Técnico de nível superior</option>
-              <option value="Técnico de nível superior 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior 1° classe') echo 'selected'; ?>>Técnico de nível superior 1° classe</option>
-              <option value="Técnico de nível superior - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - I') echo 'selected'; ?>>Técnico de nível superior - I</option>
-              <option value="Técnico de nível superior - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - III') echo 'selected'; ?>>Técnico de nível superior - III</option>
-              <option value="Telefonista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Telefonista') echo 'selected'; ?>>Telefonista</option>
-              <option value="Vigia" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia') echo 'selected'; ?>>Vigia</option>
-              <option value="Vigia - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -II') echo 'selected'; ?>>Vigia - II</option>
-              <option value="Vigia - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -III') echo 'selected'; ?>>Vigia - III</option>
+              <option value="Técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico')
+                echo 'selected'; ?>>Técnico</option>
+              <option value="Técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico A')
+                echo 'selected'; ?>>Técnico A</option>
+              <option value="Técnico Adminitrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico Adminitrativo')
+                echo 'selected'; ?>>Técnico Adminitrativo</option>
+              <option value="Técnico de contas A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de contas A')
+                echo 'selected'; ?>>Técnico de contas A</option>
+              <option value="Técnico governamental" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico governamental')
+                echo 'selected'; ?>>Técnico governamental</option>
+              <option value="Técnico gráfico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico gráfico')
+                echo 'selected'; ?>>Técnico gráfico</option>
+              <option value="Técnico de nível superior" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior')
+                echo 'selected'; ?>>Técnico de nível superior</option>
+              <option value="Técnico de nível superior 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior 1° classe')
+                echo 'selected'; ?>>Técnico de nível superior 1° classe</option>
+              <option value="Técnico de nível superior - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - I')
+                echo 'selected'; ?>>Técnico de nível superior - I</option>
+              <option value="Técnico de nível superior - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - III')
+                echo 'selected'; ?>>Técnico de nível superior - III</option>
+              <option value="Telefonista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Telefonista')
+                echo 'selected'; ?>>Telefonista</option>
+              <option value="Vigia" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia')
+                echo 'selected'; ?>>Vigia</option>
+              <option value="Vigia - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -II')
+                echo 'selected'; ?>>Vigia - II</option>
+              <option value="Vigia - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -III')
+                echo 'selected'; ?>>Vigia - III</option>
             </select>
             </div>
            </div>
 
            <div class="col-md-6">
-            <label class="form-label-top-right" for="permuta">Você tem interesse em </label>
+            <label class="form-label-top-right" style="margin-left: 10px;" for="permuta">Você tem interesse em </label>
             <a href="#" data-mdb-toggle="permuta?" title="Interesse em trocar de setor com outro servidor" style="font-size: 20px;">permuta?</a>
-            <div class="form-outline-right">
+            <div class="form-outline-left">
             <select class="select form-control input-style" id="permuta" name="permuta" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
               <option value="Sim">Sim</option>
@@ -665,9 +814,90 @@ if (isset($_POST['submit'])) {
             </select>
             </div>
            </div>
+           <div class="col-md-6">
+              <label class="form-label-top-right" for="firstquestion">Qual o seu grau de escolaridade?</label>
+              <div class="form-outline-right">
+              <select class="select form-control input-style" id="firstquestion" name="firstquestion" aria-placeholder="Selecione" >
+                <option value="" disabled selected>Selecione</option>
+                <option value="Ensino fundamental incompleto" >Ensino Fundamental Incompleto</option>
+                <option value="Ensino Fundamental Completo">Ensino Fundamental Completo</option>
+                <option value="Ensino médio incompleto">Ensino Médio Incompleto</option>
+                <option value="Ensino médio Completo">Ensino Médio Completo</option>
+                <option value="Ensino Superior Incompleto">Ensino Superior Incompleto</option>
+                <option value="Ensino Superior Completo">Ensino Superior Completo</option>
+                <option value="Pós-graduação Incompleta">Pós-graduação Incompleta</option>
+                <option value="Pós-graduação Completa">Pós-graduação Completa</option>
+                <option value="Mestrado Incompleto">Mestrado Incompleto</option>
+                <option value="Mestrado Completo">Mestrado Completo</option>
+                <option value="Doutorado Incompleto">Doutorado Incompleto</option>
+                <option value="Doutorado Completo">Doutorado Completo</option>
+              </select>
+              <div class="mb-3" id="degreeTextareaDiv" style="display: none;" >
+                <textarea class="form-control" id="degreeTextarea" name="degreetextarea" rows="2" placeholder="Informe aqui a sua formação" style="resize: none;" ></textarea>
+            </div>
+            <div class="mb-3" id="secondDegreeTextareaDiv" style="display: none;" >
+              <textarea class="form-control" id="secondDegreeTextarea" name="seconddegreetextarea" rows="2" placeholder="Informe aqui a sua outra formação" style="resize: none;" ></textarea>
+          </div>
+              </div>
+             </div>
 
+   
 </div> <!--AQUI ACABA O ROW-->
-<p class="text-center questions-titles">Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor:</p> 
+
+
+<p class="text-center questions-titles">Nome da instituição em que finalizou o diploma mais recente:</p>
+        <div class="mb-3">
+          <textarea class="form-control" id="nomeinstituicao" name="nomeinstituicao" rows="1" style="resize: none; width: 98%; margin-left: 5px; padding: 10px; " ></textarea>
+      </div>
+
+      <p class="text-center questions-titles">Nome do curso mais recente:</p>
+        <div class="mb-3">
+          <textarea class="form-control" id="nomecurso" name="nomecurso" rows="1" style="resize: none; width: 98%; margin-left: 5px; padding: 10px; " ></textarea>
+      </div>
+
+      <p class="text-center questions-titles">Tipo de instituição em que finalizou o diploma mais recente:</p> 
+<div class="form-check tipoinstituicao ">
+  <input class="form-check-input" type="checkbox" value="Pública Federal" name="instituicao" id="publica" />
+  <label class="form-check-label" for="publica">Pública Federal</label>    
+</div>
+<div class="form-check tipoinstituicao ">
+  <input class="form-check-input" type="checkbox" value="Pública Estadual" name="instituicao" id="publicaestadual" />
+  <label class="form-check-label" for="publicaestadual">Pública Estadual</label>    
+</div>
+<div class="form-check tipoinstituicao ">
+  <input class="form-check-input" type="checkbox" value="Pública Municipal" name="instituicao" id="publicamunicipal" />
+  <label class="form-check-label" for="publicamunicipal">Pública Municipal</label>    
+</div>
+<div class="form-check tipoinstituicao ">
+  <input class="form-check-input" type="checkbox" value="Privada" name="instituicao" id="privada" />
+  <label class="form-check-label" for="privada">Privada</label>    
+</div>
+
+<p class="text-center questions-titles">Na maioria de seus anos de estudo, qual tipo de escola você frequentou?</p> 
+<div class="form-check tipoescola ">
+  <input class="form-check-input" type="checkbox" value="Apenas em escola pública" name="tipoescola" id="sonapublica" />
+  <label class="form-check-label" for="sonapublica">Apenas em escola pública</label>    
+</div>
+<div class="form-check tipoescola ">
+  <input class="form-check-input" type="checkbox" value="Na maior parte do tempo, em escola pública" name="tipoescola" id="enapublica" />
+  <label class="form-check-label" for="enapublica">Na maior parte do tempo, em escola pública</label>    
+</div>
+<div class="form-check tipoescola ">
+  <input class="form-check-input" type="checkbox" value="Na maior parte do tempo, em escola particular" name="tipoescola" id="enaparticular" />
+  <label class="form-check-label" for="enaparticular">Na maior parte do tempo, em escola particular</label>    
+</div>
+<div class="form-check tipoescola ">
+  <input class="form-check-input" type="checkbox" value="Apenas em escola particular" name="tipoescola" id="soparticular" />
+  <label class="form-check-label" for="sonaparticular">Apenas em escola particular</label>    
+</div>
+<div class="form-check tipoescola ">
+  <input class="form-check-input" type="checkbox" value="Outro" name="tipoescola" id="emoutro" />
+  <label class="form-check-label" for="emoutro"> Outro</label>    
+</div>
+
+
+
+      <p class="text-center questions-titles">Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor:</p> 
 <div class="form-check timeofservice ">
   <input class="form-check-input" type="checkbox" value="Até 1 ano" name="timeofservice" id="ateumano" />
   <label class="form-check-label" for="ateumano">Até 1 ano</label>    
@@ -696,11 +926,33 @@ if (isset($_POST['submit'])) {
 </div>
 <div class="form-check realizacaodetrabalho ">
   <input class="form-check-input" type="checkbox" value="Prefiro trabalhar em grupo" name="formadetrabalho" id="trabalharemgrupo" />
-  <label class="form-check-label" for="trabalharemgrupo">Prefiro trablhar em grupo</label>    
+  <label class="form-check-label" for="trabalharemgrupo">Prefiro trabalhar em grupo</label>    
 </div>
 <div class="form-check realizacaodetrabalho ">
   <input class="form-check-input" type="checkbox" value="Não tenho preferências" name="formadetrabalho" id="naoseimporta" />
   <label class="form-check-label" for="naoseimporta">Não tenho preferências</label>    
+</div>
+
+<p class="text-center questions-titles">Quantidade de anos de atuação no Serviço Público:</p> 
+<div class="form-check anosdeservico ">
+  <input class="form-check-input" type="checkbox" value="Até 1 ano" name="anosdeservico" id="anosdeservico" />
+  <label class="form-check-label" for="anosdeservico">Até 1 ano</label>    
+</div>
+<div class="form-check anosdeservico ">
+  <input class="form-check-input" type="checkbox" value="De 1 a 4 anos" name="anosdeservico" id="manosdeservico" />
+  <label class="form-check-label" for="manosdeservico">De 1 a 4 anos</label>    
+</div>
+<div class="form-check anosdeservico ">
+  <input class="form-check-input" type="checkbox" value="De 5 a 8 anos" name="anosdeservico" id="sanosdeservico" />
+  <label class="form-check-label" for="sanosdeservico">De 5 a 8 anos</label>    
+</div>
+<div class="form-check anosdeservico ">
+  <input class="form-check-input" type="checkbox" value="De 8 a 12 anos" name="anosdeservico" id="vanosdeservico" />
+  <label class="form-check-label" for="vanosdeservico">De 8 a 12 anos</label>    
+</div>
+<div class="form-check anosdeservico ">
+  <input class="form-check-input" type="checkbox" value="Mais de 12 anos" name="anosdeservico" id="banosdeservico" />
+  <label class="form-check-label" for="banosdeservico">Mais de 12 anos</label>    
 </div>
 
 <p class="text-center questions-titles">Você tem interesse em entrar para o programa de Teletrabalho?</p> 
@@ -733,6 +985,10 @@ if (isset($_POST['submit'])) {
 
 <p class="text-center questions-titles">Como você costuma agir diante de prazos e metas?</p> 
 <div class="form-check deadlines ">
+  <input class="form-check-input" type="checkbox" value="Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta." name="deadlines" id="deadlinedifuc" />
+  <label class="form-check-label" for="deadlinedifuc">Tenho dificuldade com atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</label>    
+</div>
+<div class="form-check deadlines ">
   <input class="form-check-input" type="checkbox" value="Organizo minhas atividades para realizá-las dentro do prazo determinado" name="deadlines" id="deadlineorganizo" />
   <label class="form-check-label" for="deadlineorganizo">Organizo minhas atividades para realizá-las dentro do prazo determinado</label>    
 </div>
@@ -740,364 +996,75 @@ if (isset($_POST['submit'])) {
   <input class="form-check-input" type="checkbox" value="Priorizo, a partir da indicação do(a) gestor(a), as atividades com prazos específicos" name="deadlines" id="deadlinepriorizo" />
   <label class="form-check-label" for="deadlinepriorizo">Priorizo, a partir da indicação do(a) gestor(a), as atividades com prazos específicos</label>    
 </div>
-<div class="form-check deadlines ">
+<div class="form-check deadlines  " style="margin-bottom: 20px;">
   <input class="form-check-input" type="checkbox" value="Priorizo, de forma autônoma, as atividades com prazos específicos" name="deadlines" id="deadlineespecificos" />
   <label class="form-check-label" for="deadlineespecificos">Priorizo, de forma autônoma, as atividades com prazos específicos</label>    
 </div>
-<div class="form-check deadlines ">
-  <input class="form-check-input" type="checkbox" value="Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta." name="deadlines" id="deadlinedifuc" />
-  <label class="form-check-label" for="deadlinedifuc">Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</label>    
+
+<p class="text-center questions-titles">Como você acessa os serviços de saúde?</p> 
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Apenas pelo SUS" name="servicosaude" id="teamsus" />
+  <label class="form-check-label" for="teamsus">Apenas pelo SUS</label>    
+</div>
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Normalmente pelo SUS, mas às vezes pago por consultas, exames e procedimentos." name="servicosaude" id="teamsusq" />
+  <label class="form-check-label" for="teamsusq">Normalmente pelo SUS, mas às vezes pago por consultas, exames e procedimentos.</label>    
+</div>
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Pago por consultas, exames e procedimentos sem depender do SUS" name="servicosaude" id="pgsus" />
+  <label class="form-check-label" for="pgsus">Pago por consultas, exames e procedimentos sem depender do SUS</label>    
+</div>
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Normalmente por plano de saúde privado" name="servicosaude" id="privado" />
+  <label class="form-check-label" for="privado">Normalmente por plano de saúde privado</label>    
+</div>
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Apenas por plano de saúde privado" name="servicosaude" id="soprivado" />
+  <label class="form-check-label" for="soprivado">Apenas por plano de saúde privado</label>    
+</div>
+<div class="form-check servicosaude ">
+  <input class="form-check-input" type="checkbox" value="Outro" name="servicosaude" id="anotherone" />
+  <label class="form-check-label" for="anotherone">Outro</label>    
 </div>
 
-<p class="text-center questions-titles">Selecione até 5 competências socioemocionais que você se identifica: </p>
-<div class="competencias">
-  
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia1" name="competencia[]" value="Afabilidade" />
-    <label class="form-check-label d-block mt-2" for="competencia1">Afabilidade</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia2" name="competencia[]"
-      value="Assertividade" />
-    <label class="form-check-label d-block mt-2" for="competencia2">Assertividade</label>
-  </div>
 
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia3" name="competencia[]" value="Autocontrole" />
-    <label class="form-check-label d-block mt-2" for="competencia3">Autocontrole</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia4" name="competencia[]"
-      value="Capacidade de agir sob pressão" />
-    <label class="form-check-label d-block mt-2" for="competencia4">Capacidade de agir<br> sob pressão</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia6" name="competencia[]"
-      value="Capacidade de análise e síntese" />
-    <label class="form-check-label d-block mt-2" for="competencia6">Capacidade de análise<br> e síntese</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia7" name="competencia[]"
-      value="Capacidade de comunicação" />
-    <label class="form-check-label d-block mt-2" for="competencia7">Capacidade de<br> comunicação</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia8" name="competencia[]"
-      value="Capacidade de concentração" />
-    <label class="form-check-label d-block mt-2" for="competencia8">Capacidade de<br> concentração</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia9" name="competencia[]"
-      value="Cooperação e trabalho em equipe" />
-    <label class="form-check-label d-block mt-2" for="competencia9">Cooperação e <br>trabalho em equipe</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia10" name="competencia[]"
-      value="Negociação e mediação" />
-    <label class="form-check-label d-block mt-2" for="competencia10">Negociação e mediação</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia11" name="competencia[]"
-      value="Capacidade de observação" />
-    <label class="form-check-label d-block mt-2" for="competencia11">Capacidade de<br> observação</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia12" name="competencia[]"
-      value="Condicionamento físico" />
-    <label class="form-check-label d-block mt-2" for="competencia12">Condicionamento físico</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia13" name="competencia[]"
-      value="Coordenação motora" />
-    <label class="form-check-label d-block mt-2" for="competencia13">Coordenação motora</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia14" name="competencia[]"
-      value="Criatividade" />
-    <label class="form-check-label d-block mt-2" for="competencia14">Criatividade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia15" name="competencia[]" value="Deferência" />
-    <label class="form-check-label d-block mt-2" for="competencia15">Deferência</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia16" name="competencia[]" value="Destreza" />
-    <label class="form-check-label d-block mt-2" for="competencia16">Destreza</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia17" name="competencia[]" value="Discrição" />
-    <label class="form-check-label d-block mt-2" for="competencia17">Discrição</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia18" name="competencia[]" value="Empatia" />
-    <label class="form-check-label d-block mt-2" for="competencia18">Empatia</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia19" name="competencia[]"
-      value="Equilíbrio emocional" />
-    <label class="form-check-label d-block mt-2" for="competencia19">Equilíbrio emocional</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia20" name="competencia[]" value="Esmero" />
-    <label class="form-check-label d-block mt-2" for="competencia20">Esmero</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia21" name="competencia[]" value="Ética" />
-    <label class="form-check-label d-block mt-2" for="competencia21">Ética</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia22" name="competencia[]"
-      value="Flexibilidade" />
-    <label class="form-check-label d-block mt-2" for="competencia22">Flexibilidade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia23" name="competencia[]"
-      value="Habilidade manual" />
-    <label class="form-check-label d-block mt-2" for="competencia23">Habilidade manual</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia24" name="competencia[]" value="Idoneidade" />
-    <label class="form-check-label d-block mt-2" for="competencia24">Idoneidade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia25" name="competencia[]"
-      value="Imparcialidade" />
-    <label class="form-check-label d-block mt-2" for="competencia25">Imparcialidade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia27" name="competencia[]" value="Iniciativa" />
-    <label class="form-check-label d-block mt-2" for="competencia27">Iniciativa</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia28" name="competencia[]"
-      value="Manter-se atualizado" />
-    <label class="form-check-label d-block mt-2" for="competencia28">Manter-se atualizado</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia29" name="competencia[]"
-      value="Objetividade" />
-    <label class="form-check-label d-block mt-2" for="competencia29">Objetividade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia30" name="competencia[]" value="Organização" />
-    <label class="form-check-label d-block mt-2" for="competencia30">Organização</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia31" name="competencia[]" value="Paciência" />
-    <label class="form-check-label d-block mt-2" for="competencia31">Paciência</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia32" name="competencia[]" value="Parcimônia" />
-    <label class="form-check-label d-block mt-2" for="competencia32">Parcimônia</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia33" name="competencia[]"
-      value="Percepção visual e táctil" />
-    <label class="form-check-label d-block mt-2" for="competencia33">Percepção visual <br>e táctil</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia34" name="competencia[]"
-      value="Persistência e tolerância" />
-    <label class="form-check-label d-block mt-2" for="competencia34">Persistência e tolerância</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia35" name="competencia[]" value="Prontidão" />
-    <label class="form-check-label d-block mt-2" for="competencia35">Prontidão</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia36" name="competencia[]"
-      value="Raciocínio analítico e dedutivo" />
-    <label class="form-check-label d-block mt-2" for="competencia36">Raciocínio analítico <br>e dedutivo</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia37" name="competencia[]"
-      value="Raciocínio lógico" />
-    <label class="form-check-label d-block mt-2" for="competencia37">Raciocínio lógico</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia38" name="competencia[]"
-      value="Respeito às diferenças" />
-    <label class="form-check-label d-block mt-2" for="competencia38">Respeito às diferenças</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia39" name="competencia[]"
-      value="Responsabilidade" />
-    <label class="form-check-label d-block mt-2" for="competencia39">Responsabilidade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia40" name="competencia[]"
-      value="Sociabilidade" />
-    <label class="form-check-label d-block mt-2" for="competencia40">Sociabilidade</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia41" name="competencia[]"
-      value="Tomar decisões observando diretrizes institucionais" />
-    <label class="form-check-label d-block mt-2" for="competencia41">Tomar decisões observando diretrizes
-      institucionais</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="competencia43" name="competencia[]"
-      value="Visão crítica" />
-    <label class="form-check-label d-block mt-2" for="competencia43">Visão crítica</label>
-  </div>
-  </div>
-
-<p class="text-center questions-titles">Selecione 5 competências técnicas que você se identifica: </p> 
-<div class="competencias">
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia1" name="hardcompetencia[]"
-      value="Proficiências completa em Word, Excel, PowerPoint e Outlook" />
-    <label class="form-check-label" for="hardcompetencia1">Proficiências completa em Word, Excel, PowerPoint e
-      Outlook</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia2" name="hardcompetencia[]"
-      value="Conhecimento em sistemas operacionais (windows, macOS, Linux)" />
-    <label class="form-check-label" for="hardcompetencia2">Conhecimento em sistemas operacionais (windows, macOS,
-      Linux)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia3" name="hardcompetencia[]"
-      value="Coleta de dados(pesquisa questionários entrevistas)" />
-    <label class="form-check-label" for="hardcompetencia3">Coleta de dados(pesquisa, questionários,
-      entrevistas)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia4" name="hardcompetencia[]"
-      value="Análise de dados quantitativos e qualitativos" />
-    <label class="form-check-label" for="hardcompetencia4">Análise de dados quantitativos e qualitativos</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia5" name="hardcompetencia[]"
-      value="Apresentação de dados de forma clara e atraente (gráficos, tabelas)" />
-    <label class="form-check-label" for="hardcompetencia5">Apresentação de dados de forma clara e atraente
-      (gráficos, tabelas)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia6" name="hardcompetencia[]"
-      value="Domínio de programas de design gráfico (Adobe Illustrator, Adobe Photoshop, CorelDRAW)" />
-    <label class="form-check-label" for="hardcompetencia6">Domínio de programas de design gráfico (Adobe
-      Illustrator, Adobe Photoshop, CorelDRAW)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia7" name="hardcompetencia[]"
-      value="Conhecimento de princípios de design (cores, tipografia, composição)" />
-    <label class="form-check-label" for="hardcompetencia7">Conhecimento de princípios de design (cores,
-      tipografia, composição)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia8" name="hardcompetencia[]"
-      value="Criação de conteúdo para mídias sociais (imagens, vídeos, infográficos)" />
-    <label class="form-check-label" for="hardcompetencia8">Criação de conteúdo para mídias sociais (imagens,
-      vídeos, infográficos)</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia9" name="hardcompetencia[]"
-      value="Escrita clara concisa e gramaticalmente correta" />
-    <label class="form-check-label" for="hardcompetencia9">Escrita clara, concisa e gramaticalmente
-      correta</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia10" name="hardcompetencia[]"
-      value="Habilidade em redação acadêmica, jornalística ou técnica" />
-    <label class="form-check-label" for="hardcompetencia10">Habilidade em redação acadêmica, jornalística ou
-      técnica</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia11" name="hardcompetencia[]"
-      value="Vocabulário variado e adequado ao contexto" />
-    <label class="form-check-label" for="hardcompetencia11">Vocabulário variado e adequado ao contexto</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia12" name="hardcompetencia[]"
-      value="Proficiência em línguas estrangeiras" />
-    <label class="form-check-label" for="hardcompetencia12">Proficiência em línguas estrangeiras</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia13" name="hardcompetencia[]"
-      value="Capacidade de comunicação escrita e verbal em diferentes idiomas" />
-    <label class="form-check-label" for="hardcompetencia13">Capacidade de comunicação escrita e verbal em
-      diferentes idiomas</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia14" name="hardcompetencia[]"
-      value="Tradução e interpretação em idiomas estrangeiros" />
-    <label class="form-check-label" for="hardcompetencia14">Tradução e interpretação em idiomas
-      estrangeiros</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia15" name="hardcompetencia[]"
-      value="Edição de imagens e retoque fotográfico" />
-    <label class="form-check-label" for="hardcompetencia15">Edição de imagens e retoque fotográfico</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia16" name="hardcompetencia[]"
-      value="Experiência com softwares ou equipamentos específicos da área de atuação" />
-    <label class="form-check-label" for="hardcompetencia16">Experiência com softwares ou equipamentos específicos
-      da área de atuação</label>
-  </div>
-
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia17" name="hardcompetencia[]"
-      value="Conhecimento especializado em áreas específicas (exemplo: programação, contabilidade)" />
-    <label class="form-check-label" for="hardcompetencia17">Conhecimento especializado em áreas específicas
-      (exemplo: programação, contabilidade)</label>
-  </div>
-  
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia18" name="hardcompetencia[]"
-      value="Capacidade de resolver problemas técnicos e propor soluções inovadoras" />
-    <label class="form-check-label" for="hardcompetencia18">Capacidade de resolver problemas técnicos e propor
-      soluções inovadoras</label>
-  </div>
-  <div class="form-check-competencias">
-    <input type="checkbox" class="form-check-input" id="hardcompetencia19" name="hardcompetencia[]"
-      value="Atualização constante em relação às novas tecnologias e tendências da área" />
-    <label class="form-check-label" for="hardcompetencia19">Atualização constante em relação às novas tecnologias
-      e tendências da área</label>
-  </div>
+<p class="text-center questions-titles">No seu dia a dia, quais são os meios de transporte que você utiliza com mais frequência?</p> 
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="Carro" name="meiotransporte" id="carro" />
+  <label class="form-check-label" for="carro">Carro</label>    
 </div>
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="Transporte público (ônibus, lotação, metrô, trem)" name="meiotransporte" id="onibus" />
+  <label class="form-check-label" for="onibus">Transporte público (ônibus, lotação, metrô, trem)</label>    
+</div>
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="Motocicleta" name="meiotransporte" id="motocicleta" />
+  <label class="form-check-label" for="motocicleta">Motocicleta</label>    
+</div>
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="Bicicleta" name="meiotransporte" id="bicicleta" />
+  <label class="form-check-label" for="bicicleta">Bicicleta</label>    
+</div>
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="A pé" name="meiotransporte" id="pe" />
+  <label class="form-check-label" for="pe">A pé</label>    
+</div>
+<div class="form-check meiotransporte ">
+  <input class="form-check-input" type="checkbox" value="Barco, balsa" name="meiotransporte" id="barco" />
+  <label class="form-check-label" for="barco">Barco, balsa</label>    
+</div>
+<div class="form-check meiotransporte " style="margin-bottom: 10px;" >
+  <input class="form-check-input" type="checkbox" value="Outro" name="meiotransporte" id="outro" />
+  <label class="form-check-label" for="outro">Outro</label>    
+</div>
+
+
 
         </div> <!--AQUI ACABA A PÁGINA 2-->
 
 
         <div class="form-page" id="page-3">
-      
-          <p class="text-center questions-titles">Habilidade espacial</p>
+        <p class="text-center questions-titles">Habilidade espacial</p>
           <p class="small text-center ">Compreendo e elaboro facilmente quadros, desenhos, esquemas, gráficos e tabelas.  </p>
           <div id="cid_habesp" class="form-input-wide text-center" data-layout="full">
             <div role="radiogroup"  cellpadding="4" cellspacing="0"
@@ -1640,6 +1607,39 @@ if (isset($_POST['submit'])) {
               </div>
                </span>
              </div>
+
+<p class="text-center questions-titles">Você é responsável por gerir uma equipe? Se sim, quantas pessoas? </p> 
+
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Apenas 1 pessoa" name="segerirequipe" id="oneperson" />
+  <label class="form-check-label" for="oneperson">Apenas 1 pessoa</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Entre 2 e 4 pessoas" name="segerirequipe" id="entre2e4" />
+  <label class="form-check-label" for="entre2e4">Entre 2 e 4 pessoas</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Entre 5 e 10 pessoas" name="segerirequipe" id="entre5e10" />
+  <label class="form-check-label" for="entre5e10">Entre 5 e 10 pessoas</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Entre 11 e 20 pessoas" name="segerirequipe" id="entre11e20" />
+  <label class="form-check-label" for="entre11e20">Entre 11 e 20 pessoas</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Entre 20 e 30 pessoas" name="segerirequipe" id="entre20e30" />
+  <label class="form-check-label" for="entre20e30">Entre 20 e 30 pessoas</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Mais de 30 pessoas" name="segerirequipe" id="mais30" />
+  <label class="form-check-label" for="mais30">Mais de 30 pessoas</label>    
+</div>
+<div class="form-check segerirequipe ">
+  <input class="form-check-input" type="checkbox" value="Não sou gerente de equipe" name="segerirequipe" id="naoeh" />
+  <label class="form-check-label" for="naoeh">Não sou responsável por gerir uma equipe</label>    
+</div>
+
+
         <p class="text-center questions-titles">Se você pudesse trabalhar em outros setores, quais seriam? </p>
         <div class="competencias">
           <div class="form-check-competencias ">
@@ -1807,7 +1807,348 @@ if (isset($_POST['submit'])) {
             <label class="form-check-label d-block mt-2" for="habsace18">Não tenho ou não gostaria de informar</label>
           </div>
         </div>
+        <p class="text-center questions-titles">Selecione até 5 competências socioemocionais que você se identifica: </p>
+<div class="competencias">
+  
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia1" name="competencia[]" value="Afabilidade" />
+    <label class="form-check-label d-block mt-2" for="competencia1">Afabilidade</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia2" name="competencia[]"
+      value="Assertividade" />
+    <label class="form-check-label d-block mt-2" for="competencia2">Assertividade</label>
+  </div>
 
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia3" name="competencia[]" value="Autocontrole" />
+    <label class="form-check-label d-block mt-2" for="competencia3">Autocontrole</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia4" name="competencia[]"
+      value="Capacidade de agir sob pressão" />
+    <label class="form-check-label d-block mt-2" for="competencia4">Capacidade de agir<br> sob pressão</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia6" name="competencia[]"
+      value="Capacidade de análise e síntese" />
+    <label class="form-check-label d-block mt-2" for="competencia6">Capacidade de análise<br> e síntese</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia7" name="competencia[]"
+      value="Capacidade de comunicação" />
+    <label class="form-check-label d-block mt-2" for="competencia7">Capacidade de<br> comunicação</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia8" name="competencia[]"
+      value="Capacidade de concentração" />
+    <label class="form-check-label d-block mt-2" for="competencia8">Capacidade de<br> concentração</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia9" name="competencia[]"
+      value="Cooperação e trabalho em equipe" />
+    <label class="form-check-label d-block mt-2" for="competencia9">Cooperação e <br>trabalho em equipe</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia10" name="competencia[]"
+      value="Negociação e mediação" />
+    <label class="form-check-label d-block mt-2" for="competencia10">Negociação e mediação</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia11" name="competencia[]"
+      value="Capacidade de observação" />
+    <label class="form-check-label d-block mt-2" for="competencia11">Capacidade de<br> observação</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia12" name="competencia[]"
+      value="Condicionamento físico" />
+    <label class="form-check-label d-block mt-2" for="competencia12">Condicionamento físico</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia13" name="competencia[]"
+      value="Coordenação motora" />
+    <label class="form-check-label d-block mt-2" for="competencia13">Coordenação motora</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia14" name="competencia[]"
+      value="Criatividade" />
+    <label class="form-check-label d-block mt-2" for="competencia14">Criatividade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia15" name="competencia[]" value="Deferência" />
+    <label class="form-check-label d-block mt-2" for="competencia15">Deferência</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia16" name="competencia[]" value="Destreza" />
+    <label class="form-check-label d-block mt-2" for="competencia16">Destreza</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia17" name="competencia[]" value="Discrição" />
+    <label class="form-check-label d-block mt-2" for="competencia17">Discrição</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia18" name="competencia[]" value="Empatia" />
+    <label class="form-check-label d-block mt-2" for="competencia18">Empatia</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia19" name="competencia[]"
+      value="Equilíbrio emocional" />
+    <label class="form-check-label d-block mt-2" for="competencia19">Equilíbrio emocional</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia20" name="competencia[]" value="Esmero" />
+    <label class="form-check-label d-block mt-2" for="competencia20">Esmero</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia21" name="competencia[]" value="Ética" />
+    <label class="form-check-label d-block mt-2" for="competencia21">Ética</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia22" name="competencia[]"
+      value="Flexibilidade" />
+    <label class="form-check-label d-block mt-2" for="competencia22">Flexibilidade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia23" name="competencia[]"
+      value="Habilidade manual" />
+    <label class="form-check-label d-block mt-2" for="competencia23">Habilidade manual</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia24" name="competencia[]" value="Idoneidade" />
+    <label class="form-check-label d-block mt-2" for="competencia24">Idoneidade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia25" name="competencia[]"
+      value="Imparcialidade" />
+    <label class="form-check-label d-block mt-2" for="competencia25">Imparcialidade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia27" name="competencia[]" value="Iniciativa" />
+    <label class="form-check-label d-block mt-2" for="competencia27">Iniciativa</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia28" name="competencia[]"
+      value="Manter-se atualizado" />
+    <label class="form-check-label d-block mt-2" for="competencia28">Manter-se atualizado</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia29" name="competencia[]"
+      value="Objetividade" />
+    <label class="form-check-label d-block mt-2" for="competencia29">Objetividade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia30" name="competencia[]" value="Organização" />
+    <label class="form-check-label d-block mt-2" for="competencia30">Organização</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia31" name="competencia[]" value="Paciência" />
+    <label class="form-check-label d-block mt-2" for="competencia31">Paciência</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia32" name="competencia[]" value="Parcimônia" />
+    <label class="form-check-label d-block mt-2" for="competencia32">Parcimônia</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia33" name="competencia[]"
+      value="Percepção visual e táctil" />
+    <label class="form-check-label d-block mt-2" for="competencia33">Percepção visual <br>e táctil</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia34" name="competencia[]"
+      value="Persistência e tolerância" />
+    <label class="form-check-label d-block mt-2" for="competencia34">Persistência e tolerância</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia35" name="competencia[]" value="Prontidão" />
+    <label class="form-check-label d-block mt-2" for="competencia35">Prontidão</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia36" name="competencia[]"
+      value="Raciocínio analítico e dedutivo" />
+    <label class="form-check-label d-block mt-2" for="competencia36">Raciocínio analítico <br>e dedutivo</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia37" name="competencia[]"
+      value="Raciocínio lógico" />
+    <label class="form-check-label d-block mt-2" for="competencia37">Raciocínio lógico</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia38" name="competencia[]"
+      value="Respeito às diferenças" />
+    <label class="form-check-label d-block mt-2" for="competencia38">Respeito às diferenças</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia39" name="competencia[]"
+      value="Responsabilidade" />
+    <label class="form-check-label d-block mt-2" for="competencia39">Responsabilidade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia40" name="competencia[]"
+      value="Sociabilidade" />
+    <label class="form-check-label d-block mt-2" for="competencia40">Sociabilidade</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia41" name="competencia[]"
+      value="Tomar decisões observando diretrizes institucionais" />
+    <label class="form-check-label d-block mt-2" for="competencia41">Tomar decisões observando diretrizes
+      institucionais</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="competencia43" name="competencia[]"
+      value="Visão crítica" />
+    <label class="form-check-label d-block mt-2" for="competencia43">Visão crítica</label>
+  </div>
+  </div>
+
+<p class="text-center questions-titles">Selecione 5 competências técnicas que você se identifica: </p> 
+<div class="competencias">
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia1" name="hardcompetencia[]"
+      value="Proficiências completa em Word, Excel, PowerPoint e Outlook" />
+    <label class="form-check-label" for="hardcompetencia1">Proficiências completa em Word, Excel, PowerPoint e
+      Outlook</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia2" name="hardcompetencia[]"
+      value="Conhecimento em sistemas operacionais (windows, macOS, Linux)" />
+    <label class="form-check-label" for="hardcompetencia2">Conhecimento em sistemas operacionais (windows, macOS,
+      Linux)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia3" name="hardcompetencia[]"
+      value="Coleta de dados(pesquisa questionários entrevistas)" />
+    <label class="form-check-label" for="hardcompetencia3">Coleta de dados(pesquisa, questionários,
+      entrevistas)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia4" name="hardcompetencia[]"
+      value="Análise de dados quantitativos e qualitativos" />
+    <label class="form-check-label" for="hardcompetencia4">Análise de dados quantitativos e qualitativos</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia5" name="hardcompetencia[]"
+      value="Apresentação de dados de forma clara e atraente (gráficos, tabelas)" />
+    <label class="form-check-label" for="hardcompetencia5">Apresentação de dados de forma clara e atraente
+      (gráficos, tabelas)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia6" name="hardcompetencia[]"
+      value="Domínio de programas de design gráfico (Adobe Illustrator, Adobe Photoshop, CorelDRAW)" />
+    <label class="form-check-label" for="hardcompetencia6">Domínio de programas de design gráfico (Adobe
+      Illustrator, Adobe Photoshop, CorelDRAW)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia7" name="hardcompetencia[]"
+      value="Conhecimento de princípios de design (cores, tipografia, composição)" />
+    <label class="form-check-label" for="hardcompetencia7">Conhecimento de princípios de design (cores,
+      tipografia, composição)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia8" name="hardcompetencia[]"
+      value="Criação de conteúdo para mídias sociais (imagens, vídeos, infográficos)" />
+    <label class="form-check-label" for="hardcompetencia8">Criação de conteúdo para mídias sociais (imagens,
+      vídeos, infográficos)</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia9" name="hardcompetencia[]"
+      value="Escrita clara concisa e gramaticalmente correta" />
+    <label class="form-check-label" for="hardcompetencia9">Escrita clara, concisa e gramaticalmente
+      correta</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia10" name="hardcompetencia[]"
+      value="Habilidade em redação acadêmica, jornalística ou técnica" />
+    <label class="form-check-label" for="hardcompetencia10">Habilidade em redação acadêmica, jornalística ou
+      técnica</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia11" name="hardcompetencia[]"
+      value="Vocabulário variado e adequado ao contexto" />
+    <label class="form-check-label" for="hardcompetencia11">Vocabulário variado e adequado ao contexto</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia12" name="hardcompetencia[]"
+      value="Proficiência em línguas estrangeiras" />
+    <label class="form-check-label" for="hardcompetencia12">Proficiência em línguas estrangeiras</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia13" name="hardcompetencia[]"
+      value="Capacidade de comunicação escrita e verbal em diferentes idiomas" />
+    <label class="form-check-label" for="hardcompetencia13">Capacidade de comunicação escrita e verbal em
+      diferentes idiomas</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia14" name="hardcompetencia[]"
+      value="Tradução e interpretação em idiomas estrangeiros" />
+    <label class="form-check-label" for="hardcompetencia14">Tradução e interpretação em idiomas
+      estrangeiros</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia15" name="hardcompetencia[]"
+      value="Edição de imagens e retoque fotográfico" />
+    <label class="form-check-label" for="hardcompetencia15">Edição de imagens e retoque fotográfico</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia16" name="hardcompetencia[]"
+      value="Experiência com softwares ou equipamentos específicos da área de atuação" />
+    <label class="form-check-label" for="hardcompetencia16">Experiência com softwares ou equipamentos específicos
+      da área de atuação</label>
+  </div>
+
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia17" name="hardcompetencia[]"
+      value="Conhecimento especializado em áreas específicas (exemplo: programação, contabilidade)" />
+    <label class="form-check-label" for="hardcompetencia17">Conhecimento especializado em áreas específicas
+      (exemplo: programação, contabilidade)</label>
+  </div>
+  
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia18" name="hardcompetencia[]"
+      value="Capacidade de resolver problemas técnicos e propor soluções inovadoras" />
+    <label class="form-check-label" for="hardcompetencia18">Capacidade de resolver problemas técnicos e propor
+      soluções inovadoras</label>
+  </div>
+  <div class="form-check-competencias">
+    <input type="checkbox" class="form-check-input" id="hardcompetencia19" name="hardcompetencia[]"
+      value="Atualização constante em relação às novas tecnologias e tendências da área" />
+    <label class="form-check-label" for="hardcompetencia19">Atualização constante em relação às novas tecnologias
+      e tendências da área</label>
+  </div>
+</div>
         <p class="text-center questions-titles" > Selecione até 5 atividades com as quais você prefere trabalhar</p>
         <div class="competencias">
           <div class="form-check-competencias">
@@ -1820,11 +2161,7 @@ if (isset($_POST['submit'])) {
               value="trabalho com recursos tecnológicos, digitais, virtuais" />
             <label class="form-check-label d-block mt-2" for="atividadesp2">trabalho com recursos tecnológicos, digitais, virtuais</label>
           </div>
-          <div class="form-check-competencias">
-            <input type="checkbox" class="form-check-input" id="atividadesp3" name="atividadesp[]"
-              value="Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica" />
-            <label class="form-check-label d-block mt-2" for="atividadesp3">Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica</label>
-          </div>
+      
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp4" name="atividadesp[]"
               value="Atividades Administrativas" />
@@ -1891,11 +2228,17 @@ if (isset($_POST['submit'])) {
             <label class="form-check-label d-block mt-2" for="atividadesp16">Trabalho com grupos (oficinas, palestras, orientações)</label>
           </div>
   
-  
+          <div class="form-check-competencias">
+            <input type="checkbox" class="form-check-input" id="atividadesp3" name="atividadesp[]"
+              value="Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica" />
+            <label class="form-check-label d-block mt-2" for="atividadesp3">Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica</label>
+          </div>
           
   </div>
 
         </div> <!--AQUI ACABA A PÁGINA 3-->
+
+      
         <div class="d-flex justify-content-between">
           <button type="button" class="btn btn-outline-primary btn-rounded" id="prev-button" data-mdb-ripple-color="dark">Anterior</button>
           <button type="button" class="btn btn-outline-primary btn-rounded" id="next-button" data-mdb-ripple-color="dark">Próximo</button>

@@ -11,25 +11,25 @@ $query = "SELECT id FROM usuarios ORDER BY id DESC LIMIT 1";
 $resultId = mysqli_query($conn, $query);
 
 if ($resultId) {
-    // Verifique quantas linhas foram retornadas (deve ser 1 ou 0)
+
     $numRows = mysqli_num_rows($resultId);
 
     if ($numRows > 0) {
-        // O último ID registrado é igual ao número de registros
+   
         $row = mysqli_fetch_assoc($resultId);
         $ultimoID = $row['id'];
-
-        // Defina uma variável JavaScript com o valor
+      
+       
         echo "<script>var numeroServidores = {$ultimoID};</script>";
     } else {
         // Não há registros na tabela
         echo "<script>var numeroServidores = 0;</script>";
     }
 
-    // Lembre-se de liberar o resultado da consulta
+  
     mysqli_free_result($resultId);
 } else {
-    // Lida com erros de consulta, se houver algum
+  
     echo "Erro na consulta: " . mysqli_error($conn);
 }
 
@@ -124,6 +124,7 @@ foreach ($firstquestionSelecionadas as $firstquestion) {
 }
 
 $firstquestionPHP = json_encode($firstquestionData);
+
 mysqli_close($conn);
 ?>
 
@@ -282,7 +283,7 @@ mysqli_close($conn);
 
                                             var legend = chart.children.push(am5.Legend.new(root, {
                                                 centerX: am5.percent(50),
-                                                x: am5.percent(30),
+                                                x: am5.percent(50),
                                                 marginTop: 15,
                                                 marginBottom: 15
                                             }));
@@ -326,7 +327,7 @@ mysqli_close($conn);
 
                                             var legend = chart.children.push(am5.Legend.new(root, {
                                                 centerX: am5.percent(48),
-                                                x: am5.percent(80),
+                                                x: am5.percent(75),
                                                 marginTop: 15,
                                                 marginBottom: 15
                                         

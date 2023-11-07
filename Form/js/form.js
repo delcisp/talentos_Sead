@@ -1,3 +1,17 @@
+// Função para impedir o reload da página
+function preventReload() {
+
+  // Cancela o evento de submit do formulário
+  event.preventDefault();
+
+  // Retorna false para evitar que o código PHP seja executado
+  return false;
+
+}
+
+// Adiciona o evento de submit ao formulário
+document.querySelector("form").addEventListener("submit", preventReload);
+
 // Função para lidar com a seleção exclusiva de checkboxes em um grupo
 function handleCheckboxGroup(groupClass) {
   const checkboxes = document.querySelectorAll(`.${groupClass} input[type="checkbox"]`);
@@ -20,6 +34,15 @@ handleCheckboxGroup('realizacaodetrabalho');
 handleCheckboxGroup('reuniaodetrabalho');
 handleCheckboxGroup('deadlines');
 handleCheckboxGroup('timeofservice');
+handleCheckboxGroup('raca');
+handleCheckboxGroup('anosdeservico');
+handleCheckboxGroup('tipoinstituicao');
+handleCheckboxGroup('zona');
+handleCheckboxGroup('segerirequipe');
+handleCheckboxGroup('servicosaude');
+handleCheckboxGroup('meiotransporte');
+handleCheckboxGroup('tipoescola');
+handleCheckboxGroup('orientacao');
 
 $("#cep").blur(function(){
   // Remove tudo o que não é número para fazer a pesquisa
@@ -53,8 +76,9 @@ $("#cep").blur(function(){
 
 //colocando mascara nos inputs
 $('#telefone').mask('(00) 00000-0000');
-$('#data').mask('00/00/0000');
-//$('#cep').mask('00000-000')
+$('#birthdate').mask('00/00/0000');
+$('#cep').mask('00000-000');
+
 
 document.addEventListener("DOMContentLoaded", function() {
   const selectedElement = document.getElementById("funcaogratificada");
@@ -187,7 +211,9 @@ limitarSelecoes(checkboxesSetorOpcional, 3, ' setores opcionais' );
     selectElement.addEventListener("change", function(){
       const selectedOption = selectElement.options[selectElement.selectedIndex].value;
     
-    if (selectedOption === "Graduação" || selectedOption === "Pós-graduação" || selectedOption === "Especialização" || selectedOption === "Mestrado" || selectedOption === "Doutorado") {
+    if (selectedOption === "Ensino Superior Incompleto" || selectedOption === "Ensino Superior Completo" ||  selectedOption === "Pós-graduação Incompleta" ||
+     selectedOption === "Pós-graduação Completa" || selectedOption === "Mestrado Incompleto" || selectedOption === "Mestrado Completo" || selectedOption === "Doutorado Completo" ||
+    selectedOption === "Doutorado Incompleto") {
     
       degreeTextareaDiv.style.display = "block";
       degreeTextareaDiv.style.marginTop = "10px";

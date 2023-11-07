@@ -15,7 +15,7 @@
     <embed src="./Lgpd/lgpd.pdf" type="application/pdf" width="100%" height="600px" />
     <div class="terms">
       <input type="checkbox" id="agree-checkbox">
-      <label for="agree-checkbox">Li e concordo com os termos do documento LGPD</label>
+      <label for="agree-checkbox">Ao submeter este formulário, estou ciente que minhas informações serão armazenadas e utilizadas para estudos, pesquisas e formulação de projetos. Fico também ciente que a xxxxx (preencher aqui?) poderá entrar em contato comigo sobre assuntos relacionados a minha função na SEAD.</label>
     </div>
     <button id="continue-button" disabled>Continuar</button>
   </div>

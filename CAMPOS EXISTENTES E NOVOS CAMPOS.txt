@@ -1,22 +1,21 @@
 CAMPOS EXISTENTES E NOVOS CAMPOS
 CAMPOS EXISTENTES 
-1 - Nome
-2 - Sobrenome
-3 - Data de Nascimento
-4 - Telefone
-5 - CEP
-6 - Bairro
-7 - Endereco
-8 - Estado
-9 - Cidade
-10 - Tipo sanguinio
-11 - Você é doador de órgãos?
-12 - Qual a sua cor ou raça? - asiatica
-13 - Qual o seu grau de escolaridade? ensino fundamental incompleto e completo, ensino medio incompleto e completo, ensino superior incompleto e completo, pos-graduacao incompleta e completa, mestrado idem, doutorado idem
-14 - Você já atua na sua área de formação?
-15 - Qual a sua identidade de gênero?
+1 - Nome  OK
+2 - Sobrenome OK
+3 - Data de Nascimento OK
+4 - Telefone OK
+5 - CEP OK
+6 - Bairro OK
+7 - Endereco OK
+8 - Estado OK
+9 - Cidade OK
+10 - Tipo sanguinio OK
+11 - Você é doador de órgãos? OK
+12 - Qual a sua cor ou raça? - asiatica OK
+13 - Qual o seu grau de escolaridade? ensino fundamental incompleto e completo, ensino medio incompleto e completo, ensino superior incompleto e completo, pos-graduacao incompleta e completa, mestrado idem, doutorado idem OK
+15 - Qual a sua identidade de gênero? OK
 16 - Relacione abaixo até 3 cursos de curta duração que você considere importantes dentro da sua formação:
-17 - Qual a sua situação funcional atual?
+17 - Qual a sua situação funcional atual? 
 18 - Departamento
 19 - Você tem função gratificada?
 20 - Quanto tempo está na instituição?
@@ -42,19 +41,19 @@ CAMPOS EXISTENTES
 
 NOVOS CAMPOS 
 
-40 - Email institucional
-41 - cpf
+40 - Email institucional OK
+41 - cpf OK 
 42 - Numero de matricula
-43 - Orientação Sexual 
-44 - nacionalidade
-45 - UF de Nascimento
-46 - Naturalidade (Cidade de Nascimento)
-47 - Estado civil
-48 - Possui alguma deficiência?
-49 - Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor: 
-50 - Quantidade de anos de atuação no Serviço Público:
-51 - Você é responsável por gerir uma equipe? 
-52 - Se sim, quantas pessoas? 
+43 - Orientação Sexual OK 
+44 - nacionalidade OK
+45 - UF de Nascimento OK
+46 - Naturalidade (Cidade de Nascimento) OK
+47 - Estado civil OK
+48 - Possui alguma deficiência? OK
+49 - Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor: OK
+50 - Quantidade de anos de atuação no Serviço Público: OK
+51 - Você é responsável por gerir uma equipe? OK
+52 - Se sim, quantas pessoas? OK
 53 - Mentalidade Inclusiva 
 54 - Liderança e Gestão de Pessoas 
 55 - Inteligência emocional
@@ -62,3 +61,13 @@ NOVOS CAMPOS
 57 - Pensamento criativo
 58 - Articulação
 59 - Fluência digital
+60 - Qual é o tipo de moradia em que você reside? OK
+61 - Quantas pessoas residem na sua moradia? OK
+62 - Em qual zona da cidade está localizada a sua moradia? OK
+63 - No seu dia a dia, quais são os meios de transporte que você utiliza com mais frequência? ok
+64 - Na maioria de seus anos de estudo, qual tipo de escola você frequentou? ok
+65 - Como você acessa os serviços de saúde? ok
+66 - Nome do curso mais recente:  OK
+67 - Nome da instituição em que finalizou o diploma mais recente: OK  
+68 - Tipo de instituição em que finalizou o diploma mais recente: OK
+
