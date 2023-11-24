@@ -40,6 +40,10 @@
   }
 }
 
+.form-sub-label {
+  margin-right: 0;
+}
+
 
 .tooltip {
   position: relative;

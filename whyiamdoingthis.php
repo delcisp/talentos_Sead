@@ -10,7 +10,7 @@
     <div class="container">
         <img src="./Imagens/logo_gov_azul.png" alt="Imagem" class="imagem">
         <h1>Olá, seja muito bem-vindo(a) ao Censo de Talentos da SEAD Amazonas 2023!</h1>
-    <p style="font-size:larger ;">Este levantamento tem como finalidade aprofundar nosso entendimento sobre o perfil demográfico, formação acadêmica e experiência
+    <p style="font-size:larger; margin-left:0; " class="text-start text-left" >Este levantamento tem como finalidade aprofundar nosso entendimento sobre o perfil demográfico, formação acadêmica e experiência
      profissional dos servidores que desempenham um papel fundamental em nossa Secretaria. Além disso, constituirá uma valiosa oportunidade
       para identificar áreas de aprimoramento, a fim de continuarmos trabalhando na construção de trilhas de desenvolvimento como uma das estratégias 
       de engajamento e valorização dos nossos servidores. A sua participação é fundamental! O preenchimento deste formulário leva menos de 15 minutos. </p>

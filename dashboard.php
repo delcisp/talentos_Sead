@@ -200,7 +200,7 @@ mysqli_close($conn);
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="../../dashtable.php">
+                        <a class="nav-link" href="dashtable.php">
                             <img width="40" height="40"
                                 src="https://img.icons8.com/ios/50/commercial-development-management.png"
                                 alt="commercial-development-management" />
@@ -208,7 +208,7 @@ mysqli_close($conn);
                         </a>
                     </li>
                     <li>
-                        <a class="nav-link" href="../../lgpd.php">
+                        <a class="nav-link" href="whyiamdoingthis.php">
                             <img width="40" height="40"
                                 src="https://img.icons8.com/external-smashingstocks-mixed-smashing-stocks/68/external-Form-audit-smashingstocks-mixed-smashing-stocks.png"
                                 alt="external-Form-audit-smashingstocks-mixed-smashing-stocks" />
@@ -242,7 +242,7 @@ mysqli_close($conn);
                         </ul>
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item">
-                                <a class="nav-link" href="../../index.php">
+                                <a class="nav-link" href="/sead_talentos">
                                     <img width="28" height="28" src="https://img.icons8.com/metro/26/exit.png"
                                         alt="exit" />
                                     <span class="no-icon">Sair</span>

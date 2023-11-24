@@ -1,17 +1,3 @@
-// Função para impedir o reload da página
-function preventReload() {
-
-  // Cancela o evento de submit do formulário
-  event.preventDefault();
-
-  // Retorna false para evitar que o código PHP seja executado
-  return false;
-
-}
-
-// Adiciona o evento de submit ao formulário
-document.querySelector("form").addEventListener("submit", preventReload);
-
 // Função para lidar com a seleção exclusiva de checkboxes em um grupo
 function handleCheckboxGroup(groupClass) {
   const checkboxes = document.querySelectorAll(`.${groupClass} input[type="checkbox"]`);
@@ -43,6 +29,7 @@ handleCheckboxGroup('servicosaude');
 handleCheckboxGroup('meiotransporte');
 handleCheckboxGroup('tipoescola');
 handleCheckboxGroup('orientacao');
+handleCheckboxGroup('temposead');
 
 $("#cep").blur(function(){
   // Remove tudo o que não é número para fazer a pesquisa
@@ -78,28 +65,6 @@ $("#cep").blur(function(){
 $('#telefone').mask('(00) 00000-0000');
 $('#birthdate').mask('00/00/0000');
 $('#cep').mask('00000-000');
-
-
-document.addEventListener("DOMContentLoaded", function() {
-  const selectedElement = document.getElementById("funcaogratificada");
-  const gratificationTextareaDiv = document.getElementById("gratificationTextareaDiv");
-  const gratificationTextarea = document.getElementById("gratificationTextarea");
-    
-  selectedElement.addEventListener("change", function() {
-    const selectedOption = selectedElement.options[selectedElement.selectedIndex].value;
-    if (selectedOption === "Sim") {
-      gratificationTextareaDiv.style.display = "block";
-      gratificationTextareaDiv.style.marginTop = "10px";
-      gratificationTextarea.style.width = "100%";
-      gratificationTextarea.style.height = "60px"; 
-      gratificationTextarea.style.resize = "none";
-      gratificationTextarea.style.borderRadius = "5px";
-    } else {
-      gratificationTextareaDiv.style.display= "none";
-    }
-  });
-});
-
 
 function redirecionar() {
     window.location.href = './agradecimento.php';
@@ -139,95 +104,33 @@ limitarSelecoes(checkboxesCompetenciaTecnica, 5, ' competências técnicas');
 limitarSelecoes(checkboxesSetorOpcional, 3, ' setores opcionais' );
   
 
-  // QUANDO O USUARIO SELECIONAR "OUTROS"
-  function mostrarCampoPersonalizado(selectElement) {
-    var campoPersonalizado = document.getElementById('campoPersonalizado');
-    var textoPersonalizado = document.getElementById('textoPersonalizado');
+document.addEventListener("DOMContentLoaded", function() {
 
-    if (selectElement.value === 'outros') {
-      campoPersonalizado.style.display = 'block';
-      textoPersonalizado.required = true;
-    } else {
-      campoPersonalizado.style.display = 'none';
-      textoPersonalizado.required = false;
-    }
+  const selectElement = document.getElementById("firstquestion");
+  const degreeTextareaDiv = document.getElementById("degreeTextareaDiv");
+  const secondDegreeTextareaDiv = document.getElementById("secondDegreeTextareaDiv");
+  const degreeTextarea = document.getElementById("degreeTextarea");
+  const secondDegreeTextarea = document.getElementById("secondDegreeTextarea");
+  
+  selectElement.addEventListener("change", function(){
+    const selectedOption = selectElement.options[selectElement.selectedIndex].value;
+  
+  if (selectedOption === "Ensino Superior Incompleto" || selectedOption === "Ensino Superior Completo" ||  selectedOption === "Pós-graduação Incompleta" ||
+   selectedOption === "Pós-graduação Completa" || selectedOption === "Mestrado Incompleto" || selectedOption === "Mestrado Completo" || selectedOption === "Doutorado Completo" ||
+  selectedOption === "Doutorado Incompleto") {
+  
+    degreeTextareaDiv.style.display = "block";
+    degreeTextareaDiv.style.marginTop = "10px";
+    secondDegreeTextareaDiv.style.display = "block";
+  } else {
+    degreeTextareaDiv.style.display = "none";
+    secondDegreeTextareaDiv.style.display = "none";
   }
-
-  function atualizarOpcaoPersonalizada(valor) {
-    var selectElement = document.getElementById('input_4');
-    var opcaoPersonalizada = selectElement.querySelector('option[value="outros"]');
-
-    if (opcaoPersonalizada) {
-      opcaoPersonalizada.innerHTML = valor;
-      opcaoPersonalizada.value = valor;
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function() {
-
-    const ratingInputs = document.querySelectorAll('input[name="ratingq"]');
-
-    const justificationTextarea = document.createElement("textarea");
-    justificationTextarea.setAttribute("id", "justification");
-    justificationTextarea.setAttribute("name", "justification");
-    justificationTextarea.setAttribute("placeholder", "Pode justificar a sua resposta?");
-    justificationTextarea.style.display = "none";
-
-
-    const formInputWide = document.getElementById("cid_7");
-    formInputWide.appendChild(justificationTextarea);
-
-    
-    function handleRatingChange() {
-      justificationTextarea.style.width = "97%";
-    justificationTextarea.style.height = "100px";
-    justificationTextarea.style.resize = "none"; 
   
-  
-      const selectedRating = parseInt(document.querySelector('input[name="ratingq"]:checked').value);
-
-
-      if (selectedRating <= 5) {
-        justificationTextarea.style.display = "block";
-      } else {
-        justificationTextarea.style.display = "none";
-      }
-    }
-
-  
-    ratingInputs.forEach(input => {
-      input.addEventListener("change", handleRatingChange);
-    });
+  } )
   });
-  
   document.addEventListener("DOMContentLoaded", function() {
-
-    const selectElement = document.getElementById("firstquestion");
-    const degreeTextareaDiv = document.getElementById("degreeTextareaDiv");
-    const secondDegreeTextareaDiv = document.getElementById("secondDegreeTextareaDiv");
-    const degreeTextarea = document.getElementById("degreeTextarea");
-    const secondDegreeTextarea = document.getElementById("secondDegreeTextarea");
-    
-    selectElement.addEventListener("change", function(){
-      const selectedOption = selectElement.options[selectElement.selectedIndex].value;
-    
-    if (selectedOption === "Ensino Superior Incompleto" || selectedOption === "Ensino Superior Completo" ||  selectedOption === "Pós-graduação Incompleta" ||
-     selectedOption === "Pós-graduação Completa" || selectedOption === "Mestrado Incompleto" || selectedOption === "Mestrado Completo" || selectedOption === "Doutorado Completo" ||
-    selectedOption === "Doutorado Incompleto") {
-    
-      degreeTextareaDiv.style.display = "block";
-      degreeTextareaDiv.style.marginTop = "10px";
-      secondDegreeTextareaDiv.style.display = "block";
-    } else {
-      degreeTextareaDiv.style.display = "none";
-      secondDegreeTextareaDiv.style.display = "none";
-    }
-    
-    } )
-    });
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    const selectedElement = document.getElementById("input_7");
+    const selectedElement = document.getElementById("funcaogratificada");
     const gratificationTextareaDiv = document.getElementById("gratificationTextareaDiv");
     const gratificationTextarea = document.getElementById("gratificationTextarea");
       
@@ -245,4 +148,22 @@ limitarSelecoes(checkboxesSetorOpcional, 3, ' setores opcionais' );
       }
     });
   });
-  
+  document.addEventListener("DOMContentLoaded", function() {
+    const selectedElement = document.getElementById("cargo");
+    const roleTextareaDiv = document.getElementById("roleTextareaDiv");
+    const roleTextarea = document.getElementById("roleTextarea");
+      
+    selectedElement.addEventListener("change", function() {
+      const selectedOption = selectedElement.options[selectedElement.selectedIndex].value;
+      if (selectedOption === "Outro") {
+        roleTextareaDiv.style.display = "block";
+        roleTextareaDiv.style.marginTop = "10px";
+        roleTextarea.style.width = "100%";
+        roleTextarea.style.height = "60px"; 
+        roleTextarea.style.resize = "none";
+        roleTextarea.style.borderRadius = "5px";
+      } else {
+        roleTextareaDiv.style.display= "none";
+      }
+    });
+  });

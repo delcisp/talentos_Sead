@@ -1,67 +1,147 @@
 <?php
 
 //PARA ZERAR OS REGISTROS DE ID NO BANCO DE DADOS E COMEÇAR DO ID 1 O COMANDO É : ALTER TABLE usuarios AUTO_INCREMENT = 1;
-
+session_start();
 if (isset($_POST['submit'])) {
   // Verifica se todas as perguntas foram respondidas
   $allAnswered = true;
   $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
 
-  $cargoSelecionado = $_POST["role"];
-  $bloodtypeSelecionado = $_POST["bloodtype"];
-  $formacaoSelecionada = $_POST["firstquestion"];
-  $departamentoSelecionado = $_POST["departament"];
+  $cargoSelecionado = isset($_POST["role"]) ? $_POST["role"] : null;
+  $bloodtypeSelecionado = isset($_POST["bloodtype"]) ? $_POST["bloodtype"] : null;
+  $formacaoSelecionada = isset($_POST["firstquestion"]) ? $_POST["firstquestion"] : null;
+  $departamentoSelecionado = isset($_POST["departament"]) ? $_POST["departament"] : null;
   if ($bloodtypeSelecionado == "Selecione" || empty($bloodtypeSelecionado)  || $departamentoSelecionado == "Selecione" || empty($departamentoSelecionado) || $cargoSelecionado == "Selecione" || empty($cargoSelecionado) || 
-  $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["birthdate"]) || empty($_POST["cep"]) || empty($_POST["uf"])
-|| empty($_POST["cidade"])  || empty($_POST["bloodtype"]) || empty($_POST["bairro"]) || empty($_POST["endereco"])  || empty($_POST["raca"])
-  || empty($_POST["genero"])  || empty($_POST["doador"])  || empty($_POST["telefone"]) || empty(($_POST["situacaofunc"])) || empty($_POST["timeofservice"]) || empty($_POST["funcaogratificada"]) || empty($_POST["formadetrabalho"]) 
-  || empty($_POST["reuniaotrabalho"]) ||  empty($_POST["deadlines"])  || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0) {
+  $formacaoSelecionada == "Selecione" || empty($formacaoSelecionada) || empty($_POST["firstname"]) || empty($_POST["lastname"]) || empty($_POST["email"]) || empty($_POST["birthdate"]) || empty($_POST["telefone"])
+  || empty($_POST["cpf"]) || empty($_POST["bairro"]) || empty($_POST["cep"]) || empty($_POST["endereco"]) || empty($_POST["nacionalidade"]) || empty($_POST["ufnascimento"]) || empty($_POST["cidadenascimento"]) || empty($_POST["estadocivil"]) 
+  || empty($_POST["deficiencia"]) || empty($_POST["doador"]) || empty($_POST["raca"]) || empty($_POST["genero"]) || empty($_POST["tipomoradia"]) || empty($_POST["pessoamoradia"]) 
+  || empty($_POST["zona"]) || empty($_POST["situacaofunc"]) || empty($_POST["funcaogratificada"]) || empty($_POST["matricula"]) || empty($_POST["nomecurso"]) || empty($_POST["instituicao"]) || empty($_POST["tipoescola"])
+  || empty($_POST["timeofservice"]) || empty($_POST["nomeinstituicao"]) || empty($_POST["formadetrabalho"]) || empty($_POST["teletrabalho"]) || empty($_POST["reuniaotrabalho"]) || empty($_POST["deadlines"]) 
+  || empty($_POST["servicosaude"]) || empty($_POST["meiotransporte"]) || empty($_POST["anosdeservico"]) || empty($_POST["habespacial"]) || empty($_POST["habcorporal"]) || empty($_POST["habmusical"]) || empty($_POST["hablinguistica"])
+  || empty($_POST["segerirequipe"]) || empty($_POST["interesse"]) || empty($_POST["empatia"])  || empty($_POST["participacao"]) || empty($_POST["inclusao"]) || empty($_POST["conhecimento"]) || empty($_POST["conhecimento"]) 
+  || empty($_POST["ambienteseguro"])|| empty($_POST["trabalhoemequipe"]) || empty($_POST["emocoes"]) || empty($_POST["controle"]) || empty($_POST["reconhecimento"]) || empty($_POST["conflitos"]) || empty($_POST["metasclaras"]) || empty($_POST["temposead"])
+  || empty($_POST["prioridades"]) || empty($_POST["impactos"]) || empty($_POST["sucessos"]) || empty($_POST["metodos"]) || empty($_POST["explorar"]) || empty($_POST["disposicao"]) || empty($_POST["colaboracao"]) 
+  || empty($_POST["receptiva"]) || empty($_POST["confianca"]) || empty($_POST["eficiencia"]) || empty($_POST["dialogo"]) || empty($_POST["parcerias"]) || empty($_POST["possibilidades"]) || empty($_POST["ferramentas"]) || count($_POST["setorop"]) == 0 || count($_POST["habsace"]) == 0 || count($_POST["atividadesp"]) == 0  || count($_POST["competencia"]) == 0 || count($_POST["hardcompetencia"]) == 0   
+   ) {
     $allAnswered = false;
     $errorMsg = "Por favor, responda todas as perguntas antes de prosseguir.";
   }
-//timeofservice funcaogratificada formadetrabalho reuniaotrabalho deadlines suggestion
+
   if ($allAnswered) {
     include_once('config.php');
+    
+    // Supondo que você tenha uma variável de sessão que armazena o ID do usuário (por exemplo, $_SESSION['user_id'])
+    $id_user = $_SESSION['user_id'];
+
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
-    $departament = $_POST['departament'];
-    $role = $_POST['role'];
-    $firstquestion = $_POST['firstquestion'];
+    $email = $_POST['email'];
     $birthdate = $_POST['birthdate'];
-    $telefone = $_POST['telefone'];
+    $telefone =  $_POST['telefone'];
+    $cpf = $_POST['cpf'];
+    $bairro =  $_POST['bairro'];
     $cep = $_POST['cep'];
-    $cidade = $_POST['cidade'];
-    $uf = $_POST['uf'];
-    $bairro = $_POST['bairro'];
     $endereco = $_POST['endereco'];
+    $nacionalidade = $_POST['nacionalidade'];
+    $ufnascimento = $_POST['ufnascimento'];
+    $cidadenascimento = $_POST['cidadenascimento'];
+    $estadocivil = $_POST['estadocivil'];
+    $deficiencia = $_POST['deficiencia'];
     $bloodtype = $_POST['bloodtype'];
+    $doador =  $_POST['doador'];
+    $raca =   $_POST['raca'];
     $genero = $_POST['genero'];
-    $raca = $_POST['raca'];
-    $doador = $_POST['doador'];
+    $tipomoradia = $_POST['tipomoradia'];
+    $pessoamoradia = $_POST['pessoamoradia'];
+    $zona = $_POST['zona'];
+    
     $situacaofunc = $_POST['situacaofunc'];
-    $timeofservice = $_POST['timeofservice'];
+    $departament = $_POST['departament'];
     $funcaogratificada = $_POST['funcaogratificada'];
+    $temfuncaogratificada = $_POST['temfuncaogratificada'];
+    $role = $_POST['role'];
+    $anotherrole = $_POST['anotherrole'];
+    $matricula = $_POST['matricula'];
+    $firstquestion = $_POST['firstquestion'];
+    $nomecurso = $_POST['nomecurso'];
+    $instituicao = $_POST['instituicao'];
+    $tipoescola = $_POST['tipoescola'];
+    $timeofservice = $_POST['timeofservice'];
+    $nomeinstituicao = $_POST['nomeinstituicao'];
     $formadetrabalho = $_POST['formadetrabalho'];
+    $teletrabalho = $_POST['teletrabalho'];
     $reuniaotrabalho = $_POST['reuniaotrabalho'];
-    $deadlines = $_POST['deadlines'];
-    $habespacial = $_POST['habespacial'];
+    $deadlines =  $_POST['deadlines'];
+    $servicosaude = $_POST['servicosaude'];
+    $meiotransporte = $_POST['meiotransporte'];
+    $anosdeservico = $_POST['anosdeservico'];
+    $temposead = $_POST['temposead'];
+    $degreetextarea  = $_POST['degreetextarea'];
+    $seconddegreetextarea = $_POST['seconddegreetextarea'];
+
+    $habespacial = $_POST['habespacial']; 
     $habcorporal = $_POST['habcorporal'];
     $habmusical = $_POST['habmusical'];
     $hablinguistica = $_POST['hablinguistica'];
     $habmath = $_POST['habmath'];
     $habinterpessoal = $_POST['habinterpessoal'];
     $habnatureba = $_POST['habnatureba'];
-    $habemocional = $_POST['habemocional'];
-    $tinycourses = $_POST['tinycourses'];
-    $degreetextarea = $_POST['degreetextarea'];
-    $temfuncaogratificada = $_POST['temfuncaogratificada'];
-    $teletrabalho = $_POST['teletrabalho'];
-    $permuta = $_POST['permuta'];
-    $seconddegreetextarea =  $_POST['seconddegreetextarea'];
+    $habemocional =  $_POST['habemocional'];
+    $segerirequipe = $_POST['segerirequipe'];
+    $setorop = $_POST['setorop'];
+    $habsace = $_POST['habsace'];
+    $atividadesp = $_POST['atividadesp'];
+
+    $interesse = $_POST['interesse'];
+    $empatia = $_POST['empatia'];
+    $participacao = $_POST['participacao'];
+    $inclusao = $_POST['inclusao'];
+    $conhecimento = $_POST['conhecimento'];
+    $ambienteseguro = $_POST['ambienteseguro'];
+    $trabalhoemequipe =  $_POST['trabalhoemequipe'];
+    $emocoes = $_POST['emocoes'];
+    $controle = $_POST['controle'];
+    $reconhecimento = $_POST['reconhecimento'];
+    $conflitos = $_POST['conflitos'];
+    $metasclaras = $_POST['metasclaras'];
+    $prioridades = $_POST['prioridades'];
+    $impactos = $_POST['impactos'];
+    $sucessos = $_POST['sucessos'];
+    $metodos = $_POST['metodos'];
+    $explorar = $_POST['explorar'];
+    $disposicao = $_POST['disposicao'];
+    $colaboracao = $_POST['colaboracao'];
+    $receptiva = $_POST['receptiva'];
+    $confianca = $_POST['confianca'];
+    $dialogo = $_POST['dialogo'];
+    $parcerias = $_POST['parcerias'];
+    $possibilidades = $_POST['possibilidades'];
+    $ferramentas = $_POST['ferramentas'];
+    $eficiencia = $_POST['eficiencia'];
+    $suggestion = $_POST['suggestion'];
+
+
     
+
+    $birthdate = str_replace('/', '-', $birthdate);
+    $birthdate = date('Y-m-d', strtotime($birthdate));
+
+    $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
+
+
+    $query = "INSERT INTO personal_data (id_user, firstname, lastname, email, birthdate, telefone, cpf, bairro, cep, endereco, nacionalidade, ufnascimento, cidadenascimento, estadocivil, deficiencia, bloodtype,
+     doador, raca, genero, tipomoradia, pessoamoradia, zona) VALUES ('$id_user', '$firstname', '$lastname', '$email', '$birthdate', '$telefone', '$cpf', '$bairro', '$cep', '$endereco', '$nacionalidade', '$ufnascimento',
+    '$cidadenascimento', '$estadocivil', '$deficiencia', '$bloodtype', '$doador', '$raca', '$genero', '$tipomoradia', '$pessoamoradia', '$zona')";
+    $result = mysqli_query($conn, $query);
+
+    $query = "INSERT INTO professional_road (id_user,  situacaofunc, departament, funcaogratificada, role, anotherrole, matricula, firstquestion, nomecurso, instituicao, tipoescola, timeofservice, nomeinstituicao, formadetrabalho, teletrabalho, reuniaotrabalho, deadlines, servicosaude, meiotransporte, anosdeservico, temfuncaogratificada,
+     temposead, degreetextarea, seconddegreetextarea) 
+    VALUES ('$id_user', '$situacaofunc', '$departament', '$funcaogratificada', '$role', '$anotherrole', '$matricula', '$firstquestion', '$nomecurso', '$instituicao', '$tipoescola', '$timeofservice', '$nomeinstituicao', '$formadetrabalho', '$teletrabalho', '$reuniaotrabalho', '$deadlines', '$servicosaude', '$meiotransporte', '$anosdeservico', '$temfuncaogratificada', 
+    '$temposead', '$degreetextarea', '$seconddegreetextarea')";
+    $result2 = mysqli_query($conn, $query);
+
     $competenciaSelecionada = isset($_POST['competencia']) ? $_POST['competencia'] : [];
     $competenciaString = implode(", ", $competenciaSelecionada);
-
 
     $competenciaHardSelecionada = isset($_POST['hardcompetencia']) ? $_POST['hardcompetencia'] : [];
     $competenciaHardString = implode(" / ", $competenciaHardSelecionada);
@@ -75,28 +155,29 @@ if (isset($_POST['submit'])) {
     $atividadespSelecionada = isset($_POST['atividadesp']) ? $_POST['atividadesp'] : [];
     $atividadespString = implode (" / ", $atividadespSelecionada);
 
-    $birthdate = $_POST['birthdate'];
-    // Converta o formato da data para "XXXX-XX-XX"
-    $birthdate = str_replace('/', '-', $birthdate);
-    $birthdate = date('Y-m-d', strtotime($birthdate));
-    $telefone_limpo = preg_replace("/[^0-9]/", "", $telefone);
-     
-    $query = "INSERT INTO usuarios (firstname, lastname, departament, role, firstquestion, competencia,
-     hardcompetencia, birthdate, telefone, cep, cidade, uf, bairro, endereco, bloodtype, genero, raca, doador, situacaofunc, 
-     timeofservice, funcaogratificada, formadetrabalho, reuniaotrabalho, deadlines,  habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, 
-     setorop,  tinycourses, habsace, atividadesp, degreetextarea, temfuncaogratificada, teletrabalho, permuta, seconddegreetextarea) VALUES
-    ('$firstname', '$lastname', '$departament', '$role', '$firstquestion', '$competenciaString','$competenciaHardString',  '$birthdate', '$telefone_limpo', '$cep',
-     '$cidade', '$uf', '$bairro', '$endereco', '$bloodtype', 
-     '$genero', '$raca', '$doador', '$situacaofunc', '$timeofservice', '$funcaogratificada', '$formadetrabalho', '$reuniaotrabalho', '$deadlines',  '$habespacial', '$habcorporal', '$habmusical', 
-     '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$setorString',  '$tinycourses', '$habsaceString', '$atividadespString', '$degreetextarea', '$temfuncaogratificada', '$teletrabalho', '$permuta', '$seconddegreetextarea') ";
-    
-    $result = mysqli_query($conn, $query);
+    $query = "INSERT INTO professional_competences (id_user, habespacial, habcorporal, habmusical, hablinguistica, habmath, habinterpessoal, habnatureba, habemocional, segerirequipe, setorop, habsace, competencia, hardcompetencia, atividadesp)
+     VALUES ('$id_user', '$habespacial', '$habcorporal', '$habmusical', '$hablinguistica', '$habmath', '$habinterpessoal', '$habnatureba', '$habemocional', '$segerirequipe', '$setorString', '$habsaceString', '$competenciaString', '$competenciaHardString', '$atividadespString')";
+    $result3 = mysqli_query($conn, $query);
+
+    $query =  "INSERT INTO autoavaliacao (id_user, interesse, empatia, participacao, inclusao, conhecimento, ambienteseguro, trabalhoemequipe, emocoes, controle, reconhecimento, conflitos, metasclaras, prioridades,
+    impactos, sucessos, metodos, explorar, disposicao, colaboracao, receptiva, confianca, dialogo, parcerias, possibilidades, ferramentas, eficiencia, suggestion) VALUES ('$id_user', '$interesse', '$empatia', '$participacao', '$inclusao',
+    '$conhecimento', '$ambienteseguro', '$trabalhoemequipe', '$emocoes', '$controle', '$reconhecimento', '$conflitos', '$metasclaras', '$prioridades', '$impactos', '$sucessos', '$metodos', '$explorar', '$disposicao',
+    '$colaboracao', '$receptiva', '$confianca', '$dialogo', '$parcerias', '$possibilidades', '$ferramentas', '$eficiencia', '$suggestion')";
+    $result4 = mysqli_query($conn, $query);
+
+
+
 
     $redirectURL = 'agradecimento.php?firstname=' . urlencode($firstname);
     header('Location: ' . $redirectURL);
     exit;
   } else {
-    echo "<script>alert('$errorMsg');</script>";
+    echo "<script>";
+    echo "var errorMsg = '$errorMsg';";
+    echo "alert(errorMsg);";
+    echo "history.back();"; // Volta para a página anterior sem recarregar
+    echo "</script>";
+    exit;
   }
 }
 
@@ -120,7 +201,8 @@ if (isset($_POST['submit'])) {
   </head>
 
 <style>
-  
+
+
     .competencias {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -138,345 +220,340 @@ if (isset($_POST['submit'])) {
       grid-template-columns: repeat(2, 1fr); /* Altere para 2 colunas em telas menores */
     }
   }
-  body {
-    background-image: url('Imagens/background_image.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-</style>
 
-  <body>
-    <form id="pagination-form" action="form.php" method="POST" novalidate>
-        <!-- Start your project here-->
 
-      <div class="form-container mx-auto mt-5">
-        <div class="form-page" id="page-1">
+
+ .form-container {
+            max-width: 900px;
+            height: auto;
+            background-color: #FFF;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.9);
+            padding: 0;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid">
         <div class="row">
-
-          <div class="col-md-6"> 
-            <label class="form-label-top" for="nome">Nome</label>
-            <div class="form-outline-left">
-              <input type="text" id="firstname" name="firstname" class="form-control input-style" autocomplete="username" value="<?php echo isset($_POST['firstname']) ? htmlspecialchars($_POST['firstname']) : ''; ?>"
-          required/>
-          
+            <div class="col-md-6" id="censo_img" style="margin-top: 10px;" >
+                <img src="Imagens/logo_censo.jpeg" alt="Logo">
             </div>
-          </div>
+
+            <div class="col-md-6" id="container">
+                <form id="pagination-form" action="form.php" method="POST" novalidate>
+                    <div class="form-container">
+                        <div class="form-page" id="page-0">
+                            <div class="row">
+                            <div class="col-md-6"> 
+  <label class="form-label-top" for="nome">Nome</label>
+  <div class="form-outline-left">
+    <input type="text" id="firstname" name="firstname" class="form-control input-style" autocomplete="username" />
+
+  </div>
+</div>
 
 
-          <div class="col-md-6">
-            <label class="form-label-top-right" for="lastname">Sobrenome</label>
-            <div class="form-outline-right">
-              <input type="text" id="lastname" name="lastname" class="form-control input-style" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>"
-          required>
-              
-            </div>
-          </div>
+<div class="col-md-6">
+  <label class="form-label-top-right" for="lastname">Sobrenome</label>
+  <div class="form-outline-right">
+    <input type="text" id="lastname" name="lastname" class="form-control input-style" value="<?php echo isset($_POST['lastname']) ? htmlspecialchars($_POST['lastname']) : ''; ?>"
+required>
+    
+  </div>
+</div>
 
-          <div class="col-md-6">
-            <label class="form-label-top" for="birthdate">Data de Nascimento</label>
-            <div class="form-outline-left">
-             <input type="text" id="birthdate" name="birthdate" class="form-control input-style" /> 
-             </div>
-           </div>
+<div class="col-md-6">
+  <label class="form-label-top" for="birthdate">Data de Nascimento</label>
+  <div class="form-outline-left">
+   <input type="text" id="birthdate" name="birthdate" class="form-control input-style" /> 
+   </div>
+ </div>
 
-           <div class="col-md-6">
-            <label class="form-label-top-right" for="telefone">Telefone</label>
-            <div class="form-outline-right">
-             <input type="text" id="telefone" name="telefone" class="form-control input-style" /> 
-             </div>
-           </div>
-           <div class="col-md-6">
-            <label class="form-label-top" for="email">Email Institucional</label>
-            <div class="form-outline-left">
-             <input type="text" id="email" name="email" class="form-control input-style" /> 
-             </div>
-           </div>
+ <div class="col-md-6">
+  <label class="form-label-top-right" for="telefone">Telefone</label>
+  <div class="form-outline-right">
+   <input type="text" id="telefone" name="telefone" class="form-control input-style" placeholder="(DDD) XXXXX-XXXX" /> 
+   </div>
+ </div>
+ <div class="col-md-6">
+  <label class="form-label-top" for="email">Email Institucional</label>
+  <div class="form-outline-left">
+   <input type="text" id="email" name="email" class="form-control input-style" /> 
+   </div>
+ </div>
 
-           <div class="col-md-6">
-            <label class="form-label-top-right" for="CPF">CPF</label>
-            <div class="form-outline-right">
-             <input type="text" id="telefone" name="cpf" class="form-control input-style" /> 
-             </div>
-           </div>
-           <form action="#" onsubmit="return false">
-           <div class="col-md-6">
-            <label class="form-label-top" for="cep">CEP</label>
-            <div class="form-outline-left">
-             <input type="text" id="cep" name="cep" class="form-control input-style" placeholder="Insira o CEP para preenchimento automático de endereço" data-component="cep" autofocus /> 
-             </div>
-           </div>
+ <div class="col-md-6">
+  <label class="form-label-top-right" for="CPF">CPF</label>
+  <div class="form-outline-right">
+   <input type="text" id="cpf" name="cpf" class="form-control input-style" /> 
+   </div>
+ </div>
+ <form action="#" onsubmit="return false">
+ <div class="col-md-6">
+  <label class="form-label-top" for="cep">CEP</label>
+  <div class="form-outline-left">
+   <input type="text" id="cep" name="cep" class="form-control input-style" placeholder="Insira o CEP para preenchimento automático de endereço" data-component="cep" autofocus /> 
+   </div>
+ </div>
 
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="bairro">Bairro</label>
-              <div class="form-outline-right">
-               <input type="text" id="bairro" name="bairro" class="form-control input-style" /> 
-               </div>
-             </div>
+   <div class="col-md-6">
+    <label class="form-label-top-right" for="bairro">Bairro</label>
+    <div class="form-outline-right">
+     <input type="text" id="bairro" name="bairro" class="form-control input-style" /> 
+     </div>
+   </div>
 
-             <div class="col-md-6">
-              <label class="form-label-top" for="endereco">Endereço</label>
-              <div class="form-outline-left">
-               <input type="text" id="endereco" name="endereco" class="form-control input-style" /> 
-               </div>
-             </div>
+   <div class="col-md-6">
+    <label class="form-label-top" for="endereco">Endereço</label>
+    <div class="form-outline-left">
+     <input type="text" id="endereco" name="endereco" class="form-control input-style" /> 
+     </div>
+   </div>
 
-             <div class="col-md-6"> 
-              <label class="form-label-top-right" for="uf">UF</label>
-              <div class="form-outline-right">
-                <input type="text" id="uf" name="uf" class="form-control input-style" /> 
-                </div>
-              </div>
+     <div class="col-md-6"> 
+    <label class="form-label-top-right" for="ufnascimento">UF de Nascimento</label>
+    <div class="form-outline-right">
+      <input type="text" id="ufnascimento" name="ufnascimento" class="form-control input-style" /> 
+      </div>
+    </div>
 
-              <div class="col-md-6">
-                <label class="form-label-top" for="cidade">Cidade</label>
-                <div class="form-outline-left">
-                 <input type="text" id="cidade" name="cidade" class="form-control input-style" /> 
-                 </div>
-               </div>     
+    <div class="col-md-6">
+      <label class="form-label-top" for="cidadenascimento">Cidade de Nascimento </label>
+      <div class="form-outline-left">
+       <input type="text" id="cidade" name="cidadenascimento" class="form-control input-style" /> 
+       </div>
+     </div>     
 
-               <div class="col-md-6"> 
-              <label class="form-label-top-right" for="ufnascimento">UF de Nascimento</label>
-              <div class="form-outline-right">
-                <input type="text" id="ufnascimento" name="ufnascimento" class="form-control input-style" /> 
-                </div>
-              </div>
+   <div class="col-md-6">
+    <label class="form-label-top-right" for="nacionalidade">Nacionalidade</label>
+    <div class="form-outline-right">
+      <select class="select form-control input-style" id="nacionalidade" name="nacionalidade" aria-placeholder="Selecione" >
+        <option value="" disabled selected>Selecione</option>
+      <option value="brasileira">Brasileira</option>
+      <option value="outra">Outra</option>
+    </select>
+    </div>
+   </div>
 
-              <div class="col-md-6">
-                <label class="form-label-top" for="cidadenascimento">Cidade de Nascimento </label>
-                <div class="form-outline-left">
-                 <input type="text" id="cidade" name="cidadenascimento" class="form-control input-style" /> 
-                 </div>
-               </div>     
+   <div class="col-md-6">
+      <label class="form-label-top" for="estadocivil">Estado Civil</label>
+      <div class="form-outline-left">
+      <select class="select form-control input-style" id="estadocivil" name="estadocivil" aria-placeholder="Selecione" >
+        <option value="" disabled selected>Selecione</option>
+      <option value="Solteiro(a)">Solteiro(a)</option>
+      <option value="União Estável">União Estável</option>
+      <option value="Casado(a)">Casado(a)</option>
+      <option value="Divorciado(a)">Divorciado(a)</option>
+      <option value="Viúvo(a)">Viúvo(a)</option>
+    </select>
+       </div>
+     </div>   
 
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="nacionalidade">Nacionalidade</label>
-              <div class="form-outline-right">
-                <select class="select form-control input-style" id="nacionalidade" name="nacionalidade" aria-placeholder="Selecione" >
-                  <option value="" disabled selected>Selecione</option>
-                <option value="brasileira">Brasileira</option>
-                <option value="outra">Outra</option>
-              </select>
-              </div>
-             </div>
+   <div class="col-md-6">
+    <label class="form-label-top-right" for="bloodtype">Qual o seu tipo sanguíneo?</label>
+    <div class="form-outline-right">
+      <select class="select form-control input-style" id="bloodtype" name="bloodtype" aria-placeholder="Selecione" >
+        <option value="" disabled selected>Selecione</option>
+      <option value="A+">A+</option>
+      <option value="B+">B+</option>
+      <option value="AB+">AB+</option>
+      <option value="O+">O+</option>
+      <option value="A-">A-</option>
+      <option value="B-">B-</option>
+      <option value="AB-">AB-</option>
+      <option value="O-">O-</option>
+    </select>
+    </div>
+   </div>
+   <div class="col-md-6">
+    <label class="form-label-top" for="doador">Você é doador de órgãos?</label>
+    <div class="form-outline-left">
+    <select class="select form-control input-style" id="doador" name="doador" aria-placeholder="Selecione" >
+      <option value="" disabled selected>Selecione</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+      <option value="Ainda não me decidi">Ainda não me decidi</option>    
+    </select>
+    </div>
+   </div>
 
-             <div class="col-md-6">
-                <label class="form-label-top" for="estadocivil">Estado Civil</label>
-                <div class="form-outline-left">
-                <select class="select form-control input-style" id="estadocivil" name="estadocivil" aria-placeholder="Selecione" >
-                  <option value="" disabled selected>Selecione</option>
-                <option value="Solteiro(a)">Solteiro(a)</option>
-                <option value="União Estável">União Estável</option>
-                <option value="Casado(a)">Casado(a)</option>
-                <option value="Divorciado(a)">Divorciado(a)</option>
-                <option value="Viúvo(a)">Viúvo(a)</option>
-              </select>
-                 </div>
-               </div>   
+   <div class="col-md-6">
+    <label class="form-label-top-right" for="deficiencia">Possui alguma deficiência?</label>
+    <div class="form-outline-right">
+    <select class="select form-control input-style" id="deficiencia" name="deficiencia" aria-placeholder="Selecione" >
+      <option value="" disabled selected>Selecione</option>
+      <option value="Sim">Sim</option>
+      <option value="Não">Não</option>
+    </select>
+    </div>
+   </div>
 
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="bloodtype">Qual o seu tipo sanguíneo?</label>
-              <div class="form-outline-right">
-                <select class="select form-control input-style" id="bloodtype" name="bloodtype" aria-placeholder="Selecione" >
-                  <option value="" disabled selected>Selecione</option>
-                <option value="A+">A+</option>
-                <option value="B+">B+</option>
-                <option value="AB+">AB+</option>
-                <option value="O+">O+</option>
-                <option value="A-">A-</option>
-                <option value="B-">B-</option>
-                <option value="AB-">AB-</option>
-                <option value="O-">O-</option>
-              </select>
-              </div>
-             </div>
-             <div class="col-md-6">
-              <label class="form-label-top" for="doador">Você é doador de órgãos?</label>
-              <div class="form-outline-left">
-              <select class="select form-control input-style" id="doador" name="doador" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
-                <option value="Ainda não me decidi">Ainda não me decidi</option>    
-              </select>
-              </div>
-             </div>
+   <div class="col-md-6">
+    <label class="form-label-top" for="tipomoradia" style="white-space: nowrap;" >Qual o tipo de moradia em que você reside?</label>
+    <div class="form-outline-left">
+    <select class="select form-control input-style" id="tipomoradia" name="tipomoradia" aria-placeholder="Selecione" >
+      <option value="" disabled selected>Selecione</option>
+      <option value="Própria">Própria</option>
+      <option value="Alugada">Alugada</option>
+      <option value="Compartilhada (familiar/amigos/ terceiros)">Compartilhada (familiar/amigos/ terceiros)</option>    
+    </select>
+    </div>
+   </div>
 
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="deficiencia">Possui alguma deficiência?</label>
-              <div class="form-outline-right">
-              <select class="select form-control input-style" id="deficiencia" name="deficiencia" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="Sim">Sim</option>
-                <option value="Não">Não</option>
-              </select>
-              </div>
-             </div>
-
-             <div class="col-md-6">
-              <label class="form-label-top" for="tipomoradia" style="white-space: nowrap;" >Qual o tipo de moradia em que você reside?</label>
-              <div class="form-outline-left">
-              <select class="select form-control input-style" id="tipomoradia" name="tipomoradia" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="Própria">Própria</option>
-                <option value="Alugada">Alugada</option>
-                <option value="Compartilhada (familiar/amigos/ terceiros)">Compartilhada (familiar/amigos/ terceiros)</option>    
-              </select>
-              </div>
-             </div>
-
-             <div class="col-md-6">
-              <label class="form-label-top-right" for="pessoasmoradia" >Quantas pessoas residem na sua moradia?</label>
-              <div class="form-outline-right">
-              <select class="select form-control input-style" id="pessoasmoradia" name="pessoasmoradia" aria-placeholder="Selecione" >
-                <option value="" disabled selected>Selecione</option>
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-              </select>
-              </div>
-             </div>
-             
-      
-        </div> <!--AQUI FECHA O ROW-->
-        
-        <p class="text-center questions-titles">Em qual zona da cidade está localizada a sua moradia?</p>
-         <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Norte" id="zonanorte" />
-          <label class="form-check-label" for="zonanorte"><b>Zona Norte</b></label>    
-        </div>
-        <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Leste" id="zonaleste" />
-          <label class="form-check-label" for="zonaleste"><b>Zona Leste</b></label>    
-        </div>
-        <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Sul" id="zonasul" />
-          <label class="form-check-label" for="zonasul"><b>Zona Sul</b></label>    
-        </div>
-        <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Oeste" id="zonaoeste" />
-          <label class="form-check-label" for="zonaoeste"><b>Zona Oeste</b></label>    
-        </div>
-        <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Sul" id="zonacsul" />
-          <label class="form-check-label" for="zonacsul"><b>Zona Centro-Sul</b></label>    
-        </div>
-        <div class="form-check zona ">
-          <input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Oeste" id="zonacoeste" />
-          <label class="form-check-label" for="zonacoeste"><b>Zona Centro-Oeste</b></label>    
-        </div>
+   <div class="col-md-6">
+    <label class="form-label-top-right" for="pessoasmoradia" >Quantas pessoas residem na sua moradia?</label>
+    <div class="form-outline-right">
+    <select class="select form-control input-style" id="pessoamoradia" name="pessoamoradia" aria-placeholder="Selecione" >
+      <option value="" disabled selected>Selecione</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+    </select>
+    </div>
+   </div>
    
 
-         <p class="text-center questions-titles">Qual a sua identidade de gênero?</p>
-         <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Homem cisgênero" id="Homemcis" />
-          <label class="form-check-label" for="Homemcis"><b>Homem cisgênero</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label>    
-        </div>
-        <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Mulher cisgênera" id="Mulhercis" />
-          <label class="form-check-label" for="Mulhercis"><b>Mulher cisgênera</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label> 
-        </div>
-        <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Homem Trans" id="Homemtrans" />
-          <label class="form-check-label" for="Homemtrans"><b>Homem Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
-        </div>
-        <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Mulher Trans" id="Mulhertrans" />
-          <label class="form-check-label" for="Mulhertrans"><b>Mulher Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
-        </div>
-        <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Não binário" id="Naobinario" />
-          <label class="form-check-label" for="Naobinario"><b>Não binário</b> (não se sente pertencente ao gênero masculino ou ao feminino)</label>
-        </div>
-        <div class="form-check gender ">
-          <input class="form-check-input" type="checkbox" name="genero" value="Prefiro não me classificar" id="naoclassifica" />
-          <label class="form-check-label" for="naoclassifica"><b>Prefiro não me classificar</b></label>
-        </div>
+</div> <!--AQUI FECHA O ROW-->
 
-        <div class="d-flex align-items-center">
-          <!--ESSA DIV FAZ d-block (display block) para o <label> e mt-2 (margin top) para dar um espaçamento entre o <input> e o <label> -->
-          </div>
+<p class="form-label-top questions-titles">Em qual zona da cidade está localizada a sua moradia?</p>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Norte" id="zonanorte" />
+<label class="form-check-label" for="zonanorte"><b>Zona Norte</b></label>    
+</div>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Leste" id="zonaleste" />
+<label class="form-check-label" for="zonaleste"><b>Zona Leste</b></label>    
+</div>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Sul" id="zonasul" />
+<label class="form-check-label" for="zonasul"><b>Zona Sul</b></label>    
+</div>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Oeste" id="zonaoeste" />
+<label class="form-check-label" for="zonaoeste"><b>Zona Oeste</b></label>    
+</div>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Sul" id="zonacsul" />
+<label class="form-check-label" for="zonacsul"><b>Zona Centro-Sul</b></label>    
+</div>
+<div class="form-check zona ">
+<input class="form-check-input" type="checkbox" name="zona" value="Zona Centro-Oeste" id="zonacoeste" />
+<label class="form-check-label" for="zonacoeste"><b>Zona Centro-Oeste</b></label>    
+</div>
 
-          <p class="text-center questions-titles">Qual a sua cor ou raça?</p>
-          <div class="form-check raca ">
-          <input class="form-check-input" type="checkbox" name="raca" value="Amarela" id="amarela" />
-          <label class="form-check-label" for="Amarela"><b>Amarela</b></label>    
-        </div>
-        <div class="form-check raca ">
-          <input class="form-check-input" type="checkbox" name="raca" value="Branca" id="Branca" />
-          <label class="form-check-label" for="Branca"><b>Branca</b></label>    
-        </div>
-        <div class="form-check raca ">
-          <input class="form-check-input" type="checkbox" name="raca" value="Parda" id="Parda" />
-          <label class="form-check-label" for="Parda"><b>Parda</b></label>    
-        </div>
-        <div class="form-check raca ">
-          <input class="form-check-input" type="checkbox" name="raca" value="Preta" id="Preta" />
-          <label class="form-check-label" for="Preta"><b>Preta</b></label>    
-        </div>
-        <div class="form-check raca ">
-          <input class="form-check-input" type="checkbox" name="raca" value="Indígena" id="indígena" />
-          <label class="form-check-label" for="Indígena"><b>Indígena</b></label>    
-        </div>
-        <div class="form-check raca " >
-          <input class="form-check-input" type="checkbox" name="raca" value="Prefiro não me classificar" id="naoseclassifica" />
-          <label class="form-check-label" for="naoseclassifica"><b>Prefiro não me classificar</b></label>    
-        </div>
 
-        <p class="text-center questions-titles">Em relação à sua orientação sexual, dentre as opções abaixo, com qual você se identifica? </p>
-         <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Heterossexual" id="heterossexual" />
-          <label class="form-check-label" for="heterossexual"><b>Heterossexual</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Gay" id="gay" />
-          <label class="form-check-label" for="Gay"><b>Gay</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Lésbica" id="lesbica" />
-          <label class="form-check-label" for="lesbica"><b>Lésbica</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Bissexual" id="bissexual" />
-          <label class="form-check-label" for="bissexual"><b>Bissexual</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Pansexual" id="pansexual" />
-          <label class="form-check-label" for="pansexual"><b>Pansexual</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Assexual" id="assexual" />
-          <label class="form-check-label" for="assexual"><b>Assexual</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Outra" id="outra" />
-          <label class="form-check-label" for="outra"><b>Outra</b></label>    
-        </div>
-        <div class="form-check orientacao ">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não me classificar" id="naomeclassifica" />
-          <label class="form-check-label" for="naomeclassifica"><b>Prefiro não me classificar</b></label>    
-        </div>
-        <div class="form-check orientacao"  style="margin-bottom: 20px;">
-          <input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não informar" id="Prefiro não informar" />
-          <label class="form-check-label" for="Prefiro não informar"><b>Prefiro não informar</b></label>    
-        </div>
-        </div> <!--AQUI ACABA A PÁGINA 1-->
+<p class="form-label-top questions-titles">Qual a sua identidade de gênero?</p>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Homem cisgênero" id="Homemcis" />
+<label class="form-check-label" for="Homemcis"><b>Homem cisgênero</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label>    
+</div>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Mulher cisgênera" id="Mulhercis" />
+<label class="form-check-label" for="Mulhercis"><b>Mulher cisgênera</b> (se identifica com o gênero que lhe foi atribuído ao nascer)</label> 
+</div>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Homem Trans" id="Homemtrans" />
+<label class="form-check-label" for="Homemtrans"><b>Homem Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
+</div>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Mulher Trans" id="Mulhertrans" />
+<label class="form-check-label" for="Mulhertrans"><b>Mulher Trans</b> (se identifica com um gênero diferente daquele que lhe foi atribuído ao nascer)</label>
+</div>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Não binário" id="Naobinario" />
+<label class="form-check-label" for="Naobinario"><b>Não binário</b> (não se sente pertencente ao gênero masculino ou ao feminino)</label>
+</div>
+<div class="form-check gender ">
+<input class="form-check-input" type="checkbox" name="genero" value="Prefiro não me classificar" id="naoclassifica" />
+<label class="form-check-label" for="naoclassifica"><b>Prefiro não me classificar</b></label>
+</div>
+
+<div class="d-flex align-items-center">
+<!--ESSA DIV FAZ d-block (display block) para o <label> e mt-2 (margin top) para dar um espaçamento entre o <input> e o <label> -->
+</div>
+
+<p class="form-label-top questions-titles">Qual a sua cor ou raça?</p>
+<div class="form-check raca ">
+<input class="form-check-input" type="checkbox" name="raca" value="Amarela" id="amarela" />
+<label class="form-check-label" for="Amarela"><b>Amarela</b></label>    
+</div>
+<div class="form-check raca ">
+<input class="form-check-input" type="checkbox" name="raca" value="Branca" id="Branca" />
+<label class="form-check-label" for="Branca"><b>Branca</b></label>    
+</div>
+<div class="form-check raca ">
+<input class="form-check-input" type="checkbox" name="raca" value="Parda" id="Parda" />
+<label class="form-check-label" for="Parda"><b>Parda</b></label>    
+</div>
+<div class="form-check raca ">
+<input class="form-check-input" type="checkbox" name="raca" value="Preta" id="Preta" />
+<label class="form-check-label" for="Preta"><b>Preta</b></label>    
+</div>
+<div class="form-check raca ">
+<input class="form-check-input" type="checkbox" name="raca" value="Indígena" id="indígena" />
+<label class="form-check-label" for="Indígena"><b>Indígena</b></label>    
+</div>
+<div class="form-check raca " >
+<input class="form-check-input" type="checkbox" name="raca" value="Prefiro não me classificar" id="naoseclassifica" />
+<label class="form-check-label" for="naoseclassifica"><b>Prefiro não me classificar</b></label>    
+</div>
+
+<p class="form-label-top questions-titles">Em relação à sua orientação sexual, dentre as opções abaixo, com qual você se identifica? </p>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Heterossexual" id="heterossexual" />
+<label class="form-check-label" for="heterossexual"><b>Heterossexual</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Gay" id="gay" />
+<label class="form-check-label" for="Gay"><b>Gay</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Lésbica" id="lesbica" />
+<label class="form-check-label" for="lesbica"><b>Lésbica</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Bissexual" id="bissexual" />
+<label class="form-check-label" for="bissexual"><b>Bissexual</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Pansexual" id="pansexual" />
+<label class="form-check-label" for="pansexual"><b>Pansexual</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Assexual" id="assexual" />
+<label class="form-check-label" for="assexual"><b>Assexual</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Outra" id="outra" />
+<label class="form-check-label" for="outra"><b>Outra</b></label>    
+</div>
+<div class="form-check orientacao ">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não me classificar" id="naomeclassifica" />
+<label class="form-check-label" for="naomeclassifica"><b>Prefiro não me classificar</b></label>    
+</div>
+<div class="form-check orientacao"  style="margin-bottom: 20px;">
+<input class="form-check-input" type="checkbox" name="orientacao" value="Prefiro não informar" id="Prefiro não informar" />
+<label class="form-check-label" for="Prefiro não informar"><b>Prefiro não informar</b></label>    
+</div>
+      </div> <!-- AQUI A PAGINA 0 -->
       
-        <div class="form-page" id="page-2">
-         <div class="row">
+        <div class="form-page" id="page-1">
+        <div class="row">
           <div class="col-md-6">
             <label class="form-label-top" for="situacaofunc">Qual a sua situação funcional atual?</label>
             <div class="form-outline-left">
@@ -498,11 +575,9 @@ if (isset($_POST['submit'])) {
             <div class="form-outline-right">
             <select class="select form-control input-style" id="departament" name="departament" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
-              <option value="Arquivo público do Amazonas" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Arquivo público do Amazonas')
-                echo 'selected'; ?>>Arquivo público do Amazonas
+              <option value="Arquivo público do Amazonas">Arquivo público do Amazonas
             </option>
-            <option value="Apoio ao Gabinete" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Apoio ao Gabinete')
-              echo 'selected'; ?>>Apoio ao Gabinete</option>
+            <option value="Apoio ao Gabinete">Apoio ao Gabinete</option>
             <option value="Arquivo administrativo" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Arquivo administrativo')
               echo 'selected'; ?>>Arquivo administrativo</option>
             <option value="Assessoria de Comunicação" <?php if (isset($_POST['departament']) && $_POST['departament'] == 'Assessoria de Comunicação')
@@ -617,203 +692,35 @@ if (isset($_POST['submit'])) {
             <div class="form-outline-right">
             <select class="select form-control input-style" id="cargo" name="role" aria-placeholder="Selecione" >
               <option value="" disabled selected>Selecione</option>
-              <option value="Agente administrativo 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 1° classe')
-                echo 'selected'; ?>>Agente administrativo 1° classe</option>
-              <option value="Agente administrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo')
-                echo 'selected'; ?>>Agente administrativo</option>
-              <option value="Agente administrativo 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 3° classe')
-                echo 'selected'; ?>>Agente administrativo 3° classe</option>
-              <option value="Agente administrativo 4° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Agente administrativo 4° classe')
-                echo 'selected'; ?>>Agente administrativo 4° classe</option>
-              <option value="Auxiliar de serviços gerais 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais 2° classe')
-                echo 'selected'; ?>>Auxiliar de serviços gerais 2° classe</option>
-              <option value="Auxiliar de serviços gerais 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais 3° classe')
-                echo 'selected'; ?>>Auxiliar de serviços gerais 3° classe</option>
-              <option value="Auxiliar de serviços gerais" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar de serviços gerais')
-                echo 'selected'; ?>>Auxiliar de serviços gerais</option>
-              <option value="Auxiliar administrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo')
-                echo 'selected'; ?>>Auxiliar administrativo</option>
-              <option value="Auxiliar técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar técnico')
-                echo 'selected'; ?>>Auxiliar técnico</option>
-              <option value="Auxiliar administrativo - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - I')
-                echo 'selected'; ?>>Auxiliar administrativo - I</option>
-              <option value="Auxiliar administrativo - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - II')
-                echo 'selected'; ?>>Auxiliar administrativo - II</option>
-              <option value="Auxiliar administrativo - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar administrativo - III')
-                echo 'selected'; ?>>Auxiliar administrativo - III</option>
-              <option value="Auxiliar operacional - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - I')
-                echo 'selected'; ?>>Auxiliar operacional - I</option>
-              <option value="Auxiliar operacional - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - II')
-                echo 'selected'; ?>>Auxiliar operacional - II</option>
-              <option value="Auxiliar operacional - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar operacional - III')
-                echo 'selected'; ?>>Auxiliar operacional - III</option>
-              <option value="Auxiliar serviços gerais - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - I')
-                echo 'selected'; ?>>Auxiliar serviços gerais - I</option>
-              <option value="Auxiliar serviços gerais - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - II')
-                echo 'selected'; ?>>Auxiliar serviços gerais - II</option>
-              <option value="Auxiliar serviços gerais - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auxiliar serviços gerais - III')
-                echo 'selected'; ?>>Auxiliar serviços gerais - III</option>
-              <option value="Assistente técnico - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - I')
-                echo 'selected'; ?>>Assistente técnico - I</option>
-              <option value="Assistente técnico - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - I')
-                echo 'selected'; ?>>Assistente técnico - I</option>
-              <option value="Assistente técnico - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - II')
-                echo 'selected'; ?>>Assistente técnico - II</option>
-              <option value="Assistente técnico - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente técnico - III')
-                echo 'selected'; ?>>Assistente técnico - III</option>
-              <option value="Assistente operacional - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assistente operacional - II')
-                echo 'selected'; ?>>Assistente operacional - II</option>
-              <option value="Analista de finan. e contr. externo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Analista de finan. e contr. externo')
-                echo 'selected'; ?>>Analista de finan. e contr. externo</option>
-              <option value="Assessor de secretário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor de secretário')
-                echo 'selected'; ?>>Assessor de secretário</option>
-              <option value="Assessor I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor I')
-                echo 'selected'; ?>>Assessor I</option>
-              <option value="Assessor II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor II')
-                echo 'selected'; ?>>Assessor II</option>
-              <option value="Assessor III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor III')
-                echo 'selected'; ?>>Assessor III</option>
-              <option value="Assessor IV" <?php if (isset($_POST['role']) && $_POST['role'] == 'Assessor IV')
-                echo 'selected'; ?>>Assessor IV</option>
-              <option value="Auditor" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor')
-                echo 'selected'; ?>>Auditor</option>
-              <option value="Auditor adjunto" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor adjunto')
-                echo 'selected'; ?>>Auditor adjunto</option>
-              <option value="Auditor assistente" <?php if (isset($_POST['role']) && $_POST['role'] == 'Auditor assistente')
-                echo 'selected'; ?>>Auditor assistente</option>
-              <option value="AFP-U" <?php if (isset($_POST['role']) && $_POST['role'] == 'AFP-U')
-                echo 'selected'; ?>>AFP-U</option>
-              <option value="Consultor técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Consultor técnico A')
-                echo 'selected'; ?>>Consultor técnico A</option>
-              <option value="Consultor técnico B" <?php if (isset($_POST['role']) && $_POST['role'] == 'Consultor técnico B')
-                echo 'selected'; ?>>Consultor técnico B</option>
-              <option value="C. téc. U" <?php if (isset($_POST['role']) && $_POST['role'] == 'C. téc. U')
-                echo 'selected'; ?>>C. téc. U</option>
-              <option value="Chefe de gabinete" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de gabinete')
-                echo 'selected'; ?>>Chefe de gabinete</option>
-              <option value="Chefe de departamento" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de departamento')
-                echo 'selected'; ?>>Chefe de departamento</option>
-              <option value="Chefe de arq. púb. do Estado do Amazonas" <?php if (isset($_POST['role']) && $_POST['role'] == 'Chefe de arq. púb. do Estado do Amazonas')
-                echo 'selected'; ?>>Chefe de arq. púb. do Estado do Amazonas</option>
-              <option value="Coordenador de patrimônio" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador de patrimônio')
-                echo 'selected'; ?>>Coordenador de patrimônio</option>
-              <option value="Coordenador de esc. de gest. aperf. do serviço público" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador de esc. de gest. aperf. do serviço público')
-                echo 'selected'; ?>>Coordenador de esc. de gest. aperf. do serviço público</option>
-              <option value="Coordenador CTA" <?php if (isset($_POST['role']) && $_POST['role'] == 'Coordenador CTA')
-                echo 'selected'; ?>>Coordenador CTA</option>
-              <option value="Diretor depto. administrativo  e financeiro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Diretor depto. administrativo  e financeiro')
-                echo 'selected'; ?>>Diretor depto. administrativo  e financeiro</option>
-              <option value="Engenheiro 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro 1° classe')
-                echo 'selected'; ?>>Engenheiro 1° classe</option>
-              <option value="Engenheiro 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro 2° classe')
-                echo 'selected'; ?>>Engenheiro 2° classe</option>
-              <option value="Engenheiro Agrônomo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Engenheiro Agrônomo')
-                echo 'selected'; ?>>Engenheiro Agrônomo</option>
-              <option value="Eletricista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Eletricista')
-                echo 'selected'; ?>>Eletricista</option>
-              <option value="Encadernador" <?php if (isset($_POST['role']) && $_POST['role'] == 'Encadernador')
-                echo 'selected'; ?>>Encadernador</option>
-              <option value="Fiscal rodoviário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Fiscal rodoviário')
-                echo 'selected'; ?>>Fiscal rodoviário</option>
-              <option value="Gerente" <?php if (isset($_POST['role']) && $_POST['role'] == 'Gerente')
-                echo 'selected'; ?>>Gerente</option>
-              <option value="Motorista 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Motorista 2° classe')
-                echo 'selected'; ?>>Motorista 2° classe</option>
-              <option value="Motorista rodoviário" <?php if (isset($_POST['role']) && $_POST['role'] == 'Motorista rodoviário')
-                echo 'selected'; ?>>Motorista rodoviário</option>
-              <option value="Mot - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mot - I')
-                echo 'selected'; ?>>Mot - I</option>
-              <option value="Mot - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mot - III')
-                echo 'selected'; ?>>Mot - III</option>
-              <option value="Marinheiro fluvial de convés" <?php if (isset($_POST['role']) && $_POST['role'] == 'Marinheiro fluvial de convés')
-                echo 'selected'; ?>>Marinheiro fluvial de convés</option>
-              <option value="Marinheiro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Marinheiro')
-                echo 'selected'; ?>>Marinheiro</option>
-              <option value="Médico generalista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Médico generalista')
-                echo 'selected'; ?>>Médico generalista</option>
-              <option value="Médico especialista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Médico especialista')
-                echo 'selected'; ?>>Médico especialista</option>
-              <option value="Mecânico de manutenção de aeronave" <?php if (isset($_POST['role']) && $_POST['role'] == 'Mecânico de manutenção de aeronave')
-                echo 'selected'; ?>>Mecânico de manutenção de aeronave</option>
-              <option value="Membro" <?php if (isset($_POST['role']) && $_POST['role'] == 'Membro')
-                echo 'selected'; ?>>Membro</option>
-              <option value="Membro comissão regime disciplinar" <?php if (isset($_POST['role']) && $_POST['role'] == 'Membro comissão regime disciplinar')
-                echo 'selected'; ?>>Membro comissão regime disciplinar</option>
-              <option value="Operador de máquina rodoviária" <?php if (isset($_POST['role']) && $_POST['role'] == 'Operador de máquina rodoviária')
-                echo 'selected'; ?>>Operador de máquina rodoviária</option>
-              <option value="Operador de rádio" <?php if (isset($_POST['role']) && $_POST['role'] == 'Operador de rádio')
-                echo 'selected'; ?>>Operador de rádio</option>
-              <option value="Perito" <?php if (isset($_POST['role']) && $_POST['role'] == 'Perito')
-                echo 'selected'; ?>>Perito</option>
-              <option value="Procurador de contas - A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Procurador de contas - A')
-                echo 'selected'; ?>>Procurador de contas - A</option>
-              <option value="Procurador de contas - B" <?php if (isset($_POST['role']) && $_POST['role'] == 'Procurador de contas - B')
-                echo 'selected'; ?>>Procurador de contas - B</option>
-              <option value="Pensionista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Pensionista')
-                echo 'selected'; ?>>Pensionista</option>
-              <option value="Pensionista lei 1735 de 14/11/85" <?php if (isset($_POST['role']) && $_POST['role'] == 'Pensionista lei 1735 de 14/11/85')
-                echo 'selected'; ?>>Pensionista lei 1735 de 14/11/85</option>
-              <option value="Secretário de Estado" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário de Estado')
-                echo 'selected'; ?>>Secretário de Estado</option>
-              <option value="Secretário executivo de adm. e gestão" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário executivo de adm. e gestão')
-                echo 'selected'; ?>>Secretário executivo de adm. e gestão</option>
-              <option value="Secretário executivo de bens patr. e gast. público" <?php if (isset($_POST['role']) && $_POST['role'] == 'Secretário executivo de bens patr. e gast. público')
-                echo 'selected'; ?>>Secretário executivo de bens patr. e gast. público</option>
-              <option value="Sub-Secretário de Estado" <?php if (isset($_POST['role']) && $_POST['role'] == 'Sub-Secretário de Estado')
-                echo 'selected'; ?>>Sub-Secretário de Estado</option>
-              <option value="Técnico 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 1° classe')
-                echo 'selected'; ?>>Técnico 1° classe</option>
-              <option value="Técnico 2° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 2° classe')
-                echo 'selected'; ?>>Técnico 2° classe</option>
-              <option value="Técnico 3° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico 3° classe')
-                echo 'selected'; ?>>Técnico 3° classe</option>
-              <option value="Técnico em contabilidade" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico em contabilidade')
-                echo 'selected'; ?>>Técnico em contabilidade</option>
-              <option value="Técnico em planejamento 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico em planejamento 1° classe')
-                echo 'selected'; ?>>Técnico em planejamento 1° classe</option>
-              <option value="Técnico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico')
-                echo 'selected'; ?>>Técnico</option>
-              <option value="Técnico A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico A')
-                echo 'selected'; ?>>Técnico A</option>
-              <option value="Técnico Adminitrativo" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico Adminitrativo')
-                echo 'selected'; ?>>Técnico Adminitrativo</option>
-              <option value="Técnico de contas A" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de contas A')
-                echo 'selected'; ?>>Técnico de contas A</option>
-              <option value="Técnico governamental" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico governamental')
-                echo 'selected'; ?>>Técnico governamental</option>
-              <option value="Técnico gráfico" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico gráfico')
-                echo 'selected'; ?>>Técnico gráfico</option>
-              <option value="Técnico de nível superior" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior')
-                echo 'selected'; ?>>Técnico de nível superior</option>
-              <option value="Técnico de nível superior 1° classe" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior 1° classe')
-                echo 'selected'; ?>>Técnico de nível superior 1° classe</option>
-              <option value="Técnico de nível superior - I" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - I')
-                echo 'selected'; ?>>Técnico de nível superior - I</option>
-              <option value="Técnico de nível superior - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Técnico de nível superior - III')
-                echo 'selected'; ?>>Técnico de nível superior - III</option>
-              <option value="Telefonista" <?php if (isset($_POST['role']) && $_POST['role'] == 'Telefonista')
-                echo 'selected'; ?>>Telefonista</option>
-              <option value="Vigia" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia')
-                echo 'selected'; ?>>Vigia</option>
-              <option value="Vigia - II" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -II')
-                echo 'selected'; ?>>Vigia - II</option>
-              <option value="Vigia - III" <?php if (isset($_POST['role']) && $_POST['role'] == 'Vigia -III')
-                echo 'selected'; ?>>Vigia - III</option>
+                 <option value="Selecione">Selecione</option>
+                 <option value="Consultor técnico">Consultor técnico</option>
+                 <option value="Engenheiro">Engenheiro</option>
+                 <option value="Auditor de folha de pagamento">Auditor de folha de pagamento</option>
+                 <option value="Técnico de nível superior">Técnico de nível superior</option>
+                 <option value="Assistente técnico">Assistente técnico</option>
+                 <option value="Assistente operacional">Assistente operacional</option>
+                 <option value="Auxiliar administrativo">Auxiliar administrativo</option>
+                 <option value="Auxiliar operacional">Auxiliar operacional</option>
+                 <option value="Auxiliar de serviços gerais">Auxiliar de serviços gerais</option>
+                 <option value="Motorista">Motorista</option>
+                 <option value="Vigia">Vigia</option>
+                 <option value="Outro">Outro</option>
             </select>
+            <div class="mb-3" id="roleTextareaDiv" style="display: none;" >
+
+              <textarea class="form-control" id="roleTextarea" name="anotherrole" rows="2" placeholder="Informe o seu cargo" style="resize: none;" ></textarea>
+          </div>
             </div>
            </div>
 
            <div class="col-md-6">
-            <label class="form-label-top-right" style="margin-left: 10px;" for="permuta">Você tem interesse em </label>
-            <a href="#" data-mdb-toggle="permuta?" title="Interesse em trocar de setor com outro servidor" style="font-size: 20px;">permuta?</a>
-            <div class="form-outline-left">
-            <select class="select form-control input-style" id="permuta" name="permuta" aria-placeholder="Selecione" >
-              <option value="" disabled selected>Selecione</option>
-              <option value="Sim">Sim</option>
-              <option value="Não">Não</option>
-            </select>
-            </div>
-           </div>
+  <label class="form-label-top" for="matricula">N° de matrícula</label>
+  <div class="form-outline-left">
+    <input type="text" id="matricula" name="matricula" class="form-control input-style">
+    
+  </div>
+</div>
+
            <div class="col-md-6">
               <label class="form-label-top-right" for="firstquestion">Qual o seu grau de escolaridade?</label>
               <div class="form-outline-right">
@@ -845,17 +752,17 @@ if (isset($_POST['submit'])) {
 </div> <!--AQUI ACABA O ROW-->
 
 
-<p class="text-center questions-titles">Nome da instituição em que finalizou o diploma mais recente:</p>
+<p class="form-label-top questions-titles">Nome da instituição em que finalizou o diploma mais recente:</p>
         <div class="mb-3">
           <textarea class="form-control" id="nomeinstituicao" name="nomeinstituicao" rows="1" style="resize: none; width: 98%; margin-left: 5px; padding: 10px; " ></textarea>
       </div>
 
-      <p class="text-center questions-titles">Nome do curso mais recente:</p>
+      <p class="form-label-top questions-titles">Nome do curso mais recente:</p>
         <div class="mb-3">
           <textarea class="form-control" id="nomecurso" name="nomecurso" rows="1" style="resize: none; width: 98%; margin-left: 5px; padding: 10px; " ></textarea>
       </div>
 
-      <p class="text-center questions-titles">Tipo de instituição em que finalizou o diploma mais recente:</p> 
+      <p class="form-label-top questions-titles">Tipo de instituição em que finalizou o diploma mais recente:</p> 
 <div class="form-check tipoinstituicao ">
   <input class="form-check-input" type="checkbox" value="Pública Federal" name="instituicao" id="publica" />
   <label class="form-check-label" for="publica">Pública Federal</label>    
@@ -873,7 +780,7 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="privada">Privada</label>    
 </div>
 
-<p class="text-center questions-titles">Na maioria de seus anos de estudo, qual tipo de escola você frequentou?</p> 
+<p class="form-label-top questions-titles">Na maioria de seus anos de estudo, qual tipo de escola você frequentou?</p> 
 <div class="form-check tipoescola ">
   <input class="form-check-input" type="checkbox" value="Apenas em escola pública" name="tipoescola" id="sonapublica" />
   <label class="form-check-label" for="sonapublica">Apenas em escola pública</label>    
@@ -897,7 +804,7 @@ if (isset($_POST['submit'])) {
 
 
 
-      <p class="text-center questions-titles">Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor:</p> 
+      <p class="form-label-top questions-titles">Quantidade de anos de atuação profissional, incluindo entidades privadas e/ou do terceiro setor:</p> 
 <div class="form-check timeofservice ">
   <input class="form-check-input" type="checkbox" value="Até 1 ano" name="timeofservice" id="ateumano" />
   <label class="form-check-label" for="ateumano">Até 1 ano</label>    
@@ -919,7 +826,29 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="naoseimporta">Mais de 12 anos</label>    
 </div>
 
-<p class="text-center questions-titles">Qual a forma de realização de trabalho você prefere?</p> 
+      <p class="form-label-top questions-titles">Há quanto tempo você trabalha na Sead?</p> 
+<div class="form-check temposead ">
+  <input class="form-check-input" type="checkbox" value="Até 1 ano" name="temposead" id="ateumano" />
+  <label class="form-check-label" for="ateumano">Até 1 ano</label>    
+</div>
+<div class="form-check temposead ">
+  <input class="form-check-input" type="checkbox" value="De 1 a 4 anos" name="temposead" id="quatroanos" />
+  <label class="form-check-label" for="quatroanos">De 1 a 4 anos</label>    
+</div>
+<div class="form-check temposead ">
+  <input class="form-check-input" type="checkbox" value="De 5 a 8 anos" name="temposead" id="cincoanos" />
+  <label class="form-check-label" for="cincoanos">De 5 a 8 anos</label>    
+</div>
+<div class="form-check temposead ">
+  <input class="form-check-input" type="checkbox" value="De 8 a 12 anos" name="temposead" id="oitoanos" />
+  <label class="form-check-label" for="oitoanos">De 8 a 12 anos</label>    
+</div>
+<div class="form-check temposead ">
+  <input class="form-check-input" type="checkbox" value="Mais de 12 anos" name="temposead" id="naoseimporta" />
+  <label class="form-check-label" for="naoseimporta">Mais de 12 anos</label>    
+</div>
+
+<p class="form-label-top questions-titles">Qual a forma de realização de trabalho você prefere?</p> 
 <div class="form-check realizacaodetrabalho ">
   <input class="form-check-input" type="checkbox" value="Prefiro trabalhar sozinho" name="formadetrabalho" id="trabalharsozinho" />
   <label class="form-check-label" for="trabalharsozinho">Prefiro trabalhar sozinho</label>    
@@ -933,7 +862,10 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="naoseimporta">Não tenho preferências</label>    
 </div>
 
-<p class="text-center questions-titles">Quantidade de anos de atuação no Serviço Público:</p> 
+
+
+
+<p class="form-label-top questions-titles">Quantidade de anos de atuação no Serviço Público:</p> 
 <div class="form-check anosdeservico ">
   <input class="form-check-input" type="checkbox" value="Até 1 ano" name="anosdeservico" id="anosdeservico" />
   <label class="form-check-label" for="anosdeservico">Até 1 ano</label>    
@@ -955,7 +887,7 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="banosdeservico">Mais de 12 anos</label>    
 </div>
 
-<p class="text-center questions-titles">Você tem interesse em entrar para o programa de Teletrabalho?</p> 
+<p class="form-label-top questions-titles">Você tem interesse em entrar para o programa de Teletrabalho?</p> 
 <div class="form-check teletrabalho ">
   <input class="form-check-input" type="checkbox" value="Sim" name="teletrabalho" id="teletrabalhosim" />
   <label class="form-check-label" for="teletrabalhosim">Sim</label>    
@@ -965,11 +897,11 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="teletrabalhonao">Não</label>    
 </div>
 <div class="form-check teletrabalho ">
-  <input class="form-check-input" type="checkbox" value="Não se aplica" name="formadetrabalho" id="naoseaplica" />
+  <input class="form-check-input" type="checkbox" value="Não se aplica" name="teletrabalho" id="naoseaplica" />
   <label class="form-check-label" for="naoseaplica">Não se aplica</label>    
 </div>
 
-<p class="text-center questions-titles">Como você costuma agir quando participa de reuniões de trabalho?</p> 
+<p class="form-label-top questions-titles">Como você costuma agir quando participa de reuniões de trabalho?</p> 
 <div class="form-check reuniaodetrabalho ">
   <input class="form-check-input" type="checkbox" value="Gosto de expor minhas ideias mostrando claramente os pontos com os quais discordo ou concordo" name="reuniaotrabalho" id="reuniaotrabalhogosto" />
   <label class="form-check-label" for="reuniaotrabalhogosto">Gosto de expor minhas ideias mostrando claramente os pontos com os quais discordo ou concordo</label>    
@@ -983,7 +915,7 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="reuniaotrabalhonunca">Não exponho a minha opinião em momento algum</label>    
 </div>
 
-<p class="text-center questions-titles">Como você costuma agir diante de prazos e metas?</p> 
+<p class="form-label-top questions-titles">Como você costuma agir diante de prazos e metas?</p> 
 <div class="form-check deadlines ">
   <input class="form-check-input" type="checkbox" value="Tenho dificuldade quanto ao atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta." name="deadlines" id="deadlinedifuc" />
   <label class="form-check-label" for="deadlinedifuc">Tenho dificuldade com atendimento de prazos mas busco realizar as atividades de forma satisfatória e atingir a meta.</label>    
@@ -1001,7 +933,7 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="deadlineespecificos">Priorizo, de forma autônoma, as atividades com prazos específicos</label>    
 </div>
 
-<p class="text-center questions-titles">Como você acessa os serviços de saúde?</p> 
+<p class="form-label-top questions-titles">Como você acessa os serviços de saúde?</p> 
 <div class="form-check servicosaude ">
   <input class="form-check-input" type="checkbox" value="Apenas pelo SUS" name="servicosaude" id="teamsus" />
   <label class="form-check-label" for="teamsus">Apenas pelo SUS</label>    
@@ -1028,7 +960,7 @@ if (isset($_POST['submit'])) {
 </div>
 
 
-<p class="text-center questions-titles">No seu dia a dia, quais são os meios de transporte que você utiliza com mais frequência?</p> 
+<p class="form-label-top questions-titles">No seu dia a dia, quais são os meios de transporte que você utiliza com mais frequência?</p> 
 <div class="form-check meiotransporte ">
   <input class="form-check-input" type="checkbox" value="Carro" name="meiotransporte" id="carro" />
   <label class="form-check-label" for="carro">Carro</label>    
@@ -1058,14 +990,12 @@ if (isset($_POST['submit'])) {
   <label class="form-check-label" for="outro">Outro</label>    
 </div>
 
-
-
-        </div> <!--AQUI ACABA A PÁGINA 2-->
-
-
-        <div class="form-page" id="page-3">
-        <p class="text-center questions-titles">Habilidade espacial</p>
-          <p class="small text-center ">Compreendo e elaboro facilmente quadros, desenhos, esquemas, gráficos e tabelas.  </p>
+        </div> <!--AQUI ACABA A PÁGINA 1-->
+      
+        <div class="form-page" id="page-2">
+       
+        <p class="form-label-top questions-titles">Habilidade espacial</p>
+          <p class="small form-sub-label ">Compreendo e elaboro facilmente quadros, desenhos, esquemas, gráficos e tabelas.  </p>
           <div id="cid_habesp" class="form-input-wide text-center" data-layout="full">
             <div role="radiogroup"  cellpadding="4" cellspacing="0"
               class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1133,8 +1063,8 @@ if (isset($_POST['submit'])) {
             </span>
           </div>
 
-          <p class="text-center questions-titles"> Habilidade corporal </p>
-          <p class="small text-center ">Tenho capacidade de equilíbrio flexibilidade, velocidade e coordenação motora.  </p>
+          <p class="form-label-top questions-titles"> Habilidade corporal </p>
+          <p class="small form-sub-label ">Tenho capacidade de equilíbrio flexibilidade, velocidade e coordenação motora.  </p>
           <div id="cid_habcorp" class="form-input-wide text-center" data-layout="full">
             <div role="radiogroup"  aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
               class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1200,8 +1130,8 @@ if (isset($_POST['submit'])) {
             </span>
           </div>
 
-          <p class="text-center questions-titles">Habilidade musical </p>
-          <p class="small text-center ">Possuo afinidade com instrumentos musicais, ritmo e harmonia. </p>
+          <p class="form-label-top questions-titles">Habilidade musical </p>
+          <p class="small form-sub-label ">Possuo afinidade com instrumentos musicais, ritmo e harmonia. </p>
           <div id="cid_habmus" class="form-input-wide text-center" data-layout="full">
              <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
                class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1267,8 +1197,8 @@ if (isset($_POST['submit'])) {
              </span>
            </div>
     
-           <p class="text-center questions-titles">Habilidade linguística</p>
-           <p class="small text-center ">Possuo facilidade em aprender novos idiomas bem como para me expressar oralmente ou através da escrita. </p>
+           <p class="form-label-top questions-titles">Habilidade linguística</p>
+           <p class="small form-sub-label ">Possuo facilidade em aprender novos idiomas bem como para me expressar oralmente ou através da escrita. </p>
            <div id="cid_7" class="form-input-wide text-center" data-layout="full">
               <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
                 class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1334,9 +1264,9 @@ if (isset($_POST['submit'])) {
               </span>
             </div>
 
-          <p class="text-center questions-titles">Habilidade Lógico-Matemática </p>
+          <p class="form-label-top questions-titles">Habilidade Lógico-Matemática </p>
 
-          <p class="small text-center ">Tenho boa capacidade de raciocínio lógico, compreensão de cálculos,
+          <p class="small form-sub-label ">Tenho boa capacidade de raciocínio lógico, compreensão de cálculos,
              utilização de fórmulas, interpretação de números e resolução de problemas. </p>
       <div id="cid_hablog" class="form-input-wide text-center" data-layout="full">
           <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
@@ -1403,9 +1333,9 @@ if (isset($_POST['submit'])) {
           </span>
         </div>
    
-        <p class="text-center questions-titles"> Habilidade interpessoal </p>
+        <p class="form-label-top questions-titles"> Habilidade interpessoal </p>
         
-        <p class="small text-center ">Possuo afinidade com instrumentos musicais, ritmo e harmonia. </p>
+        <p class="small form-sub-label ">Tenho facilidade para me relacionar, escutar e compreender pessoas, para dar e receber feedbacks.</p>
 
         <div id="cid_habinter" class="form-input-wide text-center" data-layout="full">
           <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
@@ -1473,8 +1403,8 @@ if (isset($_POST['submit'])) {
           </span>
         </div>
 
-           <p class="text-center questions-titles"> Habilidade naturalista</p>
-           <p class="small text-center ">Possuo sensibilidade para reconhecer a importância dos elementos da natureza e sua relação com a vida humana. </p>             
+           <p class="form-label-top questions-titles"> Habilidade naturalista</p>
+           <p class="small form-sub-label ">Possuo sensibilidade para reconhecer a importância dos elementos da natureza e sua relação com a vida humana. </p>             
              <div id="cid_habnat" class="form-input-wide text-center " data-layout="full">
             <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
               class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1540,8 +1470,8 @@ if (isset($_POST['submit'])) {
             </div>
              </div>
  
-             <p class="text-center questions-titles">Habilidade emocional</p>
-             <p class="small text-center ">Possuo afinidade com instrumentos musicais, ritmo e harmonia. </p>
+             <p class="form-label-top questions-titles">Habilidade emocional</p>
+             <p class="small form-sub-label ">Possuo capacidade de conhecer e lidar com as minhas emoções, de reconhecer emoções em outras pessoas e de gerenciar conflitos. </p>
              <div id="cid_habemoc" class="form-input-wide text-center" data-layout="full">
                <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
                  class="form-scale-table" data-component="scale" style="white-space: nowrap;">
@@ -1608,7 +1538,7 @@ if (isset($_POST['submit'])) {
                </span>
              </div>
 
-<p class="text-center questions-titles">Você é responsável por gerir uma equipe? Se sim, quantas pessoas? </p> 
+<p class="form-label-top questions-titles">Você é responsável por gerir uma equipe? Se sim, quantas pessoas? </p> 
 
 <div class="form-check segerirequipe ">
   <input class="form-check-input" type="checkbox" value="Apenas 1 pessoa" name="segerirequipe" id="oneperson" />
@@ -1640,7 +1570,7 @@ if (isset($_POST['submit'])) {
 </div>
 
 
-        <p class="text-center questions-titles">Se você pudesse trabalhar em outros setores, quais seriam? </p>
+        <p class="form-label-top questions-titles">Se você pudesse trabalhar em outros setores, quais seriam? </p>
         <div class="competencias">
           <div class="form-check-competencias ">
             <input type="checkbox" class="form-check-input" id="setor1" name="setorop[]"
@@ -1714,7 +1644,7 @@ if (isset($_POST['submit'])) {
           </div>
          
         </div> <!--AQUI ACABA A DIV COMPETENCIAS-->
-  <p class="text-center questions-titles" >Selecione até 3 habilidades sociais, artísticas, culturais e esportivas que gostaria de conduzir/participar na SEAD. </p>
+  <p class="form-label-top questions-titles" >Selecione até 3 habilidades sociais, artísticas, culturais e esportivas que gostaria de conduzir/participar na SEAD. </p>
         <div class="competencias">
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="habsace1" name="habsace[]"
@@ -1755,11 +1685,6 @@ if (isset($_POST['submit'])) {
             <input type="checkbox" class="form-check-input" id="habsace8" name="habsace[]"
               value="Culinária" />
             <label class="form-check-label d-block mt-2" for="habsace8">Culinária</label>
-          </div>
-          <div class="form-check-competencias">
-            <input type="checkbox" class="form-check-input" id="habsace9" name="habsace[]"
-              value="Fotografia" />
-            <label class="form-check-label d-block mt-2" for="habsace9">Fotografia</label>
           </div>
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="habsace10" name="habsace[]"
@@ -1807,7 +1732,7 @@ if (isset($_POST['submit'])) {
             <label class="form-check-label d-block mt-2" for="habsace18">Não tenho ou não gostaria de informar</label>
           </div>
         </div>
-        <p class="text-center questions-titles">Selecione até 5 competências socioemocionais que você se identifica: </p>
+        <p class="form-label-top questions-titles">Selecione até 5 competências socioemocionais que você se identifica: </p>
 <div class="competencias">
   
   <div class="form-check-competencias">
@@ -2033,7 +1958,7 @@ if (isset($_POST['submit'])) {
   </div>
   </div>
 
-<p class="text-center questions-titles">Selecione 5 competências técnicas que você se identifica: </p> 
+<p class="form-label-top questions-titles">Selecione 5 competências técnicas que você se identifica: </p> 
 <div class="competencias">
   <div class="form-check-competencias">
     <input type="checkbox" class="form-check-input" id="hardcompetencia1" name="hardcompetencia[]"
@@ -2149,7 +2074,7 @@ if (isset($_POST['submit'])) {
       e tendências da área</label>
   </div>
 </div>
-        <p class="text-center questions-titles" > Selecione até 5 atividades com as quais você prefere trabalhar</p>
+        <p class="form-label-top questions-titles" > Selecione até 5 atividades com as quais você prefere trabalhar</p>
         <div class="competencias">
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp1" name="atividadesp[]"
@@ -2159,7 +2084,7 @@ if (isset($_POST['submit'])) {
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp2" name="atividadesp[]"
               value="trabalho com recursos tecnológicos, digitais, virtuais" />
-            <label class="form-check-label d-block mt-2" for="atividadesp2">trabalho com recursos tecnológicos, digitais, virtuais</label>
+            <label class="form-check-label d-block mt-2" for="atividadesp2">Trabalho com recursos tecnológicos, digitais, virtuais</label>
           </div>
       
           <div class="form-check-competencias">
@@ -2180,7 +2105,7 @@ if (isset($_POST['submit'])) {
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp7" name="atividadesp[]"
               value="dados estatísticos ou financeiros" />
-            <label class="form-check-label d-block mt-2" for="atividadesp7">dados estatísticos e/ou financeiros</label>
+            <label class="form-check-label d-block mt-2" for="atividadesp7">Dados estatísticos e/ou financeiros</label>
           </div>
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp8" name="atividadesp[]"
@@ -2190,7 +2115,7 @@ if (isset($_POST['submit'])) {
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp9" name="atividadesp[]"
               value="projetos e relatórios" />
-            <label class="form-check-label d-block mt-2" for="atividadesp9">projetos e relatórios</label>
+            <label class="form-check-label d-block mt-2" for="atividadesp9">Projetos e relatórios</label>
           </div>
           <div class="form-check-competencias">
             <input type="checkbox" class="form-check-input" id="atividadesp10" name="atividadesp[]"
@@ -2233,22 +2158,887 @@ if (isset($_POST['submit'])) {
               value="Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica" />
             <label class="form-check-label d-block mt-2" for="atividadesp3">Confecção de despachos, pareceres e decisões relacionados às atividades de assessoria jurídica</label>
           </div>
-          
+
+                          
   </div>
+        
+        
+        </div> <!--AQUI ACABA A PÁGINA 2-->
 
-        </div> <!--AQUI ACABA A PÁGINA 3-->
 
-      
-        <div class="d-flex justify-content-between">
-          <button type="button" class="btn btn-outline-primary btn-rounded" id="prev-button" data-mdb-ripple-color="dark">Anterior</button>
-          <button type="button" class="btn btn-outline-primary btn-rounded" id="next-button" data-mdb-ripple-color="dark">Próximo</button>
-          <button  class="submit" id="submit" name="submit" style="display: none;" >ENVIAR</button>         
-      </div>
-        </div> <!--aqui acaba o form-container !! -->
-    </form>
-    
+        <div class="form-page" id="page-3">
+        <div class="note note-info mb-3" style="margin-top: 10px;">
+  <strong>Info:</strong> Nesta seção, o convidamos a analisar as afirmações abaixo e responder com qual frequência você pratica estas afirmações durante o 
+  desenvolvimento de suas atividades profissionais na SEAD. Por favor, avalie cada um desses comportamentos observáveis de acordo com a escala abaixo e forneça uma
+   autoavaliação honesta de sua atuação em cada uma das perguntas.
+   Para lhe apoiar no processo, iremos utilizar a escala a seguir, selecione a opção de acordo com o número: 
+<h6 class="fw-normal" style="margin-top:10px; background-color:#F24607; "><b> 1. Raramente acontece: </b> Eu consigo observar este comportamento raramente ou ocorre apenas em situações excepcionais.</h6>
+<h6 class="fw-normal" style="background-color:#EAF205; "> <b> 2. Acontece ocasionalmente: </b> Eu consigo observar este  comportamento ocasionalmente, mas não de forma consistente.</h6>
+<h6 class="fw-normal" style="background-color:#49D907;"><b> 3. Acontece com frequência: </b> Eu consigo observar este comportamento regularmente, ocorrendo em muitas situações.</h6>
+<h6 class="fw-normal" style="background-color: #0597F2;"> <b> 4. Acontece consistentemente: </b> Eu consigo observar este comportamento de forma constante e proeminente, sendo observado em praticamente todas as situações.</h6>
+</div>
+
+<p class="form-label-top questions-titles" >Mentalidade inclusiva</p>
+
+<p class="fw-normal" style="margin:0;"> Eu demonstro interesse genuíno pelas necessidades, preocupações e perspectivas da minha equipe e das pessoas que se relacionam comigo </p>             
+             <div class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup"cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="interesse" value="01" title="1"
+                    id="input_interesse_1" />
+                  <label for="input_interesse_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="interesse" value="02" title="2"
+                    id="input_interesse_2" />
+                  <label for="input_interesse_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion"  name="interesse" value="03" title="3"
+                    id="input_interesse_3" />
+                  <label for="input_interesse_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="interesse" value="04" title="4"
+                    id="input_interesse_4" />
+                  <label for="input_interesse_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu valorizo a importância da empatia, da escuta ativa e da compreensão mútua para construir relacionamentos sólidos e de confiança.</p>             
+             <div class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0" class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion"  name="empatia" value="01" title="1" id="input_empatia_1" />
+                  <label for="input_empatia_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="empatia" value="02" title="2" id="input_empatia_2" />
+                  <label for="input_empatia_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="empatia" value="03" title="3" id="input_empatia_3" />
+                  <label for="input_empatia_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="empatia" value="04" title="4" id="input_empatia_4" />
+                  <label for="input_empatia_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu promovo a participação de todos os membros da equipe, garantindo que suas vozes sejam ouvidas e suas contribuições sejam valorizadas.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="participacao" value="01" title="1"
+                    id="input_participacao_1" />
+                  <label for="input_participacao_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="participacao" value="02" title="2"
+                    id="input_participacao_2" />
+                  <label for="input_participacao_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="participacao" value="03" title="3"
+                    id="input_participacao_3" />
+                  <label for="input_participacao_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="participacao" value="04" title="4"
+                    id="input_participacao_4" />
+                  <label for="input_participacao_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu atuo como um agente de sensibilização e educação sobre inclusão, compartilhando conhecimentos e informações sobre 
+             a importância da inclusão, promovendo a conscientização e o entendimento entre os meus colegas de trabalho e a comunidade em geral.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="inclusao" value="01" title="1"
+                    id="input_inclusao_1" />
+                  <label for="input_inclusao_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="inclusao" value="02" title="2"
+                    id="input_inclusao_2" />
+                  <label for="input_inclusao_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="inclusao" value="03" title="3"
+                    id="input_inclusao_3" />
+                  <label for="input_inclusao_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="inclusao" value="04" title="4"
+                    id="input_inclusao_4" />
+                  <label for="input_inclusao_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Liderança e Gestão de Pessoas</p>
+             <p class="fw-normal" style="margin:0;"> Eu demonstro um profundo conhecimento e domínio da área em que atuo,
+              mantendo-me atualizado com as melhores práticas, tendências e regulamentações relacionadas ao meu campo de atuação, o que me permite tomar decisões informadas e estratégicas. </p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conhecimento" value="01" title="1"
+                    id="input_conhecimento_1" />
+                  <label for="input_conhecimento_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conhecimento" value="02" title="2"
+                    id="input_conhecimento_2" />
+                  <label for="input_conhecimento_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conhecimento" value="03" title="3"
+                    id="input_conhecimento_3" />
+                  <label for="input_conhecimento_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conhecimento" value="04" title="4"
+                    id="input_conhecimento_4" />
+                  <label for="input_conhecimento_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu crio um ambiente seguro e acolhedor, onde todos se sintam confortáveis para expressar suas opiniões e ideias,
+              independentemente de sua posição hierárquica. </p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ambienteseguro" value="01" title="1"
+                    id="input_ambienteseguro_1" />
+                  <label for="input_ambienteseguro_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ambienteseguro" value="02" title="2"
+                    id="input_ambienteseguro_2" />
+                  <label for="input_ambienteseguro_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ambienteseguro" value="03" title="3"
+                    id="input_ambienteseguro_3" />
+                  <label for="input_ambienteseguro_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ambienteseguro" value="04" title="4"
+                    id="input_ambienteseguro_4" />
+                  <label for="input_ambienteseguro_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu transmito claramente as metas, expectativas e direcionamentos para a minha equipe,
+              garantindo que todos entendam seu papel e contribuição para o atingimento das demandas. </p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="direcionamento" value="01" title="1"
+                    id="input_direcionamento_1" />
+                  <label for="input_direcionamento_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="direcionamento" value="02" title="2"
+                    id="input_direcionamento_2" />
+                  <label for="input_direcionamento_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="direcionamento" value="03" title="3"
+                    id="input_direcionamento_3" />
+                  <label for="input_direcionamento_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="direcionamento" value="04" title="4"
+                    id="input_direcionamento_4" />
+                  <label for="input_direcionamento_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu me envolvo ativamente no trabalho em equipe, demonstrando comprometimento e dedicação e disposição em assumir responsabilidades,
+              apoiando minha equipe em momentos de desafio desenvolvendo soluções conjuntas com os membros da equipe </p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="trabalhoemequipe" value="01" title="1"
+                    id="input_trabalhoemequipe_1" />
+                  <label for="input_trabalhoemequipe_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="trabalhoemequipe" value="02" title="2"
+                    id="input_trabalhoemequipe_2" />
+                  <label for="input_trabalhoemequipe_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="trabalhoemequipe" value="03" title="3"
+                    id="input_trabalhoemequipe_3" />
+                  <label for="input_trabalhoemequipe_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="trabalhoemequipe" value="04" title="4"
+                    id="input_trabalhoemequipe_4" />
+                  <label for="input_trabalhoemequipe_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Inteligência emocional </p>
+             <p class="fw-normal" style="margin:0;">Eu reconheço e compreendo minhas próprias emoções, identificando os 
+             gatilhos que podem afetar meu equilíbrio emocional e tomo medidas para gerenciá-las de forma saudável e construtiva.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="emocoes" value="01" title="1"
+                    id="input_emocoes_1" />
+                  <label for="input_emocoes_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="emocoes" value="02" title="2"
+                    id="input_emocoes_2" />
+                  <label for="input_emocoes_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" class="form-radio selectquestion" name="emocoes" value="03" title="3"
+                    id="input_emocoes_3" />
+                  <label for="input_emocoes_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" class="form-radio selectquestion" name="emocoes" value="04" title="4"
+                    id="input_emocoes_4" />
+                  <label for="input_emocoes_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu controlo minhas emoções, mesmo em condições adversas e situações de pressão, comunicando-me de
+              forma clara e eficaz, expressando minhas emoções de maneira adequada e construtiva. </p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio"class="form-radio selectquestion" name="controle" value="01" title="1"
+                    id="input_controle_1" />
+                  <label for="input_controle_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio" name="controle" value="02" title="2"
+                    id="input_controle_2" />
+                  <label for="input_controle_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="controle" value="03" title="3"
+                    id="input_controle_3" />
+                  <label for="input_controle_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="controle" value="04" title="4"
+                    id="input_controle_4" />
+                  <label for="input_controle_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;"> Eu compreendo e reconheço as emoções dos outros, colocando-me no lugar deles e mostrando compreensão e apoio, 
+             visando criar um ambiente de trabalho acolhedor e respeitoso.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="reconhecimento" value="01" title="1"
+                    id="input_reconhecimento_1" />
+                  <label for="input_reconhecimento_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="reconhecimento" value="02" title="2"
+                    id="input_reconhecimento_2" />
+                  <label for="input_reconhecimento_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="reconhecimento" value="03" title="3"
+                    id="input_reconhecimento_3" />
+                  <label for="input_reconhecimento_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="reconhecimento" value="04" title="4"
+                    id="input_reconhecimento_4" />
+                  <label for="input_reconhecimento_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             
+             <p class="fw-normal" style="margin:0;">Eu lido com conflitos de forma saudável, buscando soluções colaborativas e mantendo 
+             relacionamentos positivos e produtivos com minha equipe e com as pessoas atendidas.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conflitos" value="01" title="1"
+                    id="input_conflitos_1" />
+                  <label for="input_conflitos_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conflitos" value="02" title="2"
+                    id="input_conflitos_2" />
+                  <label for="input_conflitos_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conflitos" value="03" title="3"
+                    id="input_conflitos_3" />
+                  <label for="input_conflitos_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="conflitos" value="04" title="4"
+                    id="input_conflitos_4" />
+                  <label for="input_conflitos_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Orientação para Resultados </p>
+             <p class="fw-normal" style="margin:0;">Eu defino metas claras e mensuráveis, alinhadas com os objetivos da Secretaria e do Estado, e direciono meus esforços para atingir esses resultados.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metasclaras" value="01" title="1"
+                    id="input_metasclaras_1" />
+                  <label for="input_metasclaras_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metasclaras" value="02" title="2"
+                    id="input_metasclaras_2" />
+                  <label for="input_metasclaras_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metasclaras" value="03" title="3"
+                    id="input_metasclaras_3" />
+                  <label for="input_metasclaras_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metasclaras" value="04" title="4"
+                    id="input_metasclaras_4" />
+                  <label for="input_metasclaras_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+
+             <p class="fw-normal" style="margin:0;">Eu estabeleço prioridades, defino prazos e aloco recursos de maneira adequada para garantir que as tarefas 
+             sejam concluídas dentro do prazo e com qualidade, utilizando ferramentas e técnicas de gestão para acompanhar o progresso e fazer ajustes quando necessário.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="prioridades" value="01" title="1"
+                    id="input_prioridades_1" />
+                  <label for="input_prioridades_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="prioridades" value="02" title="2"
+                    id="input_prioridades_2" />
+                  <label for="input_prioridades_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="prioridades" value="03" title="3"
+                    id="input_prioridades_3" />
+                  <label for="input_prioridades_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="prioridades" value="04" title="4"
+                    id="input_prioridades_4" />
+                  <label for="input_prioridades_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu analiso as opções disponíveis, considerando os impactos e as consequências de cada escolha, 
+             e escolho a melhor abordagem para alcançar os resultados desejados.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="impactos" value="01" title="1"
+                    id="input_impactos_1" />
+                  <label for="input_impactos_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="impactos" value="02" title="2"
+                    id="input_impactos_2" />
+                  <label for="input_impactos_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="impactos" value="03" title="3"
+                    id="input_impactos_3" />
+                  <label for="input_impactos_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="impactos" value="04" title="4"
+                    id="input_impactos_4" />
+                  <label for="input_impactos_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu aprendo com os sucessos e fracassos, buscando constantemente melhorar meu desempenho e maximizar os resultados obtidos.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="sucessos" value="01" title="1"
+                    id="input_sucessos_1" />
+                  <label for="input_sucessos_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="sucessos" value="02" title="2"
+                    id="input_sucessos_2" />
+                  <label for="input_sucessos_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="sucessos" value="03" title="3"
+                    id="input_sucessos_3" />
+                  <label for="input_sucessos_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="sucessos" value="04" title="4"
+                    id="input_sucessos_4" />
+                  <label for="input_sucessos_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Pensamento criativo </p>
+             <p class="fw-normal " style="margin:0;">Eu procuro ativamente novos métodos e soluções para resolver problemas e melhorar processos, demonstrando uma abordagem criativa e fora da caixa.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metodos" value="01" title="1"
+                    id="input_metodos_1" />
+                  <label for="input_metodos_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metodos" value="02" title="2"
+                    id="input_metodos_2" />
+                  <label for="input_metodos_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metodos" value="03" title="3"
+                    id="input_metodos_3" />
+                  <label for="input_metodos_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="metodos" value="04" title="4"
+                    id="input_metodos_4" />
+                  <label for="input_metodos_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu demonstro interesse em explorar a experiência de outros setores, áreas e órgãos, buscando aprender com 
+             suas práticas e experiências e aplicar esse conhecimento de forma inovadora em meu próprio trabalho.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="explorar" value="01" title="1"
+                    id="input_explorar_1" />
+                  <label for="input_explorar_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="explorar" value="02" title="2"
+                    id="input_explorar_2" />
+                  <label for="input_explorar_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="explorar" value="03" title="3"
+                    id="input_explorar_3" />
+                  <label for="input_explorar_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="explorar" value="04" title="4"
+                    id="input_explorar_4" />
+                  <label for="input_explorar_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu demonstro disposição para experimentar e testar novas ideias, mesmo que isso envolva riscos e incertezas,
+              e estou aberto a desafiar o status quo e questionar práticas existentes em busca de melhorias.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ideias" value="01" title="1"
+                    id="input_ideias_1" />
+                  <label for="input_ideias_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ideias" value="02" title="2"
+                    id="input_ideias_2" />
+                  <label for="input_ideias_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ideias" value="03" title="3"
+                    id="input_ideias_3" />
+                  <label for="input_ideias_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ideias" value="04" title="4"
+                    id="input_ideias_4" />
+                  <label for="input_ideias_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu colaboro de forma aberta e receptiva com outros membros da equipe, valorizando diferentes pontos de vista, ideias e perspectivas</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="colaboracao" value="01" title="1"
+                    id="input_colaboracao_1" />
+                  <label for="input_colaboracao_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="colaboracao" value="02" title="2"
+                    id="input_colaboracao_2" />
+                  <label for="input_colaboracao_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="colaboracao" value="03" title="3"
+                    id="input_colaboracao_3" />
+                  <label for="input_colaboracao_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="colaboracao" value="04" title="4"
+                    id="input_colaboracao_4" />
+                  <label for="input_colaboracao_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Articulação </p>
+             <p class="fw-normal" style="margin:0;">Eu tomo a iniciativa de conversar com outros setores para construir entendimentos e engajar em torno de agendas comuns.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="receptiva" value="01" title="1"
+                    id="input_receptiva_1" />
+                  <label for="input_receptiva_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="receptiva" value="02" title="2"
+                    id="input_receptiva_2" />
+                  <label for="input_receptiva_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="receptiva" value="03" title="3"
+                    id="input_receptiva_3" />
+                  <label for="input_receptiva_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="receptiva" value="04" title="4"
+                    id="input_receptiva_4" />
+                  <label for="input_receptiva_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu crio relações de confiança e abertas, nas quais os atores se sentem seguros em expressar 
+             sua opinião e realizar diálogos na busca do entendimento e consenso.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="confianca" value="01" title="1"
+                    id="input_confianca_1" />
+                  <label for="input_confianca_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="confianca" value="02" title="2"
+                    id="input_confianca_2" />
+                  <label for="input_confianca_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="confianca" value="03" title="3"
+                    id="input_confianca_3" />
+                  <label for="input_confianca_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="confianca" value="04" title="4"
+                    id="input_confianca_4" />
+                  <label for="input_confianca_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu dedico tempo para alinhar ações de diálogo e construção de consenso em torno das agendas comuns.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="dialogo" value="01" title="1"
+                    id="input_dialogo_1" />
+                  <label for="input_dialogo_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="dialogo" value="02" title="2"
+                    id="input_dialogo_2" />
+                  <label for="input_dialogo_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="dialogo" value="03" title="3"
+                    id="input_dialogo_3" />
+                  <label for="input_dialogo_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="dialogo" value="04" title="4"
+                    id="input_dialogo_4" />
+                  <label for="input_dialogo_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu estabeleço parcerias estratégicas com outros setores, fortalecendo 
+             as relações e promovendo a colaboração em projetos e iniciativas conjuntas para resultados mais efetivos. </p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="parcerias" value="01" title="1"
+                    id="input_parcerias_1" />
+                  <label for="input_parcerias_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="parcerias" value="02" title="2"
+                    id="input_parcerias_2" />
+                  <label for="input_parcerias_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="parcerias" value="03" title="3"
+                    id="input_parcerias_3" />
+                  <label for="input_parcerias_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="parcerias" value="04" title="4"
+                    id="input_parcerias_4" />
+                  <label for="input_parcerias_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="form-label-top questions-titles" >Fluência Digital</p>
+             <p class="fw-normal" style="margin:0;">Eu demonstro disposição para adotar e utilizar novas tecnologias em meu trabalho diário, 
+             mantendo-me atualizado sobre as últimas tendências digitais.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center " data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="disposicao" value="01" title="1"
+                    id="input_disposicao_1" />
+                  <label for="input_disposicao_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="disposicao" value="02" title="2"
+                    id="input_disposicao_2" />
+                  <label for="input_disposicao_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="disposicao" value="03" title="3"
+                    id="input_disposicao_3" />
+                  <label for="input_disposicao_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="disposicao" value="04" title="4"
+                    id="input_disposicao_4" />
+                  <label for="input_disposicao_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu reconheço e aproveito as possibilidades oferecidas pela tecnologia para impulsionar o progresso
+              e a transformação em minha área de atuação.</p>             
+             <div class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" aria-labelledby="label_7 sublabel_input_7_description" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="possibilidades" value="01" title="1"
+                    id="input_possibilidades_1" />
+                  <label for="input_possibilidades_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="possibilidades" value="02" title="2"
+                    id="input_possibilidades_2" />
+                  <label for="input_possibilidades_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="possibilidades" value="03" title="3"
+                    id="input_possibilidades_3" />
+                  <label for="input_possibilidades_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="possibilidades" value="04" title="4"
+                    id="input_possibilidades_4" />
+                  <label for="input_possibilidades_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu utilizo ferramentas digitais de análise de dados para coletar informações relevantes, 
+             interpretar resultados e tomar ações com base neles.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0" class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ferramentas" value="01" title="1"
+                    id="input_ferramentas_1" />
+                  <label for="input_ferramentas_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ferramentas" value="02" title="2"
+                    id="input_ferramentas_2" />
+                  <label for="input_ferramentas_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ferramentas" value="03" title="3"
+                    id="input_ferramentas_3" />
+                  <label for="input_ferramentas_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="ferramentas" value="04" title="4"
+                    id="input_ferramentas_4" />
+                  <label for="input_ferramentas_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+             <p class="fw-normal" style="margin:0;">Eu exploro e experimento novas ferramentas digitais que possam melhorar a eficiência e eficácia de minhas tarefas e processos.</p>             
+             <div id="cid_habnat" class="form-input-wide text-center" data-layout="full" style= "margin:0"; >
+            <div role="radiogroup" cellpadding="4" cellspacing="0"
+              class="form-scale-table" data-component="scale" style="white-space: nowrap;">
+              <div class="rating-item-group">
+                <div class="rating-item">
+                  <span class="rating-item-title for-from"></span>
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion " name="eficiencia" value="01" title="1"
+                    id="input_eficiencia_1" />
+                  <label for="input_eficiencia_1">1</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="eficiencia" value="02" title="2"
+                    id="input_eficiencia_2" />
+                  <label for="input_eficiencia_2">2</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="eficiencia" value="03" title="3"
+                    id="input_eficiencia_3" />
+                  <label for="input_eficiencia_3">3</label>
+                </div>
+                <div class="rating-item">
+                  <input type="radio" aria-describedby="label_7" class="form-radio selectquestion" name="eficiencia" value="04" title="4"
+                    id="input_eficiencia_4" />
+                  <label for="input_eficiencia_4">4</label>
+                </div>
+              </div>
+            </div>
+             </div>
+                                <p class="form-label-top questions-titles" style="font-size: large;">
+                                    Agradecemos sinceramente por participar da nossa pesquisa. Este espaço é reservado para suas críticas e sugestões de melhoria.
+                                    Queremos ouvir o que você pensa e como podemos fazer melhor. Sua opinião é extremamente valiosa para nós, pois nos ajuda a aprimorar continuamente nossos serviços e processos.
+                                </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="suggestion" name="suggestion" rows="3" style="resize: none; width: 98%; margin-left: 5px; padding: 10px;"></textarea>
+                                </div>
+                            </div> <!--AQUI ACABA A PÁGINA 3-->
+
+                            <div class="d-flex justify-content-between">
+                                <button type="button" class="btn btn-outline-primary btn-rounded" id="prev-button" data-mdb-ripple-color="dark">Anterior</button>
+                                <button type="button" class="btn btn-outline-primary btn-rounded" id="next-button" data-mdb-ripple-color="dark">Próximo</button>
+                                <button class="submit" id="submit" name="submit" style="display: none;">ENVIAR</button>
+                            </div>
+                        </div> <!--aqui acaba o form-container !! -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script type="text/javascript" src="./Form/js/mdb.min.js"></script>
-    <script type="text/javascript"></script>
     <script src="./Form/js/form.js"></script>
-  </body>
+</body>
+  <?php
+if (isset($errorScript)) {
+    echo "<script>$errorScript</script>";
+}
+?>
 </html>
